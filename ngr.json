@@ -1,0 +1,413 @@
+{
+  "api": "Vyra Transport API v1.0",
+  "lastUpdated": "2024-01-15",
+  "description": "Complete Nigerian intercity transport data",
+  
+  "transportCompanies": {
+    "ABC Transport": {
+      "id": "abc-transport",
+      "name": "ABC Transport",
+      "image": "https://i.ibb.co/5hXDcq5/images-7.png",
+      "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Kano", "Ibadan", "Benin", "Warri", "Calabar", "Owerri", "Jos", "Kaduna", "Uyo"],
+      "terminals": {
+        "Lagos": "Jibowu Terminal, Yaba",
+        "Abuja": "Garki Terminal",
+        "Port Harcourt": "Rumuola Park",
+        "Enugu": "Gariki Terminal",
+        "Onitsha": "Upper Iweka Park",
+        "Kano": "Kofar Nassarawa Park",
+        "Ibadan": "Ibadan Central Park",
+        "Benin": "Ring Road Park",
+        "Warri": "Effurun Park",
+        "Calabar": "Marian Park",
+        "Owerri": "Owerri Main Park",
+        "Jos": "Jos Terminus",
+        "Kaduna": "Kawo Park",
+        "Uyo": "Uyo Central Park"
+      },
+      "basePrice": 22000,
+      "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+    },
+    "God is Good Motors": {
+      "id": "god-is-good-motors",
+      "name": "God is Good Motors",
+      "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
+      "states": ["Lagos", "Abuja", "Port Harcourt", "Benin", "Warri", "Owerri", "Onitsha", "Enugu", "Calabar", "Uyo", "Ibadan", "Kano", "Kaduna"],
+      "terminals": {
+        "Lagos": "Festac Terminal",
+        "Abuja": "Jabi Terminal",
+        "Port Harcourt": "Choba Park",
+        "Benin": "Ring Road Park",
+        "Warri": "Effurun Park",
+        "Owerri": "Owerri Main Park",
+        "Onitsha": "New Park",
+        "Enugu": "Okpara Avenue",
+        "Calabar": "Murtala Park",
+        "Uyo": "Uyo Central Park",
+        "Ibadan": "Challenge Park",
+        "Kano": "Kano Line Park",
+        "Kaduna": "Kawo Park"
+      },
+      "basePrice": 23000,
+      "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
+    },
+    "Chisco Transport": {
+      "id": "chisco-transport",
+      "name": "Chisco Transport",
+      "image": "https://i.ibb.co/b7Yykmb/images-12.png",
+      "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Owerri", "Ibadan", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
+      "terminals": {
+        "Lagos": "Jibowu Terminal",
+        "Abuja": "Apo Terminal",
+        "Onitsha": "New Park",
+        "Enugu": "Okpara Avenue",
+        "Owerri": "Relief Market Park",
+        "Ibadan": "Ibadan Central Park",
+        "Port Harcourt": "Rumuokoro Park",
+        "Benin": "Benin Central Park",
+        "Warri": "Warri Main Park",
+        "Calabar": "Calabar Central Park",
+        "Kano": "Kano Central Park",
+        "Kaduna": "Kaduna Central Park"
+      },
+      "basePrice": 21500,
+      "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+    },
+    "Young Shall Grow": {
+      "id": "young-shall-grow",
+      "name": "Young Shall Grow",
+      "image": "https://i.ibb.co/wKRrKtp/test-10.png",
+      "states": ["Lagos", "Onitsha", "Enugu", "Owerri", "Abuja", "Benin", "Port Harcourt", "Ibadan", "Kano", "Kaduna", "Jos", "Calabar"],
+      "terminals": {
+        "Lagos": "Maza-Maza Park",
+        "Onitsha": "Upper Iweka",
+        "Enugu": "Holy Ghost Park",
+        "Owerri": "Douglas Road",
+        "Abuja": "Nyanya Park",
+        "Benin": "Benin Central Park",
+        "Port Harcourt": "Rumuomasi Park",
+        "Ibadan": "Challenge Park",
+        "Kano": "Kano Line Park",
+        "Kaduna": "Kawo Park",
+        "Jos": "Jos Main Park",
+        "Calabar": "Calabar Motor Park"
+      },
+      "basePrice": 19000,
+      "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
+    },
+    "Peace Mass Transit": {
+      "id": "peace-mass-transit",
+      "name": "Peace Mass Transit",
+      "image": "https://i.ibb.co/5hXDcq5/images-7.png",
+      "states": ["Enugu", "Onitsha", "Abuja", "Lagos", "Port Harcourt", "Jos", "Kano", "Kaduna", "Owerri", "Benin", "Ibadan", "Calabar", "Uyo"],
+      "terminals": {
+        "Enugu": "Gariki Terminal",
+        "Onitsha": "New Market Park",
+        "Abuja": "Kubwa Terminal",
+        "Lagos": "Ikeja Terminal",
+        "Port Harcourt": "Rumuokoro Park",
+        "Jos": "Jos Terminus",
+        "Kano": "Kano Main Park",
+        "Kaduna": "Kaduna Central Park",
+        "Owerri": "Owerri Motor Park",
+        "Benin": "Benin City Park",
+        "Ibadan": "Ibadan Central Park",
+        "Calabar": "Calabar Main Park",
+        "Uyo": "Uyo Motor Park"
+      },
+      "basePrice": 18000,
+      "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
+    },
+    "GUO Transport": {
+      "id": "guo-transport",
+      "name": "GUO Transport",
+      "image": "https://i.ibb.co/wKRrKtp/test-10.png",
+      "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Ibadan", "Abeokuta", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
+      "terminals": {
+        "Lagos": "Jibowu Terminal",
+        "Abuja": "Wuse Terminal",
+        "Onitsha": "New Park",
+        "Enugu": "Okpara Avenue",
+        "Ibadan": "Challenge Park",
+        "Abeokuta": "Abeokuta Central Park",
+        "Port Harcourt": "Choba Terminal",
+        "Benin": "Benin City Terminal",
+        "Warri": "Warri Central Park",
+        "Calabar": "Calabar Central Park",
+        "Kano": "Kano Central Park",
+        "Kaduna": "Kaduna Central Park"
+      },
+      "basePrice": 22500,
+      "serviceAttributes": ["Comfort", "Low Pricing", "Quick", "Safety"]
+    },
+    "The Young Legacy Motors": {
+      "id": "young-legacy-motors",
+      "name": "The Young Legacy Motors",
+      "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
+      "states": ["Lagos", "Onitsha", "Enugu", "Abuja", "Port Harcourt", "Owerri", "Benin", "Warri", "Ibadan", "Calabar"],
+      "terminals": {
+        "Lagos": "Mile 2 Park",
+        "Onitsha": "Upper Iweka",
+        "Enugu": "New Haven",
+        "Abuja": "Mararaba Park",
+        "Port Harcourt": "Rumuodara Park",
+        "Owerri": "Owerri Central",
+        "Benin": "Ring Road",
+        "Warri": "Effurun Roundabout",
+        "Ibadan": "Ibadan Central",
+        "Calabar": "Calabar Main Park"
+      },
+      "basePrice": 18500,
+      "serviceAttributes": ["Low Pricing", "Reliability", "Quick"]
+    },
+    "Benue Link Transport": {
+      "id": "benue-link-transport",
+      "name": "Benue Link Transport",
+      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Benue+Link",
+      "states": ["Benue", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Kano", "Kaduna", "Jos", "Makurdi"],
+      "terminals": {
+        "Benue": "Makurdi Central Park",
+        "Lagos": "Jibowu Terminal",
+        "Abuja": "Utako Park",
+        "Port Harcourt": "Rumuola Park",
+        "Enugu": "Gariki Terminal",
+        "Onitsha": "Upper Iweka",
+        "Kano": "Kano Line Park",
+        "Kaduna": "Kawo Park",
+        "Jos": "Jos Terminus",
+        "Makurdi": "Makurdi Main Park"
+      },
+      "basePrice": 19500,
+      "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
+    }
+  },
+
+  "routePrices": {
+    "Lagos-Abuja": {
+      "ABC Transport": 22500,
+      "God is Good Motors": 23500,
+      "Chisco Transport": 21800,
+      "Young Shall Grow": 19500,
+      "Peace Mass Transit": 18500,
+      "GUO Transport": 22800,
+      "The Young Legacy Motors": 19000,
+      "Benue Link Transport": 20000
+    },
+    "Lagos-Port Harcourt": {
+      "ABC Transport": 19800,
+      "God is Good Motors": 20500,
+      "Chisco Transport": 19200,
+      "Young Shall Grow": 17800,
+      "Peace Mass Transit": 16800,
+      "GUO Transport": 20200,
+      "The Young Legacy Motors": 17500,
+      "Benue Link Transport": 18500
+    },
+    "Lagos-Onitsha": {
+      "ABC Transport": 18800,
+      "God is Good Motors": 19500,
+      "Chisco Transport": 18200,
+      "Young Shall Grow": 16500,
+      "Peace Mass Transit": 15500,
+      "GUO Transport": 19200,
+      "The Young Legacy Motors": 16000,
+      "Benue Link Transport": 17000
+    },
+    "Lagos-Enugu": {
+      "ABC Transport": 19300,
+      "God is Good Motors": 20000,
+      "Chisco Transport": 18800,
+      "Young Shall Grow": 17000,
+      "Peace Mass Transit": 16000,
+      "GUO Transport": 19700,
+      "The Young Legacy Motors": 16500,
+      "Benue Link Transport": 17500
+    },
+    "Abuja-Port Harcourt": {
+      "ABC Transport": 21500,
+      "God is Good Motors": 22500,
+      "Chisco Transport": 20800,
+      "Young Shall Grow": 18800,
+      "Peace Mass Transit": 17800,
+      "GUO Transport": 21800,
+      "The Young Legacy Motors": 18300,
+      "Benue Link Transport": 19300
+    },
+    "Abuja-Onitsha": {
+      "ABC Transport": 18300,
+      "God is Good Motors": 19000,
+      "Chisco Transport": 17800,
+      "Young Shall Grow": 16000,
+      "Peace Mass Transit": 15000,
+      "GUO Transport": 18500,
+      "The Young Legacy Motors": 15500,
+      "Benue Link Transport": 16500
+    },
+    "Abuja-Enugu": {
+      "ABC Transport": 18800,
+      "God is Good Motors": 19500,
+      "Chisco Transport": 18300,
+      "Young Shall Grow": 16500,
+      "Peace Mass Transit": 15500,
+      "GUO Transport": 19000,
+      "The Young Legacy Motors": 16000,
+      "Benue Link Transport": 17000
+    },
+    "Port Harcourt-Onitsha": {
+      "ABC Transport": 17800,
+      "God is Good Motors": 18500,
+      "Chisco Transport": 17200,
+      "Young Shall Grow": 15500,
+      "Peace Mass Transit": 14500,
+      "GUO Transport": 18000,
+      "The Young Legacy Motors": 15000,
+      "Benue Link Transport": 16000
+    },
+    "Port Harcourt-Enugu": {
+      "ABC Transport": 18300,
+      "God is Good Motors": 19000,
+      "Chisco Transport": 17800,
+      "Young Shall Grow": 16000,
+      "Peace Mass Transit": 15000,
+      "GUO Transport": 18500,
+      "The Young Legacy Motors": 15500,
+      "Benue Link Transport": 16500
+    },
+    "Onitsha-Enugu": {
+      "ABC Transport": 17300,
+      "God is Good Motors": 18000,
+      "Chisco Transport": 16800,
+      "Young Shall Grow": 15000,
+      "Peace Mass Transit": 14000,
+      "GUO Transport": 17500,
+      "The Young Legacy Motors": 14500,
+      "Benue Link Transport": 15500
+    },
+    "Lagos-Ibadan": {
+      "ABC Transport": 8000,
+      "God is Good Motors": 8500,
+      "Chisco Transport": 7800,
+      "Young Shall Grow": 6500,
+      "Peace Mass Transit": 5500,
+      "GUO Transport": 8200,
+      "The Young Legacy Motors": 6000,
+      "Benue Link Transport": 7000
+    },
+    "Lagos-Benin": {
+      "ABC Transport": 12500,
+      "God is Good Motors": 13000,
+      "Chisco Transport": 11800,
+      "Young Shall Grow": 10500,
+      "Peace Mass Transit": 9500,
+      "GUO Transport": 12200,
+      "The Young Legacy Motors": 10000,
+      "Benue Link Transport": 11000
+    },
+    "Abuja-Kano": {
+      "ABC Transport": 16300,
+      "God is Good Motors": 17000,
+      "Chisco Transport": 15800,
+      "Young Shall Grow": 14000,
+      "Peace Mass Transit": 13000,
+      "GUO Transport": 16500,
+      "The Young Legacy Motors": 13500,
+      "Benue Link Transport": 14500
+    },
+    "Abuja-Kaduna": {
+      "ABC Transport": 7000,
+      "God is Good Motors": 7500,
+      "Chisco Transport": 6800,
+      "Young Shall Grow": 5500,
+      "Peace Mass Transit": 4500,
+      "GUO Transport": 7200,
+      "The Young Legacy Motors": 5000,
+      "Benue Link Transport": 6000
+    }
+  },
+
+  "states": {
+    "Lagos": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "Southwest",
+      "majorTerminals": ["Jibowu", "Festac", "Maza-Maza", "Ikeja", "Mile 2"]
+    },
+    "Abuja": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "North Central", 
+      "majorTerminals": ["Garki", "Jabi", "Apo", "Wuse", "Kubwa", "Nyanya", "Mararaba", "Utako"]
+    },
+    "Port Harcourt": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "South South",
+      "majorTerminals": ["Rumuola", "Choba", "Rumuokoro", "Rumuomasi", "Rumuodara"]
+    },
+    "Enugu": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "Southeast",
+      "majorTerminals": ["Gariki", "Okpara Avenue", "Holy Ghost", "New Haven"]
+    },
+    "Onitsha": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "Southeast",
+      "majorTerminals": ["Upper Iweka", "New Park", "New Market Park"]
+    },
+    "Kano": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "Northwest",
+      "majorTerminals": ["Kofar Nassarawa", "Kano Line", "Kano Main", "Kano Central"]
+    },
+    "Ibadan": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "Southwest",
+      "majorTerminals": ["Ibadan Central", "Challenge Park"]
+    },
+    "Benin": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "South South",
+      "majorTerminals": ["Ring Road", "Benin Central", "Benin City"]
+    },
+    "Owerri": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors"],
+      "region": "Southeast", 
+      "majorTerminals": ["Owerri Main", "Relief Market", "Douglas Road", "Owerri Central"]
+    },
+    "Calabar": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "South South",
+      "majorTerminals": ["Marian", "Murtala", "Calabar Central", "Calabar Main"]
+    },
+    "Jos": {
+      "companies": ["Peace Mass Transit", "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "GUO Transport", "Benue Link Transport"],
+      "region": "North Central",
+      "majorTerminals": ["Jos Terminus", "Jos Main"]
+    },
+    "Kaduna": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport"],
+      "region": "Northwest",
+      "majorTerminals": ["Kawo Park", "Kaduna Central"]
+    },
+    "Warri": {
+      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors"],
+      "region": "South South",
+      "majorTerminals": ["Effurun", "Warri Main", "Warri Central", "Effurun Roundabout"]
+    },
+    "Uyo": {
+      "companies": ["God is Good Motors", "ABC Transport", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport"],
+      "region": "South South",
+      "majorTerminals": ["Uyo Central", "Uyo Motor Park"]
+    },
+    "Abeokuta": {
+      "companies": ["GUO Transport", "ABC Transport", "God is Good Motors", "Chisco Transport"],
+      "region": "Southwest",
+      "majorTerminals": ["Abeokuta Central Park"]
+    }
+  },
+
+  "metadata": {
+    "totalCompanies": 8,
+    "totalRoutes": 14,
+    "totalStates": 15,
+    "priceCurrency": "NGN",
+    "dataSource": "Vyra Transport Analysis 2024"
+  }
+}
