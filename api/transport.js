@@ -2,7 +2,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-// Load JSON file directly
+// Load JSON file
 const jsonPath = join(process.cwd(), 'ngr.json');
 let transportData;
 
@@ -15,7 +15,7 @@ try {
 }
 
 export default async function handler(req, res) {
-  // CORS headers (same as above)
+  // ✅ CORS headers - THIS IS CRITICAL
   const origin = req.headers.origin;
   if (origin && (origin.includes('localhost') || origin.includes('127.0.0.1'))) {
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -26,6 +26,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  // Handle preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -34,9 +35,6 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  res.status(200).json({
-    success: true,
-    data: transportData,
-    timestamp: new Date().toISOString()
-  });
+  // ✅ Return direct JSON (same as ngr.json) BUT with CORS headers
+  res.status(200).json(transportData);
 }
