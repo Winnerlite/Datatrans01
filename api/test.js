@@ -1,8 +1,8 @@
+
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'text/html');
   
-
-<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -254,11 +254,9 @@ export default async function handler(req, res) {
         </div>
 
         <div class="grid">
-            <!-- Left Panel - Endpoints -->
             <div class="card">
                 <h2>🔌 Test Endpoints</h2>
 
-                <!-- Transport Endpoint -->
                 <div class="endpoint-group">
                     <h3>📦 Transport Data</h3>
                     <button class="test-button" onclick="testEndpoint('/api/transport')">
@@ -287,7 +285,6 @@ export default async function handler(req, res) {
                     </button>
                 </div>
 
-                <!-- States Endpoint -->
                 <div class="endpoint-group">
                     <h3>🗺️ States</h3>
                     <button class="test-button" onclick="testEndpoint('/api/states')">
@@ -307,7 +304,6 @@ export default async function handler(req, res) {
                     </button>
                 </div>
 
-                <!-- Companies Endpoint -->
                 <div class="endpoint-group">
                     <h3>🚐 Companies</h3>
                     <button class="test-button" onclick="testEndpoint('/api/companies')">
@@ -325,7 +321,6 @@ export default async function handler(req, res) {
                     </button>
                 </div>
 
-                <!-- Routes Endpoint -->
                 <div class="endpoint-group">
                     <h3>🛣️ Routes & Prices</h3>
                     <button class="test-button" onclick="testEndpoint('/api/routes')">
@@ -351,7 +346,6 @@ export default async function handler(req, res) {
                     </button>
                 </div>
 
-                <!-- Search Endpoint -->
                 <div class="endpoint-group">
                     <h3>🔍 Search</h3>
                     <div class="input-group">
@@ -365,7 +359,6 @@ export default async function handler(req, res) {
 
                     <div class="input-group">
                         <label>Search by Attribute:</label>
-                        
                         <select id="attributeFilter">
                             <option value="">Select Attribute...</option>
                             <option value="Comfort">Comfort</option>
@@ -383,7 +376,6 @@ export default async function handler(req, res) {
                 </div>
             </div>
 
-            <!-- Right Panel - Response -->
             <div class="card">
                 <h2>📊 API Response</h2>
                 <div class="response-container">
@@ -395,7 +387,6 @@ export default async function handler(req, res) {
                     <pre id="responseOutput">Click any button to test an endpoint...</pre>
                 </div>
                 
-                    <!-- Stats -->
                 <div class="stats" id="statsContainer" style="display: none;">
                     <div class="stat-card">
                         <div class="stat-number" id="statCompanies">0</div>
@@ -418,266 +409,185 @@ export default async function handler(req, res) {
         </div>
     </div>
 
-   <script>
-    // Base URL - Change this to your deployed URL
-    const BASE_URL = 'https://vyrametrics.vercel.app';
-    
-    let lastResponse = null;
-    let allData = null;
+    <script>
+        const BASE_URL = 'https://vyrametrics.vercel.app';
+        console.log('🚀 Testing API at:', BASE_URL);
+        
+        let lastResponse = null;
+        let allData = null;
 
-    // Load initial data to populate dropdowns
-    async function loadInitialData() {
-        try {
-            console.log('Fetching from:', `${BASE_URL}/api/transport`);
-            const response = await fetch(`${BASE_URL}/api/transport`);
-            
-            // Check if response is ok
-            if (!response.ok) {
-                console.error('Response not ok:', response.status, response.statusText);
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        async function loadInitialData() {
+            try {
+                console.log('Fetching from:', \`\${BASE_URL}/api/transport\`);
+                const response = await fetch(\`\${BASE_URL}/api/transport\`);
+                
+                if (!response.ok) {
+                    throw new Error(\`HTTP \${response.status}: \${response.statusText}\`);
+                }
+                
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new Error('API returned HTML instead of JSON');
+                }
+                
+                allData = await response.json();
+                console.log('✅ Data loaded successfully!');
+                
+                const states = Object.keys(allData.states || {});
+                populateSelect('stateFilter', states);
+                populateSelect('specificState', states);
+                populateSelect('routeFrom', states);
+                populateSelect('routeTo', states);
+                
+            } catch (error) {
+                console.error('❌ Failed to load initial data:', error);
+                const output = document.getElementById('responseOutput');
+                const statusBadge = document.getElementById('statusBadge');
+                
+                statusBadge.className = 'status-badge status-error';
+                statusBadge.textContent = 'Init Error';
+                output.innerHTML = \`<span style="color: #f56565;">
+                    <strong>Failed to load initial data:</strong><br><br>
+                    \${error.message}
+                </span>\`;
             }
-            
-            // Check content type
-            const contentType = response.headers.get('content-type');
-            console.log('Content-Type:', contentType);
-            
-            if (!contentType || !contentType.includes('application/json')) {
-                const text = await response.text();
-                console.error('Response is not JSON:', text.substring(0, 200));
-                throw new Error('API returned HTML instead of JSON. Check if /api/transport endpoint exists.');
-            }
-            
-            allData = await response.json();
-            console.log('Data loaded successfully:', allData);
-            
-            // Populate state dropdowns
-            const states = Object.keys(allData.states || {});
-            populateSelect('stateFilter', states);
-            populateSelect('specificState', states);
-            populateSelect('routeFrom', states);
-            populateSelect('routeTo', states);
-            
-        } catch (error) {
-            console.error('Failed to load initial data:', error);
-            // Show error on page
+        }
+
+        function populateSelect(selectId, options) {
+            const select = document.getElementById(selectId);
+            options.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                select.appendChild(opt);
+            });
+        }
+
+        async function testEndpoint(endpoint) {
             const output = document.getElementById('responseOutput');
             const statusBadge = document.getElementById('statusBadge');
+            const currentEndpoint = document.getElementById('currentEndpoint');
+            const statsContainer = document.getElementById('statsContainer');
             
-            statusBadge.className = 'status-badge status-error';
-            statusBadge.textContent = 'Init Error';
-            output.innerHTML = `<span style="color: #f56565;">
-                <strong>Failed to load initial data:</strong><br><br>
-                ${error.message}<br><br>
-                <strong>Troubleshooting:</strong><br>
-                1. Check if /api/transport exists<br>
-                2. Open <a href="${BASE_URL}/api/transport" target="_blank" style="color: #4299e1;">${BASE_URL}/api/transport</a> to see the response<br>
-                3. Check browser console for details
-            </span>`;
-        }
-    }
-
-    function populateSelect(selectId, options) {
-        const select = document.getElementById(selectId);
-        options.forEach(option => {
-            const opt = document.createElement('option');
-            opt.value = option;
-            opt.textContent = option;
-            select.appendChild(opt);
-        });
-    }
-
-    // Test endpoint function
-    async function testEndpoint(endpoint) {
-        const output = document.getElementById('responseOutput');
-        const statusBadge = document.getElementById('statusBadge');
-        const currentEndpoint = document.getElementById('currentEndpoint');
-        const statsContainer = document.getElementById('statsContainer');
-        
-        // Show loading
-        statusBadge.className = 'status-badge status-loading';
-        statusBadge.textContent = 'Loading...';
-        output.innerHTML = '<div class="loading">⏳ Fetching data...</div>';
-        currentEndpoint.textContent = `${BASE_URL}${endpoint}`;
-        
-        const startTime = performance.now();
-        
-        try {
-            const response = await fetch(`${BASE_URL}${endpoint}`);
-            const endTime = performance.now();
-            const responseTime = Math.round(endTime - startTime);
+            statusBadge.className = 'status-badge status-loading';
+            statusBadge.textContent = 'Loading...';
+            output.innerHTML = '<div class="loading">⏳ Fetching data...</div>';
+            currentEndpoint.textContent = \`\${BASE_URL}\${endpoint}\`;
             
-            // Check content type before parsing
-            const contentType = response.headers.get('content-type');
+            const startTime = performance.now();
             
-            if (!contentType || !contentType.includes('application/json')) {
-                const text = await response.text();
-                throw new Error(`Expected JSON but got ${contentType}. Response: ${text.substring(0, 200)}`);
-            }
-            
-            const data = await response.json();
-            lastResponse = data;
-            
-            // Update status
-            if (response.ok) {
-                statusBadge.className = 'status-badge status-success';
-                statusBadge.textContent = `${response.status} OK`;
-            } else {
+            try {
+                const response = await fetch(\`\${BASE_URL}\${endpoint}\`);
+                const endTime = performance.now();
+                const responseTime = Math.round(endTime - startTime);
+                
+                const data = await response.json();
+                lastResponse = data;
+                
+                if (response.ok) {
+                    statusBadge.className = 'status-badge status-success';
+                    statusBadge.textContent = \`\${response.status} OK\`;
+                } else {
+                    statusBadge.className = 'status-badge status-error';
+                    statusBadge.textContent = \`\${response.status} Error\`;
+                }
+                
+                output.innerHTML = syntaxHighlight(JSON.stringify(data, null, 2));
+                
+                if (data.transportCompanies || data.states || data.routePrices) {
+                    updateStats(data, responseTime);
+                    statsContainer.style.display = 'grid';
+                } else {
+                    statsContainer.style.display = 'none';
+                }
+                
+            } catch (error) {
                 statusBadge.className = 'status-badge status-error';
-                statusBadge.textContent = `${response.status} Error`;
-            }
-            
-            // Display formatted JSON
-            output.innerHTML = syntaxHighlight(JSON.stringify(data, null, 2));
-            
-            // Update stats if full data
-            if (data.transportCompanies || data.states || data.routePrices) {
-                updateStats(data, responseTime);
-                statsContainer.style.display = 'grid';
-            } else {
+                statusBadge.textContent = 'Error';
+                output.innerHTML = \`<span style="color: #f56565;">Error: \${error.message}</span>\`;
                 statsContainer.style.display = 'none';
             }
-            
-        } catch (error) {
-            statusBadge.className = 'status-badge status-error';
-            statusBadge.textContent = 'Error';
-            output.innerHTML = `<span style="color: #f56565;">
-                <strong>Error:</strong> ${error.message}<br><br>
-                Check console for details.
-            </span>`;
-            console.error('Fetch error:', error);
-            statsContainer.style.display = 'none';
         }
-    }
 
-    // Transport by state
-    function testTransportByState() {
-        const state = document.getElementById('stateFilter').value;
-        if (!state) {
-            alert('Please select a state');
-            return;
+        function testTransportByState() {
+            const state = document.getElementById('stateFilter').value;
+            if (!state) { alert('Please select a state'); return; }
+            testEndpoint(\`/api/transport?state=\${encodeURIComponent(state)}\`);
         }
-        testEndpoint(`/api/transport?state=${encodeURIComponent(state)}`);
-    }
 
-    // Transport by company
-    function testTransportByCompany() {
-        const company = document.getElementById('companyFilter').value.trim();
-        if (!company) {
-            alert('Please enter a company name');
-            return;
+        function testTransportByCompany() {
+            const company = document.getElementById('companyFilter').value.trim();
+            if (!company) { alert('Please enter a company name'); return; }
+            testEndpoint(\`/api/transport?company=\${encodeURIComponent(company)}\`);
         }
-        testEndpoint(`/api/transport?company=${encodeURIComponent(company)}`);
-    }
 
-    // Specific state
-    function testSpecificState() {
-        const state = document.getElementById('specificState').value;
-        if (!state) {
-            alert('Please select a state');
-            return;
+        function testSpecificState() {
+            const state = document.getElementById('specificState').value;
+            if (!state) { alert('Please select a state'); return; }
+            testEndpoint(\`/api/states?state=\${encodeURIComponent(state)}\`);
         }
-        testEndpoint(`/api/states?state=${encodeURIComponent(state)}`);
-    }
 
-    // Specific company
-    function testSpecificCompany() {
-        const company = document.getElementById('specificCompany').value.trim();
-        if (!company) {
-            alert('Please enter a company name');
-            return;
+        function testSpecificCompany() {
+            const company = document.getElementById('specificCompany').value.trim();
+            if (!company) { alert('Please enter a company name'); return; }
+            testEndpoint(\`/api/companies?company=\${encodeURIComponent(company)}\`);
         }
-        testEndpoint(`/api/companies?company=${encodeURIComponent(company)}`);
-    }
 
-    // Route test
-    function testRoute() {
-        const from = document.getElementById('routeFrom').value;
-        const to = document.getElementById('routeTo').value;
-        if (!from || !to) {
-            alert('Please select both origin and destination');
-            return;
+        function testRoute() {
+            const from = document.getElementById('routeFrom').value;
+            const to = document.getElementById('routeTo').value;
+            if (!from || !to) { alert('Please select both origin and destination'); return; }
+            testEndpoint(\`/api/routes?from=\${encodeURIComponent(from)}&to=\${encodeURIComponent(to)}\`);
         }
-        testEndpoint(`/api/routes?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
-    }
 
-    // Search test
-    function testSearch() {
-        const query = document.getElementById('searchQuery').value.trim();
-        if (!query) {
-            alert('Please enter a search term');
-            return;
+        function testSearch() {
+            const query = document.getElementById('searchQuery').value.trim();
+            if (!query) { alert('Please enter a search term'); return; }
+            testEndpoint(\`/api/search?q=\${encodeURIComponent(query)}\`);
         }
-        testEndpoint(`/api/search?q=${encodeURIComponent(query)}`);
-    }
 
-    // Search by attribute
-    function testSearchByAttribute() {
-        const attribute = document.getElementById('attributeFilter').value;
-        if (!attribute) {
-            alert('Please select an attribute');
-            return;
+        function testSearchByAttribute() {
+            const attribute = document.getElementById('attributeFilter').value;
+            if (!attribute) { alert('Please select an attribute'); return; }
+            testEndpoint(\`/api/search?attribute=\${encodeURIComponent(attribute)}\`);
         }
-        testEndpoint(`/api/search?attribute=${encodeURIComponent(attribute)}`);
-    }
 
-    // Update stats
-    function updateStats(data, responseTime) {
-        const companies = Object.keys(data.transportCompanies || {}).length;
-        const states = Object.keys(data.states || {}).length;
-        const routes = Object.keys(data.routePrices || {}).length;
-        
-        document.getElementById('statCompanies').textContent = companies;
-        document.getElementById('statStates').textContent = states;
-        document.getElementById('statRoutes').textContent = routes;
-        document.getElementById('responseTime').textContent = `${responseTime}ms`;
-    }
+        function updateStats(data, responseTime) {
+            document.getElementById('statCompanies').textContent = Object.keys(data.transportCompanies || {}).length;
+            document.getElementById('statStates').textContent = Object.keys(data.states || {}).length;
+            document.getElementById('statRoutes').textContent = Object.keys(data.routePrices || {}).length;
+            document.getElementById('responseTime').textContent = \`\${responseTime}ms\`;
+        }
 
-    // Syntax highlighting for JSON
-    function syntaxHighlight(json) {
-        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-            let cls = 'json-number';
-            if (/^"/.test(match)) {
-                if (/:$/.test(match)) {
-                    cls = 'json-key';
-                } else {
-                    cls = 'json-string';
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\\\u[a-zA-Z0-9]{4}|\\\\[^u]|[^\\\\"])*"(\\s*:)?|\\b(true|false|null)\\b|-?\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d+)?)/g, function (match) {
+                let cls = 'json-number';
+                if (/^"/.test(match)) {
+                    cls = /:$/.test(match) ? 'json-key' : 'json-string';
+                } else if (/true|false/.test(match)) {
+                    cls = 'json-boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'json-null';
                 }
-            } else if (/true|false/.test(match)) {
-                cls = 'json-boolean';
-            } else if (/null/.test(match)) {
-                cls = 'json-null';
-            }
-            return '<span class="' + cls + '">' + match + '</span>';
-        });
-    }
-
-    // Copy response to clipboard
-    function copyResponse() {
-        if (!lastResponse) {
-            alert('No response to copy');
-            return;
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
         }
-        
-        const text = JSON.stringify(lastResponse, null, 2);
-        navigator.clipboard.writeText(text).then(() => {
-            const btn = document.querySelector('.copy-btn');
-            const originalText = btn.textContent;
-            btn.textContent = '✓ Copied!';
-            setTimeout(() => {
-                btn.textContent = originalText;
-            }, 2000);
-        }).catch(err => {
-            alert('Failed to copy: ' + err);
-        });
-    }
 
-    // Initialize on load
-    window.addEventListener('DOMContentLoaded', () => {
-        loadInitialData();
-    });
-</script>
+        function copyResponse() {
+            if (!lastResponse) { alert('No response to copy'); return; }
+            navigator.clipboard.writeText(JSON.stringify(lastResponse, null, 2)).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => btn.textContent = originalText, 2000);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', loadInitialData);
+    </script>
 </body>
-</html>
-;
-res.status(200).send(html);
+</html>`;
+  
+  res.status(200).send(html);
+}
