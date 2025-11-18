@@ -1,3 +1,7 @@
+export default async function handler(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -675,3 +679,5 @@
 </script>
 </body>
 </html>
+;
+res.status(200).send(html);
