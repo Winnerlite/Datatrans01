@@ -1,7 +1,7 @@
 
 {
   "api": "Vyra Transport API v1.0",
-  "lastUpdated": "2024-01-15",
+  "lastUpdated": "2025-09-15",
   "description": "Complete Nigerian intercity transport data",
   
   "transportCompanies": {
@@ -26,7 +26,7 @@
         "Kaduna": "Kawo Park",
         "Uyo": "Uyo Central Park"
       },
-      "basePrice": 22000,
+      "basePrice": 32000,
       "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
     },
     "God is Good Motors": {
@@ -49,7 +49,7 @@
         "Kano": "Kano Line Park",
         "Kaduna": "Kawo Park"
       },
-      "basePrice": 23000,
+      "basePrice": 33000,
       "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
     },
     "Chisco Transport": {
@@ -71,7 +71,7 @@
         "Kano": "Kano Central Park",
         "Kaduna": "Kaduna Central Park"
       },
-      "basePrice": 21500,
+      "basePrice": 31500,
       "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
     },
     "Young Shall Grow": {
@@ -93,7 +93,7 @@
         "Jos": "Jos Main Park",
         "Calabar": "Calabar Motor Park"
       },
-      "basePrice": 19000,
+      "basePrice": 29000,
       "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
     },
     "Peace Mass Transit": {
@@ -116,7 +116,7 @@
         "Calabar": "Calabar Main Park",
         "Uyo": "Uyo Motor Park"
       },
-      "basePrice": 18000,
+      "basePrice": 38000,
       "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
     },
     "GUO Transport": {
@@ -138,7 +138,7 @@
         "Kano": "Kano Central Park",
         "Kaduna": "Kaduna Central Park"
       },
-      "basePrice": 22500,
+      "basePrice": 29500,
       "serviceAttributes": ["Comfort", "Low Pricing", "Quick", "Safety"]
     },
     "The Young Legacy Motors": {
@@ -158,7 +158,7 @@
         "Ibadan": "Ibadan Central",
         "Calabar": "Calabar Main Park"
       },
-      "basePrice": 18500,
+      "basePrice": 35000,
       "serviceAttributes": ["Low Pricing", "Reliability", "Quick"]
     },
     "Benue Link Transport": {
@@ -178,7 +178,7 @@
         "Jos": "Jos Terminus",
         "Makurdi": "Makurdi Main Park"
       },
-      "basePrice": 19500,
+      "basePrice": 29500,
       "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
     },
     "Aba Line": {
@@ -195,7 +195,7 @@
         "Onitsha": "Upper Iweka",
         "Owerri": "Owerri Main Park"
       },
-      "basePrice": 18000,
+      "basePrice": 33000,
       "serviceAttributes": ["Comfort", "Reliability", "Customer Service"]
     },
     "Nsik Motors (AKTC)": {
@@ -212,7 +212,7 @@
         "Calabar": "Calabar Central Park",
         "Uyo": "Uyo Main Park"
       },
-      "basePrice": 19000,
+      "basePrice": 29000,
       "serviceAttributes": ["Comfort", "Safety", "Quick", "Reliability"]
     },
     "Cross Country Transport": {
@@ -230,7 +230,7 @@
         "Jos": "Jos Terminus",
         "Maiduguri": "Maiduguri Central Park"
       },
-      "basePrice": 20000,
+      "basePrice": 32000,
       "serviceAttributes": ["Comfort", "Reliability", "Safety"]
     },
     "New Nyanya Transport Company": {
@@ -245,7 +245,7 @@
         "Jos": "Jos Terminus",
         "Kaduna": "Kawo Park"
       },
-      "basePrice": 17500,
+      "basePrice": 37500,
       "serviceAttributes": ["Low Pricing"]
     },
     "Adam and Eve Motors": {
@@ -260,7 +260,7 @@
         "Port Harcourt": "Rumuola Park",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 18000,
+      "basePrice": 33000,
       "serviceAttributes": ["Comfort"]
     },
     "Libra Motors": {
@@ -276,7 +276,7 @@
         "Onitsha": "Upper Iweka",
         "Ibadan": "Ibadan Central Park"
       },
-      "basePrice": 19500,
+      "basePrice": 31500,
       "serviceAttributes": ["Low Pricing", "Quick", "Customer Service"]
     },
     "Orizu Motors": {
@@ -292,7 +292,7 @@
         "Onitsha": "Upper Iweka Park",
         "Port Harcourt": "Rumuola Park"
       },
-      "basePrice": 18500,
+      "basePrice": 33500,
       "serviceAttributes": ["Low Pricing", "Reliability"]
     },
     "Imo Transport (ITC)": {
@@ -308,7 +308,7 @@
         "Enugu": "Gariki Terminal",
         "Owerri": "Owerri Central"
       },
-      "basePrice": 17500,
+      "basePrice": 32500,
       "serviceAttributes": ["Low Pricing"]
     },
     "Fair Okis Transport": {
@@ -323,7 +323,7 @@
         "Kano": "Kano Main Park",
         "Jos": "Jos Terminus"
       },
-      "basePrice": 19000,
+      "basePrice": 29000,
       "serviceAttributes": ["Safety"]
     },
     "Fair Plus Transport": {
@@ -337,7 +337,7 @@
         "Lagos": "Jibowu Terminal",
         "Kano": "Kano Main Park"
       },
-      "basePrice": 18500,
+      "basePrice": 28500,
       "serviceAttributes": ["Reliability"]
     },
     "Akwa Ibom Transport (AKTC)": {
@@ -353,7 +353,7 @@
         "Calabar": "Calabar Central Park",
         "Uyo": "Uyo Main Park"
       },
-      "basePrice": 18000,
+      "basePrice": 30000,
       "serviceAttributes": ["Quick"]
     },
     "Big Joe Motors": {
@@ -368,7 +368,7 @@
         "Calabar": "Calabar Central Park",
         "Uyo": "Uyo Main Park"
       },
-      "basePrice": 17500,
+      "basePrice": 27500,
       "serviceAttributes": ["Low Pricing", "Quick"]
     },
     "Agofure Motors": {
@@ -386,7 +386,7 @@
         "Warri": "Effurun Park",
         "Onitsha": "Upper Iweka"
       },
-      "basePrice": 18000,
+      "basePrice": 32000,
       "serviceAttributes": ["Comfort", "Low Pricing"]
     },
     "E.Ekesons Bros Transport": {
@@ -402,7 +402,7 @@
         "Enugu": "Gariki Terminal",
         "Onitsha": "Upper Iweka"
       },
-      "basePrice": 18500,
+      "basePrice": 34500,
       "serviceAttributes": ["Comfort", "Safety", "Reliability"]
     },
     "Goodness and Mercy Transport": {
@@ -417,7 +417,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 17500,
+      "basePrice": 32500,
       "serviceAttributes": ["Comfort", "Low Pricing", "Customer Service"]
     },
     "Okeyson Motors": {
@@ -432,7 +432,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 17500,
+      "basePrice": 34500,
       "serviceAttributes": ["Comfort", "Low Pricing", "Reliability"]
     },
     "Tracas Nigeria": {
@@ -447,7 +447,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 18500,
+      "basePrice": 29500,
       "serviceAttributes": ["Comfort", "Reliability"]
     },
     "Auto Star Limited": {
@@ -462,7 +462,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 18000,
+      "basePrice": 34000,
       "serviceAttributes": ["Comfort", "Reliability"]
     },
     "Anambra Express": {
@@ -477,7 +477,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 17000,
+      "basePrice": 29000,
       "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
     },
     "Ekene Dili Chukwu Express Limited": {
@@ -492,7 +492,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 17000,
+      "basePrice": 28000,
       "serviceAttributes": ["Low Pricing"]
     },
     "Interland Transport": {
@@ -507,7 +507,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 18000,
+      "basePrice": 28000,
       "serviceAttributes": ["Safety", "Customer Service"]
     },
     "Nothing Pass God Motors": {
@@ -522,7 +522,7 @@
         "Onitsha": "Upper Iweka",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 17500,
+      "basePrice": 30500,
       "serviceAttributes": ["Reliability"]
     },
     "Yankari Express": {
@@ -552,7 +552,7 @@
         "Lagos": "Jibowu Terminal",
         "Kano": "Kano Main Park"
       },
-      "basePrice": 17000,
+      "basePrice": 30000,
       "serviceAttributes": ["Low Pricing", "Safety", "Reliability"]
     },
     "Bayelsa State Transport": {
@@ -566,7 +566,7 @@
         "Abuja": "Utako Park",
         "Port Harcourt": "Rumuola Park"
       },
-      "basePrice": 16500,
+      "basePrice": 33500,
       "serviceAttributes": ["Low Pricing", "Reliability"]
     },
     "Delta Line": {
@@ -583,7 +583,7 @@
         "Benin": "Ring Road",
         "Warri": "Effurun Park"
       },
-      "basePrice": 17500,
+      "basePrice": 25500,
       "serviceAttributes": ["Comfort", "Safety", "Reliability", "Quick"]
     },
     "Borno Express": {
@@ -598,7 +598,7 @@
         "Kano": "Kano Main Park",
         "Maiduguri": "Maiduguri Main Park"
       },
-      "basePrice": 20000,
+      "basePrice": 28000,
       "serviceAttributes": ["Comfort", "Safety"]
     },
     "Faith Motors": {
@@ -614,7 +614,7 @@
         "Calabar": "Calabar Main Park",
         "Enugu": "Gariki Terminal"
       },
-      "basePrice": 18500,
+      "basePrice": 25500,
       "serviceAttributes": ["Safety"]
     },
     "Ibom Transit": {
@@ -630,7 +630,7 @@
         "Calabar": "Calabar Central Park",
         "Uyo": "Uyo Main Park"
       },
-      "basePrice": 18000,
+      "basePrice": 28000,
       "serviceAttributes": ["Safety"]
     },
     "Glo Bus Transit": {
@@ -645,7 +645,7 @@
         "Onitsha": "Upper Iweka",
         "Port Harcourt": "Rumuola Park"
       },
-      "basePrice": 17500,
+      "basePrice": 26500,
       "serviceAttributes": ["Safety"]
     },
     "Fellow Transport": {
@@ -660,7 +660,7 @@
         "Onitsha": "Upper Iweka",
         "Port Harcourt": "Rumuola Park"
       },
-      "basePrice": 17000,
+      "basePrice": 27000,
       "serviceAttributes": ["Reliability"]
     },
     "Tega Express": {
@@ -1152,7 +1152,7 @@
     "totalRoutes": 20,
     "totalStates": 37,
     "priceCurrency": "NGN",
-    "dataSource": "Vyra Transport Analysis 2024",
-    "lastUpdated": "2024-01-15"
+    "dataSource": "Vyra Transport Analysis 2025",
+    "lastUpdated": "2025-11-01"
   }
 }
