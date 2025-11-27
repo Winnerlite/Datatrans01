@@ -982,6 +982,205 @@ const mobileViewportFix = `
 const style = document.createElement('style');
 style.textContent = mobileViewportFix;
 document.head.appendChild(style);
+
+
+// Cookie Management
+function showCookieBanner() {
+    if (!getCookie('cookie_consent')) {
+        setTimeout(() => {
+            document.getElementById('cookieConsent').classList.remove('hidden');
+        }, 1000);
+    }
+}
+
+function acceptAllCookies() {
+    setCookie('cookie_consent', 'all', 365);
+    setCookie('analytics_cookies', 'true', 365);
+    hideCookieBanner();
+    initializeAnalytics();
+}
+
+function rejectAllCookies() {
+    setCookie('cookie_consent', 'necessary', 365);
+    setCookie('analytics_cookies', 'false', 365);
+    hideCookieBanner();
+}
+
+function showCookieSettings() {
+    // Set current state
+    const analyticsAllowed = getCookie('analytics_cookies') === 'true';
+    document.getElementById('analyticsCookies').checked = analyticsAllowed;
+    
+    document.getElementById('cookieSettings').classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeCookieSettings() {
+    document.getElementById('cookieSettings').classList.add('hidden');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+function hideCookieBanner() {
+    document.getElementById('cookieConsent').classList.add('hidden');
+}
+
+function saveCookiePreferences() {
+    const analyticsChecked = document.getElementById('analyticsCookies').checked;
+    setCookie('cookie_consent', 'custom', 365);
+    setCookie('analytics_cookies', analyticsChecked ? 'true' : 'false', 365);
+    
+    if (analyticsChecked) {
+        initializeAnalytics();
+    }
+    
+    closeCookieSettings();
+    hideCookieBanner();
+    
+    // Show confirmation
+    showToast('Cookie preferences saved');
+}
+
+// Toast notification for mobile
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg z-50 text-sm max-w-xs text-center';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+// Cookie helper functions (same as before)
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// Close modal when clicking outside (mobile friendly)
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieSettings = document.getElementById('cookieSettings');
+    if (cookieSettings) {
+        cookieSettings.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCookieSettings();
+            }
+        });
+    }
+    showCookieBanner();
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    showCookieBanner();
+});
+
+// Your analytics initialization function
+function initializeAnalytics() {
+    // Initialize your analytics tool here (Google Analytics, etc.)
+    console.log('Analytics initialized');
+}
     </script>
+    
+    <!-- Cookie Consent Banner -->
+<div id="cookieConsent" class="fixed bottom-0 left-0 right-0 md:bottom-4 md:left-4 md:right-auto md:max-w-md bg-slate-800 border border-slate-700 rounded-t-2xl md:rounded-2xl p-4 md:p-6 shadow-2xl z-50 hidden">
+    <div class="flex flex-col gap-4">
+        <div class="text-center md:text-left">
+            <h3 class="text-white font-semibold mb-2 text-lg md:text-base">Cookie Preferences</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">We use cookies to analyze traffic and improve your experience. You can customize your preferences.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="acceptAllCookies()" class="flex-1 bg-vyra-600 hover:bg-vyra-500 text-white py-3 sm:py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                Accept All
+            </button>
+            <button onclick="showCookieSettings()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-3 sm:py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                Preferences
+            </button>
+            <button onclick="rejectAllCookies()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white py-3 sm:py-2 px-4 rounded-lg text-sm font-medium transition-colors border border-slate-600">
+                Reject All
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div id="cookieSettings" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-slate-800 rounded-t-2xl sm:rounded-2xl w-full max-w-md sm:max-w-lg max-h-[90vh] overflow-y-auto border border-slate-700 sm:mx-4">
+        <!-- Header -->
+        <div class="sticky top-0 bg-slate-800 border-b border-slate-700 p-4 sm:p-6">
+            <div class="flex items-center justify-between">
+                <h3 class="text-white font-semibold text-lg">Cookie Settings</h3>
+                <button onclick="closeCookieSettings()" class="text-slate-400 hover:text-white p-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="p-4 sm:p-6 space-y-6">
+            <!-- Necessary Cookies -->
+            <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                    <div class="text-white font-medium mb-1">Necessary Cookies</div>
+                    <div class="text-slate-400 text-sm">Essential for the website to function properly</div>
+                </div>
+                <div class="relative inline-block w-12 h-6 bg-vyra-600 rounded-full cursor-not-allowed opacity-50 flex-shrink-0">
+                    <input type="checkbox" checked disabled class="sr-only">
+                    <span class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform"></span>
+                </div>
+            </div>
+            
+            <!-- Analytics Cookies -->
+            <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                    <div class="text-white font-medium mb-1">Analytics Cookies</div>
+                    <div class="text-slate-400 text-sm">Help us understand how visitors use our site</div>
+                </div>
+                <label class="relative inline-block w-12 h-6 cursor-pointer flex-shrink-0">
+                    <input type="checkbox" id="analyticsCookies" class="sr-only">
+                    <span class="absolute inset-0 bg-slate-600 rounded-full transition-colors peer-checked:bg-vyra-600"></span>
+                    <span class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-6"></span>
+                </label>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="bg-slate-900/50 rounded-lg p-4">
+                <h4 class="text-vyra-400 font-medium text-sm mb-2">About Cookies</h4>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Necessary cookies are required for the website to function. Analytics cookies help us improve the user experience by collecting anonymous usage data.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Footer Buttons -->
+        <div class="sticky bottom-0 bg-slate-800 border-t border-slate-700 p-4 sm:p-6">
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="saveCookiePreferences()" class="flex-1 bg-vyra-600 hover:bg-vyra-500 text-white py-3 sm:py-2 px-4 rounded-lg font-medium transition-colors">
+                    Save Preferences
+                </button>
+                <button onclick="closeCookieSettings()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-3 sm:py-2 px-4 rounded-lg font-medium transition-colors order-first sm:order-last">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
