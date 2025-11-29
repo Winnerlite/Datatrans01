@@ -921,7 +921,7 @@ body * {
                                                     <div class="text-xs text-slate-500">${opt.type}</div>
                                                 </div>
                                                 <div class="text-right flex-shrink-0">
-                                                    <div class="text-base md:text-lg font-mono font-bold ${idx === 0 ? 'text-green-400' : 'text-slate-300'}">₦${opt.price.toLocaleString()}</div>
+                                                    <div class="text-base md:text-lg font-mono font-bold ${idx === 0 ? 'text-green-400' : 'text-slate-300'}">NGN${opt.price.toLocaleString()}</div>
                                                     ${idx === 0 ? '<div class="text-[10px] text-green-500 font-medium">BEST PRICE</div>' : ''}
                                                 </div>
                                             </div>
@@ -978,7 +978,7 @@ body * {
 
                         <div class="text-center sm:text-left flex-1 min-w-0">
                             <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 truncate">${data.name}</h2>
-                            ${data.basePrice ? `<div class="text-base md:text-lg text-vyra-400 font-mono font-bold mb-2">Base Price: ₦${data.basePrice.toLocaleString()}</div>` : ''}
+                            ${data.basePrice ? `<div class="text-base md:text-lg text-vyra-400 font-mono font-bold mb-2">Base Price: NGN${data.basePrice.toLocaleString()}</div>` : ''}
                             <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-sm">
                                 <span class="flex items-center text-vyra-400 gap-1">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
