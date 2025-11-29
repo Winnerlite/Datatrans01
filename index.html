@@ -288,133 +288,48 @@
             }
         }
         
-        /* Add this to your existing mobile media queries */
+       /* AGGRESSIVE MOBILE FIX - Add this if above doesn't work */
 @media (max-width: 480px) {
-    /* Fix price list board overflow */
-    .grid.lg\\:grid-cols-12,
-    .grid.lg\\:grid-cols-2 {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+    #resultsArea * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
     
-    /* Ensure routes container doesn't overflow */
-    #resultsArea .lg\\:col-span-8,
-    #resultsArea .lg\\:col-span-4 {
-        grid-column: 1 !important;
+    #resultsArea .grid {
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    #resultsArea [class*="col-span"] {
+        width: 100% !important;
+        float: none !important;
+        display: block !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Force all containers to be 100% width */
+    #resultsArea > div,
+    #resultsArea .bg-slate-900\\/50,
+    #resultsArea .bg-slate-900,
+    #resultsArea .rounded-xl {
         width: 100% !important;
         max-width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
-    }
-    
-    /* Fix route cards padding and text */
-    .bg-slate-900\\/50.rounded-xl.border-slate-800 {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        border-radius: 0.75rem !important;
-    }
-    
-    /* Fix route header text overflow */
-    .bg-slate-950\\/50.px-4.px-6.py-3 {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-    
-    .bg-slate-950\\/50 .flex.items-center.gap-2 {
-        flex-wrap: wrap !important;
-        gap: 0.25rem !important;
-    }
-    
-    .bg-slate-950\\/50 .font-bold.text-white {
-        font-size: 0.875rem !important;
-        flex-wrap: wrap !important;
-    }
-    
-    /* Fix price items layout */
-    .px-4.px-6.py-4.flex.items-center.justify-between {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 0.5rem !important;
-    }
-    
-    .px-4.px-6.py-4 .min-w-0 {
-        width: 100% !important;
-    }
-    
-    .px-4.px-6.py-4 .text-right {
-        text-align: left !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-    }
-    
-    /* Fix terminals section */
-    .bg-slate-900.border-slate-800.rounded-xl.p-1 {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    
-    /* Ensure all content stays within viewport */
-    #resultsArea > div {
         padding-left: 0.5rem !important;
         padding-right: 0.5rem !important;
     }
     
-    .mb-10.px-4 {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
-    }
-    
-    .space-y-6 > div {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+    /* Fix text overflow */
+    #resultsArea .truncate {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
     }
 }
 
-/* Extra small screens (320px) */
-@media (max-width: 320px) {
-    #resultsArea .px-4.px-6.py-4 {
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
-    }
-    
-    .bg-slate-950\\/50.px-4.px-6.py-3 {
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
-    }
-    
-    /* Reduce font sizes for very small screens */
-    .text-base.md\\:text-lg.font-mono.font-bold {
-        font-size: 0.875rem !important;
-    }
-    
-    .text-slate-200.font-medium {
-        font-size: 0.875rem !important;
-    }
-}
 
-/* Also add this to your existing max-width: 768px media query */
-@media (max-width: 768px) {
-    /* Ensure results area containers don't overflow */
-    #resultsArea .max-w-2xl,
-    #resultsArea .max-w-4xl {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-    
-    /* Fix grid layouts */
-    #resultsArea .grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
-    }
-}
+
     </style>
 </head>
 <body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-vyra-500 selection:text-white flex flex-col min-h-screen">
