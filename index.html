@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Vyra Search | Live Transport Data</title>
@@ -329,6 +330,13 @@
 }
 
 
+/* Quick Naira fix  */
+body * {
+    font-family: 'Inter', Arial, sans-serif !important;
+}
+/* Super lazy Naira fix */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 
     </style>
 </head>
@@ -648,7 +656,7 @@
                             company: company,
                             from: fromLocation,
                             to: toLocation,
-                            price: `₦${price.toLocaleString()}`
+                            price: `NGN${price.toLocaleString()}`
                         });
                     }
                 }
