@@ -398,165 +398,28 @@
         "basePrice": 33000,
         "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
     },
-
-    "Chisco Transport": {
-        "id": "chisco-transport",
-        "name": "Chisco Transport",
-        "image": "https://i.ibb.co/b7Yykmb/images-12.png",
-        "states": [
-            "Lagos",
-            "Abuja (FCT)",
-            "Rivers",
-            "Imo",
-            "Enugu",
-            "Anambra",
-            "Abia",
-            "Akwa Ibom",
-            "Nasarawa",
-            "Edo",
-            "Delta",
-            "Oyo",
-            "Kaduna",
-            "Kano"
-        ],
-        "terminals": {
-            "Lagos": [
-                {
-                    "name": "Iponri Terminal (Head Office)",
-                    "address": "104 Funsho Williams Avenue, Iponri, Costain, Lagos",
-                    "phone": "+234 812 745 7005, +234 810 651 7669, +234 808 927 3799"
-                },
-                {
-                    "name": "Jibowu Terminal",
-                    "address": "6 Ikorodu Road, Jibowu, Yaba, Lagos",
-                    "phone": "+234 812 745 7005"
-                },
-                {
-                    "name": "Mazamaza Terminal",
-                    "address": "114 Ojo Road, Agboju-Amuwo, Lagos",
-                    "phone": "+234 812 745 7005"
-                },
-                {
-                    "name": "Ikeja Terminal",
-                    "address": "Suit 46A Asset Corps Plaza, 21 Obafemi Awolowo Way, Ikeja",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Abuja (FCT)": [
-                {
-                    "name": "Utako Terminal",
-                    "address": "Plot 176 Utako District, Opp. MFM, Abuja",
-                    "phone": "+234 812 745 7005"
-                },
-                {
-                    "name": "Nyanya Terminal",
-                    "address": "AP Filling Station, Keffi Road, Nyanya, Abuja",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Anambra": [
-                {
-                    "name": "Onitsha Terminal",
-                    "address": "Lagos Park, Upper Iweka Round about, Onitsha",
-                    "phone": "+234 812 745 7005"
-                },
-                {
-                    "name": "Nnewi Terminal",
-                    "address": "33 Agbo-Ezennewi, Nnewi",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Enugu": [
-                {
-                    "name": "Enugu Terminal",
-                    "address": "13 Market Road, Ogbete, Enugu State",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Imo": [
-                {
-                    "name": "Owerri Terminal",
-                    "address": "24 Egbu Road, Owerri, Imo State",
-                    "phone": "+234 812 745 7005"
-                },
-                {
-                    "name": "Orlu Terminal",
-                    "address": "3 Ihioma Road, Orlu, Imo State",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Rivers": [
-                {
-                    "name": "Port Harcourt I (Diobu)",
-                    "address": "38 Ikwerre Road, Mile 1, Diobu, Port Harcourt",
-                    "phone": "+234 812 745 7005"
-                },
-                {
-                    "name": "Port Harcourt II (Rumuokoro)",
-                    "address": "3 East-West Road, Rumuokoro, Port Harcourt",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Abia": [
-                {
-                    "name": "Aba Terminal",
-                    "address": "30/32 Milverton Avenue, Aba, Abia State",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Akwa Ibom": [
-                {
-                    "name": "Uyo Terminal",
-                    "address": "187 Ikot-Ekpene Road, Uyo, Akwa-Ibom State",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Nasarawa": [
-                {
-                    "name": "Maraba Terminal (Abuja Border)",
-                    "address": "Maraba/Keffi Road, Beside Ecobank, Mararaba, Nasarawa/Abuja",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Oyo": [
-                {
-                    "name": "Ibadan Booking Office",
-                    "address": "Major parks in Ibadan (e.g., Iwo Road), Booking via app/online is recommended.",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Edo": [
-                {
-                    "name": "Benin City Booking Office",
-                    "address": "Major parks in Benin City, Booking via app/online is recommended.",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Delta": [
-                {
-                    "name": "Warri Booking Office",
-                    "address": "Major parks in Warri, Booking via app/online is recommended.",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Kano": [
-                {
-                    "name": "Kano Booking Office",
-                    "address": "Major parks in Kano, Booking via app/online is recommended.",
-                    "phone": "+234 812 745 7005"
-                }
-            ],
-            "Kaduna": [
-                {
-                    "name": "Kaduna Booking Office",
-                    "address": "Major parks in Kaduna, Booking via app/online is recommended.",
-                    "phone": "+234 812 745 7005"
-                }
-            ]
+        "Chisco Transport": {
+            "id": "chisco-transport",
+            "name": "Chisco Transport",
+            "image": "https://i.ibb.co/b7Yykmb/images-12.png",
+            "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Owerri", "Ibadan", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
+            "terminals": {
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Apo Terminal",
+                "Onitsha": "New Park",
+                "Enugu": "Okpara Avenue",
+                "Owerri": "Relief Market Park",
+                "Ibadan": "Ibadan Central Park",
+                "Port Harcourt": "Rumuokoro Park",
+                "Benin": "Benin Central Park",
+                "Warri": "Warri Main Park",
+                "Calabar": "Calabar Central Park",
+                "Kano": "Kano Central Park",
+                "Kaduna": "Kaduna Central Park"
+            },
+            "basePrice": 31500,
+            "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
         },
-        "basePrice": 31500,
-        "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
-    },
         "Young Shall Grow": {
             "id": "young-shall-grow",
             "name": "Young Shall Grow",
