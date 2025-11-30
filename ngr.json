@@ -1807,7 +1807,7 @@
             "Haulage Services"
         ]
     },
-       
+
     "New Nyanya Transport Company": {
         "id": "new-nyanya-transport",
         "name": "New Nyanya Transport Company Ltd.",
@@ -1887,69 +1887,305 @@
             "Intercity Booking Available"
         ]
     },
-        "Adam and Eve Motors": {
-            "id": "adam-and-eve-motors",
-            "name": "Adam and Eve Motors",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Adam+Eve",
-            "states": ["Abia", "Lagos", "Abuja", "Port Harcourt", "Enugu"],
-            "terminals": {
-                "Abia": "Aba Main Park",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Port Harcourt": "Rumuola Park",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 33000,
-            "serviceAttributes": ["Comfort"]
+
+    "Adam and Eve Motors": {
+        "id": "adam-and-eve-motors",
+        "name": "Adam and Eve Motors Limited",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Adam+Eve",
+        "states": [
+            "Abia",
+            "Akwa Ibom",
+            "Anambra",
+            "Cross River",
+            "Lagos",
+            "Abuja"
+        ],
+        "terminals": {
+            "Abia": [
+                {
+                    "name": "Aba Main Park (Head Office)",
+                    "address": "50A Ngwa Road Aba, Abia State",
+                    "phone": "08064361708"
+                },
+                {
+                    "name": "Umuahia Terminal",
+                    "address": "No. 13 Ibe Road, Umuahia, Abia State",
+                    "phone": "08035176520"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "Old Nitel office, Upper Iweka, Onitsha",
+                    "phone": "08064361708"
+                },
+                {
+                    "name": "Amawbia Terminal",
+                    "address": "39 Ziks Avenue, Amawbia, Anambra State",
+                    "phone": "0707 010 4527"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "Watt Market Round About, Calabar, Cross River State",
+                    "phone": "08064361708"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "Block 4, Itam Long Distance Park, Uyo",
+                    "phone": "08064361708"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Lagos Terminal",
+                    "address": "Jibowu Terminal (General location for booking)",
+                    "phone": "08064361708"
+                }
+            ]
         },
-        "Libra Motors": {
-            "id": "libra-motors",
-            "name": "Libra Motors",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Libra+Motors",
-            "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Ibadan"],
-            "terminals": {
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Port Harcourt": "Rumuola Park",
-                "Enugu": "Gariki Terminal",
-                "Onitsha": "Upper Iweka",
-                "Ibadan": "Ibadan Central Park"
-            },
-            "basePrice": 31500,
-            "serviceAttributes": ["Low Pricing", "Quick", "Customer Service"]
+        "basePrice": 33000,
+        "serviceAttributes": [
+            "Comfort",
+            "Courier & Cargo Delivery Service",
+            "Vehicle Charter Service",
+            "Logistics Solutions"
+        ]
+    },
+
+    "Libra Motors": {
+        "id": "libra-motors",
+        "name": "Libra Motors Limited",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Libra+Motors",
+        "states": [
+            "Abia",
+            "Anambra",
+            "Delta",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Oyo",
+            "Rivers",
+            "Akwa Ibom"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "No 11, Ikorodu Road, Jibowu-Yaba, Lagos state",
+                    "phone": "09088711810"
+                },
+                {
+                    "name": "Okota Terminal (HQ)",
+                    "address": "118, Okota Road, Okota-Isolo, Lagos",
+                    "phone": "09088711813"
+                },
+                {
+                    "name": "Iyana-Ipaja Terminal",
+                    "address": "2A, Jolaosho Adelowo Str, Off Lagos Abeokuta Expressway, Lagos State",
+                    "phone": "09088711815"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt (Stadium Rd)",
+                    "address": "Plot 321 Stadium road, Rumuomasi by Benjack MTN Building",
+                    "phone": "09088711822"
+                },
+                {
+                    "name": "Port Harcourt (Waterlines)",
+                    "address": "182, Port Harcourt-Rumuola Rd, Water lines bus stop, Port Harcourt",
+                    "phone": "08027972381"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "9B in THE LIGHT CENTER PLAZA by P&T BUS STOP Ogui Road, Enugu",
+                    "phone": "09085504099"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "Ihioma Plaza, 141 Port Harcourt Road, Upper Iweka, Lagos Park, Onitsha",
+                    "phone": "08038884141"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Unizik Junction, Awka, Anambra State",
+                    "phone": "09088711832"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal (Samonda)",
+                    "address": "Adolak Filling Station, Along UI-Sango Road, Samonda Ibadan, Oyo State",
+                    "phone": "08187471564"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "No 17 Urubi, opposite Ministry of Education, Iyaro, Benin City, Edo State",
+                    "phone": "09087893088"
+                }
+            ],
+            "Abia": [
+                {
+                    "name": "Aba Terminal",
+                    "address": "No 1 , Milvertone , Aba, Abia State",
+                    "phone": "09088711827"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "38C, Egbu Road, by Relief Junction, Owerri, Imo State",
+                    "phone": "09085504300"
+                }
+            ]
         },
-        "Orizu Motors": {
-            "id": "orizu-motors",
-            "name": "Orizu Motors",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Orizu+Motors",
-            "states": ["Anambra", "Lagos", "Abuja", "Enugu", "Onitsha", "Port Harcourt"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Enugu": "Gariki Terminal",
-                "Onitsha": "Upper Iweka Park",
-                "Port Harcourt": "Rumuola Park"
-            },
-            "basePrice": 33500,
-            "serviceAttributes": ["Low Pricing", "Reliability"]
+        "basePrice": 31500,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Quick",
+            "Customer Service",
+            "Logistics & E-commerce Services",
+            "Parcel Delivery"
+        ]
+    },
+
+    "Orizu Motors": {
+        "id": "orizu-motors",
+        "name": "Orizu Motors",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Orizu+Motors",
+        "states": [
+            "Anambra",
+            "Abuja (FCT)",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Rivers",
+            "Oyo"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Nnewi Terminal (Head Office)",
+                    "address": "4, Ibeto Avenue, Nnewi, Anambra State, Nigeria",
+                    "phone": "08033368825"
+                },
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "Upper Iweka, Onitsha (General terminal location)",
+                    "phone": "08037597875"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Maza Maza Terminal (Ekeson Park)",
+                    "address": "Ekeson Park, Maza Maza, Lagos",
+                    "phone": "07060604773"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Ikorodu Road, Jibowu, Yaba, Lagos (General terminal location)",
+                    "phone": "08034790474"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "New Utako General Park, Opposite Cross country, Utako, FCT Abuja",
+                    "phone": "08033368825"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "Gariki Terminal (General location for booking)",
+                    "phone": "08037597875"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Rumuola Park (General location for booking)",
+                    "phone": "07060604773"
+                }
+            ]
         },
-        "Imo Transport (ITC)": {
-            "id": "imo-transport",
-            "name": "Imo Transport (ITC)",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=ITC",
-            "states": ["Imo", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Owerri"],
-            "terminals": {
-                "Imo": "Owerri Main Park",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Port Harcourt": "Rumuola Park",
-                "Enugu": "Gariki Terminal",
-                "Owerri": "Owerri Central"
-            },
-            "basePrice": 32500,
-            "serviceAttributes": ["Low Pricing"]
+        "basePrice": 33500,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Reliability",
+            "Safety",
+            "Haulage/Cargo Delivery Service"
+        ]
+    },
+
+    "Imo Transport (ITC)": {
+        "id": "imo-transport",
+        "name": "Imo Transport Company Ltd. (ITC)",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=ITC",
+        "states": [
+            "Imo",
+            "Abuja (FCT)",
+            "Anambra",
+            "Enugu",
+            "Lagos",
+            "Rivers"
+        ],
+        "terminals": {
+            "Imo": [
+                {
+                    "name": "Owerri Main Park (Head Office)",
+                    "address": "IMO State Transport Company Ltd, Owerri, Imo State",
+                    "phone": "0804 685 2789"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Jibowu, Lagos (General terminal location)",
+                    "phone": "0804 685 2789"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Abuja Terminal",
+                    "address": "1 Obafemi Awolowo Way, Abuja, FCT",
+                    "phone": "0804 685 2789"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Rumuola Park, Port Harcourt (General terminal location)",
+                    "phone": "0804 685 2789"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "Gariki Terminal, Enugu (General terminal location)",
+                    "phone": "0804 685 2789"
+                }
+            ]
         },
+        "basePrice": 32500,
+        "serviceAttributes": [
+            "Low Pricing",
+            "State-Owned",
+            "Reliability",
+            "Interstate Travel"
+        ]
+    },
         "Fair Okis Transport": {
             "id": "fair-okis-transport",
             "name": "Fair Okis Transport",
@@ -1979,206 +2215,909 @@
             "basePrice": 28500,
             "serviceAttributes": ["Reliability"]
         },
-        "Akwa Ibom Transport (AKTC)": {
-            "id": "akwa-ibom-transport",
-            "name": "Akwa Ibom Transport (AKTC)",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=AKTC",
-            "states": ["Akwa Ibom", "Lagos", "Abuja", "Port Harcourt", "Calabar", "Uyo"],
-            "terminals": {
-                "Akwa Ibom": "Uyo Central Park",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Port Harcourt": "Rumuola Park",
-                "Calabar": "Calabar Central Park",
-                "Uyo": "Uyo Main Park"
-            },
-            "basePrice": 30000,
-            "serviceAttributes": ["Quick"]
+
+    "Akwa Ibom Transport (AKTC)": {
+        "id": "akwa-ibom-transport",
+        "name": "Akwa Ibom Transport Company Ltd. (AKTC)",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=AKTC",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Akwa Ibom",
+            "Anambra",
+            "Cross River",
+            "Delta",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Oyo",
+            "Rivers"
+        ],
+        "terminals": {
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Head Office",
+                    "address": "Plot 36-41 Itam Industrial Layout, Uyo, Akwa Ibom State",
+                    "phone": "07016842171"
+                },
+                {
+                    "name": "Eket Terminal",
+                    "address": "50 Rcc Rd, Eket, Akwa Ibom State",
+                    "phone": "07016842171"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Ojuelegba Terminal",
+                    "address": "107 Ojuelegba Road, Ojuelegba, Lagos State",
+                    "phone": "07016842182"
+                },
+                {
+                    "name": "Ajah Terminal",
+                    "address": "12 Lekki - Epe Expy, Ajah, Lekki, Lagos State",
+                    "phone": "09046153603"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Jabi Terminal",
+                    "address": "Plot 925/926, Ishaya Audu Close, Jabi, Abuja",
+                    "phone": "07016842160"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Waterlines Terminal (PH)",
+                    "address": "3 Olusegun Obasanjo Road, Port Harcourt",
+                    "phone": "07016842187"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "34 Etagbor Road, Calabar, Cross-river State",
+                    "phone": "07016842174"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "9 New Lagos Road, Benin City, Edo State",
+                    "phone": "07016842177"
+                }
+            ]
         },
-        "Big Joe Motors": {
-            "id": "big-joe-motors",
-            "name": "Big Joe Motors",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Big+Joe",
-            "states": ["Akwa Ibom", "Lagos", "Port Harcourt", "Calabar", "Uyo"],
-            "terminals": {
-                "Akwa Ibom": "Uyo Central Park",
-                "Lagos": "Jibowu Terminal",
-                "Port Harcourt": "Rumuola Park",
-                "Calabar": "Calabar Central Park",
-                "Uyo": "Uyo Main Park"
-            },
-            "basePrice": 27500,
-            "serviceAttributes": ["Low Pricing", "Quick"]
+        "basePrice": 30000,
+        "serviceAttributes": [
+            "Quick",
+            "Safety",
+            "State-Owned",
+            "Courier Services"
+        ]
+    },
+
+    "Big Joe Motors": {
+        "id": "big-joe-motors",
+        "name": "Big Joe Motors",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Big+Joe",
+        "states": [
+            "Akwa Ibom",
+            "Abuja (FCT)",
+            "Cross River",
+            "Delta",
+            "Edo",
+            "Imo",
+            "Lagos",
+            "Rivers"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Amuwo-Odofin (Head Office)",
+                    "address": "Big Joe Building, 128/130 Oshodi Apapa Exp. Way, Near Mile 2, Amuwo-Odofin, Lagos",
+                    "phone": "08104845014"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Ikorodu Road, Jibowu, Yaba, Lagos (General Terminal Location)",
+                    "phone": "08034455808"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "287, M/M Way, Opp. Mobil, Benin City, Edo State",
+                    "phone": "08066699195"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "Uyo (General Terminal Location)",
+                    "phone": "08064858004"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "Calabar (General Terminal Location)",
+                    "phone": "08064858004"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "113 Aba Road, Opp. NNPC Filling Station, Port Harcourt",
+                    "phone": "08034455808"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "Utako Park, FCT Abuja (General Terminal Location)",
+                    "phone": "08104845014"
+                }
+            ]
         },
-        "Agofure Motors": {
-            "id": "agofure-motors",
-            "name": "Agofure Motors",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Agofure",
-            "states": ["Anambra", "Bayelsa", "Lagos", "Abuja", "Port Harcourt", "Benin", "Warri", "Onitsha"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Bayelsa": "Yenagoa Central Park",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Port Harcourt": "Rumuola Park",
-                "Benin": "Ring Road",
-                "Warri": "Effurun Park",
-                "Onitsha": "Upper Iweka"
-            },
-            "basePrice": 32000,
-            "serviceAttributes": ["Comfort", "Low Pricing"]
+        "basePrice": 27500,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Quick",
+            "Reliability",
+            "Courier Services"
+        ]
+    },
+
+    "Agofure Motors": {
+        "id": "agofure-motors",
+        "name": "Agofure Motors Ltd.",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Agofure",
+        "states": [
+            "Anambra",
+            "Abuja (FCT)",
+            "Bayelsa",
+            "Delta",
+            "Edo",
+            "Lagos",
+            "Rivers"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Ajah Terminal",
+                    "address": "Ajah Bus Stop, Ajah, Lagos",
+                    "phone": "08033060610"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Jibowu, Yaba, Lagos (General Terminal Location)",
+                    "phone": "08033060620"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Warri Head Office",
+                    "address": "Along Effurun/Sapele Road, Warri, Delta State",
+                    "phone": "08033060620"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "Ring Road, Benin City, Edo State (General Terminal Location)",
+                    "phone": "08033060620"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Rumuola Park, Port Harcourt (General Terminal Location)",
+                    "phone": "08033060620"
+                }
+            ],
+            "Bayelsa": [
+                {
+                    "name": "Yenagoa Terminal",
+                    "address": "Yenagoa Central Park, Bayelsa State (General Terminal Location)",
+                    "phone": "08033060620"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "Utako Park, FCT Abuja (General Terminal Location)",
+                    "phone": "08033060620"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "Upper Iweka, Onitsha (General Terminal Location)",
+                    "phone": "08033060620"
+                }
+            ]
         },
-        "E.Ekesons Bros Transport": {
-            "id": "eekesons-transport",
-            "name": "E.Ekesons Bros Transport",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekesons",
-            "states": ["Anambra", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Port Harcourt": "Rumuola Park",
-                "Enugu": "Gariki Terminal",
-                "Onitsha": "Upper Iweka"
-            },
-            "basePrice": 34500,
-            "serviceAttributes": ["Comfort", "Safety", "Reliability"]
+        "basePrice": 32000,
+        "serviceAttributes": [
+            "Comfort",
+            "Low Pricing",
+            "Reliability",
+            "Parcel Services"
+        ]
+    },
+
+    "E.Ekesons Bros Transport": {
+        "id": "eekesons-transport",
+        "name": "E. Ekesons Bros Transport Nigeria Limited",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekesons",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Anambra",
+            "Bayelsa",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Kaduna",
+            "Kano",
+            "Lagos",
+            "Plateau",
+            "Rivers",
+            "Delta",
+            "Oyo"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "No. 31, Ikorodu Road, Jibowu, Yaba, Lagos Nigeria",
+                    "phone": "09099900988"
+                },
+                {
+                    "name": "Old Ojo Terminal",
+                    "address": "18, Old Ojo Road, Amuwo, Lagos",
+                    "phone": "09099900911"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "Plot 7, A.Ekanem Street by Utako Market, Utako District, Abuja FCT",
+                    "phone": "08035076732"
+                },
+                {
+                    "name": "Kubwa Terminal",
+                    "address": "Ekesons Park, Byazhin, Opposite Dantata Estate, Kubwa Abuja",
+                    "phone": "08116166192"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt (1st Artillery)",
+                    "address": "No.5, Aba Road, 1st Artillery, Portharcourt",
+                    "phone": "09099900988"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "E. Ekesons Park, Egbu Road, Owerri, Imo State",
+                    "phone": "09099900988"
+                }
+            ],
+            "Abia": [
+                {
+                    "name": "Aba Terminal (Milverton)",
+                    "address": "No.12, Milverton Street, Aba, Abia State",
+                    "phone": "09099900988"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal (City Centre)",
+                    "address": "City Centre, Onitsha (General terminal location)",
+                    "phone": "07046262172"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal (Zaria Byepass)",
+                    "address": "Hospital road, along Zaria byepass, Jos, Plateau State",
+                    "phone": "09099900911"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal",
+                    "address": "1, Constitution Road, By Stadium Round About, Kaduna",
+                    "phone": "09099900911"
+                }
+            ]
         },
-        "Goodness and Mercy Transport": {
-            "id": "goodness-and-mercy",
-            "name": "Goodness and Mercy Transport",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Goodness+Mercy",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 32500,
-            "serviceAttributes": ["Comfort", "Low Pricing", "Customer Service"]
+        "basePrice": 34500,
+        "serviceAttributes": [
+            "Comfort",
+            "Safety",
+            "Reliability",
+            "Courier Services",
+            "Warehousing & Logistics"
+        ]
+    },
+
+    "Goodness and Mercy Transport": {
+        "id": "goodness-and-mercy",
+        "name": "Goodness and Mercy Transport Company",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Goodness+Mercy",
+        "states": [
+            "Anambra",
+            "Abuja (FCT)",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Rivers",
+            "Abia"
+        ],
+        "terminals": {
+            "Imo": [
+                {
+                    "name": "Owerri Main Park",
+                    "address": "Owerri, Imo State (General Terminal Location)",
+                    "phone": "0704 723 7460"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Upper Iweka",
+                    "address": "Upper Iweka, Onitsha (General Terminal Location)",
+                    "phone": "0704 723 7460"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Jibowu, Lagos (General Terminal Location)",
+                    "phone": "0704 723 7460"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako District, Abuja (General Terminal Location)",
+                    "phone": "0704 723 7460"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Gariki Terminal",
+                    "address": "Gariki, Enugu (General Terminal Location)",
+                    "phone": "0704 723 7460"
+                }
+            ],
+            "Abia": [
+                {
+                    "name": "Aba Terminal",
+                    "address": "Aba-Owerri Rd, Aba (General Terminal Location)",
+                    "phone": "0704 723 7460"
+                }
+            ]
         },
-        "Okeyson Motors": {
-            "id": "okeyson-motors",
-            "name": "Okeyson Motors",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Okeyson",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 34500,
-            "serviceAttributes": ["Comfort", "Low Pricing", "Reliability"]
+        "basePrice": 32500,
+        "serviceAttributes": [
+            "Comfort",
+            "Low Pricing",
+            "Customer Service",
+            "Reliability",
+            "Cargo Services"
+        ]
+    },
+
+    "Okeyson Motors": {
+        "id": "okeyson-motors",
+        "name": "Okeyson Motors",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Okeyson",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Anambra",
+            "Delta",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Oyo",
+            "Rivers"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Onitsha Park (Upper Iweka)",
+                    "address": "Okeyson Motors Park, Upper Iweka, Onitsha, Anambra State",
+                    "phone": "08064510000"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Amuwo-Odofin Terminal (HQ)",
+                    "address": "113 Okota-Kirikiri Express Rd, Opposite Zenith Bank, Amuwo-Odofin, Lagos",
+                    "phone": "08034511871"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Jibowu, Yaba, Lagos (General Booking Office)",
+                    "phone": "08064510000"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako District, Abuja (General Terminal Location)",
+                    "phone": "08064510000"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Rumuola, Port Harcourt (General Terminal Location)",
+                    "phone": "08064510000"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "Benin-Agbor Road, Benin City (General Terminal Location)",
+                    "phone": "08064510000"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Gariki Terminal",
+                    "address": "Gariki, Enugu (General Terminal Location)",
+                    "phone": "08064510000"
+                }
+            ]
         },
-        "Tracas Nigeria": {
-            "id": "tracas-nigeria",
-            "name": "Tracas Nigeria",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Tracas",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 29500,
-            "serviceAttributes": ["Comfort", "Reliability"]
+        "basePrice": 34500,
+        "serviceAttributes": [
+            "Comfort",
+            "Low Pricing",
+            "Reliability",
+            "Courier Services",
+            "Vehicle Hire"
+        ]
+    },
+
+    "Tracas Nigeria": {
+        "id": "tracas-nigeria",
+        "name": "Transport Company of Anambra State (TRACAS)",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Tracas",
+        "states": [
+            "Abuja (FCT)",
+            "Anambra",
+            "Delta",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Rivers"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Awka Terminal (Head Office)",
+                    "address": "TRACAS Park, Awka, Anambra State",
+                    "phone": "08033066373"
+                },
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "Upper Iweka, Onitsha, Anambra State (General Terminal Location)",
+                    "phone": "08033066373"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "TRACAS Park, Jibowu, Yaba, Lagos",
+                    "phone": "08033066373"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako Park, Abuja (General Terminal Location)",
+                    "phone": "08033066373"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Gariki Terminal",
+                    "address": "Gariki, Enugu (General Terminal Location)",
+                    "phone": "08033066373"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Port Harcourt (General Terminal Location)",
+                    "phone": "08033066373"
+                }
+            ]
         },
-        "Auto Star Limited": {
-            "id": "auto-star-limited",
-            "name": "Auto Star Limited",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Auto+Star",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 34000,
-            "serviceAttributes": ["Comfort", "Reliability"]
+        "basePrice": 29500,
+        "serviceAttributes": [
+            "Comfort",
+            "Reliability",
+            "State-Owned",
+            "Haulage and Courier Services"
+        ]
+    },
+
+    "Auto Star Limited": {
+        "id": "auto-star-limited",
+        "name": "Auto Star Limited",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Auto+Star",
+        "states": [
+            "Abuja (FCT)",
+            "Anambra",
+            "Delta",
+            "Edo",
+            "Imo",
+            "Lagos",
+            "Rivers"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal",
+                    "address": "Upper Iweka, Onitsha, Anambra State (General Terminal Location)",
+                    "phone": "0803 777 5000"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Iyana-Ipaja Terminal",
+                    "address": "Iyana-Ipaja, Lagos (General Terminal Location)",
+                    "phone": "0803 777 5000"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Jibowu, Yaba, Lagos (General Booking Office)",
+                    "phone": "0803 777 5000"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako District, Abuja (General Terminal Location)",
+                    "phone": "0803 777 5000"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "Owerri, Imo State (General Terminal Location)",
+                    "phone": "0803 777 5000"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Port Harcourt (General Terminal Location)",
+                    "phone": "0803 777 5000"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Gariki Terminal",
+                    "address": "Gariki, Enugu (General Terminal Location)",
+                    "phone": "0803 777 5000"
+                }
+            ]
         },
-        "Anambra Express": {
-            "id": "anambra-express",
-            "name": "Anambra Express",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Anambra+Express",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 29000,
-            "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
+        "basePrice": 34000,
+        "serviceAttributes": [
+            "Comfort",
+            "Reliability",
+            "Luxury Travel",
+            "Shuttle Services",
+            "Vehicle Charter"
+        ]
+    },
+
+    "Anambra Express": {
+        "id": "anambra-express",
+        "name": "Anambra Express Transport",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Anambra+Express",
+        "states": [
+            "Anambra",
+            "Abuja (FCT)",
+            "Enugu",
+            "Lagos",
+            "Rivers",
+            "Edo",
+            "Abia"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Onitsha Park (Upper Iweka)",
+                    "address": "166, Port Harcourt Rd, Upper Iweka, Onitsha, Anambra State",
+                    "phone": "09135112989"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Unizik Junction, Awka, Anambra State",
+                    "phone": "08054049220"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "2 Jibowu Street along Ikorodu Expressway, Jibowu, Lagos",
+                    "phone": "07058891918"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Gouba Plaza, 15 A. E. Ekukinam Street, Utako District, Abuja",
+                    "phone": "07058891917"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "34 Okpara Avenue, Enugu (General Booking Office)",
+                    "phone": "08150882571"
+                }
+            ]
         },
-        "Ekene Dili Chukwu Express Limited": {
-            "id": "ekene-dili-chukwu",
-            "name": "Ekene Dili Chukwu Express Limited",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekene+Dili",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 28000,
-            "serviceAttributes": ["Low Pricing"]
+        "basePrice": 29000,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Reliability",
+            "Quick",
+            "Customer Service",
+            "Parcel & Courier"
+        ]
+    },
+
+    "Ekene Dili Chukwu Express Limited": {
+        "id": "ekene-dili-chukwu",
+        "name": "Ekene Dili Chukwu Express Limited",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekene+Dili",
+        "states": [
+            "Anambra",
+            "Abuja (FCT)",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Rivers",
+            "Kaduna"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Onitsha Head Office",
+                    "address": "Onitsha, Anambra State (Historic Headquarters)",
+                    "phone": "09099900988"
+                },
+                {
+                    "name": "Upper Iweka Park",
+                    "address": "Upper Iweka, Onitsha (General Booking Office)",
+                    "phone": "09099900988"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Ikorodu Road, Jibowu, Yaba, Lagos (General Terminal Location)",
+                    "phone": "09099900988"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako District, Abuja (General Terminal Location)",
+                    "phone": "09099900988"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "Gariki, Enugu (General Booking Office)",
+                    "phone": "09099900988"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Port Harcourt (General Booking Office)",
+                    "phone": "09099900988"
+                }
+            ]
         },
-        "Interland Transport": {
-            "id": "interland-transport",
-            "name": "Interland Transport",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Interland",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 28000,
-            "serviceAttributes": ["Safety", "Customer Service"]
+        "basePrice": 28000,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Historical Operator",
+            "Logistics & Haulage",
+            "Reliability"
+        ]
+    },
+
+    "Interland Transport": {
+        "id": "interland-transport",
+        "name": "Interland Transport",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Interland",
+        "states": [
+            "Anambra",
+            "Abuja (FCT)",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Rivers"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Onitsha Park (Upper Iweka)",
+                    "address": "Upper Iweka, Onitsha (General Terminal Location)",
+                    "phone": "0814 255 2436"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Ikorodu Road, Jibowu, Yaba, Lagos (General Terminal Location)",
+                    "phone": "0814 255 2436"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako District, Abuja (General Terminal Location)",
+                    "phone": "0814 255 2436"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Gariki Terminal",
+                    "address": "Gariki, Enugu (General Terminal Location)",
+                    "phone": "0814 255 2436"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "Owerri, Imo State (General Terminal Location)",
+                    "phone": "0814 255 2436"
+                }
+            ]
         },
-        "Nothing Pass God Motors": {
-            "id": "nothing-pass-god",
-            "name": "Nothing Pass God Motors",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Nothing+Pass+God",
-            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-            "terminals": {
-                "Anambra": "Onitsha Upper Iweka",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Gariki Terminal"
-            },
-            "basePrice": 30500,
-            "serviceAttributes": ["Reliability"]
+        "basePrice": 28000,
+        "serviceAttributes": [
+            "Safety",
+            "Customer Service",
+            "Budget-Friendly",
+            "Interstate Travel"
+        ]
+    },
+
+    "Nothing Pass God Motors": {
+        "id": "nothing-pass-god",
+        "name": "Nothing Pass God Motors",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Nothing+Pass+God",
+        "states": [
+            "Anambra",
+            "Abuja (FCT)",
+            "Enugu",
+            "Imo",
+            "Lagos",
+            "Rivers"
+        ],
+        "terminals": {
+            "Anambra": [
+                {
+                    "name": "Onitsha Park (Upper Iweka)",
+                    "address": "Upper Iweka, Onitsha (General Terminal Location)",
+                    "phone": "0813 985 1110"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Ikorodu Road, Jibowu, Yaba, Lagos (General Terminal Location)",
+                    "phone": "0813 985 1110"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako District, Abuja (General Terminal Location)",
+                    "phone": "0813 985 1110"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Gariki Terminal",
+                    "address": "Gariki, Enugu (General Terminal Location)",
+                    "phone": "0813 985 1110"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "Owerri, Imo State (General Terminal Location)",
+                    "phone": "0813 985 1110"
+                }
+            ]
         },
-        "Yankari Express": {
-            "id": "yankari-express",
-            "name": "Yankari Express",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Yankari",
-            "states": ["Bauchi", "Abuja", "Lagos", "Kano", "Jos"],
-            "terminals": {
-                "Bauchi": "Bauchi Main Park",
-                "Abuja": "Utako Park",
-                "Lagos": "Jibowu Terminal",
-                "Kano": "Kano Main Park",
-                "Jos": "Jos Terminus"
-            },
-            "basePrice": 17500,
-            "serviceAttributes": ["Comfort", "Low Pricing", "Reliability", "Quick"]
+        "basePrice": 30500,
+        "serviceAttributes": [
+            "Reliability",
+            "Online Booking",
+            "Cargo & Logistics",
+            "Customer Support"
+        ]
+    },
+    "Yankari Express": {
+        "id": "yankari-express",
+        "name": "Yankari Express",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Yankari",
+        "states": [
+            "Bauchi",
+            "Abuja (FCT)",
+            "Kano",
+            "Plateau",
+            "Lagos"
+        ],
+        "terminals": {
+            "Bauchi": [
+                {
+                    "name": "Bauchi Main Park (HQ)",
+                    "address": "Bauchi (General Terminal Location)",
+                    "phone": "0903 491 0292"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "36, Ekukinam Street, Utako District, Abuja",
+                    "phone": "0903 491 0292"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "22, Ikorodu Road, Jibowu, Yaba, Lagos",
+                    "phone": "0903 491 0292"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Main Park",
+                    "address": "Kano (General Terminal Location)",
+                    "phone": "0903 491 0292"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminus",
+                    "address": "Hallmark Home Plaza, 7/9 Lugard Road, Jos, Plateau State",
+                    "phone": "0903 491 0292"
+                }
+            ]
         },
+        "basePrice": 17500,
+        "serviceAttributes": [
+            "Comfort",
+            "Low Pricing",
+            "Reliability",
+            "Quick",
+            "Northern Routes"
+        ]
+    },
         "Gombe Line": {
             "id": "gombe-line",
             "name": "Gombe Line",
