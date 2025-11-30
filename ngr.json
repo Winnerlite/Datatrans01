@@ -3118,7 +3118,7 @@
             "Northern Routes"
         ]
     },
-       {
+
     "Gombe Line": {
         "id": "gombe-line",
         "name": "Gombe Line Transport Company",
@@ -3673,7 +3673,158 @@
             "Cargo Services"
         ]
     },
-                            
+
+
+    "Ifesinachi Transport Limited": {
+        "id": "ifesinachi-transport",
+        "name": "Ifesinachi Transport Limited",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ifesinachi",
+        "states": [
+            "Enugu",
+            "Lagos",
+            "Abuja (FCT)",
+            "Anambra",
+            "Abia",
+            "Imo",
+            "Rivers",
+            "Kaduna",
+            "Ebonyi",
+            "Oyo"
+        ],
+        "terminals": {
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "No 2 Okpala Avenue, Enugu, Enugu State",
+                    "phone": "0803 453 4051"
+                },
+                {
+                    "name": "Nsukka Terminal",
+                    "address": "No 2A Enugu Road, Nsukka, Enugu State",
+                    "phone": "0803 345 8040"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "2/4 Ikorodu Road, Jibowu Yaba, Lagos",
+                    "phone": "0806 208 1082"
+                },
+                {
+                    "name": "Maza-Maza Terminal",
+                    "address": "No 28 Old Ojo Road, Maza-Maza, Lagos",
+                    "phone": "0803 552 2419"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "No 22E Ekukinam, Utako District, Abuja",
+                    "phone": "0803 493 2041"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "IFEPET Onitsha-Asaba Expressway, Upper Iweka, Onitsha",
+                    "phone": "0806 570 4980"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "Albon Modern Park, Beside Mbaise bank by Chukwuma Nwaoha Junction, Egbu Road, Owerri",
+                    "phone": "0806 208 1082"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "114, Ikwere Road, Port Harcourt",
+                    "phone": "0803 636 6698"
+                }
+            ]
+        },
+        "basePrice": 20000,
+        "serviceAttributes": [
+            "Lowest Prices",
+            "Safety",
+            "24/7 Customer Service",
+            "Group Booking",
+            "On Board Entertainment",
+            "Haulage (Ifex Express Logistics)"
+        ]
+    },
+
+
+    "Bonny Way Motors": {
+        "id": "bonny-way-motors",
+        "name": "Bonny Way Motors Nigeria LTD",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Bonny+Way",
+        "states": [
+            "Lagos",
+            "Abuja (FCT)",
+            "Anambra",
+            "Abia",
+            "Imo",
+            "Rivers",
+            "Plateau",
+            "Oyo",
+            "International"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Oyingbo Head Office",
+                    "address": "21, Otto Causeway, Opp. Leventis Building, Oyingbo, Otto, Lagos",
+                    "phone": "0812 596 3521"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Ikorodu Road, Jibowu, Yaba, Lagos (General Booking Office)",
+                    "phone": "0812 596 3521"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Park",
+                    "address": "Utako District, Abuja (General Terminal Location)",
+                    "phone": "0812 596 3521"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal",
+                    "address": "Onitsha (General Booking Office)",
+                    "phone": "0812 596 3521"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Jos (General Terminal Location)",
+                    "phone": "0812 596 3521"
+                }
+            ],
+            "International": [
+                {
+                    "name": "West Africa Routes",
+                    "address": "Routes to Cotonou (Benin) and Lomé (Togo)",
+                    "phone": "0812 596 3521"
+                }
+            ]
+        },
+        "basePrice": 23750,
+        "serviceAttributes": [
+            "Northern Routes",
+            "International Routes (West Africa)",
+            "Reliability",
+            "Online Booking"
+        ]
+    }
+
+},
+
 
     "routePrices": {
         "Lagos-Abuja": {
