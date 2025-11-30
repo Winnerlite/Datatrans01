@@ -180,29 +180,220 @@
             "basePrice": 32000,
             "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
         },
-        "God is Good Motors": {
-            "id": "god-is-good-motors",
-            "name": "God is Good Motors",
-            "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
-            "states": ["Lagos", "Abuja", "Port Harcourt", "Benin", "Warri", "Owerri", "Onitsha", "Enugu", "Calabar", "Uyo", "Ibadan", "Kano", "Kaduna"],
-            "terminals": {
-                "Lagos": "Festac Terminal",
-                "Abuja": "Jabi Terminal",
-                "Port Harcourt": "Choba Park",
-                "Benin": "Ring Road Park",
-                "Warri": "Effurun Park",
-                "Owerri": "Owerri Main Park",
-                "Onitsha": "New Park",
-                "Enugu": "Okpara Avenue",
-                "Calabar": "Murtala Park",
-                "Uyo": "Uyo Central Park",
-                "Ibadan": "Challenge Park",
-                "Kano": "Kano Line Park",
-                "Kaduna": "Kawo Park"
-            },
-            "basePrice": 33000,
-            "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
-        },
+
+    "God is Good Motors": {
+        "id": "god-is-good-motors",
+        "name": "GIG Mobility (GIGM)",
+        "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Akwa Ibom",
+            "Anambra",
+            "Bayelsa",
+            "Cross River",
+            "Delta",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Kaduna",
+            "Kano",
+            "Lagos",
+            "Niger",
+            "Ogun",
+            "Ondo",
+            "Oyo",
+            "Plateau",
+            "Rivers"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "20 Ikorodu Express Road, Jibowu, Lagos",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Ajah Terminal",
+                    "address": "KM 20 Lekki-Epe Expressway, Near Police Station, Ajiwe, Ajah, Lagos",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Festac Terminal",
+                    "address": "1st Avenue Road, Festac first gate, beside INEC office, Festac Town, Lagos",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Ikotun Terminal",
+                    "address": "GIGM Terminal, 29 Ikotun-Idimu Road, Ikotun, Lagos",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Iyana-Ipaja Terminal",
+                    "address": "164, Lagos-Abeokuta Express Way, Beside Diamond Bank, Iyana Ipaja, Lagos",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Cele/Okota Terminal",
+                    "address": "103, Okota Road, Cele, Lagos",
+                    "phone": "08139851110"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "Plot 113, Utako District, FCT, Abuja",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Mararaba Terminal",
+                    "address": "Abuja Keffi Road, By Abacha Road Junction, Opp. Chrisgold Plaza, Mararaba, FCT",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Zuba Terminal",
+                    "address": "Market Space 206, Zuba Market, Abuja",
+                    "phone": "08139851110"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal (Aba Road)",
+                    "address": "228, Aba Road, By Bori Camp, Beside INEC Office, Port Harcourt",
+                    "phone": "08139851110"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Central Terminal (Akpakpava)",
+                    "address": "12, Akpakpava Road, By First Junction, Benin City",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Benin Head Office (Uselu)",
+                    "address": "202B Uselu Lagos Road, Near Ediaken Market, Benin City",
+                    "phone": "08139851110"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Warri Terminal",
+                    "address": "138, Effurun Sapele Road, By Airport Junction, Effurun, Warri",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Asaba Terminal",
+                    "address": "Asaba-Onitsha Express Way, By Head Bridge, Asaba",
+                    "phone": "08139851110"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "31, Relief Road Junction, Off Egbu Road, Owerri",
+                    "phone": "08139851110"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal",
+                    "address": "21, Bright Street, Onitsha",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Elite Shopping Complex, Opp. Crunchies Fries, Enugu/Onitsha Express Way, Awka",
+                    "phone": "08139851110"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "7, Market Road, Opposite State Library, Holy Ghost Park, Ogui, Enugu",
+                    "phone": "08139851110"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "74, Etta Agbo Road, University of Calabar, Calabar",
+                    "phone": "08139851110"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "3, Monsignor Akpan Avenue, Itam Industrial Layout, Opp. Timber Market, Itam, Uyo",
+                    "phone": "08139851110"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal",
+                    "address": "7 New Ife Road, Ibadan",
+                    "phone": "08139851110"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Terminal",
+                    "address": "24B Murtala Mohammed Way, Kano",
+                    "phone": "08139851110"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal (Mando)",
+                    "address": "Lagos Garage, Mando, Kaduna",
+                    "phone": "08139851110"
+                },
+                {
+                    "name": "Kaduna South Terminal",
+                    "address": "1, Bible Society Road, Romi New Extension, Kaduna",
+                    "phone": "08139851110"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Angwan Soya Zaria Road Bypass, Opposite Bingham University Teaching Hospital, Jos",
+                    "phone": "08139851110"
+                }
+            ],
+            "Abia": [
+                {
+                    "name": "Aba Terminal",
+                    "address": "5, Asa Road, Former Old Nitel Building, Aba",
+                    "phone": "08139851110"
+                }
+            ],
+            "Ogun": [
+                {
+                    "name": "Abeokuta Terminal",
+                    "address": "93 Moshood Abiola Way, Opp. GT Bank, Abeokuta",
+                    "phone": "08139851110"
+                }
+            ],
+            "Ondo": [
+                {
+                    "name": "Akure Terminal",
+                    "address": "74 Oyemekun Road, Akure",
+                    "phone": "08139851110"
+                }
+            ],
+            "Bayelsa": [
+                {
+                    "name": "Yenagoa Terminal",
+                    "address": "Opp. Wema Bank, Kpansia, By Inec Junction, Yenagoa",
+                    "phone": "08139851110"
+                }
+            ],
+            "Niger": [
+                {
+                    "name": "Minna Terminal",
+                    "address": "Eastern By-Pass Road, Tunga, Minna",
+                    "phone": "08139851110"
+                },
         "Chisco Transport": {
             "id": "chisco-transport",
             "name": "Chisco Transport",
