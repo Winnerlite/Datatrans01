@@ -1,7 +1,7 @@
 
 {
     "api": "Vyra Transport API v1.0",
-    "lastUpdated": "2025-09-15",
+    "lastUpdated": "2025-11-30",
     "description": "Complete Nigerian intercity transport data",
 
     "transportCompanies": {
@@ -4663,11 +4663,11 @@
 },
 
     "metadata": {
-        "totalCompanies": 41,
-        "totalRoutes": 20,
-        "totalStates": 37,
-        "priceCurrency": "NGN",
-        "dataSource": "Vyra Transport Analysis 2025",
-        "lastUpdated": "2025-11-30"
-    }
+    "totalCompanies": 56,
+    "totalRoutes": 20,
+    "totalStates": 37,
+    "priceCurrency": "NGN",
+    "dataSource": "Vyra Transport Analysis 2025",
+    "lastUpdated": "2025-11-30"
+}
 }
