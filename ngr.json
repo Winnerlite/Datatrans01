@@ -753,7 +753,7 @@
         "basePrice": 29000,
         "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
     },
-       
+
     "Peace Mass Transit": {
         "id": "peace-mass-transit",
         "name": "Peace Mass Transit",
@@ -1008,28 +1008,216 @@
             "Logistics & Courier Services"
         ]
     },
-        "GUO Transport": {
-            "id": "guo-transport",
-            "name": "GUO Transport",
-            "image": "https://i.ibb.co/wKRrKtp/test-10.png",
-            "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Ibadan", "Abeokuta", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
-            "terminals": {
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Wuse Terminal",
-                "Onitsha": "New Park",
-                "Enugu": "Okpara Avenue",
-                "Ibadan": "Challenge Park",
-                "Abeokuta": "Abeokuta Central Park",
-                "Port Harcourt": "Choba Terminal",
-                "Benin": "Benin City Terminal",
-                "Warri": "Warri Central Park",
-                "Calabar": "Calabar Central Park",
-                "Kano": "Kano Central Park",
-                "Kaduna": "Kaduna Central Park"
-            },
-            "basePrice": 29500,
-            "serviceAttributes": ["Comfort", "Low Pricing", "Quick", "Safety"]
+       
+    "GUO Transport": {
+        "id": "guo-transport",
+        "name": "GUO Transport Company Ltd.",
+        "image": "https://i.ibb.co/wKRrKtp/test-10.png",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Adamawa",
+            "Akwa Ibom",
+            "Anambra",
+            "Bauchi",
+            "Cross River",
+            "Delta",
+            "Ebonyi",
+            "Edo",
+            "Enugu",
+            "Gombe",
+            "Imo",
+            "Kaduna",
+            "Kano",
+            "Lagos",
+            "Oyo",
+            "Plateau",
+            "Rivers",
+            "Taraba"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "2 Jibowu Street along Ikorodu Expressway, Jibowu, Lagos",
+                    "phone": "09155372585"
+                },
+                {
+                    "name": "Ajah Terminal",
+                    "address": "KM 22, Epe - Expressway, Abraham Adesanya Est. Junction, Ajah, Lagos",
+                    "phone": "08139996343"
+                },
+                {
+                    "name": "Iyana Ipaja Terminal",
+                    "address": "KM 168 Abeokuta Expressway/No 1 Tijani Street beside Access bank, Iyana Ipaja Bus Stop",
+                    "phone": "08150647906"
+                },
+                {
+                    "name": "Maza Maza Terminal",
+                    "address": "1st Gate B/Stop Badagry Express Way, Maza Maza, Lagos",
+                    "phone": "07043146535"
+                },
+                {
+                    "name": "Ikeja Terminal",
+                    "address": "Essencee House, 4 Kodesho Street, Opp Computer Village Flyover, Ikeja",
+                    "phone": "08058868149"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "GOUBA Plaza, 15 A. E. Ekukinam Street, Utako District, Abuja",
+                    "phone": "08075090643"
+                },
+                {
+                    "name": "Kubwa Terminal",
+                    "address": "Lora Mall Plaza, Plot No 132 Gado Nasko Road Phase 2 Kubwa, Abuja",
+                    "phone": "08075093156"
+                },
+                {
+                    "name": "Wuse 2 Terminal",
+                    "address": "The Ruby Centre, 762 Aminu Kano Crescent, Wuse 2, Abuja",
+                    "phone": "09153040321"
+                },
+                {
+                    "name": "Mararaba Terminal",
+                    "address": "Suite 9, Bomma Plaza, Abuja-Keffi Exp. Way, Mararaba (Nasarawa State)",
+                    "phone": "09053820346"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "166, Port Harcourt Rd, Upper Iweka, Onitsha",
+                    "phone": "08075090618"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Unizik junction, beside Mobil filling station, opposite Akuzuluora plaza, Awka",
+                    "phone": "08075090642"
+                },
+                {
+                    "name": "Nnewi Terminal",
+                    "address": "2, Ibeto Road, Opp.First Bank, Nnewi",
+                    "phone": "08075090684"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "34 Okpara Avenue (in between UBA & Polaris Bank), Enugu",
+                    "phone": "07066483775"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal",
+                    "address": "Samonda/Opp Emmanuel Theology Collage, Ibadan, Oyo State",
+                    "phone": "08075090641"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Along Aba road, Opp Air Force Base, Rumuomasi, Port Harcourt",
+                    "phone": "08150647900"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "211 Ugbowo-Lagos Rd, by Technical Junction, Benin City",
+                    "phone": "09053820348"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Asaba Terminal",
+                    "address": "Asaba - Onitsha Expressway by Head-Bridge, Asaba",
+                    "phone": "08113849230"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "15, Egbu Road, Owerri",
+                    "phone": "09125475308"
+                },
+                {
+                    "name": "Orlu Terminal",
+                    "address": "No 7 ASIKA ILOBI Avenue, Orlu, Imo",
+                    "phone": "08104805017"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal (Television Park)",
+                    "address": "Television Park, Kaduna",
+                    "phone": "08075090647"
+                },
+                {
+                    "name": "Zaria Terminal",
+                    "address": "Shop 8, Block C, Nasiru Elurufai Central Motor Park, Zaria",
+                    "phone": "07051974867"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Terminal",
+                    "address": "14, New Road, Sabongari, Kano",
+                    "phone": "08075090646"
+                }
+            ],
+            "Abia": [
+                {
+                    "name": "Aba Terminal",
+                    "address": "23, Milverton Avenue, Aba",
+                    "phone": "08075090629"
+                },
+                {
+                    "name": "Umuahia Terminal",
+                    "address": "50 Mission Hill, opposite Gado Hotels, Umuahia",
+                    "phone": "08113790584"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Ogoja Terminal",
+                    "address": "4B Okuku Rd., Igoli Ogoja, Opp. OverComers Church",
+                    "phone": "09053820341"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Old Railway, Jos, Plateau State",
+                    "phone": "08075090654"
+                }
+            ],
+            "Taraba": [
+                {
+                    "name": "Jalingo Terminal",
+                    "address": "Opp. Coca Cola Depot, Along Mile 6, Yola Road, Jalingo",
+                    "phone": "08113790580"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "KM 9, Ikot-Ekpene/Uyo Highway by waterboard, Etik-Itam, Itu, Uyo",
+                    "phone": "08145371000"
+                }
+            ]
         },
+        "basePrice": 29500,
+        "serviceAttributes": [
+            "Comfort",
+            "Low Pricing",
+            "Quick",
+            "Safety",
+            "Logistics & Courier Services"
+        ]
+    },
         "The Young Legacy Motors": {
             "id": "young-legacy-motors",
             "name": "The Young Legacy Motors",
