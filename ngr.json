@@ -1008,7 +1008,7 @@
             "Logistics & Courier Services"
         ]
     },
-       
+
     "GUO Transport": {
         "id": "guo-transport",
         "name": "GUO Transport Company Ltd.",
@@ -1218,46 +1218,298 @@
             "Logistics & Courier Services"
         ]
     },
-        "The Young Legacy Motors": {
-            "id": "young-legacy-motors",
-            "name": "The Young Legacy Motors",
-            "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
-            "states": ["Lagos", "Onitsha", "Enugu", "Abuja", "Port Harcourt", "Owerri", "Benin", "Warri", "Ibadan", "Calabar"],
-            "terminals": {
-                "Lagos": "Mile 2 Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "New Haven",
-                "Abuja": "Mararaba Park",
-                "Port Harcourt": "Rumuodara Park",
-                "Owerri": "Owerri Central",
-                "Benin": "Ring Road",
-                "Warri": "Effurun Roundabout",
-                "Ibadan": "Ibadan Central",
-                "Calabar": "Calabar Main Park"
-            },
-            "basePrice": 35000,
-            "serviceAttributes": ["Low Pricing", "Reliability", "Quick"]
+
+    "The Young Legacy Motors": {
+        "id": "young-legacy-motors",
+        "name": "The Young Shall Grow Motors (YSG)",
+        "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Adamawa",
+            "Akwa Ibom",
+            "Anambra",
+            "Benue",
+            "Cross River",
+            "Delta",
+            "Ebonyi",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Kaduna",
+            "Kano",
+            "Lagos",
+            "Niger",
+            "Ogun",
+            "Oyo",
+            "Plateau",
+            "Rivers",
+            "Sokoto"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Maza-Maza (Head Office)",
+                    "address": "1 Old Ojo Road, Maza-Maza, Lagos",
+                    "phone": "08069963843"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Ikorodu Expressway, Jibowu, Yaba, Lagos",
+                    "phone": "08061469588"
+                },
+                {
+                    "name": "Ajah Terminal",
+                    "address": "Ajah, Lekki-Epe Expressway, Lagos",
+                    "phone": "08061469998"
+                },
+                {
+                    "name": "Cele Bus Stop Terminal",
+                    "address": "Cele Bus Stop, Lagos",
+                    "phone": "08061469998"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "32 A.E. Ekukinam St, Utako District, Abuja",
+                    "phone": "08034066992"
+                },
+                {
+                    "name": "Kubwa Terminal",
+                    "address": "Kubwa, Abuja",
+                    "phone": "08032550170"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal (Upper Iweka)",
+                    "address": "Upper Iweka, Onitsha, Anambra State",
+                    "phone": "08033374545"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Awka, Anambra State (Specific location not widely published)",
+                    "phone": "08069963843"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "Enugu Terminal, Enugu State",
+                    "phone": "08033203189"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Port Harcourt Terminal, Rivers State",
+                    "phone": "08033421951"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin City Terminal",
+                    "address": "Benin Terminal, Edo State",
+                    "phone": "08069963843"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Asaba Terminal",
+                    "address": "Asaba Terminal, Delta State",
+                    "phone": "08069963843"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "Owerri Terminal, Imo State",
+                    "phone": "08069963843"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal",
+                    "address": "Opposite Nigerian Breweries, Alakia, Ibadan, Oyo",
+                    "phone": "08069963843"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "Calabar Terminal, Cross River State",
+                    "phone": "08037516687"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Terminal",
+                    "address": "Kano Terminal, Kano State",
+                    "phone": "08027391868"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal",
+                    "address": "Kaduna Terminal, Kaduna State",
+                    "phone": "08036939157"
+                }
+            ]
         },
-        "Benue Link Transport": {
-            "id": "benue-link-transport",
-            "name": "Benue Link Transport",
-            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Benue+Link",
-            "states": ["Benue", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Kano", "Kaduna", "Jos", "Makurdi"],
-            "terminals": {
-                "Benue": "Makurdi Central Park",
-                "Lagos": "Jibowu Terminal",
-                "Abuja": "Utako Park",
-                "Port Harcourt": "Rumuola Park",
-                "Enugu": "Gariki Terminal",
-                "Onitsha": "Upper Iweka",
-                "Kano": "Kano Line Park",
-                "Kaduna": "Kawo Park",
-                "Jos": "Jos Terminus",
-                "Makurdi": "Makurdi Main Park"
-            },
-            "basePrice": 29500,
-            "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
+        "basePrice": 35000,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Reliability",
+            "Quick",
+            "West African Routes"
+        ]
+    },
+       
+    "Benue Link Transport": {
+        "id": "benue-link-transport",
+        "name": "Benue Link Transport Company Ltd.",
+        "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Benue+Link",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Akwa Ibom",
+            "Anambra",
+            "Bauchi",
+            "Benue",
+            "Cross River",
+            "Ebonyi",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Kaduna",
+            "Kano",
+            "Lagos",
+            "Niger",
+            "Ogun",
+            "Ondo",
+            "Plateau",
+            "Rivers"
+        ],
+        "terminals": {
+            "Benue": [
+                {
+                    "name": "Makurdi Headquarters",
+                    "address": "KM 1 Gboko Road, Wurukum Makurdi, Benue State",
+                    "phone": "+234 803 458 9080"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Lagos (Iddo) Terminal",
+                    "address": "Iddo Motor Park, Opposite G. Kappa, Ojo, Lagos",
+                    "phone": "08065433760"
+                },
+                {
+                    "name": "Lagos (Ajah) Terminal",
+                    "address": "Ajah, Lagos (Specific location not widely published)",
+                    "phone": "08065433760"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Abuja City Terminal (Area 1)",
+                    "address": "Beside Rajab Plaza Area 1, Opposite Area 3 Junction, Abuja",
+                    "phone": "08036128931"
+                },
+                {
+                    "name": "Abuja Airport Terminal",
+                    "address": "Nnamdi Azikiwe International Airport Abuja",
+                    "phone": "08036128931"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt (Oil Mill) Terminal",
+                    "address": "Behind Oil Mill Bus Stop, Aba Road, Port Harcourt",
+                    "phone": "08065352641"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "Entraco park, opposite Nigerian prison ogbete market, Enugu",
+                    "phone": "08053672154"
+                }
+            ],
+            "Abia": [
+                {
+                    "name": "Aba Terminal",
+                    "address": "21 Park Road, Aba, Abia State",
+                    "phone": "07068141314"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "No. 113 2nd Junction Akpakpava Road, Oredon LGA, Benin City",
+                    "phone": "08068508624"
+                }
+            ],
+            "Ogun": [
+                {
+                    "name": "Abeokuta Terminal",
+                    "address": "Lefenwa Barracks Road by Railway Station, Abeokuta",
+                    "phone": "09031546431"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "Inside 13 Brigade Akim Mammy market by Mariam way Raban roundabout, Calabar",
+                    "phone": "08162669791"
+                }
+            ],
+            "Ondo": [
+                {
+                    "name": "Akure Terminal",
+                    "address": "32 Artillery Brigade, Owena Cantonment Km 5 Mami Market, Akure",
+                    "phone": "08064782781"
+                }
+            ],
+            "Bauchi": [
+                {
+                    "name": "Bauchi Terminal",
+                    "address": "No 1 Adamu Jumba road tugga shopping complex, Bauchi",
+                    "phone": "07038812437"
+                }
+            ],
+            "Ebonyi": [
+                {
+                    "name": "Abakaliki Terminal",
+                    "address": "Glo Rich plaza, Onyebonyi Along Ogoja Road Near Intl. Market, Abakiliki",
+                    "phone": "07036803249"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Jos Terminus (Specific location not widely published)",
+                    "phone": "08034589080 (Corporate Line)"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Terminal",
+                    "address": "Kano (Specific location not widely published)",
+                    "phone": "08034589080 (Corporate Line)"
+                }
+            ]
         },
+        "basePrice": 22000,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Reliability",
+            "Customer Service",
+            "State-Owned",
+            "Haulage & Charter Services"
+        ]
+    },
         "Aba Line": {
             "id": "aba-line",
             "name": "Aba Line",
