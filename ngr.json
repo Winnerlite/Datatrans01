@@ -1,1158 +1,1309 @@
 
 {
-  "api": "Vyra Transport API v1.0",
-  "lastUpdated": "2025-09-15",
-  "description": "Complete Nigerian intercity transport data",
-  
-  "transportCompanies": {
+    "api": "Vyra Transport API v1.0",
+    "lastUpdated": "2025-09-15",
+    "description": "Complete Nigerian intercity transport data",
+
+    "transportCompanies": {
+        {
     "ABC Transport": {
-      "id": "abc-transport",
-      "name": "ABC Transport",
-      "image": "https://i.ibb.co/5hXDcq5/images-7.png",
-      "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Kano", "Ibadan", "Benin", "Warri", "Calabar", "Owerri", "Jos", "Kaduna", "Uyo"],
-      "terminals": {
-        "Lagos": "Jibowu Terminal, Yaba",
-        "Abuja": "Garki Terminal",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Onitsha": "Upper Iweka Park",
-        "Kano": "Kofar Nassarawa Park",
-        "Ibadan": "Ibadan Central Park",
-        "Benin": "Ring Road Park",
-        "Warri": "Effurun Park",
-        "Calabar": "Marian Park",
-        "Owerri": "Owerri Main Park",
-        "Jos": "Jos Terminus",
-        "Kaduna": "Kawo Park",
-        "Uyo": "Uyo Central Park"
-      },
-      "basePrice": 32000,
-      "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+        "id": "abc-transport",
+        "name": "ABC Transport Plc",
+        "image": "https://i.ibb.co/5hXDcq5/images-7.png",
+        "states": [
+            "Lagos",
+            "Abuja",
+            "Rivers",
+            "Enugu",
+            "Anambra",
+            "Kano",
+            "Oyo",
+            "Edo",
+            "Delta",
+            "Cross River",
+            "Imo",
+            "Plateau",
+            "Kaduna",
+            "Akwa Ibom",
+            "Kogi",
+            "Ogun",
+            "Abia",
+            "Nasarawa"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal (Head Office Lagos)",
+                    "address": "22, Ikorodu Road, Jibowu, Yaba, Lagos",
+                    "phone": "08139862090, 01-7741320"
+                },
+                {
+                    "name": "Amuwo Odofin Terminal",
+                    "address": "Plot 79, Oba Kayode Akinyemi Way, By Festac Bypass, Amuwo Odofin, Lagos",
+                    "phone": "08053001000, 08142552436"
+                },
+                {
+                    "name": "Bolade Oshodi Terminal",
+                    "address": "129 Agege Motor Road, Bolade, Oshodi, Lagos",
+                    "phone": "07038570556, 08139862090"
+                },
+                {
+                    "name": "Ajah Terminal",
+                    "address": "Km 22, Lekki-Epe Expressway, by Olokunla Bus Stop (Opp. Enyo Filling Station), Ajah, Lagos",
+                    "phone": "08139862090"
+                }
+            ],
+            "Abuja": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "36, Ekukinam Street, Utako District (Off Berger Junction), Abuja",
+                    "phone": "08142552437, 08139862090"
+                },
+                {
+                    "name": "Gwagwalada Terminal",
+                    "address": "Jibeco Nigeria Ltd, Ground Floor Wing B, Kaita Plaza (by MTN Office), Gwagwalada, Abuja",
+                    "phone": "07030890239"
+                },
+                {
+                    "name": "Kubwa Terminal",
+                    "address": "Inside Kukwuaba General Park, Close to NYSC Orientation Camp, Kubwa, Abuja",
+                    "phone": "08139862090"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Eliozu Junction, East/West Road, Port Harcourt",
+                    "phone": "08065910431, 08139862090"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "122, Ogui Road, Enugu",
+                    "phone": "08142552424, 08139862090"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal",
+                    "address": "Onitsha-Asaba Expressway, Opposite Ogbaru Main Market (After Upper Iweka Flyover), Onitsha",
+                    "phone": "07038570482, 08139862090"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Standard Plaza, Km 20 Onitsha-Enugu Expressway, Opposite Crunchies Fastfood, Awka",
+                    "phone": "08064834870"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Logistics/Park",
+                    "address": "1B Church Road, off Ibadan Road, Sabo Gari, Kano",
+                    "phone": "08139862090"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal",
+                    "address": "Opposite Nigerian Breweries, by Acorn Filling Station, New Ife Road, Ibadan",
+                    "phone": "08142552449, 08139862090"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "Anayo Filling Station, by Terminal Resort & Park, Ovbiogie, Benin-Lagos Express Road, Benin City",
+                    "phone": "08036788464, 08139862090"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Warri Terminal",
+                    "address": "194, PTI Road, Effurun, Warri",
+                    "phone": "07066221578, 08139862090"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "75, IBB Way, Calabar",
+                    "phone": "08069189038, 08139862090"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Head Office",
+                    "address": "Km 5, MCC Uratta Road, Owerri",
+                    "phone": "08139862090, 08142552436"
+                },
+                {
+                    "name": "Egbu Road Terminal",
+                    "address": "Plot 9, Egbu Road, Owerri",
+                    "phone": "08064327270"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Hallmark Home Plaza, 7/9 Lugard Road (Former UTC Motors), Jos",
+                    "phone": "09034910292, 08139862090"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal",
+                    "address": "3, Kachia Road, by Railway Station Market, Kaduna",
+                    "phone": "08034910292, 08139862090"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "No. 17, Monsignor Akpan Mbak Avenue, Itam, Uyo",
+                    "phone": "08067060526, 08139862090"
+                }
+            ],
+            "Kogi": [
+                {
+                    "name": "Lokoja Terminal",
+                    "address": "178 Hammed Bello Way, Opposite New Market (Adj. Texaco Filling Station), Lokoja",
+                    "phone": "07038570375"
+                },
+                {
+                    "name": "Okene Terminal",
+                    "address": "Goomeej Nig Ltd, by Forte Oil Filling Station, Okene/Lokoja Road, Okene",
+                    "phone": "08139862090"
+                }
+            ]
+        },
+            "basePrice": 32000,
+            "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+        },
+        "God is Good Motors": {
+            "id": "god-is-good-motors",
+            "name": "God is Good Motors",
+            "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
+            "states": ["Lagos", "Abuja", "Port Harcourt", "Benin", "Warri", "Owerri", "Onitsha", "Enugu", "Calabar", "Uyo", "Ibadan", "Kano", "Kaduna"],
+            "terminals": {
+                "Lagos": "Festac Terminal",
+                "Abuja": "Jabi Terminal",
+                "Port Harcourt": "Choba Park",
+                "Benin": "Ring Road Park",
+                "Warri": "Effurun Park",
+                "Owerri": "Owerri Main Park",
+                "Onitsha": "New Park",
+                "Enugu": "Okpara Avenue",
+                "Calabar": "Murtala Park",
+                "Uyo": "Uyo Central Park",
+                "Ibadan": "Challenge Park",
+                "Kano": "Kano Line Park",
+                "Kaduna": "Kawo Park"
+            },
+            "basePrice": 33000,
+            "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
+        },
+        "Chisco Transport": {
+            "id": "chisco-transport",
+            "name": "Chisco Transport",
+            "image": "https://i.ibb.co/b7Yykmb/images-12.png",
+            "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Owerri", "Ibadan", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
+            "terminals": {
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Apo Terminal",
+                "Onitsha": "New Park",
+                "Enugu": "Okpara Avenue",
+                "Owerri": "Relief Market Park",
+                "Ibadan": "Ibadan Central Park",
+                "Port Harcourt": "Rumuokoro Park",
+                "Benin": "Benin Central Park",
+                "Warri": "Warri Main Park",
+                "Calabar": "Calabar Central Park",
+                "Kano": "Kano Central Park",
+                "Kaduna": "Kaduna Central Park"
+            },
+            "basePrice": 31500,
+            "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+        },
+        "Young Shall Grow": {
+            "id": "young-shall-grow",
+            "name": "Young Shall Grow",
+            "image": "https://i.ibb.co/wKRrKtp/test-10.png",
+            "states": ["Lagos", "Onitsha", "Enugu", "Owerri", "Abuja", "Benin", "Port Harcourt", "Ibadan", "Kano", "Kaduna", "Jos", "Calabar"],
+            "terminals": {
+                "Lagos": "Maza-Maza Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Holy Ghost Park",
+                "Owerri": "Douglas Road",
+                "Abuja": "Nyanya Park",
+                "Benin": "Benin Central Park",
+                "Port Harcourt": "Rumuomasi Park",
+                "Ibadan": "Challenge Park",
+                "Kano": "Kano Line Park",
+                "Kaduna": "Kawo Park",
+                "Jos": "Jos Main Park",
+                "Calabar": "Calabar Motor Park"
+            },
+            "basePrice": 29000,
+            "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
+        },
+        "Peace Mass Transit": {
+            "id": "peace-mass-transit",
+            "name": "Peace Mass Transit",
+            "image": "https://i.ibb.co/5hXDcq5/images-7.png",
+            "states": ["Enugu", "Onitsha", "Abuja", "Lagos", "Port Harcourt", "Jos", "Kano", "Kaduna", "Owerri", "Benin", "Ibadan", "Calabar", "Uyo"],
+            "terminals": {
+                "Enugu": "Gariki Terminal",
+                "Onitsha": "New Market Park",
+                "Abuja": "Kubwa Terminal",
+                "Lagos": "Ikeja Terminal",
+                "Port Harcourt": "Rumuokoro Park",
+                "Jos": "Jos Terminus",
+                "Kano": "Kano Main Park",
+                "Kaduna": "Kaduna Central Park",
+                "Owerri": "Owerri Motor Park",
+                "Benin": "Benin City Park",
+                "Ibadan": "Ibadan Central Park",
+                "Calabar": "Calabar Main Park",
+                "Uyo": "Uyo Motor Park"
+            },
+            "basePrice": 38000,
+            "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
+        },
+        "GUO Transport": {
+            "id": "guo-transport",
+            "name": "GUO Transport",
+            "image": "https://i.ibb.co/wKRrKtp/test-10.png",
+            "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Ibadan", "Abeokuta", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
+            "terminals": {
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Wuse Terminal",
+                "Onitsha": "New Park",
+                "Enugu": "Okpara Avenue",
+                "Ibadan": "Challenge Park",
+                "Abeokuta": "Abeokuta Central Park",
+                "Port Harcourt": "Choba Terminal",
+                "Benin": "Benin City Terminal",
+                "Warri": "Warri Central Park",
+                "Calabar": "Calabar Central Park",
+                "Kano": "Kano Central Park",
+                "Kaduna": "Kaduna Central Park"
+            },
+            "basePrice": 29500,
+            "serviceAttributes": ["Comfort", "Low Pricing", "Quick", "Safety"]
+        },
+        "The Young Legacy Motors": {
+            "id": "young-legacy-motors",
+            "name": "The Young Legacy Motors",
+            "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
+            "states": ["Lagos", "Onitsha", "Enugu", "Abuja", "Port Harcourt", "Owerri", "Benin", "Warri", "Ibadan", "Calabar"],
+            "terminals": {
+                "Lagos": "Mile 2 Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "New Haven",
+                "Abuja": "Mararaba Park",
+                "Port Harcourt": "Rumuodara Park",
+                "Owerri": "Owerri Central",
+                "Benin": "Ring Road",
+                "Warri": "Effurun Roundabout",
+                "Ibadan": "Ibadan Central",
+                "Calabar": "Calabar Main Park"
+            },
+            "basePrice": 35000,
+            "serviceAttributes": ["Low Pricing", "Reliability", "Quick"]
+        },
+        "Benue Link Transport": {
+            "id": "benue-link-transport",
+            "name": "Benue Link Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Benue+Link",
+            "states": ["Benue", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Kano", "Kaduna", "Jos", "Makurdi"],
+            "terminals": {
+                "Benue": "Makurdi Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal",
+                "Onitsha": "Upper Iweka",
+                "Kano": "Kano Line Park",
+                "Kaduna": "Kawo Park",
+                "Jos": "Jos Terminus",
+                "Makurdi": "Makurdi Main Park"
+            },
+            "basePrice": 29500,
+            "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
+        },
+        "Aba Line": {
+            "id": "aba-line",
+            "name": "Aba Line",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Aba+Line",
+            "states": ["Abia", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Owerri"],
+            "terminals": {
+                "Abia": "Aba Main Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal",
+                "Onitsha": "Upper Iweka",
+                "Owerri": "Owerri Main Park"
+            },
+            "basePrice": 33000,
+            "serviceAttributes": ["Comfort", "Reliability", "Customer Service"]
+        },
+        "Nsik Motors (AKTC)": {
+            "id": "nsik-motors",
+            "name": "Nsik Motors (AKTC)",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Nsik+Motors",
+            "states": ["Akwa Ibom", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Calabar", "Uyo"],
+            "terminals": {
+                "Akwa Ibom": "Uyo Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal",
+                "Calabar": "Calabar Central Park",
+                "Uyo": "Uyo Main Park"
+            },
+            "basePrice": 29000,
+            "serviceAttributes": ["Comfort", "Safety", "Quick", "Reliability"]
+        },
+        "Cross Country Transport": {
+            "id": "cross-country-transport",
+            "name": "Cross Country Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Cross+Country",
+            "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Calabar", "Kano", "Jos", "Maiduguri"],
+            "terminals": {
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal",
+                "Calabar": "Calabar Central Park",
+                "Kano": "Kano Main Park",
+                "Jos": "Jos Terminus",
+                "Maiduguri": "Maiduguri Central Park"
+            },
+            "basePrice": 32000,
+            "serviceAttributes": ["Comfort", "Reliability", "Safety"]
+        },
+        "New Nyanya Transport Company": {
+            "id": "new-nyanya-transport",
+            "name": "New Nyanya Transport Company",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=New+Nyanya",
+            "states": ["Abuja", "Lagos", "Kano", "Jos", "Kaduna"],
+            "terminals": {
+                "Abuja": "Nyanya Park",
+                "Lagos": "Jibowu Terminal",
+                "Kano": "Kano Main Park",
+                "Jos": "Jos Terminus",
+                "Kaduna": "Kawo Park"
+            },
+            "basePrice": 37500,
+            "serviceAttributes": ["Low Pricing"]
+        },
+        "Adam and Eve Motors": {
+            "id": "adam-and-eve-motors",
+            "name": "Adam and Eve Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Adam+Eve",
+            "states": ["Abia", "Lagos", "Abuja", "Port Harcourt", "Enugu"],
+            "terminals": {
+                "Abia": "Aba Main Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 33000,
+            "serviceAttributes": ["Comfort"]
+        },
+        "Libra Motors": {
+            "id": "libra-motors",
+            "name": "Libra Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Libra+Motors",
+            "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Ibadan"],
+            "terminals": {
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal",
+                "Onitsha": "Upper Iweka",
+                "Ibadan": "Ibadan Central Park"
+            },
+            "basePrice": 31500,
+            "serviceAttributes": ["Low Pricing", "Quick", "Customer Service"]
+        },
+        "Orizu Motors": {
+            "id": "orizu-motors",
+            "name": "Orizu Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Orizu+Motors",
+            "states": ["Anambra", "Lagos", "Abuja", "Enugu", "Onitsha", "Port Harcourt"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Enugu": "Gariki Terminal",
+                "Onitsha": "Upper Iweka Park",
+                "Port Harcourt": "Rumuola Park"
+            },
+            "basePrice": 33500,
+            "serviceAttributes": ["Low Pricing", "Reliability"]
+        },
+        "Imo Transport (ITC)": {
+            "id": "imo-transport",
+            "name": "Imo Transport (ITC)",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=ITC",
+            "states": ["Imo", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Owerri"],
+            "terminals": {
+                "Imo": "Owerri Main Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal",
+                "Owerri": "Owerri Central"
+            },
+            "basePrice": 32500,
+            "serviceAttributes": ["Low Pricing"]
+        },
+        "Fair Okis Transport": {
+            "id": "fair-okis-transport",
+            "name": "Fair Okis Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Fair+Okis",
+            "states": ["Adamawa", "Abuja", "Lagos", "Kano", "Jos"],
+            "terminals": {
+                "Adamawa": "Yola Main Park",
+                "Abuja": "Utako Park",
+                "Lagos": "Jibowu Terminal",
+                "Kano": "Kano Main Park",
+                "Jos": "Jos Terminus"
+            },
+            "basePrice": 29000,
+            "serviceAttributes": ["Safety"]
+        },
+        "Fair Plus Transport": {
+            "id": "fair-plus-transport",
+            "name": "Fair Plus Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Fair+Plus",
+            "states": ["Adamawa", "Abuja", "Lagos", "Kano"],
+            "terminals": {
+                "Adamawa": "Yola Main Park",
+                "Abuja": "Utako Park",
+                "Lagos": "Jibowu Terminal",
+                "Kano": "Kano Main Park"
+            },
+            "basePrice": 28500,
+            "serviceAttributes": ["Reliability"]
+        },
+        "Akwa Ibom Transport (AKTC)": {
+            "id": "akwa-ibom-transport",
+            "name": "Akwa Ibom Transport (AKTC)",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=AKTC",
+            "states": ["Akwa Ibom", "Lagos", "Abuja", "Port Harcourt", "Calabar", "Uyo"],
+            "terminals": {
+                "Akwa Ibom": "Uyo Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Calabar": "Calabar Central Park",
+                "Uyo": "Uyo Main Park"
+            },
+            "basePrice": 30000,
+            "serviceAttributes": ["Quick"]
+        },
+        "Big Joe Motors": {
+            "id": "big-joe-motors",
+            "name": "Big Joe Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Big+Joe",
+            "states": ["Akwa Ibom", "Lagos", "Port Harcourt", "Calabar", "Uyo"],
+            "terminals": {
+                "Akwa Ibom": "Uyo Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Port Harcourt": "Rumuola Park",
+                "Calabar": "Calabar Central Park",
+                "Uyo": "Uyo Main Park"
+            },
+            "basePrice": 27500,
+            "serviceAttributes": ["Low Pricing", "Quick"]
+        },
+        "Agofure Motors": {
+            "id": "agofure-motors",
+            "name": "Agofure Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Agofure",
+            "states": ["Anambra", "Bayelsa", "Lagos", "Abuja", "Port Harcourt", "Benin", "Warri", "Onitsha"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Bayelsa": "Yenagoa Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Benin": "Ring Road",
+                "Warri": "Effurun Park",
+                "Onitsha": "Upper Iweka"
+            },
+            "basePrice": 32000,
+            "serviceAttributes": ["Comfort", "Low Pricing"]
+        },
+        "E.Ekesons Bros Transport": {
+            "id": "eekesons-transport",
+            "name": "E.Ekesons Bros Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekesons",
+            "states": ["Anambra", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Enugu": "Gariki Terminal",
+                "Onitsha": "Upper Iweka"
+            },
+            "basePrice": 34500,
+            "serviceAttributes": ["Comfort", "Safety", "Reliability"]
+        },
+        "Goodness and Mercy Transport": {
+            "id": "goodness-and-mercy",
+            "name": "Goodness and Mercy Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Goodness+Mercy",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 32500,
+            "serviceAttributes": ["Comfort", "Low Pricing", "Customer Service"]
+        },
+        "Okeyson Motors": {
+            "id": "okeyson-motors",
+            "name": "Okeyson Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Okeyson",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 34500,
+            "serviceAttributes": ["Comfort", "Low Pricing", "Reliability"]
+        },
+        "Tracas Nigeria": {
+            "id": "tracas-nigeria",
+            "name": "Tracas Nigeria",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Tracas",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 29500,
+            "serviceAttributes": ["Comfort", "Reliability"]
+        },
+        "Auto Star Limited": {
+            "id": "auto-star-limited",
+            "name": "Auto Star Limited",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Auto+Star",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 34000,
+            "serviceAttributes": ["Comfort", "Reliability"]
+        },
+        "Anambra Express": {
+            "id": "anambra-express",
+            "name": "Anambra Express",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Anambra+Express",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 29000,
+            "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
+        },
+        "Ekene Dili Chukwu Express Limited": {
+            "id": "ekene-dili-chukwu",
+            "name": "Ekene Dili Chukwu Express Limited",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekene+Dili",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 28000,
+            "serviceAttributes": ["Low Pricing"]
+        },
+        "Interland Transport": {
+            "id": "interland-transport",
+            "name": "Interland Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Interland",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 28000,
+            "serviceAttributes": ["Safety", "Customer Service"]
+        },
+        "Nothing Pass God Motors": {
+            "id": "nothing-pass-god",
+            "name": "Nothing Pass God Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Nothing+Pass+God",
+            "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
+            "terminals": {
+                "Anambra": "Onitsha Upper Iweka",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 30500,
+            "serviceAttributes": ["Reliability"]
+        },
+        "Yankari Express": {
+            "id": "yankari-express",
+            "name": "Yankari Express",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Yankari",
+            "states": ["Bauchi", "Abuja", "Lagos", "Kano", "Jos"],
+            "terminals": {
+                "Bauchi": "Bauchi Main Park",
+                "Abuja": "Utako Park",
+                "Lagos": "Jibowu Terminal",
+                "Kano": "Kano Main Park",
+                "Jos": "Jos Terminus"
+            },
+            "basePrice": 17500,
+            "serviceAttributes": ["Comfort", "Low Pricing", "Reliability", "Quick"]
+        },
+        "Gombe Line": {
+            "id": "gombe-line",
+            "name": "Gombe Line",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Gombe+Line",
+            "states": ["Bauchi", "Gombe", "Abuja", "Lagos", "Kano"],
+            "terminals": {
+                "Bauchi": "Bauchi Main Park",
+                "Gombe": "Gombe Central Park",
+                "Abuja": "Utako Park",
+                "Lagos": "Jibowu Terminal",
+                "Kano": "Kano Main Park"
+            },
+            "basePrice": 30000,
+            "serviceAttributes": ["Low Pricing", "Safety", "Reliability"]
+        },
+        "Bayelsa State Transport": {
+            "id": "bayelsa-state-transport",
+            "name": "Bayelsa State Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Bayelsa+Transport",
+            "states": ["Bayelsa", "Lagos", "Abuja", "Port Harcourt"],
+            "terminals": {
+                "Bayelsa": "Yenagoa Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park"
+            },
+            "basePrice": 33500,
+            "serviceAttributes": ["Low Pricing", "Reliability"]
+        },
+        "Delta Line": {
+            "id": "delta-line",
+            "name": "Delta Line",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Delta+Line",
+            "states": ["Delta", "Bayelsa", "Lagos", "Abuja", "Port Harcourt", "Benin", "Warri"],
+            "terminals": {
+                "Delta": "Warri Effurun Park",
+                "Bayelsa": "Yenagoa Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Benin": "Ring Road",
+                "Warri": "Effurun Park"
+            },
+            "basePrice": 25500,
+            "serviceAttributes": ["Comfort", "Safety", "Reliability", "Quick"]
+        },
+        "Borno Express": {
+            "id": "borno-express",
+            "name": "Borno Express",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Borno+Express",
+            "states": ["Borno", "Abuja", "Lagos", "Kano", "Maiduguri"],
+            "terminals": {
+                "Borno": "Maiduguri Central Park",
+                "Abuja": "Utako Park",
+                "Lagos": "Jibowu Terminal",
+                "Kano": "Kano Main Park",
+                "Maiduguri": "Maiduguri Main Park"
+            },
+            "basePrice": 28000,
+            "serviceAttributes": ["Comfort", "Safety"]
+        },
+        "Faith Motors": {
+            "id": "faith-motors",
+            "name": "Faith Motors",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Faith+Motors",
+            "states": ["Cross River", "Lagos", "Abuja", "Port Harcourt", "Calabar", "Enugu"],
+            "terminals": {
+                "Cross River": "Calabar Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Calabar": "Calabar Main Park",
+                "Enugu": "Gariki Terminal"
+            },
+            "basePrice": 25500,
+            "serviceAttributes": ["Safety"]
+        },
+        "Ibom Transit": {
+            "id": "ibom-transit",
+            "name": "Ibom Transit",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ibom+Transit",
+            "states": ["Akwa Ibom", "Lagos", "Abuja", "Port Harcourt", "Calabar", "Uyo"],
+            "terminals": {
+                "Akwa Ibom": "Uyo Central Park",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Port Harcourt": "Rumuola Park",
+                "Calabar": "Calabar Central Park",
+                "Uyo": "Uyo Main Park"
+            },
+            "basePrice": 28000,
+            "serviceAttributes": ["Safety"]
+        },
+        "Glo Bus Transit": {
+            "id": "glo-bus-transit",
+            "name": "Glo Bus Transit",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Glo+Bus",
+            "states": ["Enugu", "Lagos", "Abuja", "Onitsha", "Port Harcourt"],
+            "terminals": {
+                "Enugu": "Gariki Terminal",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Port Harcourt": "Rumuola Park"
+            },
+            "basePrice": 26500,
+            "serviceAttributes": ["Safety"]
+        },
+        "Fellow Transport": {
+            "id": "fellow-transport",
+            "name": "Fellow Transport",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Fellow+Transport",
+            "states": ["Enugu", "Lagos", "Abuja", "Onitsha", "Port Harcourt"],
+            "terminals": {
+                "Enugu": "Gariki Terminal",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Port Harcourt": "Rumuola Park"
+            },
+            "basePrice": 27000,
+            "serviceAttributes": ["Reliability"]
+        },
+        "Tega Express": {
+            "id": "tega-express",
+            "name": "Tega Express",
+            "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Tega+Express",
+            "states": ["Enugu", "Lagos", "Abuja", "Onitsha", "Port Harcourt"],
+            "terminals": {
+                "Enugu": "Gariki Terminal",
+                "Lagos": "Jibowu Terminal",
+                "Abuja": "Utako Park",
+                "Onitsha": "Upper Iweka",
+                "Port Harcourt": "Rumuola Park"
+            },
+            "basePrice": 18000,
+            "serviceAttributes": ["Quick"]
+        }
     },
-    "God is Good Motors": {
-      "id": "god-is-good-motors",
-      "name": "God is Good Motors",
-      "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
-      "states": ["Lagos", "Abuja", "Port Harcourt", "Benin", "Warri", "Owerri", "Onitsha", "Enugu", "Calabar", "Uyo", "Ibadan", "Kano", "Kaduna"],
-      "terminals": {
-        "Lagos": "Festac Terminal",
-        "Abuja": "Jabi Terminal",
-        "Port Harcourt": "Choba Park",
-        "Benin": "Ring Road Park",
-        "Warri": "Effurun Park",
-        "Owerri": "Owerri Main Park",
-        "Onitsha": "New Park",
-        "Enugu": "Okpara Avenue",
-        "Calabar": "Murtala Park",
-        "Uyo": "Uyo Central Park",
-        "Ibadan": "Challenge Park",
-        "Kano": "Kano Line Park",
-        "Kaduna": "Kawo Park"
-      },
-      "basePrice": 33000,
-      "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
-    },
-    "Chisco Transport": {
-      "id": "chisco-transport",
-      "name": "Chisco Transport",
-      "image": "https://i.ibb.co/b7Yykmb/images-12.png",
-      "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Owerri", "Ibadan", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
-      "terminals": {
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Apo Terminal",
-        "Onitsha": "New Park",
-        "Enugu": "Okpara Avenue",
-        "Owerri": "Relief Market Park",
-        "Ibadan": "Ibadan Central Park",
-        "Port Harcourt": "Rumuokoro Park",
-        "Benin": "Benin Central Park",
-        "Warri": "Warri Main Park",
-        "Calabar": "Calabar Central Park",
-        "Kano": "Kano Central Park",
-        "Kaduna": "Kaduna Central Park"
-      },
-      "basePrice": 31500,
-      "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
-    },
-    "Young Shall Grow": {
-      "id": "young-shall-grow",
-      "name": "Young Shall Grow",
-      "image": "https://i.ibb.co/wKRrKtp/test-10.png",
-      "states": ["Lagos", "Onitsha", "Enugu", "Owerri", "Abuja", "Benin", "Port Harcourt", "Ibadan", "Kano", "Kaduna", "Jos", "Calabar"],
-      "terminals": {
-        "Lagos": "Maza-Maza Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Holy Ghost Park",
-        "Owerri": "Douglas Road",
-        "Abuja": "Nyanya Park",
-        "Benin": "Benin Central Park",
-        "Port Harcourt": "Rumuomasi Park",
-        "Ibadan": "Challenge Park",
-        "Kano": "Kano Line Park",
-        "Kaduna": "Kawo Park",
-        "Jos": "Jos Main Park",
-        "Calabar": "Calabar Motor Park"
-      },
-      "basePrice": 29000,
-      "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
-    },
-    "Peace Mass Transit": {
-      "id": "peace-mass-transit",
-      "name": "Peace Mass Transit",
-      "image": "https://i.ibb.co/5hXDcq5/images-7.png",
-      "states": ["Enugu", "Onitsha", "Abuja", "Lagos", "Port Harcourt", "Jos", "Kano", "Kaduna", "Owerri", "Benin", "Ibadan", "Calabar", "Uyo"],
-      "terminals": {
-        "Enugu": "Gariki Terminal",
-        "Onitsha": "New Market Park",
-        "Abuja": "Kubwa Terminal",
-        "Lagos": "Ikeja Terminal",
-        "Port Harcourt": "Rumuokoro Park",
-        "Jos": "Jos Terminus",
-        "Kano": "Kano Main Park",
-        "Kaduna": "Kaduna Central Park",
-        "Owerri": "Owerri Motor Park",
-        "Benin": "Benin City Park",
-        "Ibadan": "Ibadan Central Park",
-        "Calabar": "Calabar Main Park",
-        "Uyo": "Uyo Motor Park"
-      },
-      "basePrice": 38000,
-      "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
-    },
-    "GUO Transport": {
-      "id": "guo-transport",
-      "name": "GUO Transport",
-      "image": "https://i.ibb.co/wKRrKtp/test-10.png",
-      "states": ["Lagos", "Abuja", "Onitsha", "Enugu", "Ibadan", "Abeokuta", "Port Harcourt", "Benin", "Warri", "Calabar", "Kano", "Kaduna"],
-      "terminals": {
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Wuse Terminal",
-        "Onitsha": "New Park",
-        "Enugu": "Okpara Avenue",
-        "Ibadan": "Challenge Park",
-        "Abeokuta": "Abeokuta Central Park",
-        "Port Harcourt": "Choba Terminal",
-        "Benin": "Benin City Terminal",
-        "Warri": "Warri Central Park",
-        "Calabar": "Calabar Central Park",
-        "Kano": "Kano Central Park",
-        "Kaduna": "Kaduna Central Park"
-      },
-      "basePrice": 29500,
-      "serviceAttributes": ["Comfort", "Low Pricing", "Quick", "Safety"]
-    },
-    "The Young Legacy Motors": {
-      "id": "young-legacy-motors",
-      "name": "The Young Legacy Motors",
-      "image": "https://i.ibb.co/dKmkMGJ/images-11.png",
-      "states": ["Lagos", "Onitsha", "Enugu", "Abuja", "Port Harcourt", "Owerri", "Benin", "Warri", "Ibadan", "Calabar"],
-      "terminals": {
-        "Lagos": "Mile 2 Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "New Haven",
-        "Abuja": "Mararaba Park",
-        "Port Harcourt": "Rumuodara Park",
-        "Owerri": "Owerri Central",
-        "Benin": "Ring Road",
-        "Warri": "Effurun Roundabout",
-        "Ibadan": "Ibadan Central",
-        "Calabar": "Calabar Main Park"
-      },
-      "basePrice": 35000,
-      "serviceAttributes": ["Low Pricing", "Reliability", "Quick"]
-    },
-    "Benue Link Transport": {
-      "id": "benue-link-transport",
-      "name": "Benue Link Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Benue+Link",
-      "states": ["Benue", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Kano", "Kaduna", "Jos", "Makurdi"],
-      "terminals": {
-        "Benue": "Makurdi Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Onitsha": "Upper Iweka",
-        "Kano": "Kano Line Park",
-        "Kaduna": "Kawo Park",
-        "Jos": "Jos Terminus",
-        "Makurdi": "Makurdi Main Park"
-      },
-      "basePrice": 29500,
-      "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
-    },
-    "Aba Line": {
-      "id": "aba-line",
-      "name": "Aba Line",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Aba+Line",
-      "states": ["Abia", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Owerri"],
-      "terminals": {
-        "Abia": "Aba Main Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Onitsha": "Upper Iweka",
-        "Owerri": "Owerri Main Park"
-      },
-      "basePrice": 33000,
-      "serviceAttributes": ["Comfort", "Reliability", "Customer Service"]
-    },
-    "Nsik Motors (AKTC)": {
-      "id": "nsik-motors",
-      "name": "Nsik Motors (AKTC)",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Nsik+Motors",
-      "states": ["Akwa Ibom", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Calabar", "Uyo"],
-      "terminals": {
-        "Akwa Ibom": "Uyo Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Calabar": "Calabar Central Park",
-        "Uyo": "Uyo Main Park"
-      },
-      "basePrice": 29000,
-      "serviceAttributes": ["Comfort", "Safety", "Quick", "Reliability"]
-    },
-    "Cross Country Transport": {
-      "id": "cross-country-transport",
-      "name": "Cross Country Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Cross+Country",
-      "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Calabar", "Kano", "Jos", "Maiduguri"],
-      "terminals": {
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Calabar": "Calabar Central Park",
-        "Kano": "Kano Main Park",
-        "Jos": "Jos Terminus",
-        "Maiduguri": "Maiduguri Central Park"
-      },
-      "basePrice": 32000,
-      "serviceAttributes": ["Comfort", "Reliability", "Safety"]
-    },
-    "New Nyanya Transport Company": {
-      "id": "new-nyanya-transport",
-      "name": "New Nyanya Transport Company",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=New+Nyanya",
-      "states": ["Abuja", "Lagos", "Kano", "Jos", "Kaduna"],
-      "terminals": {
-        "Abuja": "Nyanya Park",
-        "Lagos": "Jibowu Terminal",
-        "Kano": "Kano Main Park",
-        "Jos": "Jos Terminus",
-        "Kaduna": "Kawo Park"
-      },
-      "basePrice": 37500,
-      "serviceAttributes": ["Low Pricing"]
-    },
-    "Adam and Eve Motors": {
-      "id": "adam-and-eve-motors",
-      "name": "Adam and Eve Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Adam+Eve",
-      "states": ["Abia", "Lagos", "Abuja", "Port Harcourt", "Enugu"],
-      "terminals": {
-        "Abia": "Aba Main Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 33000,
-      "serviceAttributes": ["Comfort"]
-    },
-    "Libra Motors": {
-      "id": "libra-motors",
-      "name": "Libra Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Libra+Motors",
-      "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Ibadan"],
-      "terminals": {
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Onitsha": "Upper Iweka",
-        "Ibadan": "Ibadan Central Park"
-      },
-      "basePrice": 31500,
-      "serviceAttributes": ["Low Pricing", "Quick", "Customer Service"]
-    },
-    "Orizu Motors": {
-      "id": "orizu-motors",
-      "name": "Orizu Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Orizu+Motors",
-      "states": ["Anambra", "Lagos", "Abuja", "Enugu", "Onitsha", "Port Harcourt"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Enugu": "Gariki Terminal",
-        "Onitsha": "Upper Iweka Park",
-        "Port Harcourt": "Rumuola Park"
-      },
-      "basePrice": 33500,
-      "serviceAttributes": ["Low Pricing", "Reliability"]
-    },
-    "Imo Transport (ITC)": {
-      "id": "imo-transport",
-      "name": "Imo Transport (ITC)",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=ITC",
-      "states": ["Imo", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Owerri"],
-      "terminals": {
-        "Imo": "Owerri Main Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Owerri": "Owerri Central"
-      },
-      "basePrice": 32500,
-      "serviceAttributes": ["Low Pricing"]
-    },
-    "Fair Okis Transport": {
-      "id": "fair-okis-transport",
-      "name": "Fair Okis Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Fair+Okis",
-      "states": ["Adamawa", "Abuja", "Lagos", "Kano", "Jos"],
-      "terminals": {
-        "Adamawa": "Yola Main Park",
-        "Abuja": "Utako Park",
-        "Lagos": "Jibowu Terminal",
-        "Kano": "Kano Main Park",
-        "Jos": "Jos Terminus"
-      },
-      "basePrice": 29000,
-      "serviceAttributes": ["Safety"]
-    },
-    "Fair Plus Transport": {
-      "id": "fair-plus-transport",
-      "name": "Fair Plus Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Fair+Plus",
-      "states": ["Adamawa", "Abuja", "Lagos", "Kano"],
-      "terminals": {
-        "Adamawa": "Yola Main Park",
-        "Abuja": "Utako Park",
-        "Lagos": "Jibowu Terminal",
-        "Kano": "Kano Main Park"
-      },
-      "basePrice": 28500,
-      "serviceAttributes": ["Reliability"]
-    },
-    "Akwa Ibom Transport (AKTC)": {
-      "id": "akwa-ibom-transport",
-      "name": "Akwa Ibom Transport (AKTC)",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=AKTC",
-      "states": ["Akwa Ibom", "Lagos", "Abuja", "Port Harcourt", "Calabar", "Uyo"],
-      "terminals": {
-        "Akwa Ibom": "Uyo Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Calabar": "Calabar Central Park",
-        "Uyo": "Uyo Main Park"
-      },
-      "basePrice": 30000,
-      "serviceAttributes": ["Quick"]
-    },
-    "Big Joe Motors": {
-      "id": "big-joe-motors",
-      "name": "Big Joe Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Big+Joe",
-      "states": ["Akwa Ibom", "Lagos", "Port Harcourt", "Calabar", "Uyo"],
-      "terminals": {
-        "Akwa Ibom": "Uyo Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Port Harcourt": "Rumuola Park",
-        "Calabar": "Calabar Central Park",
-        "Uyo": "Uyo Main Park"
-      },
-      "basePrice": 27500,
-      "serviceAttributes": ["Low Pricing", "Quick"]
-    },
-    "Agofure Motors": {
-      "id": "agofure-motors",
-      "name": "Agofure Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Agofure",
-      "states": ["Anambra", "Bayelsa", "Lagos", "Abuja", "Port Harcourt", "Benin", "Warri", "Onitsha"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Bayelsa": "Yenagoa Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Benin": "Ring Road",
-        "Warri": "Effurun Park",
-        "Onitsha": "Upper Iweka"
-      },
-      "basePrice": 32000,
-      "serviceAttributes": ["Comfort", "Low Pricing"]
-    },
-    "E.Ekesons Bros Transport": {
-      "id": "eekesons-transport",
-      "name": "E.Ekesons Bros Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekesons",
-      "states": ["Anambra", "Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Enugu": "Gariki Terminal",
-        "Onitsha": "Upper Iweka"
-      },
-      "basePrice": 34500,
-      "serviceAttributes": ["Comfort", "Safety", "Reliability"]
-    },
-    "Goodness and Mercy Transport": {
-      "id": "goodness-and-mercy",
-      "name": "Goodness and Mercy Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Goodness+Mercy",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 32500,
-      "serviceAttributes": ["Comfort", "Low Pricing", "Customer Service"]
-    },
-    "Okeyson Motors": {
-      "id": "okeyson-motors",
-      "name": "Okeyson Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Okeyson",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 34500,
-      "serviceAttributes": ["Comfort", "Low Pricing", "Reliability"]
-    },
-    "Tracas Nigeria": {
-      "id": "tracas-nigeria",
-      "name": "Tracas Nigeria",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Tracas",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 29500,
-      "serviceAttributes": ["Comfort", "Reliability"]
-    },
-    "Auto Star Limited": {
-      "id": "auto-star-limited",
-      "name": "Auto Star Limited",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Auto+Star",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 34000,
-      "serviceAttributes": ["Comfort", "Reliability"]
-    },
-    "Anambra Express": {
-      "id": "anambra-express",
-      "name": "Anambra Express",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Anambra+Express",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 29000,
-      "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
-    },
-    "Ekene Dili Chukwu Express Limited": {
-      "id": "ekene-dili-chukwu",
-      "name": "Ekene Dili Chukwu Express Limited",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ekene+Dili",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 28000,
-      "serviceAttributes": ["Low Pricing"]
-    },
-    "Interland Transport": {
-      "id": "interland-transport",
-      "name": "Interland Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Interland",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 28000,
-      "serviceAttributes": ["Safety", "Customer Service"]
-    },
-    "Nothing Pass God Motors": {
-      "id": "nothing-pass-god",
-      "name": "Nothing Pass God Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Nothing+Pass+God",
-      "states": ["Anambra", "Lagos", "Abuja", "Onitsha", "Enugu"],
-      "terminals": {
-        "Anambra": "Onitsha Upper Iweka",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 30500,
-      "serviceAttributes": ["Reliability"]
-    },
-    "Yankari Express": {
-      "id": "yankari-express",
-      "name": "Yankari Express",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Yankari",
-      "states": ["Bauchi", "Abuja", "Lagos", "Kano", "Jos"],
-      "terminals": {
-        "Bauchi": "Bauchi Main Park",
-        "Abuja": "Utako Park",
-        "Lagos": "Jibowu Terminal",
-        "Kano": "Kano Main Park",
-        "Jos": "Jos Terminus"
-      },
-      "basePrice": 17500,
-      "serviceAttributes": ["Comfort", "Low Pricing", "Reliability", "Quick"]
-    },
-    "Gombe Line": {
-      "id": "gombe-line",
-      "name": "Gombe Line",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Gombe+Line",
-      "states": ["Bauchi", "Gombe", "Abuja", "Lagos", "Kano"],
-      "terminals": {
-        "Bauchi": "Bauchi Main Park",
-        "Gombe": "Gombe Central Park",
-        "Abuja": "Utako Park",
-        "Lagos": "Jibowu Terminal",
-        "Kano": "Kano Main Park"
-      },
-      "basePrice": 30000,
-      "serviceAttributes": ["Low Pricing", "Safety", "Reliability"]
-    },
-    "Bayelsa State Transport": {
-      "id": "bayelsa-state-transport",
-      "name": "Bayelsa State Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Bayelsa+Transport",
-      "states": ["Bayelsa", "Lagos", "Abuja", "Port Harcourt"],
-      "terminals": {
-        "Bayelsa": "Yenagoa Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park"
-      },
-      "basePrice": 33500,
-      "serviceAttributes": ["Low Pricing", "Reliability"]
-    },
-    "Delta Line": {
-      "id": "delta-line",
-      "name": "Delta Line",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Delta+Line",
-      "states": ["Delta", "Bayelsa", "Lagos", "Abuja", "Port Harcourt", "Benin", "Warri"],
-      "terminals": {
-        "Delta": "Warri Effurun Park",
-        "Bayelsa": "Yenagoa Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Benin": "Ring Road",
-        "Warri": "Effurun Park"
-      },
-      "basePrice": 25500,
-      "serviceAttributes": ["Comfort", "Safety", "Reliability", "Quick"]
-    },
-    "Borno Express": {
-      "id": "borno-express",
-      "name": "Borno Express",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Borno+Express",
-      "states": ["Borno", "Abuja", "Lagos", "Kano", "Maiduguri"],
-      "terminals": {
-        "Borno": "Maiduguri Central Park",
-        "Abuja": "Utako Park",
-        "Lagos": "Jibowu Terminal",
-        "Kano": "Kano Main Park",
-        "Maiduguri": "Maiduguri Main Park"
-      },
-      "basePrice": 28000,
-      "serviceAttributes": ["Comfort", "Safety"]
-    },
-    "Faith Motors": {
-      "id": "faith-motors",
-      "name": "Faith Motors",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Faith+Motors",
-      "states": ["Cross River", "Lagos", "Abuja", "Port Harcourt", "Calabar", "Enugu"],
-      "terminals": {
-        "Cross River": "Calabar Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Calabar": "Calabar Main Park",
-        "Enugu": "Gariki Terminal"
-      },
-      "basePrice": 25500,
-      "serviceAttributes": ["Safety"]
-    },
-    "Ibom Transit": {
-      "id": "ibom-transit",
-      "name": "Ibom Transit",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Ibom+Transit",
-      "states": ["Akwa Ibom", "Lagos", "Abuja", "Port Harcourt", "Calabar", "Uyo"],
-      "terminals": {
-        "Akwa Ibom": "Uyo Central Park",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Port Harcourt": "Rumuola Park",
-        "Calabar": "Calabar Central Park",
-        "Uyo": "Uyo Main Park"
-      },
-      "basePrice": 28000,
-      "serviceAttributes": ["Safety"]
-    },
-    "Glo Bus Transit": {
-      "id": "glo-bus-transit",
-      "name": "Glo Bus Transit",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Glo+Bus",
-      "states": ["Enugu", "Lagos", "Abuja", "Onitsha", "Port Harcourt"],
-      "terminals": {
-        "Enugu": "Gariki Terminal",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Port Harcourt": "Rumuola Park"
-      },
-      "basePrice": 26500,
-      "serviceAttributes": ["Safety"]
-    },
-    "Fellow Transport": {
-      "id": "fellow-transport",
-      "name": "Fellow Transport",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Fellow+Transport",
-      "states": ["Enugu", "Lagos", "Abuja", "Onitsha", "Port Harcourt"],
-      "terminals": {
-        "Enugu": "Gariki Terminal",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Port Harcourt": "Rumuola Park"
-      },
-      "basePrice": 27000,
-      "serviceAttributes": ["Reliability"]
-    },
-    "Tega Express": {
-      "id": "tega-express",
-      "name": "Tega Express",
-      "image": "https://placehold.co/400x300/6B46C1/FFFFFF?text=Tega+Express",
-      "states": ["Enugu", "Lagos", "Abuja", "Onitsha", "Port Harcourt"],
-      "terminals": {
-        "Enugu": "Gariki Terminal",
-        "Lagos": "Jibowu Terminal",
-        "Abuja": "Utako Park",
-        "Onitsha": "Upper Iweka",
-        "Port Harcourt": "Rumuola Park"
-      },
-      "basePrice": 18000,
-      "serviceAttributes": ["Quick"]
-    }
-  },
 
-  "routePrices": {
-    "Lagos-Abuja": {
-      "ABC Transport": 22500,
-      "God is Good Motors": 23500,
-      "Chisco Transport": 21800,
-      "Young Shall Grow": 19500,
-      "Peace Mass Transit": 18500,
-      "GUO Transport": 22800,
-      "The Young Legacy Motors": 19000,
-      "Benue Link Transport": 20000,
-      "Aba Line": 19500,
-      "Nsik Motors (AKTC)": 20000,
-      "Cross Country Transport": 21000,
-      "New Nyanya Transport Company": 18500,
-      "Libra Motors": 20500,
-      "Orizu Motors": 19500,
-      "Agofure Motors": 19000,
-      "E.Ekesons Bros Transport": 19500,
-      "Anambra Express": 18000,
-      "Delta Line": 18500
+    "routePrices": {
+        "Lagos-Abuja": {
+            "ABC Transport": 22500,
+            "God is Good Motors": 23500,
+            "Chisco Transport": 21800,
+            "Young Shall Grow": 19500,
+            "Peace Mass Transit": 18500,
+            "GUO Transport": 22800,
+            "The Young Legacy Motors": 19000,
+            "Benue Link Transport": 20000,
+            "Aba Line": 19500,
+            "Nsik Motors (AKTC)": 20000,
+            "Cross Country Transport": 21000,
+            "New Nyanya Transport Company": 18500,
+            "Libra Motors": 20500,
+            "Orizu Motors": 19500,
+            "Agofure Motors": 19000,
+            "E.Ekesons Bros Transport": 19500,
+            "Anambra Express": 18000,
+            "Delta Line": 18500
+        },
+        "Lagos-Port Harcourt": {
+            "ABC Transport": 19800,
+            "God is Good Motors": 20500,
+            "Chisco Transport": 19200,
+            "Young Shall Grow": 17800,
+            "Peace Mass Transit": 16800,
+            "GUO Transport": 20200,
+            "The Young Legacy Motors": 17500,
+            "Benue Link Transport": 18500,
+            "Aba Line": 17500,
+            "Nsik Motors (AKTC)": 18000,
+            "Cross Country Transport": 19000,
+            "Libra Motors": 19000,
+            "Orizu Motors": 17800,
+            "Agofure Motors": 17500,
+            "E.Ekesons Bros Transport": 18000,
+            "Delta Line": 17000
+        },
+        "Lagos-Onitsha": {
+            "ABC Transport": 18800,
+            "God is Good Motors": 19500,
+            "Chisco Transport": 18200,
+            "Young Shall Grow": 16500,
+            "Peace Mass Transit": 15500,
+            "GUO Transport": 19200,
+            "The Young Legacy Motors": 16000,
+            "Benue Link Transport": 17000,
+            "Aba Line": 16500,
+            "Libra Motors": 18000,
+            "Orizu Motors": 16000,
+            "Agofure Motors": 16500,
+            "E.Ekesons Bros Transport": 17000,
+            "Goodness and Mercy Transport": 15500,
+            "Okeyson Motors": 15500,
+            "Tracas Nigeria": 17000,
+            "Auto Star Limited": 16500,
+            "Anambra Express": 15000
+        },
+        "Lagos-Enugu": {
+            "ABC Transport": 19300,
+            "God is Good Motors": 20000,
+            "Chisco Transport": 18800,
+            "Young Shall Grow": 17000,
+            "Peace Mass Transit": 16000,
+            "GUO Transport": 19700,
+            "The Young Legacy Motors": 16500,
+            "Benue Link Transport": 17500,
+            "Aba Line": 17000,
+            "Nsik Motors (AKTC)": 17500,
+            "Cross Country Transport": 18000,
+            "Libra Motors": 18500,
+            "Orizu Motors": 17000,
+            "E.Ekesons Bros Transport": 17500,
+            "Anambra Express": 16000,
+            "Interland Transport": 17000
+        },
+        "Abuja-Port Harcourt": {
+            "ABC Transport": 21500,
+            "God is Good Motors": 22500,
+            "Chisco Transport": 20800,
+            "Young Shall Grow": 18800,
+            "Peace Mass Transit": 17800,
+            "GUO Transport": 21800,
+            "The Young Legacy Motors": 18300,
+            "Benue Link Transport": 19300,
+            "Aba Line": 18800,
+            "Cross Country Transport": 20000,
+            "Agofure Motors": 18500,
+            "Delta Line": 18000
+        },
+        "Abuja-Onitsha": {
+            "ABC Transport": 18300,
+            "God is Good Motors": 19000,
+            "Chisco Transport": 17800,
+            "Young Shall Grow": 16000,
+            "Peace Mass Transit": 15000,
+            "GUO Transport": 18500,
+            "The Young Legacy Motors": 15500,
+            "Benue Link Transport": 16500,
+            "Orizu Motors": 15500,
+            "Agofure Motors": 16000,
+            "Anambra Express": 14500
+        },
+        "Abuja-Enugu": {
+            "ABC Transport": 18800,
+            "God is Good Motors": 19500,
+            "Chisco Transport": 18300,
+            "Young Shall Grow": 16500,
+            "Peace Mass Transit": 15500,
+            "GUO Transport": 19000,
+            "The Young Legacy Motors": 16000,
+            "Benue Link Transport": 17000,
+            "Cross Country Transport": 17500,
+            "Orizu Motors": 16000,
+            "Anambra Express": 15000
+        },
+        "Port Harcourt-Onitsha": {
+            "ABC Transport": 17800,
+            "God is Good Motors": 18500,
+            "Chisco Transport": 17200,
+            "Young Shall Grow": 15500,
+            "Peace Mass Transit": 14500,
+            "GUO Transport": 18000,
+            "The Young Legacy Motors": 15000,
+            "Benue Link Transport": 16000,
+            "Aba Line": 15500,
+            "Orizu Motors": 15000,
+            "Agofure Motors": 15500
+        },
+        "Port Harcourt-Enugu": {
+            "ABC Transport": 18300,
+            "God is Good Motors": 19000,
+            "Chisco Transport": 17800,
+            "Young Shall Grow": 16000,
+            "Peace Mass Transit": 15000,
+            "GUO Transport": 18500,
+            "The Young Legacy Motors": 15500,
+            "Benue Link Transport": 16500,
+            "Aba Line": 16000,
+            "Nsik Motors (AKTC)": 16000
+        },
+        "Onitsha-Enugu": {
+            "ABC Transport": 17300,
+            "God is Good Motors": 18000,
+            "Chisco Transport": 16800,
+            "Young Shall Grow": 15000,
+            "Peace Mass Transit": 14000,
+            "GUO Transport": 17500,
+            "The Young Legacy Motors": 14500,
+            "Benue Link Transport": 15500,
+            "Orizu Motors": 14500,
+            "Anambra Express": 13500,
+            "Nothing Pass God Motors": 14500
+        },
+        "Lagos-Ibadan": {
+            "ABC Transport": 8000,
+            "God is Good Motors": 8500,
+            "Chisco Transport": 7800,
+            "Young Shall Grow": 6500,
+            "Peace Mass Transit": 5500,
+            "GUO Transport": 8200,
+            "The Young Legacy Motors": 6000,
+            "Benue Link Transport": 7000,
+            "Libra Motors": 7500
+        },
+        "Lagos-Benin": {
+            "ABC Transport": 12500,
+            "God is Good Motors": 13000,
+            "Chisco Transport": 11800,
+            "Young Shall Grow": 10500,
+            "Peace Mass Transit": 9500,
+            "GUO Transport": 12200,
+            "The Young Legacy Motors": 10000,
+            "Benue Link Transport": 11000,
+            "Agofure Motors": 10500,
+            "Delta Line": 10000
+        },
+        "Abuja-Kano": {
+            "ABC Transport": 16300,
+            "God is Good Motors": 17000,
+            "Chisco Transport": 15800,
+            "Young Shall Grow": 14000,
+            "Peace Mass Transit": 13000,
+            "GUO Transport": 16500,
+            "The Young Legacy Motors": 13500,
+            "Benue Link Transport": 14500,
+            "Cross Country Transport": 15000,
+            "New Nyanya Transport Company": 13500
+        },
+        "Abuja-Kaduna": {
+            "ABC Transport": 7000,
+            "God is Good Motors": 7500,
+            "Chisco Transport": 6800,
+            "Young Shall Grow": 5500,
+            "Peace Mass Transit": 4500,
+            "GUO Transport": 7200,
+            "The Young Legacy Motors": 5000,
+            "Benue Link Transport": 6000,
+            "New Nyanya Transport Company": 4500
+        },
+        "Lagos-Calabar": {
+            "ABC Transport": 21000,
+            "God is Good Motors": 21500,
+            "Chisco Transport": 20000,
+            "Young Shall Grow": 18500,
+            "Peace Mass Transit": 17500,
+            "GUO Transport": 21000,
+            "Nsik Motors (AKTC)": 19000,
+            "Cross Country Transport": 20000,
+            "Faith Motors": 19500,
+            "Ibom Transit": 19000
+        },
+        "Lagos-Uyo": {
+            "ABC Transport": 20500,
+            "God is Good Motors": 21000,
+            "Peace Mass Transit": 17000,
+            "Nsik Motors (AKTC)": 18500,
+            "Akwa Ibom Transport (AKTC)": 17500,
+            "Big Joe Motors": 17000,
+            "Ibom Transit": 18500
+        },
+        "Abuja-Jos": {
+            "ABC Transport": 10000,
+            "Peace Mass Transit": 8500,
+            "Young Shall Grow": 9000,
+            "Benue Link Transport": 9500,
+            "Cross Country Transport": 9500,
+            "New Nyanya Transport Company": 8500,
+            "Fair Okis Transport": 9000,
+            "Yankari Express": 8500
+        }
     },
-    "Lagos-Port Harcourt": {
-      "ABC Transport": 19800,
-      "God is Good Motors": 20500,
-      "Chisco Transport": 19200,
-      "Young Shall Grow": 17800,
-      "Peace Mass Transit": 16800,
-      "GUO Transport": 20200,
-      "The Young Legacy Motors": 17500,
-      "Benue Link Transport": 18500,
-      "Aba Line": 17500,
-      "Nsik Motors (AKTC)": 18000,
-      "Cross Country Transport": 19000,
-      "Libra Motors": 19000,
-      "Orizu Motors": 17800,
-      "Agofure Motors": 17500,
-      "E.Ekesons Bros Transport": 18000,
-      "Delta Line": 17000
-    },
-    "Lagos-Onitsha": {
-      "ABC Transport": 18800,
-      "God is Good Motors": 19500,
-      "Chisco Transport": 18200,
-      "Young Shall Grow": 16500,
-      "Peace Mass Transit": 15500,
-      "GUO Transport": 19200,
-      "The Young Legacy Motors": 16000,
-      "Benue Link Transport": 17000,
-      "Aba Line": 16500,
-      "Libra Motors": 18000,
-      "Orizu Motors": 16000,
-      "Agofure Motors": 16500,
-      "E.Ekesons Bros Transport": 17000,
-      "Goodness and Mercy Transport": 15500,
-      "Okeyson Motors": 15500,
-      "Tracas Nigeria": 17000,
-      "Auto Star Limited": 16500,
-      "Anambra Express": 15000
-    },
-    "Lagos-Enugu": {
-      "ABC Transport": 19300,
-      "God is Good Motors": 20000,
-      "Chisco Transport": 18800,
-      "Young Shall Grow": 17000,
-      "Peace Mass Transit": 16000,
-      "GUO Transport": 19700,
-      "The Young Legacy Motors": 16500,
-      "Benue Link Transport": 17500,
-      "Aba Line": 17000,
-      "Nsik Motors (AKTC)": 17500,
-      "Cross Country Transport": 18000,
-      "Libra Motors": 18500,
-      "Orizu Motors": 17000,
-      "E.Ekesons Bros Transport": 17500,
-      "Anambra Express": 16000,
-      "Interland Transport": 17000
-    },
-    "Abuja-Port Harcourt": {
-      "ABC Transport": 21500,
-      "God is Good Motors": 22500,
-      "Chisco Transport": 20800,
-      "Young Shall Grow": 18800,
-      "Peace Mass Transit": 17800,
-      "GUO Transport": 21800,
-      "The Young Legacy Motors": 18300,
-      "Benue Link Transport": 19300,
-      "Aba Line": 18800,
-      "Cross Country Transport": 20000,
-      "Agofure Motors": 18500,
-      "Delta Line": 18000
-    },
-    "Abuja-Onitsha": {
-      "ABC Transport": 18300,
-      "God is Good Motors": 19000,
-      "Chisco Transport": 17800,
-      "Young Shall Grow": 16000,
-      "Peace Mass Transit": 15000,
-      "GUO Transport": 18500,
-      "The Young Legacy Motors": 15500,
-      "Benue Link Transport": 16500,
-      "Orizu Motors": 15500,
-      "Agofure Motors": 16000,
-      "Anambra Express": 14500
-    },
-    "Abuja-Enugu": {
-      "ABC Transport": 18800,
-      "God is Good Motors": 19500,
-      "Chisco Transport": 18300,
-      "Young Shall Grow": 16500,
-      "Peace Mass Transit": 15500,
-      "GUO Transport": 19000,
-      "The Young Legacy Motors": 16000,
-      "Benue Link Transport": 17000,
-      "Cross Country Transport": 17500,
-      "Orizu Motors": 16000,
-      "Anambra Express": 15000
-    },
-    "Port Harcourt-Onitsha": {
-      "ABC Transport": 17800,
-      "God is Good Motors": 18500,
-      "Chisco Transport": 17200,
-      "Young Shall Grow": 15500,
-      "Peace Mass Transit": 14500,
-      "GUO Transport": 18000,
-      "The Young Legacy Motors": 15000,
-      "Benue Link Transport": 16000,
-      "Aba Line": 15500,
-      "Orizu Motors": 15000,
-      "Agofure Motors": 15500
-    },
-    "Port Harcourt-Enugu": {
-      "ABC Transport": 18300,
-      "God is Good Motors": 19000,
-      "Chisco Transport": 17800,
-      "Young Shall Grow": 16000,
-      "Peace Mass Transit": 15000,
-      "GUO Transport": 18500,
-      "The Young Legacy Motors": 15500,
-      "Benue Link Transport": 16500,
-      "Aba Line": 16000,
-      "Nsik Motors (AKTC)": 16000
-    },
-    "Onitsha-Enugu": {
-      "ABC Transport": 17300,
-      "God is Good Motors": 18000,
-      "Chisco Transport": 16800,
-      "Young Shall Grow": 15000,
-      "Peace Mass Transit": 14000,
-      "GUO Transport": 17500,
-      "The Young Legacy Motors": 14500,
-      "Benue Link Transport": 15500,
-      "Orizu Motors": 14500,
-      "Anambra Express": 13500,
-      "Nothing Pass God Motors": 14500
-    },
-    "Lagos-Ibadan": {
-      "ABC Transport": 8000,
-      "God is Good Motors": 8500,
-      "Chisco Transport": 7800,
-      "Young Shall Grow": 6500,
-      "Peace Mass Transit": 5500,
-      "GUO Transport": 8200,
-      "The Young Legacy Motors": 6000,
-      "Benue Link Transport": 7000,
-      "Libra Motors": 7500
-    },
-    "Lagos-Benin": {
-      "ABC Transport": 12500,
-      "God is Good Motors": 13000,
-      "Chisco Transport": 11800,
-      "Young Shall Grow": 10500,
-      "Peace Mass Transit": 9500,
-      "GUO Transport": 12200,
-      "The Young Legacy Motors": 10000,
-      "Benue Link Transport": 11000,
-      "Agofure Motors": 10500,
-      "Delta Line": 10000
-    },
-    "Abuja-Kano": {
-      "ABC Transport": 16300,
-      "God is Good Motors": 17000,
-      "Chisco Transport": 15800,
-      "Young Shall Grow": 14000,
-      "Peace Mass Transit": 13000,
-      "GUO Transport": 16500,
-      "The Young Legacy Motors": 13500,
-      "Benue Link Transport": 14500,
-      "Cross Country Transport": 15000,
-      "New Nyanya Transport Company": 13500
-    },
-    "Abuja-Kaduna": {
-      "ABC Transport": 7000,
-      "God is Good Motors": 7500,
-      "Chisco Transport": 6800,
-      "Young Shall Grow": 5500,
-      "Peace Mass Transit": 4500,
-      "GUO Transport": 7200,
-      "The Young Legacy Motors": 5000,
-      "Benue Link Transport": 6000,
-      "New Nyanya Transport Company": 4500
-    },
-    "Lagos-Calabar": {
-      "ABC Transport": 21000,
-      "God is Good Motors": 21500,
-      "Chisco Transport": 20000,
-      "Young Shall Grow": 18500,
-      "Peace Mass Transit": 17500,
-      "GUO Transport": 21000,
-      "Nsik Motors (AKTC)": 19000,
-      "Cross Country Transport": 20000,
-      "Faith Motors": 19500,
-      "Ibom Transit": 19000
-    },
-    "Lagos-Uyo": {
-      "ABC Transport": 20500,
-      "God is Good Motors": 21000,
-      "Peace Mass Transit": 17000,
-      "Nsik Motors (AKTC)": 18500,
-      "Akwa Ibom Transport (AKTC)": 17500,
-      "Big Joe Motors": 17000,
-      "Ibom Transit": 18500
-    },
-    "Abuja-Jos": {
-      "ABC Transport": 10000,
-      "Peace Mass Transit": 8500,
-      "Young Shall Grow": 9000,
-      "Benue Link Transport": 9500,
-      "Cross Country Transport": 9500,
-      "New Nyanya Transport Company": 8500,
-      "Fair Okis Transport": 9000,
-      "Yankari Express": 8500
-    }
-  },
 
-  "states": {
-    "Lagos": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "New Nyanya Transport Company", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Fair Okis Transport", "Fair Plus Transport", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Yankari Express", "Gombe Line", "Bayelsa State Transport", "Delta Line", "Borno Express", "Faith Motors", "Ibom Transit", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-      "region": "Southwest",
-      "majorTerminals": ["Jibowu", "Festac", "Maza-Maza", "Ikeja", "Mile 2"]
+    "states": {
+        "Lagos": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "New Nyanya Transport Company", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Fair Okis Transport", "Fair Plus Transport", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Yankari Express", "Gombe Line", "Bayelsa State Transport", "Delta Line", "Borno Express", "Faith Motors", "Ibom Transit", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
+            "region": "Southwest",
+            "majorTerminals": ["Jibowu", "Festac", "Maza-Maza", "Ikeja", "Mile 2"]
+        },
+        "Abuja": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "New Nyanya Transport Company", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Fair Okis Transport", "Fair Plus Transport", "Akwa Ibom Transport (AKTC)", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Yankari Express", "Gombe Line", "Bayelsa State Transport", "Delta Line", "Borno Express", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
+            "region": "North Central",
+            "majorTerminals": ["Garki", "Jabi", "Apo", "Wuse", "Kubwa", "Nyanya", "Mararaba", "Utako"]
+        },
+        "Port Harcourt": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Bayelsa State Transport", "Delta Line", "Faith Motors", "Ibom Transit", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
+            "region": "South South",
+            "majorTerminals": ["Rumuola", "Choba", "Rumuokoro", "Rumuomasi", "Rumuodara"]
+        },
+        "Enugu": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
+            "region": "Southeast",
+            "majorTerminals": ["Gariki", "Okpara Avenue", "Holy Ghost", "New Haven"]
+        },
+        "Onitsha": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Libra Motors", "Orizu Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
+            "region": "Southeast",
+            "majorTerminals": ["Upper Iweka", "New Park", "New Market Park"]
+        },
+        "Kano": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Fair Plus Transport", "Yankari Express", "Gombe Line", "Borno Express"],
+            "region": "Northwest",
+            "majorTerminals": ["Kofar Nassarawa", "Kano Line", "Kano Main", "Kano Central"]
+        },
+        "Ibadan": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Libra Motors"],
+            "region": "Southwest",
+            "majorTerminals": ["Ibadan Central", "Challenge Park"]
+        },
+        "Benin": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Agofure Motors", "Delta Line"],
+            "region": "South South",
+            "majorTerminals": ["Ring Road", "Benin Central", "Benin City"]
+        },
+        "Owerri": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Aba Line", "Imo Transport (ITC)"],
+            "region": "Southeast",
+            "majorTerminals": ["Owerri Main", "Relief Market", "Douglas Road", "Owerri Central"]
+        },
+        "Calabar": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Nsik Motors (AKTC)", "Cross Country Transport", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Faith Motors", "Ibom Transit"],
+            "region": "South South",
+            "majorTerminals": ["Marian", "Murtala", "Calabar Central", "Calabar Main"]
+        },
+        "Jos": {
+            "companies": ["Peace Mass Transit", "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "GUO Transport", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Yankari Express"],
+            "region": "North Central",
+            "majorTerminals": ["Jos Terminus", "Jos Main"]
+        },
+        "Kaduna": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "New Nyanya Transport Company"],
+            "region": "Northwest",
+            "majorTerminals": ["Kawo Park", "Kaduna Central"]
+        },
+        "Warri": {
+            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Agofure Motors", "Delta Line"],
+            "region": "South South",
+            "majorTerminals": ["Effurun", "Warri Main", "Warri Central", "Effurun Roundabout"]
+        },
+        "Uyo": {
+            "companies": ["God is Good Motors", "ABC Transport", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit"],
+            "region": "South South",
+            "majorTerminals": ["Uyo Central", "Uyo Motor Park", "Uyo Main Park"]
+        },
+        "Abeokuta": {
+            "companies": ["GUO Transport", "ABC Transport", "God is Good Motors", "Chisco Transport"],
+            "region": "Southwest",
+            "majorTerminals": ["Abeokuta Central Park"]
+        },
+        "Abia": {
+            "companies": ["Aba Line", "Adam and Eve Motors"],
+            "region": "Southeast",
+            "majorTerminals": ["Aba Main Park"]
+        },
+        "Adamawa": {
+            "companies": ["Fair Okis Transport", "Fair Plus Transport", "GUO Transport", "Young Shall Grow", "Chisco Transport"],
+            "region": "Northeast",
+            "majorTerminals": ["Yola Main Park"]
+        },
+        "Akwa Ibom": {
+            "companies": ["Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit", "Chisco Transport", "God is Good Motors", "Peace Mass Transit", "ABC Transport"],
+            "region": "South South",
+            "majorTerminals": ["Uyo Central Park", "Uyo Main Park"]
+        },
+        "Anambra": {
+            "companies": ["God is Good Motors", "ABC Transport", "Benue Link Transport", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Orizu Motors"],
+            "region": "Southeast",
+            "majorTerminals": ["Onitsha Upper Iweka", "Onitsha New Park"]
+        },
+        "Bauchi": {
+            "companies": ["GUO Transport", "ABC Transport", "Benue Link Transport", "Yankari Express", "Peace Mass Transit", "Young Shall Grow", "Gombe Line", "Cross Country Transport"],
+            "region": "Northeast",
+            "majorTerminals": ["Bauchi Main Park"]
+        },
+        "Bayelsa": {
+            "companies": ["God is Good Motors", "ABC Transport", "Agofure Motors", "Delta Line", "Peace Mass Transit", "Bayelsa State Transport", "Chisco Transport"],
+            "region": "South South",
+            "majorTerminals": ["Yenagoa Central Park"]
+        },
+        "Benue": {
+            "companies": ["ABC Transport", "God is Good Motors", "GUO Transport", "Peace Mass Transit", "Young Shall Grow", "Orizu Motors", "The Young Legacy Motors", "Benue Link Transport"],
+            "region": "North Central",
+            "majorTerminals": ["Makurdi Central Park", "Makurdi Main Park"]
+        },
+        "Borno": {
+            "companies": ["Borno Express", "GUO Transport", "Gombe Line", "Peace Mass Transit", "Cross Country Transport"],
+            "region": "Northeast",
+            "majorTerminals": ["Maiduguri Central Park", "Maiduguri Main Park"]
+        },
+        "Cross River": {
+            "companies": ["God is Good Motors", "Faith Motors", "GUO Transport", "Delta Line", "Peace Mass Transit"],
+            "region": "South South",
+            "majorTerminals": ["Calabar Central Park"]
+        },
+        "Delta": {
+            "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors", "Delta Line", "Agofure Motors"],
+            "region": "South South",
+            "majorTerminals": ["Warri Effurun Park", "Asaba Park"]
+        },
+        "Ebonyi": {
+            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
+            "region": "Southeast",
+            "majorTerminals": ["Abakaliki Main Park"]
+        },
+        "Edo": {
+            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "South South",
+            "majorTerminals": ["Benin Ring Road", "Benin Central"]
+        },
+        "Ekiti": {
+            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"],
+            "region": "Southwest",
+            "majorTerminals": ["Ado-Ekiti Main Park"]
+        },
+        "Gombe": {
+            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors", "Gombe Line"],
+            "region": "Northeast",
+            "majorTerminals": ["Gombe Central Park"]
+        },
+        "Imo": {
+            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Delta Line", "Peace Mass Transit", "Imo Transport (ITC)"],
+            "region": "Southeast",
+            "majorTerminals": ["Owerri Main Park", "Owerri Central"]
+        },
+        "Jigawa": {
+            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"],
+            "region": "Northwest",
+            "majorTerminals": ["Dutse Main Park"]
+        },
+        "Kebbi": {
+            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
+            "region": "Northwest",
+            "majorTerminals": ["Birnin Kebbi Main Park"]
+        },
+        "Kogi": {
+            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "North Central",
+            "majorTerminals": ["Lokoja Main Park"]
+        },
+        "Kwara": {
+            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
+            "region": "North Central",
+            "majorTerminals": ["Ilorin Main Park"]
+        },
+        "Nasarawa": {
+            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
+            "region": "North Central",
+            "majorTerminals": ["Lafia Main Park"]
+        },
+        "Niger": {
+            "companies": ["Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "North Central",
+            "majorTerminals": ["Minna Main Park"]
+        },
+        "Ogun": {
+            "companies": ["God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
+            "region": "Southwest",
+            "majorTerminals": ["Abeokuta Central Park"]
+        },
+        "Ondo": {
+            "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "Southwest",
+            "majorTerminals": ["Akure Main Park"]
+        },
+        "Osun": {
+            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
+            "region": "Southwest",
+            "majorTerminals": ["Osogbo Main Park"]
+        },
+        "Oyo": {
+            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "Southwest",
+            "majorTerminals": ["Ibadan Challenge Park", "Ibadan Central"]
+        },
+        "Plateau": {
+            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
+            "region": "North Central",
+            "majorTerminals": ["Jos Terminus", "Jos Main Park"]
+        },
+        "Rivers": {
+            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "South South",
+            "majorTerminals": ["Port Harcourt Rumuola", "Port Harcourt Choba"]
+        },
+        "Sokoto": {
+            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
+            "region": "Northwest",
+            "majorTerminals": ["Sokoto Main Park"]
+        },
+        "Taraba": {
+            "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "Northeast",
+            "majorTerminals": ["Jalingo Main Park"]
+        },
+        "Yobe": {
+            "companies": ["God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
+            "region": "Northeast",
+            "majorTerminals": ["Damaturu Main Park"]
+        },
+        "Zamfara": {
+            "companies": ["Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
+            "region": "Northwest",
+            "majorTerminals": ["Gusau Main Park"]
+        }
     },
-    "Abuja": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "New Nyanya Transport Company", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Fair Okis Transport", "Fair Plus Transport", "Akwa Ibom Transport (AKTC)", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Yankari Express", "Gombe Line", "Bayelsa State Transport", "Delta Line", "Borno Express", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-      "region": "North Central", 
-      "majorTerminals": ["Garki", "Jabi", "Apo", "Wuse", "Kubwa", "Nyanya", "Mararaba", "Utako"]
-    },
-    "Port Harcourt": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Bayelsa State Transport", "Delta Line", "Faith Motors", "Ibom Transit", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-      "region": "South South",
-      "majorTerminals": ["Rumuola", "Choba", "Rumuokoro", "Rumuomasi", "Rumuodara"]
-    },
-    "Enugu": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-      "region": "Southeast",
-      "majorTerminals": ["Gariki", "Okpara Avenue", "Holy Ghost", "New Haven"]
-    },
-    "Onitsha": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Libra Motors", "Orizu Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-      "region": "Southeast",
-      "majorTerminals": ["Upper Iweka", "New Park", "New Market Park"]
-    },
-    "Kano": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Fair Plus Transport", "Yankari Express", "Gombe Line", "Borno Express"],
-      "region": "Northwest",
-      "majorTerminals": ["Kofar Nassarawa", "Kano Line", "Kano Main", "Kano Central"]
-    },
-    "Ibadan": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Libra Motors"],
-      "region": "Southwest",
-      "majorTerminals": ["Ibadan Central", "Challenge Park"]
-    },
-    "Benin": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Agofure Motors", "Delta Line"],
-      "region": "South South",
-      "majorTerminals": ["Ring Road", "Benin Central", "Benin City"]
-    },
-    "Owerri": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Aba Line", "Imo Transport (ITC)"],
-      "region": "Southeast", 
-      "majorTerminals": ["Owerri Main", "Relief Market", "Douglas Road", "Owerri Central"]
-    },
-    "Calabar": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Nsik Motors (AKTC)", "Cross Country Transport", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Faith Motors", "Ibom Transit"],
-      "region": "South South",
-      "majorTerminals": ["Marian", "Murtala", "Calabar Central", "Calabar Main"]
-    },
-    "Jos": {
-      "companies": ["Peace Mass Transit", "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "GUO Transport", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Yankari Express"],
-      "region": "North Central",
-      "majorTerminals": ["Jos Terminus", "Jos Main"]
-    },
-    "Kaduna": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "New Nyanya Transport Company"],
-      "region": "Northwest",
-      "majorTerminals": ["Kawo Park", "Kaduna Central"]
-    },
-    "Warri": {
-      "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Agofure Motors", "Delta Line"],
-      "region": "South South",
-      "majorTerminals": ["Effurun", "Warri Main", "Warri Central", "Effurun Roundabout"]
-    },
-    "Uyo": {
-      "companies": ["God is Good Motors", "ABC Transport", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit"],
-      "region": "South South",
-      "majorTerminals": ["Uyo Central", "Uyo Motor Park", "Uyo Main Park"]
-    },
-    "Abeokuta": {
-      "companies": ["GUO Transport", "ABC Transport", "God is Good Motors", "Chisco Transport"],
-      "region": "Southwest",
-      "majorTerminals": ["Abeokuta Central Park"]
-    },
-    "Abia": {
-      "companies": ["Aba Line", "Adam and Eve Motors"],
-      "region": "Southeast",
-      "majorTerminals": ["Aba Main Park"]
-    },
-    "Adamawa": {
-      "companies": ["Fair Okis Transport", "Fair Plus Transport", "GUO Transport", "Young Shall Grow", "Chisco Transport"],
-      "region": "Northeast",
-      "majorTerminals": ["Yola Main Park"]
-    },
-    "Akwa Ibom": {
-      "companies": ["Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit", "Chisco Transport", "God is Good Motors", "Peace Mass Transit", "ABC Transport"],
-      "region": "South South",
-      "majorTerminals": ["Uyo Central Park", "Uyo Main Park"]
-    },
-    "Anambra": {
-      "companies": ["God is Good Motors", "ABC Transport", "Benue Link Transport", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Orizu Motors"],
-      "region": "Southeast",
-      "majorTerminals": ["Onitsha Upper Iweka", "Onitsha New Park"]
-    },
-    "Bauchi": {
-      "companies": ["GUO Transport", "ABC Transport", "Benue Link Transport", "Yankari Express", "Peace Mass Transit", "Young Shall Grow", "Gombe Line", "Cross Country Transport"],
-      "region": "Northeast",
-      "majorTerminals": ["Bauchi Main Park"]
-    },
-    "Bayelsa": {
-      "companies": ["God is Good Motors", "ABC Transport", "Agofure Motors", "Delta Line", "Peace Mass Transit", "Bayelsa State Transport", "Chisco Transport"],
-      "region": "South South",
-      "majorTerminals": ["Yenagoa Central Park"]
-    },
-    "Benue": {
-      "companies": ["ABC Transport", "God is Good Motors", "GUO Transport", "Peace Mass Transit", "Young Shall Grow", "Orizu Motors", "The Young Legacy Motors", "Benue Link Transport"],
-      "region": "North Central",
-      "majorTerminals": ["Makurdi Central Park", "Makurdi Main Park"]
-    },
-    "Borno": {
-      "companies": ["Borno Express", "GUO Transport", "Gombe Line", "Peace Mass Transit", "Cross Country Transport"],
-      "region": "Northeast",
-      "majorTerminals": ["Maiduguri Central Park", "Maiduguri Main Park"]
-    },
-    "Cross River": {
-      "companies": ["God is Good Motors", "Faith Motors", "GUO Transport", "Delta Line", "Peace Mass Transit"],
-      "region": "South South",
-      "majorTerminals": ["Calabar Central Park"]
-    },
-    "Delta": {
-      "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors", "Delta Line", "Agofure Motors"],
-      "region": "South South",
-      "majorTerminals": ["Warri Effurun Park", "Asaba Park"]
-    },
-    "Ebonyi": {
-      "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-      "region": "Southeast",
-      "majorTerminals": ["Abakaliki Main Park"]
-    },
-    "Edo": {
-      "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "South South",
-      "majorTerminals": ["Benin Ring Road", "Benin Central"]
-    },
-    "Ekiti": {
-      "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"],
-      "region": "Southwest",
-      "majorTerminals": ["Ado-Ekiti Main Park"]
-    },
-    "Gombe": {
-      "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors", "Gombe Line"],
-      "region": "Northeast",
-      "majorTerminals": ["Gombe Central Park"]
-    },
-    "Imo": {
-      "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Delta Line", "Peace Mass Transit", "Imo Transport (ITC)"],
-      "region": "Southeast",
-      "majorTerminals": ["Owerri Main Park", "Owerri Central"]
-    },
-    "Jigawa": {
-      "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"],
-      "region": "Northwest",
-      "majorTerminals": ["Dutse Main Park"]
-    },
-    "Kebbi": {
-      "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-      "region": "Northwest",
-      "majorTerminals": ["Birnin Kebbi Main Park"]
-    },
-    "Kogi": {
-      "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "North Central",
-      "majorTerminals": ["Lokoja Main Park"]
-    },
-    "Kwara": {
-      "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-      "region": "North Central",
-      "majorTerminals": ["Ilorin Main Park"]
-    },
-    "Nasarawa": {
-      "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
-      "region": "North Central",
-      "majorTerminals": ["Lafia Main Park"]
-    },
-    "Niger": {
-      "companies": ["Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "North Central",
-      "majorTerminals": ["Minna Main Park"]
-    },
-    "Ogun": {
-      "companies": ["God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
-      "region": "Southwest",
-      "majorTerminals": ["Abeokuta Central Park"]
-    },
-    "Ondo": {
-      "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "Southwest",
-      "majorTerminals": ["Akure Main Park"]
-    },
-    "Osun": {
-      "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-      "region": "Southwest",
-      "majorTerminals": ["Osogbo Main Park"]
-    },
-    "Oyo": {
-      "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "Southwest",
-      "majorTerminals": ["Ibadan Challenge Park", "Ibadan Central"]
-    },
-    "Plateau": {
-      "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-      "region": "North Central",
-      "majorTerminals": ["Jos Terminus", "Jos Main Park"]
-    },
-    "Rivers": {
-      "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "South South",
-      "majorTerminals": ["Port Harcourt Rumuola", "Port Harcourt Choba"]
-    },
-    "Sokoto": {
-      "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-      "region": "Northwest",
-      "majorTerminals": ["Sokoto Main Park"]
-    },
-    "Taraba": {
-      "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "Northeast",
-      "majorTerminals": ["Jalingo Main Park"]
-    },
-    "Yobe": {
-      "companies": ["God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
-      "region": "Northeast",
-      "majorTerminals": ["Damaturu Main Park"]
-    },
-    "Zamfara": {
-      "companies": ["Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-      "region": "Northwest",
-      "majorTerminals": ["Gusau Main Park"]
-    }
-  },
 
-  "metadata": {
-    "totalCompanies": 41,
-    "totalRoutes": 20,
-    "totalStates": 37,
-    "priceCurrency": "NGN",
-    "dataSource": "Vyra Transport Analysis 2025",
-    "lastUpdated": "2025-11-01"
-  }
+    "metadata": {
+        "totalCompanies": 41,
+        "totalRoutes": 20,
+        "totalStates": 37,
+        "priceCurrency": "NGN",
+        "dataSource": "Vyra Transport Analysis 2025",
+        "lastUpdated": "2025-11-01"
+    }
 }
