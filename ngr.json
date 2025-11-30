@@ -4107,236 +4107,560 @@
 
     "states": {
         "Lagos": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "New Nyanya Transport Company", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Fair Okis Transport", "Fair Plus Transport", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Yankari Express", "Gombe Line", "Bayelsa State Transport", "Delta Line", "Borno Express", "Faith Motors", "Ibom Transit", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-            "region": "Southwest",
-            "majorTerminals": ["Jibowu", "Festac", "Maza-Maza", "Ikeja", "Mile 2"]
-        },
-        "Abuja": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "New Nyanya Transport Company", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Fair Okis Transport", "Fair Plus Transport", "Akwa Ibom Transport (AKTC)", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Yankari Express", "Gombe Line", "Bayelsa State Transport", "Delta Line", "Borno Express", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-            "region": "North Central",
-            "majorTerminals": ["Garki", "Jabi", "Apo", "Wuse", "Kubwa", "Nyanya", "Mararaba", "Utako"]
-        },
-        "Port Harcourt": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Bayelsa State Transport", "Delta Line", "Faith Motors", "Ibom Transit", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-            "region": "South South",
-            "majorTerminals": ["Rumuola", "Choba", "Rumuokoro", "Rumuomasi", "Rumuodara"]
-        },
-        "Enugu": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-            "region": "Southeast",
-            "majorTerminals": ["Gariki", "Okpara Avenue", "Holy Ghost", "New Haven"]
-        },
-        "Onitsha": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Libra Motors", "Orizu Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"],
-            "region": "Southeast",
-            "majorTerminals": ["Upper Iweka", "New Park", "New Market Park"]
-        },
-        "Kano": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Fair Plus Transport", "Yankari Express", "Gombe Line", "Borno Express"],
-            "region": "Northwest",
-            "majorTerminals": ["Kofar Nassarawa", "Kano Line", "Kano Main", "Kano Central"]
-        },
-        "Ibadan": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Libra Motors"],
-            "region": "Southwest",
-            "majorTerminals": ["Ibadan Central", "Challenge Park"]
-        },
-        "Benin": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Agofure Motors", "Delta Line"],
-            "region": "South South",
-            "majorTerminals": ["Ring Road", "Benin Central", "Benin City"]
-        },
-        "Owerri": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Aba Line", "Imo Transport (ITC)"],
-            "region": "Southeast",
-            "majorTerminals": ["Owerri Main", "Relief Market", "Douglas Road", "Owerri Central"]
-        },
-        "Calabar": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Nsik Motors (AKTC)", "Cross Country Transport", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Faith Motors", "Ibom Transit"],
-            "region": "South South",
-            "majorTerminals": ["Marian", "Murtala", "Calabar Central", "Calabar Main"]
-        },
-        "Jos": {
-            "companies": ["Peace Mass Transit", "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "GUO Transport", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Yankari Express"],
-            "region": "North Central",
-            "majorTerminals": ["Jos Terminus", "Jos Main"]
-        },
-        "Kaduna": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "New Nyanya Transport Company"],
-            "region": "Northwest",
-            "majorTerminals": ["Kawo Park", "Kaduna Central"]
-        },
-        "Warri": {
-            "companies": ["ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Agofure Motors", "Delta Line"],
-            "region": "South South",
-            "majorTerminals": ["Effurun", "Warri Main", "Warri Central", "Effurun Roundabout"]
-        },
-        "Uyo": {
-            "companies": ["God is Good Motors", "ABC Transport", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit"],
-            "region": "South South",
-            "majorTerminals": ["Uyo Central", "Uyo Motor Park", "Uyo Main Park"]
-        },
-        "Abeokuta": {
-            "companies": ["GUO Transport", "ABC Transport", "God is Good Motors", "Chisco Transport"],
-            "region": "Southwest",
-            "majorTerminals": ["Abeokuta Central Park"]
-        },
-        "Abia": {
-            "companies": ["Aba Line", "Adam and Eve Motors"],
-            "region": "Southeast",
-            "majorTerminals": ["Aba Main Park"]
-        },
-        "Adamawa": {
-            "companies": ["Fair Okis Transport", "Fair Plus Transport", "GUO Transport", "Young Shall Grow", "Chisco Transport"],
-            "region": "Northeast",
-            "majorTerminals": ["Yola Main Park"]
-        },
-        "Akwa Ibom": {
-            "companies": ["Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit", "Chisco Transport", "God is Good Motors", "Peace Mass Transit", "ABC Transport"],
-            "region": "South South",
-            "majorTerminals": ["Uyo Central Park", "Uyo Main Park"]
-        },
-        "Anambra": {
-            "companies": ["God is Good Motors", "ABC Transport", "Benue Link Transport", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Orizu Motors"],
-            "region": "Southeast",
-            "majorTerminals": ["Onitsha Upper Iweka", "Onitsha New Park"]
-        },
-        "Bauchi": {
-            "companies": ["GUO Transport", "ABC Transport", "Benue Link Transport", "Yankari Express", "Peace Mass Transit", "Young Shall Grow", "Gombe Line", "Cross Country Transport"],
-            "region": "Northeast",
-            "majorTerminals": ["Bauchi Main Park"]
-        },
-        "Bayelsa": {
-            "companies": ["God is Good Motors", "ABC Transport", "Agofure Motors", "Delta Line", "Peace Mass Transit", "Bayelsa State Transport", "Chisco Transport"],
-            "region": "South South",
-            "majorTerminals": ["Yenagoa Central Park"]
-        },
-        "Benue": {
-            "companies": ["ABC Transport", "God is Good Motors", "GUO Transport", "Peace Mass Transit", "Young Shall Grow", "Orizu Motors", "The Young Legacy Motors", "Benue Link Transport"],
-            "region": "North Central",
-            "majorTerminals": ["Makurdi Central Park", "Makurdi Main Park"]
-        },
-        "Borno": {
-            "companies": ["Borno Express", "GUO Transport", "Gombe Line", "Peace Mass Transit", "Cross Country Transport"],
-            "region": "Northeast",
-            "majorTerminals": ["Maiduguri Central Park", "Maiduguri Main Park"]
-        },
-        "Cross River": {
-            "companies": ["God is Good Motors", "Faith Motors", "GUO Transport", "Delta Line", "Peace Mass Transit"],
-            "region": "South South",
-            "majorTerminals": ["Calabar Central Park"]
-        },
-        "Delta": {
-            "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors", "Delta Line", "Agofure Motors"],
-            "region": "South South",
-            "majorTerminals": ["Warri Effurun Park", "Asaba Park"]
-        },
-        "Ebonyi": {
-            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-            "region": "Southeast",
-            "majorTerminals": ["Abakaliki Main Park"]
-        },
-        "Edo": {
-            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "South South",
-            "majorTerminals": ["Benin Ring Road", "Benin Central"]
-        },
-        "Ekiti": {
-            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"],
-            "region": "Southwest",
-            "majorTerminals": ["Ado-Ekiti Main Park"]
-        },
-        "Gombe": {
-            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors", "Gombe Line"],
-            "region": "Northeast",
-            "majorTerminals": ["Gombe Central Park"]
-        },
-        "Imo": {
-            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Delta Line", "Peace Mass Transit", "Imo Transport (ITC)"],
-            "region": "Southeast",
-            "majorTerminals": ["Owerri Main Park", "Owerri Central"]
-        },
-        "Jigawa": {
-            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"],
-            "region": "Northwest",
-            "majorTerminals": ["Dutse Main Park"]
-        },
-        "Kebbi": {
-            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-            "region": "Northwest",
-            "majorTerminals": ["Birnin Kebbi Main Park"]
-        },
-        "Kogi": {
-            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "North Central",
-            "majorTerminals": ["Lokoja Main Park"]
-        },
-        "Kwara": {
-            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-            "region": "North Central",
-            "majorTerminals": ["Ilorin Main Park"]
-        },
-        "Nasarawa": {
-            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
-            "region": "North Central",
-            "majorTerminals": ["Lafia Main Park"]
-        },
-        "Niger": {
-            "companies": ["Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "North Central",
-            "majorTerminals": ["Minna Main Park"]
-        },
-        "Ogun": {
-            "companies": ["God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
-            "region": "Southwest",
-            "majorTerminals": ["Abeokuta Central Park"]
-        },
-        "Ondo": {
-            "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "Southwest",
-            "majorTerminals": ["Akure Main Park"]
-        },
-        "Osun": {
-            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-            "region": "Southwest",
-            "majorTerminals": ["Osogbo Main Park"]
-        },
-        "Oyo": {
-            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "Southwest",
-            "majorTerminals": ["Ibadan Challenge Park", "Ibadan Central"]
-        },
-        "Plateau": {
-            "companies": ["ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-            "region": "North Central",
-            "majorTerminals": ["Jos Terminus", "Jos Main Park"]
-        },
-        "Rivers": {
-            "companies": ["God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "South South",
-            "majorTerminals": ["Port Harcourt Rumuola", "Port Harcourt Choba"]
-        },
-        "Sokoto": {
-            "companies": ["Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"],
-            "region": "Northwest",
-            "majorTerminals": ["Sokoto Main Park"]
-        },
-        "Taraba": {
-            "companies": ["ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "Northeast",
-            "majorTerminals": ["Jalingo Main Park"]
-        },
-        "Yobe": {
-            "companies": ["God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"],
-            "region": "Northeast",
-            "majorTerminals": ["Damaturu Main Park"]
-        },
-        "Zamfara": {
-            "companies": ["Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"],
-            "region": "Northwest",
-            "majorTerminals": ["Gusau Main Park"]
-        }
+    "companies": [
+        "ABC Transport",
+        "God is Good Motors",
+        "Chisco Transport",
+        "Young Shall Grow",
+        "Peace Mass Transit",
+        "GUO Transport",
+        "The Young Legacy Motors",
+        "Benue Link Transport",
+        "Aba Line",
+        "Nsik Motors (AKTC)",
+        "Cross Country Transport",
+        "New Nyanya Transport Company",
+        "Adam and Eve Motors",
+        "Libra Motors",
+        "Orizu Motors",
+        "Imo Transport (ITC)",
+        "Fair Okis Transport",
+        "Fair Plus Transport",
+        "Akwa Ibom Transport (AKTC)",
+        "Big Joe Motors",
+        "Agofure Motors",
+        "E.Ekesons Bros Transport",
+        "Goodness and Mercy Transport",
+        "Okeyson Motors",
+        "Tracas Nigeria",
+        "Auto Star Limited",
+        "Anambra Express",
+        "Ekene Dili Chukwu Express Limited",
+        "Interland Transport",
+        "Nothing Pass God Motors",
+        "Yankari Express",
+        "Gombe Line",
+        "Bayelsa State Transport",
+        "Delta Line",
+        "Borno Express",
+        "Faith Motors",
+        "Ibom Transit",
+        "Glo Bus Transit",
+        "Fellow Transport",
+        "Tega Express"
+    ],
+    "region": "Southwest",
+    "majorTerminals": [
+        "Jibowu (Yaba)",
+        "Maza-Maza",
+        "Iddo (Ebute Metta)",
+        "Iyana Ipaja",
+        "Ojuelegba",
+        "Mile 2",
+        "Cele Express"
+    ]
+},
+{
+    "Abuja": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "New Nyanya Transport Company", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Fair Okis Transport", "Fair Plus Transport", "Akwa Ibom Transport (AKTC)", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Yankari Express", "Gombe Line", "Bayelsa State Transport", "Delta Line", "Borno Express", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Utako (Jabi Park)",
+            "Kubwa (Express)",
+            "Nyanya (Mararaba)",
+            "Garki (Area 1)",
+            "Zuba (Madalla)"
+        ]
     },
+    "Port Harcourt": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Bayelsa State Transport", "Delta Line", "Faith Motors", "Ibom Transit", "Glo Bus Transit", "Fellow Transport", "Tega Express"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Waterlines (Aba Road)",
+            "Rumuola",
+            "Choba (Uniport)",
+            "Rumuokoro",
+            "Mile 1 (Diobu)"
+        ]
+    },
+    "Enugu": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Nsik Motors (AKTC)", "Cross Country Transport", "Adam and Eve Motors", "Libra Motors", "Orizu Motors", "Imo Transport (ITC)", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Faith Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"
+        ],
+        "region": "Southeast",
+        "majorTerminals": [
+            "Holy Ghost (Old Park)",
+            "Gariki (Awkunanaw)",
+            "New Market",
+            "Ogbete",
+            "9th Mile"
+        ]
+    },
+    "Onitsha": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Aba Line", "Libra Motors", "Orizu Motors", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Glo Bus Transit", "Fellow Transport", "Tega Express"
+        ],
+        "region": "Southeast",
+        "majorTerminals": [
+            "Upper Iweka",
+            "Bridge Head",
+            "Owerri Road",
+            "Awka Road"
+        ]
+    },
+    "Kano": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Fair Plus Transport", "Yankari Express", "Gombe Line", "Borno Express"
+        ],
+        "region": "Northwest",
+        "majorTerminals": [
+            "Unguwa Uku (Zaria Road)",
+            "Naibawa (Kano Line)",
+            "Kofar Ruwa"
+        ]
+    },
+    "Ibadan": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Libra Motors"
+        ],
+        "region": "Southwest",
+        "majorTerminals": [
+            "Iwo Road",
+            "Challenge",
+            "Ojoo (Lagos Park)",
+            "Samonda"
+        ]
+    },
+    "Benin": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Agofure Motors", "Delta Line"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Iyaro (Mission Road)",
+            "Uselu (Lagos Road)",
+            "Akpakpava",
+            "Oluku (Bypass)"
+        ]
+    },
+    "Owerri": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Aba Line", "Imo Transport (ITC)"
+        ],
+        "region": "Southeast",
+        "majorTerminals": [
+            "Egbu Road",
+            "Relief Market",
+            "Control Post",
+            "Port Harcourt Road"
+        ]
+    },
+    "Calabar": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "Nsik Motors (AKTC)", "Cross Country Transport", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Faith Motors", "Ibom Transit"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Etim Edim",
+            "Marian Road",
+            "Watt Market"
+        ]
+    },
+    "Jos": {
+        "companies": [
+            "Peace Mass Transit", "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "GUO Transport", "Benue Link Transport", "Cross Country Transport", "New Nyanya Transport Company", "Fair Okis Transport", "Yankari Express"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Gadabiyu",
+            "Farin Gada",
+            "Bauchi Road"
+        ]
+    },
+    "Kaduna": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Benue Link Transport", "New Nyanya Transport Company"
+        ],
+        "region": "Northwest",
+        "majorTerminals": [
+            "Kawo (Mando)",
+            "Television Garage",
+            "Command Junction"
+        ]
+    },
+    "Warri": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "The Young Legacy Motors", "Agofure Motors", "Delta Line"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Effurun (Roundabout)",
+            "Enerhen Junction",
+            "Delta Line Park"
+        ]
+    },
+    "Uyo": {
+        "companies": [
+            "God is Good Motors", "ABC Transport", "Chisco Transport", "Young Shall Grow", "Peace Mass Transit", "GUO Transport", "Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Itam Park (Junction)",
+            "Plaza Area",
+            "Ikot Ekpene Road"
+        ]
+    },
+    "Abeokuta": {
+        "companies": [
+            "GUO Transport", "ABC Transport", "God is Good Motors", "Chisco Transport"
+        ],
+        "region": "Southwest",
+        "majorTerminals": [
+            "Kuto",
+            "Pansheke",
+            "Lafenwa"
+        ]
+    },
+    "Abia": {
+        "companies": [
+            "Aba Line", "Adam and Eve Motors"
+        ],
+        "region": "Southeast",
+        "majorTerminals": [
+            "Milverton (Aba)",
+            "Osisioma (Aba)",
+            "Isi Gate (Umuahia)"
+        ]
+    },
+    "Adamawa": {
+        "companies": [
+            "Fair Okis Transport", "Fair Plus Transport", "GUO Transport", "Young Shall Grow", "Chisco Transport"
+        ],
+        "region": "Northeast",
+        "majorTerminals": [
+            "Jimeta (Doureli)",
+            "Yola Bypass",
+            "Mubi Roundabout"
+        ]
+    },
+    "Akwa Ibom": {
+        "companies": [
+            "Nsik Motors (AKTC)", "Akwa Ibom Transport (AKTC)", "Big Joe Motors", "Ibom Transit", "Chisco Transport", "God is Good Motors", "Peace Mass Transit", "ABC Transport"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Itam Park (Uyo)",
+            "Ikot Ekpene Plaza"
+        ]
+    },
+    "Anambra": {
+        "companies": [
+            "God is Good Motors", "ABC Transport", "Benue Link Transport", "Agofure Motors", "E.Ekesons Bros Transport", "Goodness and Mercy Transport", "Okeyson Motors", "Tracas Nigeria", "Auto Star Limited", "Anambra Express", "Ekene Dili Chukwu Express Limited", "Interland Transport", "Nothing Pass God Motors", "Orizu Motors"
+        ],
+        "region": "Southeast",
+        "majorTerminals": [
+            "Upper Iweka (Onitsha)",
+            "Unizik Junction (Awka)",
+            "Ekwulobia Park"
+        ]
+    },
+    "Bauchi": {
+        "companies": [
+            "GUO Transport", "ABC Transport", "Benue Link Transport", "Yankari Express", "Peace Mass Transit", "Young Shall Grow", "Gombe Line", "Cross Country Transport"
+        ],
+        "region": "Northeast",
+        "majorTerminals": [
+            "Bauchi Central Park",
+            "Yelwa",
+            "Muda Lawal"
+        ]
+    },
+    "Bayelsa": {
+        "companies": [
+            "God is Good Motors", "ABC Transport", "Agofure Motors", "Delta Line", "Peace Mass Transit", "Bayelsa State Transport", "Chisco Transport"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Tombia (Roundabout)",
+            "Yenagoa Central Park",
+            "Mbiama"
+        ]
+    },
+    "Benue": {
+        "companies": [
+            "ABC Transport", "God is Good Motors", "GUO Transport", "Peace Mass Transit", "Young Shall Grow", "Orizu Motors", "The Young Legacy Motors", "Benue Link Transport"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Wurukum (Makurdi)",
+            "Pleasure Park",
+            "Otukpo Main Park"
+        ]
+    },
+    "Borno": {
+        "companies": [
+            "Borno Express", "GUO Transport", "Gombe Line", "Peace Mass Transit", "Cross Country Transport"
+        ],
+        "region": "Northeast",
+        "majorTerminals": [
+            "Borno Express Terminus",
+            "Kano Park (Maiduguri)",
+            "Tashan Bama"
+        ]
+    },
+    "Cross River": {
+        "companies": [
+            "God is Good Motors", "Faith Motors", "GUO Transport", "Delta Line", "Peace Mass Transit"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Etim Edim (Calabar)",
+            "Ikom Main Park",
+            "Ogoja Park"
+        ]
+    },
+    "Delta": {
+        "companies": [
+            "ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors", "Delta Line", "Agofure Motors"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Effurun (Warri)",
+            "Koka Junction (Asaba)",
+            "Summit Junction (Asaba)"
+        ]
+    },
+    "Ebonyi": {
+        "companies": [
+            "Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"
+        ],
+        "region": "Southeast",
+        "majorTerminals": [
+            "Spera Deo (Abakaliki)",
+            "Afikpo Road",
+            "Vanco Junction"
+        ]
+    },
+    "Edo": {
+        "companies": [
+            "God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Iyaro (Benin)",
+            "Uselu",
+            "Auchi Polytechnic Gate"
+        ]
+    },
+    "Ekiti": {
+        "companies": [
+            "ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "Southwest",
+        "majorTerminals": [
+            "Fajuyi Park (Ado-Ekiti)",
+            "Old Garage (Ado)",
+            "Ikere Park"
+        ]
+    },
+    "Gombe": {
+        "companies": [
+            "Chisco Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors", "Gombe Line"
+        ],
+        "region": "Northeast",
+        "majorTerminals": [
+            "Gombe Line Terminus",
+            "Bauchi Park",
+            "Dukku Park"
+        ]
+    },
+    "Imo": {
+        "companies": [
+            "God is Good Motors", "Young Shall Grow", "Ibom Transit", "Delta Line", "Peace Mass Transit", "Imo Transport (ITC)"
+        ],
+        "region": "Southeast",
+        "majorTerminals": [
+            "Egbu Road (Owerri)",
+            "Control Post",
+            "Orlu Main Park"
+        ]
+    },
+    "Jigawa": {
+        "companies": [
+            "ABC Transport", "GUO Transport", "Faith Motors", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "Northwest",
+        "majorTerminals": [
+            "Dutse Central Park",
+            "Hadejia Park"
+        ]
+    },
+    "Kebbi": {
+        "companies": [
+            "Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"
+        ],
+        "region": "Northwest",
+        "majorTerminals": [
+            "Birnin Kebbi Central Park",
+            "Argungu Park"
+        ]
+    },
+    "Kogi": {
+        "companies": [
+            "God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Felele (Lokoja)",
+            "Ganaja Junction",
+            "Okene Main Park"
+        ]
+    },
+    "Kwara": {
+        "companies": [
+            "ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Maraba (Ilorin)",
+            "Post Office",
+            "Offa Garage"
+        ]
+    },
+    "Nasarawa": {
+        "companies": [
+            "ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Lafia Central Park",
+            "Mararaba (Abuja Border)",
+            "Akwanga Park"
+        ]
+    },
+    "Niger": {
+        "companies": [
+            "Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Tunga (Minna)",
+            "Mobil Park",
+            "Suleja Park"
+        ]
+    },
+    "Ogun": {
+        "companies": [
+            "God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"
+        ],
+        "region": "Southwest",
+        "majorTerminals": [
+            "Kuto (Abeokuta)",
+            "Ibafo",
+            "Mowe",
+            "Sagamu Interchange"
+        ]
+    },
+    "Ondo": {
+        "companies": [
+            "ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "Southwest",
+        "majorTerminals": [
+            "Akure Central Park",
+            "Ondo Road",
+            "Ore (Expressway)"
+        ]
+    },
+    "Osun": {
+        "companies": [
+            "Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"
+        ],
+        "region": "Southwest",
+        "majorTerminals": [
+            "Aregbe Park (Osogbo)",
+            "Old Garage",
+            "Ilesa Roundabout"
+        ]
+    },
+    "Oyo": {
+        "companies": [
+            "God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "Southwest",
+        "majorTerminals": [
+            "Iwo Road (Ibadan)",
+            "Ojoo",
+            "Challenge"
+        ]
+    },
+    "Plateau": {
+        "companies": [
+            "ABC Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"
+        ],
+        "region": "North Central",
+        "majorTerminals": [
+            "Gadabiyu (Jos)",
+            "Bauchi Road",
+            "Terminus"
+        ]
+    },
+    "Rivers": {
+        "companies": [
+            "God is Good Motors", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "South South",
+        "majorTerminals": [
+            "Waterlines (Port Harcourt)",
+            "Rumuola",
+            "Eleme Junction"
+        ]
+    },
+    "Sokoto": {
+        "companies": [
+            "Chisco Transport", "GUO Transport", "Faith Motors", "Delta Line", "Libra Motors"
+        ],
+        "region": "Northwest",
+        "majorTerminals": [
+            "Tsohon Tasha (Old Park)",
+            "Sokoto Central Park"
+        ]
+    },
+    "Taraba": {
+        "companies": [
+            "ABC Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "Northeast",
+        "majorTerminals": [
+            "Jalingo Main Park",
+            "Roadblock (Jalingo)"
+        ]
+    },
+    "Yobe": {
+        "companies": [
+            "God is Good Motors", "GUO Transport", "Faith Motors", "Delta Line", "Peace Mass Transit"
+        ],
+        "region": "Northeast",
+        "majorTerminals": [
+            "Damaturu Central Park",
+            "Potiskum Park"
+        ]
+    },
+    "Zamfara": {
+        "companies": [
+            "Chisco Transport", "Young Shall Grow", "Ibom Transit", "Peace Mass Transit", "Libra Motors"
+        ],
+        "region": "Northwest",
+        "majorTerminals": [
+            "Gusau Central Park",
+            "Kaura Namoda Park"
+        ]
+    }
+},
 
     "metadata": {
         "totalCompanies": 41,
@@ -4344,6 +4668,6 @@
         "totalStates": 37,
         "priceCurrency": "NGN",
         "dataSource": "Vyra Transport Analysis 2025",
-        "lastUpdated": "2025-11-01"
+        "lastUpdated": "2025-11-30"
     }
 }
