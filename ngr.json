@@ -398,7 +398,7 @@
         "basePrice": 33000,
         "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
     },
-        {
+
     "Chisco Transport": {
         "id": "chisco-transport",
         "name": "Chisco Transport",
