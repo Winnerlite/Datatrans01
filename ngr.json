@@ -557,7 +557,7 @@
         "basePrice": 31500,
         "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
     },
-        
+
     "The Young Shall Grow Motors": {
         "id": "the-young-shall-grow-motors",
         "name": "The Young Shall Grow Motors Ltd.",
@@ -753,29 +753,261 @@
         "basePrice": 29000,
         "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
     },
-        "Peace Mass Transit": {
-            "id": "peace-mass-transit",
-            "name": "Peace Mass Transit",
-            "image": "https://i.ibb.co/5hXDcq5/images-7.png",
-            "states": ["Enugu", "Onitsha", "Abuja", "Lagos", "Port Harcourt", "Jos", "Kano", "Kaduna", "Owerri", "Benin", "Ibadan", "Calabar", "Uyo"],
-            "terminals": {
-                "Enugu": "Gariki Terminal",
-                "Onitsha": "New Market Park",
-                "Abuja": "Kubwa Terminal",
-                "Lagos": "Ikeja Terminal",
-                "Port Harcourt": "Rumuokoro Park",
-                "Jos": "Jos Terminus",
-                "Kano": "Kano Main Park",
-                "Kaduna": "Kaduna Central Park",
-                "Owerri": "Owerri Motor Park",
-                "Benin": "Benin City Park",
-                "Ibadan": "Ibadan Central Park",
-                "Calabar": "Calabar Main Park",
-                "Uyo": "Uyo Motor Park"
-            },
-            "basePrice": 38000,
-            "serviceAttributes": ["Low Pricing", "Reliability", "Customer Service"]
+       
+    "Peace Mass Transit": {
+        "id": "peace-mass-transit",
+        "name": "Peace Mass Transit",
+        "image": "https://i.ibb.co/5hXDcq5/images-7.png",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Akwa Ibom",
+            "Anambra",
+            "Bayelsa",
+            "Cross River",
+            "Delta",
+            "Ebonyi",
+            "Edo",
+            "Enugu",
+            "Imo",
+            "Kaduna",
+            "Kano",
+            "Kwara",
+            "Lagos",
+            "Niger",
+            "Ogun",
+            "Ondo",
+            "Oyo",
+            "Plateau",
+            "Rivers"
+        ],
+        "terminals": {
+            "Abia": [
+                {
+                    "name": "Aba Terminal",
+                    "address": "13, Asa Road, Aba, Abia State",
+                    "phone": "+234 805 509 1828"
+                },
+                {
+                    "name": "Umuahia Terminal",
+                    "address": "No 1 Crowther street, By Umuahia Gate, Umuahia",
+                    "phone": "+234 805 508 1821"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal (Main Hub)",
+                    "address": "No. 39 Ajose Adeogun Street, Utako, Abuja",
+                    "phone": "+234 805 509 1829"
+                },
+                {
+                    "name": "Kubwa Terminal",
+                    "address": "Kukwaba Market and Transit Park, Kubwa, Abuja",
+                    "phone": "+234 700 732 2362"
+                },
+                {
+                    "name": "Gwagwalada Terminal",
+                    "address": "Opposite Brifina Hotel, Dagiri, Abuja/Lokoja Expressway",
+                    "phone": "+234 805 509 1833"
+                },
+                {
+                    "name": "Zuba Terminal",
+                    "address": "Near Fruit Market, Zuba, Abuja",
+                    "phone": "+234 700 732 2362"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha (Upper Iweka) Terminal",
+                    "address": "103, Oguta Road, Upper Iweka, Onitsha",
+                    "phone": "+234 805 509 1818"
+                },
+                {
+                    "name": "Nnewi Terminal",
+                    "address": "4/5 Owerri Road, By Nwafor Orizu Roundabout, Nnewi",
+                    "phone": "+234 805 669 7009"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "112 Arthur-Eze Avenue, Unizik Junction, Awka",
+                    "phone": "+234 815 082 0748"
+                }
+            ],
+            "Bayelsa": [
+                {
+                    "name": "Yenagoa Terminal",
+                    "address": "783, Okutukutu, Mbaiama, Yenagoa",
+                    "phone": "+234 805 509 1855"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "56, Bedwell Street, Behind WATT Market, Calabar",
+                    "phone": "+234 805 509 1834"
+                },
+                {
+                    "name": "Ikom Terminal",
+                    "address": "No 1 Mile Two Road, Ikom",
+                    "phone": "+234 815 046 1825"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Warri Terminal",
+                    "address": "118, Warri–Sapele Road, Off Airport Junction, Warri",
+                    "phone": "+234 805 669 7041"
+                },
+                {
+                    "name": "Asaba Terminal",
+                    "address": "Asaba (General Terminal Location)",
+                    "phone": "+234 805 509 1810"
+                }
+            ],
+            "Ebonyi": [
+                {
+                    "name": "Abakaliki Terminal",
+                    "address": "25A, Afikpo Road, Abakaliki",
+                    "phone": "+234 805 509 1816"
+                },
+                {
+                    "name": "Afikpo Terminal",
+                    "address": "7, Ngodo Road, Amangbalia, Afikpo North",
+                    "phone": "+234 705 579 2617"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "117, Akpakpava Road, By 2nd Junction, Benin City",
+                    "phone": "+234 805 669 7034"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Head Office / Emene Terminal",
+                    "address": "8–12 Peace Factory Road, Emene, Enugu State",
+                    "phone": "+234 805 509 1825"
+                },
+                {
+                    "name": "Gariki Terminal",
+                    "address": "Opposite Garki Market, Enugu",
+                    "phone": "+234 705 579 4026"
+                },
+                {
+                    "name": "Nsukka Terminal",
+                    "address": "64, Enugu Road, Nsukka",
+                    "phone": "+234 805 509 1817"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "No. 1 Living Christ Mission Avenue, By Ugwu Orji flyover, Owerri",
+                    "phone": "+234 805 509 1824"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal",
+                    "address": "Plot 1416, By Command Junction, Nnamdi Azikwe Expressway, Kaduna",
+                    "phone": "+234 705 579 2632"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Sabon Gari Terminal",
+                    "address": "14, New Road, Sabongari, Kano",
+                    "phone": "+234 807 509 0646"
+                }
+            ],
+            "Kwara": [
+                {
+                    "name": "Ilorin Terminal",
+                    "address": "1, Ogba Dam Road, Off Offa Garage Road, Ilorin",
+                    "phone": "+234 805 509 1849"
+                }
+            ],
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "7, Ikorodu Road, By Traffic Light, Jibowu, Lagos",
+                    "phone": "+234 805 669 7003"
+                },
+                {
+                    "name": "Ojota Terminal",
+                    "address": "Flyover Bridge, Ketu Road, Beside Biode Garage, Ojota",
+                    "phone": "+234 815 046 1820"
+                },
+                {
+                    "name": "Ajah Terminal",
+                    "address": "Ajiwe, Opp. Micheal and Solomon House, Ajah, Lagos State",
+                    "phone": "+234 705 579 2630"
+                },
+                {
+                    "name": "Ikorodu Terminal",
+                    "address": "9, Sagamu Road, Ikorodu, Lagos State",
+                    "phone": "+234 805 669 7002"
+                }
+            ],
+            "Niger": [
+                {
+                    "name": "Minna Terminal",
+                    "address": "David Mark Road, Opp. INEC Office, Minna",
+                    "phone": "+234 805 669 7027"
+                }
+            ],
+            "Ogun": [
+                {
+                    "name": "Ibafo Terminal",
+                    "address": "Near Ibafo, Police Station, Opposite Internal Revenue, Ibafo",
+                    "phone": "+234 805 669 7049"
+                }
+            ],
+            "Ondo": [
+                {
+                    "name": "Akure Terminal",
+                    "address": "Ife-Ibadan Expressway, Along Ife Road, Opp. Swan Hotel, Akure",
+                    "phone": "+234 805 669 7069"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal",
+                    "address": "Samonda Old Airport, UI-Sango Road, Ibadan",
+                    "phone": "+234 805 509 1851"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Terminus Market, Jos",
+                    "phone": "+234 805 509 1842"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt (Rumuola) Terminal",
+                    "address": "Opposite Bori Camp, Rumuola, Port Harcourt",
+                    "phone": "+234 805 509 1822"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "No. 15 Monsignor Akpan Avenue, Opposite Itam Slaughter, Uyo",
+                    "phone": "+234 805 669 7022"
+                }
+            ]
         },
+        "basePrice": 38000,
+        "serviceAttributes": [
+            "Low Pricing",
+            "Reliability",
+            "Customer Service",
+            "Logistics & Courier Services"
+        ]
+    },
         "GUO Transport": {
             "id": "guo-transport",
             "name": "GUO Transport",
