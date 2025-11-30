@@ -393,8 +393,12 @@
                     "name": "Minna Terminal",
                     "address": "Eastern By-Pass Road, Tunga, Minna",
                     "phone": "08139851110"
-                },
-       
+                ]
+        },
+            "basePrice": 32000,
+            "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+        },
+
     "Chisco Transport": {
         "id": "chisco-transport",
         "name": "Chisco Transport",
