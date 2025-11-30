@@ -5,30 +5,180 @@
     "description": "Complete Nigerian intercity transport data",
 
     "transportCompanies": {
-        "ABC Transport": {
-            "id": "abc-transport",
-            "name": "ABC Transport",
-            "image": "https://i.ibb.co/5hXDcq5/images-7.png",
-            "states": ["Lagos", "Abuja", "Port Harcourt", "Enugu", "Onitsha", "Kano", "Ibadan", "Benin", "Warri", "Calabar", "Owerri", "Jos", "Kaduna", "Uyo"],
-            "terminals": {
-                "Lagos": "Jibowu Terminal, Yaba",
-                "Abuja": "Garki Terminal",
-                "Port Harcourt": "Rumuola Park",
-                "Enugu": "Gariki Terminal",
-                "Onitsha": "Upper Iweka Park",
-                "Kano": "Kofar Nassarawa Park",
-                "Ibadan": "Ibadan Central Park",
-                "Benin": "Ring Road Park",
-                "Warri": "Effurun Park",
-                "Calabar": "Marian Park",
-                "Owerri": "Owerri Main Park",
-                "Jos": "Jos Terminus",
-                "Kaduna": "Kawo Park",
-                "Uyo": "Uyo Central Park"
-            },
-            "basePrice": 32000,
-            "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+    "ABC Transport": {
+        "id": "abc-transport",
+        "name": "ABC Transport Plc",
+        "image": "https://i.ibb.co/5hXDcq5/images-7.png",
+        "states": [
+            "Lagos",
+            "Abuja",
+            "Rivers",
+            "Enugu",
+            "Anambra",
+            "Kano",
+            "Oyo",
+            "Edo",
+            "Delta",
+            "Cross River",
+            "Imo",
+            "Plateau",
+            "Kaduna",
+            "Akwa Ibom",
+            "Kogi",
+            "Ogun",
+            "Abia",
+            "Nasarawa"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Jibowu Terminal (Head Office Lagos)",
+                    "address": "22, Ikorodu Road, Jibowu, Yaba, Lagos",
+                    "phone": "08139862090, 01-7741320"
+                },
+                {
+                    "name": "Amuwo Odofin Terminal",
+                    "address": "Plot 79, Oba Kayode Akinyemi Way, By Festac Bypass, Amuwo Odofin, Lagos",
+                    "phone": "08053001000, 08142552436"
+                },
+                {
+                    "name": "Bolade Oshodi Terminal",
+                    "address": "129 Agege Motor Road, Bolade, Oshodi, Lagos",
+                    "phone": "07038570556, 08139862090"
+                },
+                {
+                    "name": "Ajah Terminal",
+                    "address": "Km 22, Lekki-Epe Expressway, by Olokunla Bus Stop (Opp. Enyo Filling Station), Ajah, Lagos",
+                    "phone": "08139862090"
+                }
+            ],
+            "Abuja": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "36, Ekukinam Street, Utako District (Off Berger Junction), Abuja",
+                    "phone": "08142552437, 08139862090"
+                },
+                {
+                    "name": "Gwagwalada Terminal",
+                    "address": "Jibeco Nigeria Ltd, Ground Floor Wing B, Kaita Plaza (by MTN Office), Gwagwalada, Abuja",
+                    "phone": "07030890239"
+                },
+                {
+                    "name": "Kubwa Terminal",
+                    "address": "Inside Kukwuaba General Park, Close to NYSC Orientation Camp, Kubwa, Abuja",
+                    "phone": "08139862090"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Eliozu Junction, East/West Road, Port Harcourt",
+                    "phone": "08065910431, 08139862090"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "122, Ogui Road, Enugu",
+                    "phone": "08142552424, 08139862090"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal",
+                    "address": "Onitsha-Asaba Expressway, Opposite Ogbaru Main Market (After Upper Iweka Flyover), Onitsha",
+                    "phone": "07038570482, 08139862090"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Standard Plaza, Km 20 Onitsha-Enugu Expressway, Opposite Crunchies Fastfood, Awka",
+                    "phone": "08064834870"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Logistics/Park",
+                    "address": "1B Church Road, off Ibadan Road, Sabo Gari, Kano",
+                    "phone": "08139862090"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal",
+                    "address": "Opposite Nigerian Breweries, by Acorn Filling Station, New Ife Road, Ibadan",
+                    "phone": "08142552449, 08139862090"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin Terminal",
+                    "address": "Anayo Filling Station, by Terminal Resort & Park, Ovbiogie, Benin-Lagos Express Road, Benin City",
+                    "phone": "08036788464, 08139862090"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Warri Terminal",
+                    "address": "194, PTI Road, Effurun, Warri",
+                    "phone": "07066221578, 08139862090"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "75, IBB Way, Calabar",
+                    "phone": "08069189038, 08139862090"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Head Office",
+                    "address": "Km 5, MCC Uratta Road, Owerri",
+                    "phone": "08139862090, 08142552436"
+                },
+                {
+                    "name": "Egbu Road Terminal",
+                    "address": "Plot 9, Egbu Road, Owerri",
+                    "phone": "08064327270"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Hallmark Home Plaza, 7/9 Lugard Road (Former UTC Motors), Jos",
+                    "phone": "09034910292, 08139862090"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal",
+                    "address": "3, Kachia Road, by Railway Station Market, Kaduna",
+                    "phone": "08034910292, 08139862090"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "No. 17, Monsignor Akpan Mbak Avenue, Itam, Uyo",
+                    "phone": "08067060526, 08139862090"
+                }
+            ],
+            "Kogi": [
+                {
+                    "name": "Lokoja Terminal",
+                    "address": "178 Hammed Bello Way, Opposite New Market (Adj. Texaco Filling Station), Lokoja",
+                    "phone": "07038570375"
+                },
+                {
+                    "name": "Okene Terminal",
+                    "address": "Goomeej Nig Ltd, by Forte Oil Filling Station, Okene/Lokoja Road, Okene",
+                    "phone": "08139862090"
+                }
+            ]
         },
+        "basePrice": 32000,
+        "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+    },
         "God is Good Motors": {
             "id": "god-is-good-motors",
             "name": "God is Good Motors",
