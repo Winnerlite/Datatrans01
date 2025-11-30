@@ -557,28 +557,202 @@
         "basePrice": 31500,
         "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
     },
-        "Young Shall Grow": {
-            "id": "young-shall-grow",
-            "name": "Young Shall Grow",
-            "image": "https://i.ibb.co/wKRrKtp/test-10.png",
-            "states": ["Lagos", "Onitsha", "Enugu", "Owerri", "Abuja", "Benin", "Port Harcourt", "Ibadan", "Kano", "Kaduna", "Jos", "Calabar"],
-            "terminals": {
-                "Lagos": "Maza-Maza Park",
-                "Onitsha": "Upper Iweka",
-                "Enugu": "Holy Ghost Park",
-                "Owerri": "Douglas Road",
-                "Abuja": "Nyanya Park",
-                "Benin": "Benin Central Park",
-                "Port Harcourt": "Rumuomasi Park",
-                "Ibadan": "Challenge Park",
-                "Kano": "Kano Line Park",
-                "Kaduna": "Kawo Park",
-                "Jos": "Jos Main Park",
-                "Calabar": "Calabar Motor Park"
-            },
-            "basePrice": 29000,
-            "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
+        
+    "The Young Shall Grow Motors": {
+        "id": "the-young-shall-grow-motors",
+        "name": "The Young Shall Grow Motors Ltd.",
+        "image": "https://i.ibb.co/wKRrKtp/test-10.png",
+        "states": [
+            "Abia",
+            "Abuja (FCT)",
+            "Adamawa",
+            "Akwa Ibom",
+            "Anambra",
+            "Bauchi",
+            "Benue",
+            "Borno",
+            "Cross River",
+            "Delta",
+            "Ebonyi",
+            "Edo",
+            "Enugu",
+            "Gombe",
+            "Imo",
+            "Kaduna",
+            "Kano",
+            "Lagos",
+            "Nasarawa",
+            "Niger",
+            "Ogun",
+            "Oyo",
+            "Plateau",
+            "Rivers",
+            "Sokoto"
+        ],
+        "terminals": {
+            "Lagos": [
+                {
+                    "name": "Maza-Maza (Head Office)",
+                    "address": "1 Old Ojo Road, Maza-Maza, Lagos",
+                    "phone": "08069963843"
+                },
+                {
+                    "name": "Jibowu Terminal",
+                    "address": "Jibowu Terminal, Ikorodu Road, Yaba, Lagos",
+                    "phone": "08061469588"
+                }
+            ],
+            "Abuja (FCT)": [
+                {
+                    "name": "Utako Terminal",
+                    "address": "32 A.E. Ekukinam St, Utako District, Abuja",
+                    "phone": "08034066992"
+                },
+                {
+                    "name": "Kubwa Terminal",
+                    "address": "Kubwa Terminal, Abuja",
+                    "phone": "08032550170"
+                }
+            ],
+            "Anambra": [
+                {
+                    "name": "Onitsha Terminal",
+                    "address": "Upper Iweka, Onitsha, Anambra State",
+                    "phone": "08033374545"
+                },
+                {
+                    "name": "Awka Terminal",
+                    "address": "Awka Terminal, Anambra State",
+                    "phone": "08069963843 (General Hotline)"
+                },
+                {
+                    "name": "Ekwulobia Terminal",
+                    "address": "Ekwulobia Terminal, Anambra State",
+                    "phone": "08069963843 (General Hotline)"
+                }
+            ],
+            "Abia": [
+                {
+                    "name": "Aba Terminal",
+                    "address": "Aba Terminal, Abia State",
+                    "phone": "08055004724"
+                },
+                {
+                    "name": "Umuahia Terminal",
+                    "address": "Umuahia Terminal, Abia State",
+                    "phone": "08068866176"
+                }
+            ],
+            "Rivers": [
+                {
+                    "name": "Port Harcourt Terminal",
+                    "address": "Port Harcourt Terminal, Rivers State",
+                    "phone": "08033421951"
+                }
+            ],
+            "Edo": [
+                {
+                    "name": "Benin City Terminal",
+                    "address": "Benin Terminal, Edo State",
+                    "phone": "08069963843 (General Hotline)"
+                }
+            ],
+            "Imo": [
+                {
+                    "name": "Owerri Terminal",
+                    "address": "Owerri Terminal, Imo State",
+                    "phone": "08069963843 (General Hotline)"
+                },
+                {
+                    "name": "Okigwe Terminal",
+                    "address": "Opposite St. Joseph Catholic Church, Okigwe",
+                    "phone": "08039107526"
+                }
+            ],
+            "Enugu": [
+                {
+                    "name": "Enugu Terminal",
+                    "address": "Enugu Terminal, Enugu State",
+                    "phone": "08033203189"
+                }
+            ],
+            "Cross River": [
+                {
+                    "name": "Calabar Terminal",
+                    "address": "Calabar Terminal, Cross River State",
+                    "phone": "08037516687"
+                },
+                {
+                    "name": "Ogoja Terminal",
+                    "address": "Ogoja Terminal, Cross River State",
+                    "phone": "07030167080"
+                }
+            ],
+            "Akwa Ibom": [
+                {
+                    "name": "Uyo Terminal",
+                    "address": "Uyo Terminal, Akwa Ibom State",
+                    "phone": "08069963843 (General Hotline)"
+                },
+                {
+                    "name": "Oron Terminal",
+                    "address": "Oron Terminal, Akwa Ibom State",
+                    "phone": "08034066992"
+                }
+            ],
+            "Oyo": [
+                {
+                    "name": "Ibadan Terminal",
+                    "address": "Opposite Nigerian Breweries, Alakia, Ibadan",
+                    "phone": "08069963843 (General Hotline)"
+                }
+            ],
+            "Kano": [
+                {
+                    "name": "Kano Terminal",
+                    "address": "Kano Terminal, Kano State",
+                    "phone": "08027391868"
+                }
+            ],
+            "Kaduna": [
+                {
+                    "name": "Kaduna Terminal",
+                    "address": "Kaduna Terminal, Kaduna State",
+                    "phone": "08036939157"
+                }
+            ],
+            "Plateau": [
+                {
+                    "name": "Jos Terminal",
+                    "address": "Jos Terminal, Plateau State",
+                    "phone": "08065587947"
+                }
+            ],
+            "Delta": [
+                {
+                    "name": "Asaba Terminal",
+                    "address": "Asaba Terminal, Delta State",
+                    "phone": "08069963843 (General Hotline)"
+                }
+            ],
+            "Ebonyi": [
+                {
+                    "name": "Abakaliki Terminal",
+                    "address": "Abakaliki Terminal, Ebonyi State",
+                    "phone": "08068025733"
+                }
+            ],
+            "Borno": [
+                {
+                    "name": "Maiduguri Terminal",
+                    "address": "Maiduguri Terminal, Borno State",
+                    "phone": "08067779700"
+                }
+            ]
         },
+        "basePrice": 29000,
+        "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
+    },
         "Peace Mass Transit": {
             "id": "peace-mass-transit",
             "name": "Peace Mass Transit",
