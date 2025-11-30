@@ -399,11 +399,6 @@
             "basePrice": 33000,
             "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
         },
-       This is the updated JSON structure for **Chisco Transport**.
-
-I have provided the most accurate addresses and consolidated customer care numbers, using a **list of objects** for the `terminals` to reflect multiple locations in major states like Lagos and Abuja.
-
-```json
 {
     "Chisco Transport": {
         "id": "chisco-transport",
