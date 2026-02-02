@@ -606,7 +606,6 @@ body * {
             setViewportHeight();
             window.addEventListener('resize', setViewportHeight);
 
-            // Prevent zoom on iOS when focusing input
             const searchInput = document.getElementById('searchInput');
             if (searchInput) {
                 searchInput.addEventListener('focus', function() {
@@ -616,7 +615,7 @@ body * {
             }
         });
 
-        // Ticker Logic with API Data
+        // Ticker Logic
         const tickerContent = document.getElementById('tickerContent');
         let tickerData = [];
         let tickerIndex = 0;
@@ -626,17 +625,14 @@ body * {
                 const popularLocations = ['Lagos', 'Abuja', 'Port Harcourt', 'Kano'];
                 const randomLocation = popularLocations[Math.floor(Math.random() * popularLocations.length)];
                 
-                // Use relative path
                 const response = await fetch(`/api/search?q=${encodeURIComponent(randomLocation)}`);
-
                 if (!response.ok) throw new Error('Ticker API Error');
-
                 const data = await response.json();
                 
                 if (data.results && data.results.routes && data.results.routes.length > 0) {
                     tickerData = processTickerRoutes(data.results.routes, randomLocation);
                 } else {
-                    tickerData = []; // Or fallback logic
+                    tickerData = [];
                 }
             } catch (error) {
                 console.warn('Failed to fetch ticker data:', error);
@@ -649,15 +645,13 @@ body * {
             routes.forEach(route => {
                 const routeParts = route.route ? route.route.split('-') : [];
                 if (routeParts.length === 2 && route.prices) {
-                    const fromLocation = routeParts[0];
-                    const toLocation = routeParts[1];
                     const companies = Object.entries(route.prices);
                     if (companies.length > 0) {
                         const [company, price] = companies[0];
                         tickerItems.push({
                             company: company,
-                            from: fromLocation,
-                            to: toLocation,
+                            from: routeParts[0],
+                            to: routeParts[1],
                             price: `NGN${price.toLocaleString()}`
                         });
                     }
@@ -717,23 +711,15 @@ body * {
 
             try {
                 const apiUrl = `/api/search?q=${encodeURIComponent(query)}`;
-                console.log('Fetching from:', apiUrl);
-
                 const response = await fetch(apiUrl);
-                
-                if (!response.ok) {
-                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
-                }
-
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
                 const apiData = await response.json();
-                console.log('API Response:', apiData);
 
                 if (apiData.results && (apiData.results.companies || apiData.results.routes || apiData.results.states)) {
                     processApiResults(query, apiData);
                 } else {
                     throw new Error('No results found for your search');
                 }
-
             } catch (error) {
                 showError(error.message);
             }
@@ -745,18 +731,10 @@ body * {
             resultsArea.innerHTML = `
                 <div class="max-w-2xl mx-auto text-center px-4">
                     <div class="bg-red-900/20 border border-red-800 rounded-2xl p-8 mb-6">
-                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-900/30 flex items-center justify-center">
-                            <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
                         <h3 class="text-xl font-bold text-white mb-2">Search Failed</h3>
                         <p class="text-red-300 mb-4">${message}</p>
-                        <p class="text-sm text-slate-400">Please check your connection and try again, or contact support if the problem persists.</p>
                     </div>
-                    <button onclick="showDefaultView()" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-lg transition-colors">
-                        Back to Search
-                    </button>
+                    <button onclick="showDefaultView()" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-lg transition-colors">Back to Search</button>
                 </div>
             `;
         }
@@ -768,29 +746,18 @@ body * {
             input.focus();
         }
 
-        // ✅ FIXED LOGIC FOR OBJECTS
+        // --- DATA PROCESSING FUNCTIONS ---
+
         function processTerminalsFromApi(results, stateData) {
-            // 1. Check if we have state-specific terminal data
+            // Logic for State/Location View
             if (stateData && stateData.majorTerminals && stateData.majorTerminals.length > 0) {
                 return stateData.majorTerminals.map(terminal => {
-                    // Check if 'terminal' is an object (The new JSON format)
                     if (typeof terminal === 'object' && terminal !== null) {
-                        return {
-                            name: terminal.name,       // ✅ Correctly extracts Name
-                            address: terminal.address, // ✅ Correctly extracts Address
-                            area: stateData.name || 'Unknown Area'
-                        };
+                        return { name: terminal.name, address: terminal.address, area: stateData.name };
                     }
-                    // Fallback: If it's just a string (The old format)
-                    return {
-                        name: terminal,
-                        address: '', 
-                        area: stateData.name || 'Unknown Area'
-                    };
+                    return { name: terminal, address: '', area: stateData.name };
                 });
             }
-
-            // 2. Check if we have generic results terminals
             if (results.terminals && results.terminals.length > 0) {
                 return results.terminals.map(t => ({
                     name: t.name || 'Unknown Terminal',
@@ -798,7 +765,30 @@ body * {
                     area: t.area || t.state || 'Unknown Area'
                 }));
             }
+            return [];
+        }
 
+        // ✅ NEW: Correctly handles Company Terminals (Array of Objects)
+        function processCompanyTerminalsFromApi(companyData) {
+            if (companyData.terminals && Object.keys(companyData.terminals).length > 0) {
+                // We use flatMap because one state (e.g., Lagos) might have an ARRAY of terminals now
+                return Object.entries(companyData.terminals).flatMap(([state, data]) => {
+                    // Case A: New format (Array of Objects)
+                    if (Array.isArray(data)) {
+                        return data.map(term => ({
+                            state: state,
+                            name: term.name,
+                            address: term.address
+                        }));
+                    }
+                    // Case B: Old format (Simple String)
+                    return [{
+                        state: state,
+                        name: `${state} Terminal`,
+                        address: data
+                    }];
+                });
+            }
             return [];
         }
 
@@ -806,36 +796,18 @@ body * {
             if (!apiRoutes || apiRoutes.length === 0) return [];
             return apiRoutes.map(route => {
                 const routeParts = route.route ? route.route.split('-') : [];
-                const fromLocation = routeParts[0] || 'Unknown';
-                const toLocation = routeParts[1] || 'Unknown';
-                const options = route.prices ? Object.entries(route.prices).map(([company, price]) => ({
-                    company: company,
-                    price: price,
-                    type: "Standard"
-                })) : [];
                 return {
-                    from: fromLocation,
-                    to: toLocation,
-                    options: options
+                    from: routeParts[0] || 'Unknown',
+                    to: routeParts[1] || 'Unknown',
+                    options: route.prices ? Object.entries(route.prices).map(([c, p]) => ({ company: c, price: p, type: "Standard" })) : []
                 };
             });
         }
 
-        function processCompanyTerminalsFromApi(companyData) {
-            if (companyData.terminals && Object.keys(companyData.terminals).length > 0) {
-                return Object.entries(companyData.terminals).map(([state, address]) => ({
-                    state: state,
-                    address: address
-                }));
-            }
-            return [];
-        }
-
         function processApiResults(query, apiData) {
             const results = apiData.results;
-            console.log('Processing API data:', results);
-
             let viewType = 'company';
+            
             if (results.routes && results.routes.length > 0) viewType = 'location';
             else if (results.companies && results.companies.length > 0) viewType = 'company';
             else if (results.states && results.states.length > 0) viewType = 'location';
@@ -844,7 +816,7 @@ body * {
                 const stateData = results.states && results.states.length > 0 ? results.states[0] : null;
                 const processedData = {
                     type: 'location',
-                    name: stateData ? stateData.name : query.charAt(0).toUpperCase() + query.slice(1),
+                    name: stateData ? stateData.name : query,
                     companies: stateData ? stateData.companies : (results.companies || []),
                     terminals: processTerminalsFromApi(results, stateData),
                     routes: processRoutesFromApi(results.routes || [])
@@ -859,7 +831,7 @@ body * {
                         logoUrl: companyData.image,
                         logoInitial: companyData.name.charAt(0).toUpperCase(),
                         states: companyData.states || [],
-                        terminals: processCompanyTerminalsFromApi(companyData),
+                        terminals: processCompanyTerminalsFromApi(companyData), // Uses new logic
                         basePrice: companyData.basePrice,
                         serviceAttributes: companyData.serviceAttributes || []
                     };
@@ -874,26 +846,15 @@ body * {
 
         function renderSmartView(data) {
             resultsArea.innerHTML = '';
-            if (data.type === 'location') {
-                renderLocationView(data);
-            } else {
-                renderCompanyView(data);
-            }
+            if (data.type === 'location') renderLocationView(data);
+            else renderCompanyView(data);
         }
 
-        function searchCompany(companyName) {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.value = companyName;
-            performSearch();
-        }
+        function searchCompany(n) { document.getElementById('searchInput').value = n; performSearch(); }
+        function searchLocation(n) { document.getElementById('searchInput').value = n; performSearch(); }
 
-        function searchLocation(locationName) {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.value = locationName;
-            performSearch();
-        }
+        // --- RENDER FUNCTIONS ---
 
-        // ✅ CORRECT LOCATION VIEW FUNCTION (Using data.name and t.name)
         function renderLocationView(data) {
             let html = `
                 <div class="mb-10 px-4">
@@ -903,45 +864,35 @@ body * {
                         </div>
                         <h2 class="text-2xl md:text-3xl font-bold text-white">Transport Data: ${data.name}</h2>
                     </div>
-
                     <p class="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-3">Active Operators in ${data.name}</p>
                     <div class="flex flex-wrap gap-2">
-                        ${data.companies.map(c => `
-                            <button onclick="searchCompany('${c}')" class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-sm hover:bg-slate-800 hover:border-slate-600 hover:text-white transition-colors cursor-pointer">
-                                ${c}
-                            </button>
-                        `).join('')}
+                        ${data.companies.map(c => `<button onclick="searchCompany('${c}')" class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-sm hover:bg-slate-800 hover:border-slate-600 hover:text-white transition-colors">${c}</button>`).join('')}
                     </div>
                 </div>
 
                 <div class="grid lg:grid-cols-12 gap-8 px-4">
                     <div class="lg:col-span-8">
-                        <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 01-1.447-.894L15 7m0 13V7"></path></svg>
-                            Popular Routes from ${data.name}
-                        </h3>
-
+                        <h3 class="text-white font-semibold mb-4">Popular Routes from ${data.name}</h3>
                         <div class="space-y-6">
                             ${data.routes.map(route => `
                                 <div class="bg-slate-900/50 rounded-xl border border-slate-800 overflow-hidden">
-                                    <div class="bg-slate-950/50 px-4 md:px-6 py-3 border-b border-slate-800 flex justify-between items-center">
+                                    <div class="bg-slate-950/50 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
                                         <div class="font-bold text-white flex items-center gap-2">
                                             <span class="truncate">${route.from}</span>
-                                            <svg class="w-4 h-4 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                                             <span class="text-vyra-400 truncate">${route.to}</span>
                                         </div>
-                                        <span class="text-xs text-slate-500 whitespace-nowrap ml-2">${route.options.length} Operators</span>
+                                        <span class="text-xs text-slate-500">${route.options.length} Operators</span>
                                     </div>
                                     <div class="divide-y divide-slate-800/50">
                                         ${route.options.sort((a,b) => a.price - b.price).map((opt, idx) => `
-                                            <div class="px-4 md:px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-colors gap-4">
-                                                <div class="min-w-0">
-                                                    <div class="text-slate-200 font-medium truncate">${opt.company}</div>
+                                            <div class="px-4 py-4 flex items-center justify-between hover:bg-white/5 transition-colors">
+                                                <div>
+                                                    <div class="text-slate-200 font-medium">${opt.company}</div>
                                                     <div class="text-xs text-slate-500">${opt.type}</div>
                                                 </div>
-                                                <div class="text-right flex-shrink-0">
-                                                    <div class="text-base md:text-lg font-mono font-bold ${idx === 0 ? 'text-green-400' : 'text-slate-300'}">NGN${opt.price.toLocaleString()}</div>
-                                                    ${idx === 0 ? '<div class="text-[10px] text-green-500 font-medium">BEST PRICE</div>' : ''}
+                                                <div class="text-right">
+                                                    <div class="text-base font-mono font-bold ${idx === 0 ? 'text-green-400' : 'text-slate-300'}">NGN${opt.price.toLocaleString()}</div>
                                                 </div>
                                             </div>
                                         `).join('')}
@@ -950,21 +901,14 @@ body * {
                             `).join('')}
                         </div>
                     </div>
-
                     <div class="lg:col-span-4">
                         <div class="sticky top-24">
-                            <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                                Major Hubs in ${data.name}
-                            </h3>
+                            <h3 class="text-white font-semibold mb-4">Major Hubs in ${data.name}</h3>
                             <div class="bg-slate-900 border border-slate-800 rounded-xl p-1">
                                 ${data.terminals.map(t => `
                                     <div class="p-4 hover:bg-white/5 rounded-lg transition-colors border-b border-slate-800 last:border-0">
                                         <div class="text-slate-200 font-medium">${t.name}</div>
-                                        <div class="text-xs text-slate-500 flex items-start gap-2 mt-1">
-                                            <svg class="w-3 h-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                            <span class="break-words">${t.address || t.area}</span>
-                                        </div>
+                                        <div class="text-xs text-slate-500 mt-1">${t.address || t.area}</div>
                                     </div>
                                 `).join('')}
                             </div>
@@ -975,76 +919,40 @@ body * {
             resultsArea.innerHTML = html;
         }
 
+        // ✅ UPDATED COMPANY VIEW RENDERER
         function renderCompanyView(data) {
-            const logoId = 'company-logo-' + data.name.replace(/\s/g, '-');
-            const fallbackId = 'logo-initial-' + data.name.replace(/\s/g, '-');
+            const logoId = 'cl-' + data.name.replace(/\s/g, '-');
+            const fallbackId = 'li-' + data.name.replace(/\s/g, '-');
 
             let html = `
-                <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 md:p-8 border border-slate-700 mb-8 relative overflow-hidden mx-4">
-                    <div class="absolute right-0 top-0 h-full w-1/3 bg-vyra-500/5 skew-x-12 transform translate-x-12"></div>
+                <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 md:p-8 border border-slate-700 mb-8 mx-4 relative overflow-hidden">
                     <div class="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-
-                        <div class="relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white flex-shrink-0 flex items-center justify-center shadow-xl">
-                            <img id="${logoId}" src="${data.logoUrl}"
-                                alt="${data.name} Logo"
-                                class="w-full h-full object-contain p-2 rounded-xl"
-                                onerror="this.classList.add('hidden'); document.getElementById('${fallbackId}').classList.remove('hidden');"
-                            />
-                            <div id="${fallbackId}" class="absolute inset-0 w-full h-full flex items-center justify-center text-3xl md:text-4xl font-bold text-slate-900 ${data.logoUrl ? 'hidden' : ''}">
-                                ${data.logoInitial}
-                            </div>
+                        <div class="relative w-20 h-20 bg-white rounded-xl flex items-center justify-center">
+                            <img id="${logoId}" src="${data.logoUrl}" class="w-full h-full object-contain p-2 rounded-xl" onerror="this.classList.add('hidden'); document.getElementById('${fallbackId}').classList.remove('hidden');" />
+                            <div id="${fallbackId}" class="absolute inset-0 flex items-center justify-center text-3xl font-bold text-slate-900 ${data.logoUrl ? 'hidden' : ''}">${data.logoInitial}</div>
                         </div>
-
-                        <div class="text-center sm:text-left flex-1 min-w-0">
-                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 truncate">${data.name}</h2>
-                            ${data.basePrice ? `<div class="text-base md:text-lg text-vyra-400 font-mono font-bold mb-2">Base Price: NGN${data.basePrice.toLocaleString()}</div>` : ''}
-                            <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-sm">
-                                <span class="flex items-center text-vyra-400 gap-1">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    Verified Operator
-                                </span>
-                                <span class="text-slate-500">${data.states.length} Active State${data.states.length !== 1 ? 's' : ''}</span>
-                            </div>
-
-                            ${data.serviceAttributes && data.serviceAttributes.length > 0 ? `
-                                <div class="mt-3 flex flex-wrap gap-2 justify-center sm:justify-start">
-                                    ${data.serviceAttributes.map(attr => `
-                                        <span class="px-2 py-1 bg-vyra-900/30 text-vyra-400 text-xs rounded-full border border-vyra-500/30">${attr}</span>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
+                        <div class="text-center sm:text-left">
+                            <h2 class="text-2xl font-bold text-white mb-2">${data.name}</h2>
+                            ${data.basePrice ? `<div class="text-vyra-400 font-mono font-bold mb-2">Base Price: NGN${data.basePrice.toLocaleString()}</div>` : ''}
+                            <div class="text-sm text-slate-500">${data.states.length} Active States</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid lg:grid-cols-2 gap-8 px-4">
                     <div>
-                        <h3 class="text-white font-semibold mb-4 border-b border-slate-800 pb-2 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5a2.5 2.5 0 002.5 2.5h1a2.5 2.5 0 002.5-2.5V3.935m-7 5.065h10a2 2 0 012 2v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5a2 2 0 012-2z"></path></svg>
-                            Operational States
-                        </h3>
+                        <h3 class="text-white font-semibold mb-4 border-b border-slate-800 pb-2">Operational States</h3>
                         <div class="flex flex-wrap gap-3">
-                           ${data.states.map(s => `
-                            <button onclick="searchLocation('${s}')" class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-300 shadow-sm transition-colors hover:bg-slate-800 hover:border-slate-700 cursor-pointer">
-                                ${s}
-                            </button>
-                        `).join('')}
+                           ${data.states.map(s => `<button onclick="searchLocation('${s}')" class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-300 hover:bg-slate-800">${s}</button>`).join('')}
                         </div>
                     </div>
-
                     <div>
-                        <h3 class="text-white font-semibold mb-4 border-b border-slate-800 pb-2 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            Major Terminals
-                        </h3>
+                        <h3 class="text-white font-semibold mb-4 border-b border-slate-800 pb-2">Major Terminals</h3>
                         <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
                              ${data.terminals.map(t => `
-                                <div class="p-4 border-b border-slate-800 last:border-0 hover:bg-slate-800/50 transition-colors">
-                                    <div class="text-vyra-400 font-bold text-sm mb-1">${t.state} Terminal</div>
-                                    <div class="text-slate-300 text-xs flex items-start gap-2">
-                                        <svg class="w-3 h-3 text-slate-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                        <span class="break-words">${t.address}</span>
-                                    </div>
+                                <div class="p-4 border-b border-slate-800 last:border-0 hover:bg-slate-800/50">
+                                    <div class="text-vyra-400 font-bold text-sm mb-1">${t.name || t.state + ' Terminal'}</div>
+                                    <div class="text-slate-300 text-xs">${t.address}</div>
                                 </div>
                              `).join('')}
                         </div>
@@ -1054,99 +962,18 @@ body * {
             resultsArea.innerHTML = html;
         }
 
-        // Cookie Management
-        function showCookieBanner() {
-            if (!getCookie('cookie_consent')) {
-                setTimeout(() => {
-                    document.getElementById('cookieConsent').classList.remove('hidden');
-                }, 1000);
-            }
-        }
-
-        function acceptAllCookies() {
-            setCookie('cookie_consent', 'all', 365);
-            setCookie('analytics_cookies', 'true', 365);
-            hideCookieBanner();
-            initializeAnalytics();
-        }
-
-        function rejectAllCookies() {
-            setCookie('cookie_consent', 'necessary', 365);
-            setCookie('analytics_cookies', 'false', 365);
-            hideCookieBanner();
-        }
-
-        function showCookieSettings() {
-            const analyticsAllowed = getCookie('analytics_cookies') === 'true';
-            document.getElementById('analyticsCookies').checked = analyticsAllowed;
-            document.getElementById('cookieSettings').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeCookieSettings() {
-            document.getElementById('cookieSettings').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        function hideCookieBanner() {
-            document.getElementById('cookieConsent').classList.add('hidden');
-        }
-
-        function saveCookiePreferences() {
-            const analyticsChecked = document.getElementById('analyticsCookies').checked;
-            setCookie('cookie_consent', 'custom', 365);
-            setCookie('analytics_cookies', analyticsChecked ? 'true' : 'false', 365);
-            if (analyticsChecked) {
-                initializeAnalytics();
-            }
-            closeCookieSettings();
-            hideCookieBanner();
-            showToast('Cookie preferences saved');
-        }
-
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg z-50 text-sm max-w-xs text-center';
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
-        }
-
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = "expires=" + date.toUTCString();
-            document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
-        }
-
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for(let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        function initializeAnalytics() {
-            console.log('Analytics initialized');
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const cookieSettings = document.getElementById('cookieSettings');
-            if (cookieSettings) {
-                cookieSettings.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        closeCookieSettings();
-                    }
-                });
-            }
-            showCookieBanner();
-        });
+        // Cookie Stuff
+        function showCookieBanner() { if (!getCookie('cookie_consent')) setTimeout(() => document.getElementById('cookieConsent').classList.remove('hidden'), 1000); }
+        function acceptAllCookies() { setCookie('cookie_consent','all',365); hideCookieBanner(); }
+        function rejectAllCookies() { setCookie('cookie_consent','necessary',365); hideCookieBanner(); }
+        function hideCookieBanner() { document.getElementById('cookieConsent').classList.add('hidden'); }
+        function showCookieSettings() { document.getElementById('cookieSettings').classList.remove('hidden'); }
+        function closeCookieSettings() { document.getElementById('cookieSettings').classList.add('hidden'); }
+        function saveCookiePreferences() { acceptAllCookies(); closeCookieSettings(); }
+        function setCookie(n,v,d) { const date=new Date(); date.setTime(date.getTime()+(d*24*60*60*1000)); document.cookie=n+"="+v+"; expires="+date.toUTCString()+"; path=/"; }
+        function getCookie(n) { const v = document.cookie.match('(^|;) ?' + n + '=([^;]*)(;|$)'); return v ? v[2] : null; }
+        
+        document.addEventListener('DOMContentLoaded', showCookieBanner);
     </script>
 
 </body>
