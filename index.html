@@ -749,43 +749,46 @@ body * {
         // --- DATA PROCESSING FUNCTIONS ---
 
         function processTerminalsFromApi(results, stateData) {
-            // Logic for State/Location View
             if (stateData && stateData.majorTerminals && stateData.majorTerminals.length > 0) {
                 return stateData.majorTerminals.map(terminal => {
                     if (typeof terminal === 'object' && terminal !== null) {
-                        return { name: terminal.name, address: terminal.address, area: stateData.name };
+                        return { 
+                            name: terminal.name, 
+                            address: terminal.address, 
+                            phone: terminal.phone, // ✅ Capturing Phone
+                            area: stateData.name 
+                        };
                     }
-                    return { name: terminal, address: '', area: stateData.name };
+                    return { name: terminal, address: '', phone: '', area: stateData.name };
                 });
             }
             if (results.terminals && results.terminals.length > 0) {
                 return results.terminals.map(t => ({
                     name: t.name || 'Unknown Terminal',
                     address: t.address || '',
+                    phone: t.phone || '', // ✅ Capturing Phone
                     area: t.area || t.state || 'Unknown Area'
                 }));
             }
             return [];
         }
 
-        // ✅ NEW: Correctly handles Company Terminals (Array of Objects)
         function processCompanyTerminalsFromApi(companyData) {
             if (companyData.terminals && Object.keys(companyData.terminals).length > 0) {
-                // We use flatMap because one state (e.g., Lagos) might have an ARRAY of terminals now
                 return Object.entries(companyData.terminals).flatMap(([state, data]) => {
-                    // Case A: New format (Array of Objects)
                     if (Array.isArray(data)) {
                         return data.map(term => ({
                             state: state,
                             name: term.name,
-                            address: term.address
+                            address: term.address,
+                            phone: term.phone // ✅ Capturing Phone
                         }));
                     }
-                    // Case B: Old format (Simple String)
                     return [{
                         state: state,
                         name: `${state} Terminal`,
-                        address: data
+                        address: data,
+                        phone: ''
                     }];
                 });
             }
@@ -831,7 +834,7 @@ body * {
                         logoUrl: companyData.image,
                         logoInitial: companyData.name.charAt(0).toUpperCase(),
                         states: companyData.states || [],
-                        terminals: processCompanyTerminalsFromApi(companyData), // Uses new logic
+                        terminals: processCompanyTerminalsFromApi(companyData),
                         basePrice: companyData.basePrice,
                         serviceAttributes: companyData.serviceAttributes || []
                     };
@@ -908,7 +911,16 @@ body * {
                                 ${data.terminals.map(t => `
                                     <div class="p-4 hover:bg-white/5 rounded-lg transition-colors border-b border-slate-800 last:border-0">
                                         <div class="text-slate-200 font-medium">${t.name}</div>
-                                        <div class="text-xs text-slate-500 mt-1">${t.address || t.area}</div>
+                                        <div class="text-xs text-slate-500 flex items-start gap-2 mt-1">
+                                            <svg class="w-3 h-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                            <span class="break-words">${t.address || t.area}</span>
+                                        </div>
+                                        ${t.phone ? `
+                                            <div class="text-xs text-vyra-400 flex items-center gap-2 mt-2">
+                                                <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                                <a href="tel:${t.phone.split(',')[0].trim()}" class="hover:underline">${t.phone}</a>
+                                            </div>
+                                        ` : ''}
                                     </div>
                                 `).join('')}
                             </div>
@@ -919,7 +931,6 @@ body * {
             resultsArea.innerHTML = html;
         }
 
-        // ✅ UPDATED COMPANY VIEW RENDERER
         function renderCompanyView(data) {
             const logoId = 'cl-' + data.name.replace(/\s/g, '-');
             const fallbackId = 'li-' + data.name.replace(/\s/g, '-');
@@ -953,6 +964,12 @@ body * {
                                 <div class="p-4 border-b border-slate-800 last:border-0 hover:bg-slate-800/50">
                                     <div class="text-vyra-400 font-bold text-sm mb-1">${t.name || t.state + ' Terminal'}</div>
                                     <div class="text-slate-300 text-xs">${t.address}</div>
+                                    ${t.phone ? `
+                                        <div class="text-xs text-vyra-500 flex items-center gap-2 mt-1.5">
+                                            <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                            <a href="tel:${t.phone.split(',')[0].trim()}" class="hover:underline">${t.phone}</a>
+                                        </div>
+                                    ` : ''}
                                 </div>
                              `).join('')}
                         </div>
@@ -975,6 +992,5 @@ body * {
         
         document.addEventListener('DOMContentLoaded', showCookieBanner);
     </script>
-
 </body>
 </html>
