@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Nigerian Transport Hubs | Intercity Prices</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { vyra: { 500: '#1acd81' } } } }
+        }
+    </script>
+    <style>
+        /* Custom Checkbox Style */
+        .custom-checkbox:checked { background-color: #1acd81; border-color: #1acd81; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen flex flex-col">
+
+    <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 font-bold text-white text-xl">
+                <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" class="h-8"> Intercity<span class="text-vyra-500">.Cities</span>
+            </a>
+            <a href="/" class="text-sm hover:text-white">Back to Search</a>
+        </div>
+    </nav>
+
+    <div class="flex pt-16 min-h-screen">
+        
+        <aside class="w-64 bg-slate-900 border-r border-slate-800 hidden md:block fixed h-full overflow-y-auto p-6">
+            <div class="mb-8">
+                <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Region</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" value="SW" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
+                        <span class="text-sm group-hover:text-white transition-colors">South West</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" value="NC" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
+                        <span class="text-sm group-hover:text-white transition-colors">North Central</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" value="SS" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
+                        <span class="text-sm group-hover:text-white transition-colors">South South</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Availability</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" onchange="filterCities()" id="hasGIGM" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
+                        <span class="text-sm group-hover:text-white transition-colors">Has GIGM Terminal</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" onchange="filterCities()" id="hasGUO" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
+                        <span class="text-sm group-hover:text-white transition-colors">Has GUO Terminal</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" onchange="filterCities()" id="majorHub" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
+                        <span class="text-sm group-hover:text-white transition-colors">Major Hub (>5 Terminals)</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 md:ml-64 p-4 md:p-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex justify-between items-end mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-white mb-2">Nigerian Transport Hubs</h1>
+                        <p class="text-slate-400">Comparing connectivity, terminals, and price data across Nigeria.</p>
+                    </div>
+                    <div class="text-vyra-500 font-mono text-sm" id="countDisplay">Loading...</div>
+                </div>
+
+                <div id="citiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // MOCK DATA - You should populate this from your API eventually
+        // For now, hardcode the popular ones to get the SEO value fast
+        const cities = [
+            { name: "Lagos", region: "SW", terminals: 15, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1598888065097-474d2b244799?q=80&w=800&auto=format&fit=crop" },
+            { name: "Abuja", region: "NC", terminals: 12, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1598302720272-378327889758?q=80&w=800&auto=format&fit=crop" },
+            { name: "Port Harcourt", region: "SS", terminals: 8, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1620050800366-24d142106657?q=80&w=800&auto=format&fit=crop" },
+            { name: "Benin City", region: "SS", terminals: 6, hasGIGM: true, hasGUO: false, img: "https://images.unsplash.com/photo-1616766467389-98006240d164?q=80&w=800&auto=format&fit=crop" },
+            { name: "Enugu", region: "SE", terminals: 5, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1551373884-8a0750074df7?q=80&w=800&auto=format&fit=crop" },
+            { name: "Kano", region: "NW", terminals: 4, hasGIGM: false, hasGUO: true, img: "https://images.unsplash.com/photo-1608493130761-c3021f1816e3?q=80&w=800&auto=format&fit=crop" },
+            { name: "Ibadan", region: "SW", terminals: 7, hasGIGM: true, hasGUO: false, img: "https://images.unsplash.com/photo-1598888065097-474d2b244799?q=80&w=800&auto=format&fit=crop" },
+        ];
+
+        function renderCities(data) {
+            const grid = document.getElementById('citiesGrid');
+            document.getElementById('countDisplay').innerText = `${data.length} CITIES FOUND`;
+            
+            grid.innerHTML = data.map(city => `
+                <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-vyra-500/50 transition-all group">
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="${city.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-2 right-2 bg-black/60 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">
+                            ${city.region}
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">${city.name}</h3>
+                        <p class="text-slate-500 text-sm mb-4">${city.terminals} Major Terminals</p>
+                        
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            ${city.hasGIGM ? '<span class="px-2 py-1 rounded bg-vyra-900/30 text-vyra-400 text-xs border border-vyra-500/20">GIGM</span>' : ''}
+                            ${city.hasGUO ? '<span class="px-2 py-1 rounded bg-blue-900/30 text-blue-400 text-xs border border-blue-500/20">GUO</span>' : ''}
+                        </div>
+
+                        <a href="/?q=${city.name}" class="block w-full text-center py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-medium transition-colors">
+                            View Routes
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCities() {
+            const showGIGM = document.getElementById('hasGIGM').checked;
+            const showGUO = document.getElementById('hasGUO').checked;
+            const showMajor = document.getElementById('majorHub').checked;
+
+            const filtered = cities.filter(city => {
+                if (showGIGM && !city.hasGIGM) return false;
+                if (showGUO && !city.hasGUO) return false;
+                if (showMajor && city.terminals < 5) return false;
+                return true;
+            });
+
+            renderCities(filtered);
+        }
+
+        // Initial Render
+        renderCities(cities);
+    </script>
+</body>
+</html>
