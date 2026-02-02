@@ -776,23 +776,38 @@ body * {
             input.focus();
         }
 
-        function processTerminalsFromApi(results, stateData) {
-            if (stateData && stateData.majorTerminals && stateData.majorTerminals.length > 0) {
-                return stateData.majorTerminals.map(terminal => ({
-                    name: terminal,
+       function processTerminalsFromApi(results, stateData) {
+    // 1. Check if we have state-specific terminal data (The one giving you issues)
+    if (stateData && stateData.majorTerminals && stateData.majorTerminals.length > 0) {
+        return stateData.majorTerminals.map(terminal => {
+            // FIX: Check if 'terminal' is an object (Your new JSON format)
+            if (typeof terminal === 'object' && terminal !== null) {
+                return {
+                    name: terminal.name,       // ✅ Extract real name
+                    address: terminal.address, // ✅ Extract real address
                     area: stateData.name || 'Unknown Area'
-                }));
+                };
             }
+            // Fallback: If it's just a string (Old format)
+            return {
+                name: terminal,
+                address: '', 
+                area: stateData.name || 'Unknown Area'
+            };
+        });
+    }
 
-            if (results.terminals && results.terminals.length > 0) {
-                return results.terminals.map(t => ({
-                    name: t.name || 'Unknown Terminal',
-                    area: t.area || t.state || 'Unknown Area'
-                }));
-            }
+    // 2. Check if we have generic results terminals
+    if (results.terminals && results.terminals.length > 0) {
+        return results.terminals.map(t => ({
+            name: t.name || 'Unknown Terminal',
+            address: t.address || '',
+            area: t.area || t.state || 'Unknown Area'
+        }));
+    }
 
-            return [];
-        }
+    return [];
+}
 
         function processRoutesFromApi(apiRoutes) {
             if (!apiRoutes || apiRoutes.length === 0) {
@@ -895,90 +910,89 @@ body * {
     // Trigger the search
     performSearch();
 }
-
-        function renderLocationView(data) {
-            let html = `
-                <div class="mb-10 px-4">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="p-3 bg-vyra-900/20 rounded-xl border border-vyra-500/20">
-                            <svg class="w-8 h-8 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white">Transport Data: ${data.name}</h2>
-                    </div>
-
-                   <p class="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-3">Active Operators in ${data.name}</p>
-<div class="flex flex-wrap gap-2">
-    ${data.companies.map(c => `
-        <button
-            onclick="searchCompany('${c}')"
-            class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-sm hover:bg-slate-800 hover:border-slate-600 hover:text-white transition-colors cursor-pointer"
-        >
-            ${c}
-        </button>
-    `).join('')}
-</div>
+function renderLocationView(data) {
+    let html = `
+        <div class="mb-10 px-4">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-vyra-900/20 rounded-xl border border-vyra-500/20">
+                    <svg class="w-8 h-8 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">Transport Data: ${data.name}</h2>
+            </div>
 
-                <div class="grid lg:grid-cols-12 gap-8 px-4">
-                    <div class="lg:col-span-8">
-                        <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 01-1.447-.894L15 7m0 13V7"></path></svg>
-                            Popular Routes from ${data.name}
-                        </h3>
+            <p class="text-sm text-slate-500 uppercase tracking-wider font-semibold mb-3">Active Operators in ${data.name}</p>
+            <div class="flex flex-wrap gap-2">
+                ${data.companies.map(c => `
+                    <button
+                        onclick="searchCompany('${c}')"
+                        class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-sm hover:bg-slate-800 hover:border-slate-600 hover:text-white transition-colors cursor-pointer"
+                    >
+                        ${c}
+                    </button>
+                `).join('')}
+            </div>
+        </div>
 
-                        <div class="space-y-6">
-                            ${data.routes.map(route => `
-                                <div class="bg-slate-900/50 rounded-xl border border-slate-800 overflow-hidden">
-                                    <div class="bg-slate-950/50 px-4 md:px-6 py-3 border-b border-slate-800 flex justify-between items-center">
-                                        <div class="font-bold text-white flex items-center gap-2">
-                                            <span class="truncate">${route.from}</span>
-                                            <svg class="w-4 h-4 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                            <span class="text-vyra-400 truncate">${route.to}</span>
-                                        </div>
-                                        <span class="text-xs text-slate-500 whitespace-nowrap ml-2">${route.options.length} Operators</span>
-                                    </div>
-                                    <div class="divide-y divide-slate-800/50">
-                                        ${route.options.sort((a,b) => a.price - b.price).map((opt, idx) => `
-                                            <div class="px-4 md:px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-colors gap-4">
-                                                <div class="min-w-0">
-                                                    <div class="text-slate-200 font-medium truncate">${opt.company}</div>
-                                                    <div class="text-xs text-slate-500">${opt.type}</div>
-                                                </div>
-                                                <div class="text-right flex-shrink-0">
-                                                    <div class="text-base md:text-lg font-mono font-bold ${idx === 0 ? 'text-green-400' : 'text-slate-300'}">NGN${opt.price.toLocaleString()}</div>
-                                                    ${idx === 0 ? '<div class="text-[10px] text-green-500 font-medium">BEST PRICE</div>' : ''}
-                                                </div>
-                                            </div>
-                                        `).join('')}
-                                    </div>
+        <div class="grid lg:grid-cols-12 gap-8 px-4">
+            <div class="lg:col-span-8">
+                <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 01-1.447-.894L15 7m0 13V7"></path></svg>
+                    Popular Routes from ${data.name}
+                </h3>
+
+                <div class="space-y-6">
+                    ${data.routes.map(route => `
+                        <div class="bg-slate-900/50 rounded-xl border border-slate-800 overflow-hidden">
+                            <div class="bg-slate-950/50 px-4 md:px-6 py-3 border-b border-slate-800 flex justify-between items-center">
+                                <div class="font-bold text-white flex items-center gap-2">
+                                    <span class="truncate">${route.from}</span>
+                                    <svg class="w-4 h-4 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    <span class="text-vyra-400 truncate">${route.to}</span>
                                 </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-4">
-                        <div class="sticky top-24">
-                            <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                                Major Hubs in ${data.name}
-                            </h3>
-                            <div class="bg-slate-900 border border-slate-800 rounded-xl p-1">
-                                ${data.terminals.map(t => `
-                                    <div class="p-4 hover:bg-white/5 rounded-lg transition-colors border-b border-slate-800 last:border-0">
-                                        <div class="text-slate-200 font-medium">${t.name}</div>
-                                        <div class="text-xs text-slate-500 flex items-center gap-1 mt-1">
-                                            <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                            ${t.area}
+                                <span class="text-xs text-slate-500 whitespace-nowrap ml-2">${route.options.length} Operators</span>
+                            </div>
+                            <div class="divide-y divide-slate-800/50">
+                                ${route.options.sort((a,b) => a.price - b.price).map((opt, idx) => `
+                                    <div class="px-4 md:px-6 py-4 flex items-center justify-between hover:bg-white/5 transition-colors gap-4">
+                                        <div class="min-w-0">
+                                            <div class="text-slate-200 font-medium truncate">${opt.company}</div>
+                                            <div class="text-xs text-slate-500">${opt.type}</div>
+                                        </div>
+                                        <div class="text-right flex-shrink-0">
+                                            <div class="text-base md:text-lg font-mono font-bold ${idx === 0 ? 'text-green-400' : 'text-slate-300'}">NGN${opt.price.toLocaleString()}</div>
+                                            ${idx === 0 ? '<div class="text-[10px] text-green-500 font-medium">BEST PRICE</div>' : ''}
                                         </div>
                                     </div>
                                 `).join('')}
                             </div>
                         </div>
+                    `).join('')}
+                </div>
+            </div>
+
+            <div class="lg:col-span-4">
+                <div class="sticky top-24">
+                    <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        Major Hubs in ${data.name}
+                    </h3>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-1">
+                        ${data.terminals.map(t => `
+                            <div class="p-4 hover:bg-white/5 rounded-lg transition-colors border-b border-slate-800 last:border-0">
+                                <div class="text-slate-200 font-medium">${t.name}</div>
+                                <div class="text-xs text-slate-500 flex items-start gap-2 mt-1">
+                                    <svg class="w-3 h-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    <span class="break-words">${t.address || t.area}</span>
+                                </div>
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
-            `;
-            resultsArea.innerHTML = html;
-        }
+            </div>
+        </div>
+    `;
+    resultsArea.innerHTML = html;
+}
 
         function renderCompanyView(data) {
             const logoId = 'company-logo-' + data.name.replace(/\s/g, '-');
