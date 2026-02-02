@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vyra Transport API | Infrastructure for Nigerian Mobility</title>
+    <title>Nigeria Intercity Transport API | Infrastructure for Nigerian Mobility</title>
     <meta name="description" content="The unified API for Nigerian intercity transport data. Access real-time routes, pricing, and terminal data for GIGM, GUO, and 50+ operators.">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -62,13 +62,13 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
-        
+
         /* Code Block Syntax Highlighting Simulation */
         .key { color: #9cdcfe; }
         .string { color: #ce9178; }
         .number { color: #b5cea8; }
         .boolean { color: #569cd6; }
-        
+
         .glass-nav {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(12px);
@@ -85,7 +85,7 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" alt="Vyra Logo" class="h-8 w-auto brightness-110">
-                    <span class="font-bold text-white text-xl tracking-tight">Vyra<span class="text-vyra-500">.API</span></span>
+                    <span class="font-bold text-white text-xl tracking-tight">Intercityprices<span class="text-vyra-500">.API</span></span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#features" class="text-sm font-medium hover:text-white transition-colors">Features</a>
@@ -117,7 +117,7 @@
     <!-- Hero Section -->
     <main class="pt-28 pb-16 sm:pt-40 sm:pb-24 lg:pb-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            
+
             <!-- Background Glow Effect -->
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] sm:w-[800px] h-[500px] bg-vyra-500/10 blur-[80px] sm:blur-[120px] rounded-full -z-10 pointer-events-none"></div>
 
@@ -174,7 +174,7 @@
                             </div>
                             <div class="text-xs font-mono text-slate-500">api.vyra.ng</div>
                         </div>
-                        
+
                         <!-- Playground Content -->
                         <div class="p-4 sm:p-6">
                             <div class="mb-4">
@@ -187,7 +187,7 @@
                                     <button onclick="runDemo()" id="runBtn" class="bg-vyra-600 hover:bg-vyra-500 text-white px-4 py-2 rounded text-sm font-medium transition-colors w-full sm:w-auto">Send</button>
                                 </div>
                             </div>
-                            
+
                             <div class="relative">
                                 <label class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2 block">Response</label>
                                 <pre class="bg-slate-950 p-4 rounded-lg border border-slate-800 h-64 overflow-auto font-mono text-xs sm:text-sm leading-relaxed scrollbar-thin scrollbar-thumb-slate-700" id="codeOutput">
@@ -364,7 +364,7 @@
             const output = document.getElementById('codeOutput');
             const loader = document.getElementById('loader');
             const runBtn = document.getElementById('runBtn');
-            
+
             // UI State
             runBtn.disabled = true;
             runBtn.classList.add('opacity-50');
@@ -426,7 +426,7 @@
                 // Format JSON with syntax highlighting
                 const jsonString = JSON.stringify(mockData, null, 2);
                 const highlighted = syntaxHighlight(jsonString);
-                
+
                 output.innerHTML = highlighted;
                 loader.classList.add('hidden');
                 runBtn.disabled = false;
