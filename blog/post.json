@@ -1,10 +1,10 @@
 [
   {
-    "slug": "test-post",
-    "title": "This is a Test Post",
+    "slug": "test-article",
+    "title": "My First Test Article",
     "date": "Feb 3, 2026",
     "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957",
-    "excerpt": "If you can see this, your JSON is working.",
-    "content": "<p>Great job! The blog is connected.</p>"
+    "excerpt": "This is a test to make sure the blog is working.",
+    "content": "<p>If you can read this, the connection is successful!</p>"
   }
 ]
