@@ -3,17 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post | Intercity Prices</title>
+    
+    <title>Loading Article... | Intercity Prices Blog</title>
+    <meta name="description" content="Read travel insights and transport price analysis on Intercity Prices.">
+    <meta name="keywords" content="nigeria transport, bus travel, safety tips, gigm, guo">
+    <meta name="author" content="Vyra Technologies">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Intercity Prices Blog">
+    <meta property="og:description" content="Loading article content...">
+    <meta property="og:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+    <meta property="og:url" content="">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Intercity Prices Blog">
+    <meta name="twitter:description" content="Loading article content...">
+    <meta name="twitter:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* This handles the styling for the HTML inside your JSON */
         .prose h3 { font-size: 1.5rem; font-weight: 700; color: white; margin-top: 2rem; margin-bottom: 0.5rem; }
         .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #cbd5e1; }
         .prose b, .prose strong { color: white; font-weight: 700; }
         .prose i, .prose em { color: #94a3b8; }
         .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #cbd5e1; }
         .prose li { margin-bottom: 0.5rem; }
+        .prose a { color: #1acd81; text-decoration: underline; }
+        .prose img { border-radius: 0.75rem; margin-top: 1.5rem; margin-bottom: 1.5rem; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen">
@@ -31,7 +48,7 @@
     <article class="max-w-3xl mx-auto px-4 pt-28 pb-12">
         <header class="mb-10 text-center">
             <div id="postDate" class="inline-block px-3 py-1 bg-[#1acd81]/10 text-[#1acd81] rounded-full text-xs font-semibold mb-4 border border-[#1acd81]/20">
-                Loading date...
+                Loading...
             </div>
             <h1 id="postTitle" class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 Loading Article...
@@ -52,51 +69,72 @@
 
     <script>
         async function loadPost() {
-            // 1. Get the slug from the URL (e.g., read.html?post=my-slug)
             const params = new URLSearchParams(window.location.search);
             const slug = params.get('post');
 
             if (!slug) {
-                window.location.href = 'index.html'; // Redirect if no post specified
+                window.location.href = 'index.html'; 
                 return;
             }
 
             try {
-                // 2. Fetch the JSON Database
+                // Fetch the JSON
                 const response = await fetch('posts.json');
-                if (!response.ok) throw new Error("Could not load posts");
-                const posts = await response.json();
                 
-                // 3. Find the matching post
+                // ✅ Better Error Checking
+                if (!response.ok) {
+                    throw new Error(`Failed to find posts.json (Status: ${response.status})`);
+                }
+
+                const posts = await response.json();
                 const post = posts.find(p => p.slug === slug);
 
                 if (post) {
-                    // 4. Update the Page
-                    document.title = `${post.title} | Intercity Prices`;
+                    // 1. Update Visual Content
                     document.getElementById('postDate').textContent = post.date;
                     document.getElementById('postTitle').textContent = post.title;
-                    
                     const img = document.getElementById('postImage');
                     img.src = post.image;
                     img.classList.remove('hidden');
-
-                    // THIS LINE RENDERS THE HTML TAGS INSIDE YOUR JSON
                     document.getElementById('postContent').innerHTML = post.content;
+
+                    // 2. ✅ Update SEO Meta Tags Dynamically
+                    document.title = `${post.title} | Intercity Prices`;
+                    
+                    // Helper to update meta tags
+                    const setMeta = (name, content) => {
+                        const element = document.querySelector(`meta[name="${name}"]`) || document.querySelector(`meta[property="${name}"]`);
+                        if (element) element.setAttribute('content', content);
+                    };
+
+                    setMeta('description', post.excerpt);
+                    setMeta('og:title', post.title);
+                    setMeta('og:description', post.excerpt);
+                    setMeta('og:image', post.image);
+                    setMeta('og:url', window.location.href);
+                    setMeta('twitter:title', post.title);
+                    setMeta('twitter:description', post.excerpt);
+                    setMeta('twitter:image', post.image);
+
                 } else {
-                    document.getElementById('postContent').innerHTML = `
-                        <div class="text-center py-10 bg-slate-900 rounded-xl border border-red-900/30">
-                            <h2 class="text-xl text-white font-bold mb-2">Article Not Found</h2>
-                            <p class="text-slate-400">The article you are looking for does not exist.</p>
-                            <a href="index.html" class="inline-block mt-4 text-[#1acd81] hover:underline">Go back home</a>
-                        </div>
-                    `;
+                    throw new Error("Article slug not found in JSON");
                 }
             } catch (error) {
                 console.error(error);
+                // ✅ Visible Error Message for Debugging
+                document.getElementById('postContent').innerHTML = `
+                    <div class="text-center py-10 bg-slate-900 rounded-xl border border-red-900/30">
+                        <h2 class="text-xl text-red-400 font-bold mb-2">Error Loading Article</h2>
+                        <p class="text-slate-400 mb-4">${error.message}</p>
+                        <p class="text-xs text-slate-500 font-mono bg-black/30 p-2 rounded inline-block">Check console for details</p>
+                        <div class="mt-6">
+                            <a href="index.html" class="text-[#1acd81] hover:underline">Return to Blog Home</a>
+                        </div>
+                    </div>
+                `;
             }
         }
 
-        // Run the function
         loadPost();
     </script>
 </body>
