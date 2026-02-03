@@ -79,8 +79,7 @@
 
             try {
                 // Fetch the JSON
-                const response = await fetch(`${window.location.origin}/blog/post.json`);
-                
+                const response = await fetch('/post.json');
                 // ✅ Better Error Checking
                 if (!response.ok) {
                     throw new Error(`Failed to find post.json (Status: ${response.status})`);
