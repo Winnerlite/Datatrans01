@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nigeria Travel Blog | Transport Prices & Safety Tips 2026</title>
+    <meta name="description" content="The official travel blog of Intercity Prices. Get the latest transport price analysis, safety guides, and terminal reviews for GIGM, GUO, and other Nigerian bus companies.">
+    <meta name="keywords" content="nigeria transport blog, bus prices nigeria, gigm price list 2026, guo transport safety, intercity travel tips, lagos to abuja bus price">
+    <meta name="author" content="Vyra Technologies">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://intercityprices.com.ng/blog/">
+
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Nigeria Travel Insights | Intercity Prices Blog">
+    <meta property="og:description" content="Compare bus prices, find safe terminals, and get travel tips for Nigerian roads. Updated daily.">
+    <meta property="og:url" content="https://intercityprices.com.ng/blog/">
+    <meta property="og:site_name" content="Intercity Prices Nigeria">
+    <meta property="og:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nigeria Travel Insights | Intercity Prices Blog">
+    <meta name="twitter:description" content="Compare bus prices, find safe terminals, and get travel tips for Nigerian roads.">
+    <meta name="twitter:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+    <meta name="twitter:site" content="@vyratech">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://intercityprices.com.ng/blog/"
+      },
+      "headline": "Nigeria Travel & Transport Blog",
+      "description": "Analysis of transport prices and travel safety in Nigeria.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vyra Technologies",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://i.ibb.co/ycsBvPZW/VyraLogo.png"
+        }
+      }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { vyra: { 500: '#1acd81' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen flex flex-col">
+
+    <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur fixed w-full z-50 top-0">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-2 cursor-pointer">
+                <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" alt="Logo" class="h-8 w-auto brightness-110">
+                <span class="font-bold text-white text-lg md:text-xl tracking-tight">Intercity<span class="text-vyra-500">.Blog</span></span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="/" class="text-sm font-medium hover:text-white transition-colors">Search Prices</a>
+                <a href="/cities.html" class="hidden md:block text-sm font-medium hover:text-white transition-colors">Explore Cities</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">Nigeria Travel Insights</h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+            Price analysis, safety tips, and guides for traveling by road in Nigeria.
+        </p>
+    </header>
+
+    <main class="flex-grow max-w-6xl mx-auto px-4 pb-20 w-full">
+        
+        <div id="loader" class="flex justify-center py-20">
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce mx-2" style="animation-delay: 0.1s"></div>
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+        </div>
+
+        <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            </div>
+
+    </main>
+
+    <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-sm text-slate-600">
+        <p>&copy; 2026 Vyra Technologies. <a href="/" class="hover:text-vyra-500">Back to Search</a></p>
+    </footer>
+
+    <script>
+        async function loadBlog() {
+            try {
+                const response = await fetch('posts.json');
+                if (!response.ok) throw new Error("Failed to load posts");
+                
+                const posts = await response.json();
+                const grid = document.getElementById('blogGrid');
+                const loader = document.getElementById('loader');
+
+                loader.classList.add('hidden');
+                grid.classList.remove('hidden');
+
+                grid.innerHTML = posts.map(post => `
+                    <article class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-vyra-500/50 transition-all duration-300 group flex flex-col h-full">
+                        <a href="read.html?post=${post.slug}" class="block h-48 overflow-hidden relative">
+                            <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-60"></div>
+                        </a>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-0.5 rounded-full bg-vyra-500/10 text-vyra-500 text-xs font-bold uppercase tracking-wider">Article</span>
+                                <span class="text-xs text-slate-500">${post.date}</span>
+                            </div>
+                            <a href="read.html?post=${post.slug}" class="block group-hover:text-vyra-500 transition-colors">
+                                <h2 class="text-xl font-bold text-white mb-3 leading-tight">${post.title}</h2>
+                            </a>
+                            <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-3">${post.excerpt}</p>
+                            <a href="read.html?post=${post.slug}" class="inline-flex items-center text-sm font-semibold text-white hover:text-vyra-500 transition-colors mt-auto">
+                                Read Article 
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                        </div>
+                    </article>
+                `).join('');
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('loader').innerHTML = `<p class="text-red-400">Failed to load articles.</p>`;
+            }
+        }
+        loadBlog();
+    </script>
+</body>
+</html>
