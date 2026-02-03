@@ -79,11 +79,11 @@
 
             try {
                 // Fetch the JSON
-                const response = await fetch('posts.json');
+                const response = await fetch('post.json');
                 
                 // ✅ Better Error Checking
                 if (!response.ok) {
-                    throw new Error(`Failed to find posts.json (Status: ${response.status})`);
+                    throw new Error(`Failed to find post.json (Status: ${response.status})`);
                 }
 
                 const posts = await response.json();
