@@ -102,7 +102,7 @@
     <script>
         async function loadBlog() {
             try {
-                const response = await fetch('/post.json');
+                const response = await fetch('/blog/post.json');
                 if (!response.ok) throw new Error("Failed to load posts");
                 
                 const posts = await response.json();
