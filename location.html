@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Loading Location...</title>
+    <meta name="description" content="Find transport companies and terminals in this state.">
+    <link rel="canonical" href="">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { vyra: { 500: '#1acd81' } } } }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen flex flex-col">
+
+    <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur fixed w-full z-50 top-0">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="/" class="text-white font-bold text-xl">Intercity<span class="text-vyra-500">.Search</span></a>
+            <a href="/" class="text-sm hover:text-white">Back to Search</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4 max-w-5xl mx-auto">
+        
+        <div id="loader" class="text-center py-20">
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block"></div>
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block mx-1" style="animation-delay: 0.1s"></div>
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block" style="animation-delay: 0.2s"></div>
+        </div>
+
+        <article id="content" class="hidden">
+            <header class="mb-12 text-center">
+                <div class="inline-block p-3 rounded-2xl bg-slate-900 border border-slate-800 mb-6">
+                    <svg class="w-12 h-12 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <h1 id="pageTitle" class="text-3xl md:text-5xl font-bold text-white mb-4"></h1>
+                <p id="subTitle" class="text-lg text-slate-400 max-w-2xl mx-auto"></p>
+            </header>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                        <h2 class="text-xl font-bold text-white mb-4">Transport Overview</h2>
+                        <p id="introText" class="text-slate-300 leading-relaxed"></p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                            <span class="bg-vyra-500 text-slate-900 text-xs px-2 py-0.5 rounded font-bold" id="compCount">0</span>
+                            Active Bus Companies
+                        </h2>
+                        <div class="grid sm:grid-cols-2 gap-3" id="companyGrid">
+                            </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+                        <h3 class="text-white font-bold mb-4">Major Terminals</h3>
+                        <ul id="terminalList" class="space-y-3 text-sm text-slate-400">
+                            </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-vyra-900 to-slate-900 border border-vyra-500/30 rounded-xl p-6 text-center">
+                        <h3 class="text-white font-bold mb-2">Traveling from here?</h3>
+                        <p class="text-sm text-slate-400 mb-4">Compare prices for all outgoing buses instantly.</p>
+                        <a href="/" class="block w-full bg-vyra-500 hover:bg-white text-slate-900 font-bold py-3 rounded-lg transition-colors">Check Prices</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="mt-auto py-8 text-center text-slate-600 text-sm border-t border-slate-900">
+        &copy; 2026 Vyra Technologies
+    </footer>
+
+    <script>
+        async function loadLocationPage() {
+            const params = new URLSearchParams(window.location.search);
+            const queryName = decodeURIComponent(params.get('name') || '');
+
+            if (!queryName) { window.location.href = '/cities.html'; return; }
+
+            try {
+                const response = await fetch('ngr.json');
+                const data = await response.json();
+                
+                // Find State Data
+                const states = data.states;
+                const stateKey = Object.keys(states).find(k => k.toLowerCase() === queryName.toLowerCase());
+
+                if (!stateKey) {
+                    document.getElementById('content').innerHTML = `<div class="text-center text-red-400 py-20">Location not found. <a href="/cities.html" class="underline">View All Cities</a></div>`;
+                    document.getElementById('loader').classList.add('hidden');
+                    document.getElementById('content').classList.remove('hidden');
+                    return;
+                }
+
+                const s = states[stateKey];
+
+                // --- CONTENT GENERATION ---
+                document.getElementById('pageTitle').textContent = `Transport Companies in ${stateKey}`;
+                document.getElementById('subTitle').textContent = `Find the best bus companies, price lists, and terminals operating in ${stateKey}, ${s.region} Nigeria.`;
+                
+                // Intro
+                document.getElementById('introText').innerHTML = `
+                    <span class="font-bold text-white">${stateKey}</span> is a key transport hub in the <span class="text-vyra-400">${s.region}</span> region. 
+                    Currently, we track <span class="text-white font-bold">${s.companies.length} major transport companies</span> operating daily routes from here.
+                    Travelers can find buses to Lagos, Abuja, and other major cities from terminals like ${s.majorTerminals[0]}.
+                `;
+
+                // Company Grid
+                document.getElementById('compCount').textContent = s.companies.length;
+                document.getElementById('companyGrid').innerHTML = s.companies.map(c => `
+                    <a href="brand.html?name=${encodeURIComponent(c)}" class="flex items-center justify-between p-3 bg-slate-900 border border-slate-800 rounded hover:border-vyra-500/50 hover:bg-slate-800 transition-all group">
+                        <span class="text-slate-300 group-hover:text-white font-medium">${c}</span>
+                        <svg class="w-4 h-4 text-slate-600 group-hover:text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                `).join('');
+
+                // Terminal List
+                document.getElementById('terminalList').innerHTML = s.majorTerminals.map(t => `
+                    <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-vyra-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                        <span>${t}</span>
+                    </li>
+                `).join('');
+
+                // SEO Meta
+                const title = `Transport Companies in ${stateKey} | Terminals & Prices 2026`;
+                const desc = `List of bus companies in ${stateKey}. Find terminals at ${s.majorTerminals[0]} and book tickets for ${s.companies[0]} and others.`;
+                document.title = title;
+                document.querySelector('meta[name="description"]').setAttribute('content', desc);
+                document.querySelector('link[rel="canonical"]').setAttribute('href', window.location.href);
+
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('content').classList.remove('hidden');
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        loadLocationPage();
+    </script>
+</body>
+</html>
