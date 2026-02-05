@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Loading Transport Company...</title>
+    <meta name="description" content="Check updated price list, terminal locations, and online booking options.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="">
+
+    <meta property="og:title" content="Transport Price List 2026">
+    <meta property="og:description" content="Find the best prices and terminals for your next trip.">
+    <meta property="og:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+    <meta property="og:type" content="article">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { vyra: { 500: '#1acd81' } } } }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen flex flex-col">
+
+    <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur fixed w-full z-50 top-0">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="/" class="text-white font-bold text-xl">Intercity<span class="text-vyra-500">.Search</span></a>
+            <a href="/" class="text-sm hover:text-white">Back to Search</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4 max-w-4xl mx-auto">
+        <div id="loader" class="text-center py-20">
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block"></div>
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block mx-1" style="animation-delay: 0.1s"></div>
+            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block" style="animation-delay: 0.2s"></div>
+            <p class="text-xs text-slate-500 mt-4">Generating current price data...</p>
+        </div>
+
+        <article id="content" class="hidden">
+            
+            <header class="mb-10 text-center md:text-left flex flex-col md:flex-row items-center gap-8">
+                <div class="w-24 h-24 bg-white rounded-2xl flex items-center justify-center p-2 shadow-xl shadow-vyra-500/10">
+                    <img id="logoImg" src="" class="w-full h-full object-contain rounded-xl" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block'">
+                    <div id="logoFallback" class="hidden text-3xl font-bold text-slate-900"></div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <span class="px-2 py-1 rounded bg-vyra-500/10 text-vyra-500 text-xs font-bold uppercase tracking-wider">Verified Transporter</span>
+                        <span class="px-2 py-1 rounded bg-slate-800 text-slate-400 text-xs">Updated 2026</span>
+                    </div>
+                    <h1 id="pageTitle" class="text-3xl md:text-5xl font-bold text-white mb-2"></h1>
+                    <p id="subTitle" class="text-lg text-slate-400 max-w-2xl"></p>
+                </div>
+            </header>
+
+            <div class="prose prose-invert max-w-none">
+                
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 mb-8 shadow-lg">
+                    <h2 class="text-2xl font-bold text-white mb-4">Company Overview</h2>
+                    <p id="generatedIntro" class="text-lg leading-relaxed text-slate-300"></p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+                        <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            Service & Pricing
+                        </h3>
+                        <ul id="serviceList" class="space-y-3 text-slate-400 text-sm"></ul>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+                        <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Coverage Areas
+                        </h3>
+                        <p id="coverageText" class="text-slate-400 text-sm leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white mb-6">Terminal Locations & Contacts</h2>
+                <div id="terminalGrid" class="grid md:grid-cols-2 gap-4 mb-12">
+                    </div>
+
+                <div class="bg-gradient-to-r from-vyra-600 to-teal-600 rounded-2xl p-8 text-center text-white shadow-2xl shadow-vyra-900/50">
+                    <h3 class="text-2xl font-bold mb-2">Book Your Trip Now</h3>
+                    <p class="mb-6 opacity-90">Compare prices for <span id="ctaName"></span> and 20+ other companies instantly.</p>
+                    <a href="/" class="inline-block bg-white text-vyra-700 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transition-colors shadow-lg">
+                        Search Bus Tickets
+                    </a>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-sm text-slate-600 mt-auto">
+        <p>&copy; 2026 Vyra Technologies. <a href="/" class="hover:text-vyra-500">Back to Search</a></p>
+    </footer>
+
+    <script>
+        async function loadBrandPage() {
+            // 1. Get the Company Name from URL (e.g. brand.html?name=ABC Transport)
+            const params = new URLSearchParams(window.location.search);
+            // Decode URI component to handle spaces like "ABC%20Transport"
+            const queryName = decodeURIComponent(params.get('name') || ''); 
+
+            if (!queryName) { window.location.href = '/'; return; }
+
+            try {
+                // 2. Fetch the JSON Database
+                const response = await fetch('ngr.json');
+                const data = await response.json();
+                
+                // 3. Find the Company (Case insensitive search)
+                const companies = data.transportCompanies;
+                const companyKey = Object.keys(companies).find(key => key.toLowerCase() === queryName.toLowerCase());
+                
+                if (!companyKey) {
+                    document.getElementById('content').innerHTML = `<div class="text-center text-red-400">Company not found in database. <a href="/" class="underline">Go Back</a></div>`;
+                    document.getElementById('loader').classList.add('hidden');
+                    document.getElementById('content').classList.remove('hidden');
+                    return;
+                }
+
+                const c = companies[companyKey];
+
+                // 4. SMART CONTENT GENERATOR 🧠
+                // This replaces the AI API. It "writes" the content based on data points.
+                
+                const stateCount = c.states.length;
+                const topStates = c.states.slice(0, 5).join(', ');
+                const basePrice = c.basePrice ? c.basePrice.toLocaleString() : "15,000";
+                
+                // Generate Intro Text
+                const introText = `
+                    <span class="font-bold text-white">${c.name}</span> is currently one of the most reliable intercity transport operators in Nigeria. 
+                    With a robust network covering <span class="text-vyra-400 font-bold">${stateCount} states</span>, they have established themselves as a key player for travelers heading to destinations like ${topStates}.
+                    <br><br>
+                    Known for their ${c.serviceAttributes ? c.serviceAttributes.join(' and ').toLowerCase() : 'reliability and safety'}, ${c.name} operates modern terminals designed to provide comfort before departure.
+                `;
+
+                // Generate Coverage Text
+                const coverageText = `
+                    Travelers can board ${c.name} buses from major hubs across the country. They maintain a strong presence in the ${c.states.includes('Lagos') ? 'South West' : 'North'}, specifically connecting business hubs in ${c.states.slice(0,3).join(' and ')}.
+                `;
+
+                // 5. Update HTML Elements
+                document.getElementById('pageTitle').textContent = `${c.name} Price List 2026`;
+                document.getElementById('subTitle').textContent = `Official terminal locations, updated price list, and online booking guide.`;
+                document.getElementById('logoImg').src = c.image;
+                document.getElementById('logoFallback').textContent = c.name.charAt(0);
+                document.getElementById('generatedIntro').innerHTML = introText;
+                document.getElementById('coverageText').innerHTML = coverageText;
+                document.getElementById('ctaName').textContent = c.name;
+
+                // Service List
+                const servicesHtml = `
+                    <li class="flex justify-between border-b border-slate-800 pb-2"><span>Base Fare Estimate</span> <span class="text-white font-mono">₦${basePrice}+</span></li>
+                    <li class="flex justify-between border-b border-slate-800 pb-2"><span>Vehicle Type</span> <span class="text-white">Toyota Hiace / Sienna</span></li>
+                    <li class="flex justify-between border-b border-slate-800 pb-2"><span>AC Service</span> <span class="text-white">Available</span></li>
+                    <li class="flex justify-between pt-2"><span>Online Booking</span> <span class="text-vyra-500 font-bold">Yes</span></li>
+                `;
+                document.getElementById('serviceList').innerHTML = servicesHtml;
+
+                // Terminals Loop
+                let terminalHtml = '';
+                if (c.terminals) {
+                    Object.entries(c.terminals).forEach(([state, terms]) => {
+                        terms.forEach(t => {
+                            terminalHtml += `
+                                <div class="bg-slate-900 border border-slate-800 p-4 rounded-lg hover:border-vyra-500/30 transition-colors">
+                                    <div class="text-vyra-500 text-xs font-bold uppercase mb-1">${state}</div>
+                                    <h4 class="text-white font-bold mb-1">${t.name}</h4>
+                                    <p class="text-slate-400 text-sm mb-2">${t.address}</p>
+                                    ${t.phone ? `<a href="tel:${t.phone.split(',')[0]}" class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded hover:bg-white hover:text-black transition-colors">📞 ${t.phone}</a>` : ''}
+                                </div>
+                            `;
+                        });
+                    });
+                }
+                document.getElementById('terminalGrid').innerHTML = terminalHtml;
+
+                // 6. Update SEO Meta Tags (Crucial for Ranking)
+                document.title = `${c.name} Price List 2026 | Terminals & Booking`;
+                const metaDesc = `Book ${c.name} online. Updated 2026 price list starting at ₦${basePrice}. Find terminals in ${topStates} and contact numbers here.`;
+                document.querySelector('meta[name="description"]').setAttribute('content', metaDesc);
+                document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
+                document.querySelector('meta[property="og:description"]').setAttribute('content', metaDesc);
+                document.querySelector('link[rel="canonical"]').setAttribute('href', window.location.href);
+
+                // Show Page
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('content').classList.remove('hidden');
+
+            } catch (error) {
+                console.error("Error loading brand:", error);
+                document.getElementById('loader').innerHTML = `<p class="text-red-400">Failed to load company data.</p>`;
+            }
+        }
+
+        loadBrandPage();
+    </script>
+</body>
+</html>
