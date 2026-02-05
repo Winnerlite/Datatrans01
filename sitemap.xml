@@ -1,50 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <url>
     <loc>https://intercityprices.com.ng/</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://intercityprices.com.ng/cities.html</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://intercityprices.com.ng/blog/</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://intercityprices.com.ng/apifordevs.html</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url><loc>https://intercityprices.com.ng/brand.html?name=ABC%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=God%20is%20Good%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Chisco%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=The%20Young%20Shall%20Grow%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Peace%20Mass%20Transit</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=GUO%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=The%20Young%20Legacy%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Benue%20Link%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Aba%20Line</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Nsik%20Motors%20(AKTC)</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Cross%20Country%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=New%20Nyanya%20Transport%20Company</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Adam%20and%20Eve%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Libra%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Orizu%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Imo%20Transport%20(ITC)</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Fair%20Okis%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Fair%20Plus%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Akwa%20Ibom%20Transport%20(AKTC)</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Big%20Joe%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Agofure%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=E.Ekesons%20Bros%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Goodness%20and%20Mercy%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Okeyson%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Tracas%20Nigeria</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Auto%20Star%20Limited</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Anambra%20Express</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Ekene%20Dili%20Chukwu%20Express%20Limited</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Interland%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Nothing%20Pass%20God%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Yankari%20Express</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Gombe%20Line</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Bayelsa%20State%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Delta%20Line</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Borno%20Express</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Faith%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Ibom%20Transit</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Glo%20Bus%20Transit</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Fellow%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Tega%20Express</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Ifesinachi%20Transport%20Limited</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/brand.html?name=Bonny%20Way%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+
+
+  
+<url><loc>https://intercityprices.com.ng/location.html?name=Lagos</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Abuja</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Rivers</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Kano</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Oyo</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Edo</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Delta</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Anambra</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Enugu</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Imo</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Plateau</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Kaduna</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Ogun</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Ondo</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Ekiti</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Osun</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Kwara</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Kogi</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Benue</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Nasarawa</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Niger</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Sokoto</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Zamfara</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Kebbi</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Katsina</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Jigawa</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Bauchi</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Gombe</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Adamawa</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Taraba</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Yobe</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Borno</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Cross%20River</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Akwa%20Ibom</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Ebonyi</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Abia</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://intercityprices.com.ng/location.html?name=Bayelsa</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
+  
 
   <url>
     <loc>https://intercityprices.com.ng/blog/read.html?post=how-to-travel-safely-nigeria</loc>
     <lastmod>2026-02-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://intercityprices.com.ng/blog/read.html?post=lagos-to-abuja-price-guide</loc>
     <lastmod>2026-02-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://intercityprices.com.ng/apifordevs.html</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://intercityprices.com.ng/privacy.html</loc>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
