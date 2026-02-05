@@ -502,6 +502,115 @@ body * {
                 <!-- Content injected via JS -->
             </div>
 
+<!---calculator-->
+<div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 max-w-2xl mx-auto shadow-2xl">
+    <h2 class="text-2xl font-extrabold text-white mb-6 flex items-center gap-2">
+        <span class="text-vyra-500">₦</span> Trip Price Calculator
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">From</label>
+            <select id="calcFrom" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-vyra-500 outline-none transition-all">
+                </select>
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">To</label>
+            <select id="calcTo" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-vyra-500 outline-none transition-all">
+                </select>
+        </div>
+    </div>
+
+    <button onclick="calculateTrip()" class="w-full bg-vyra-500 hover:bg-white text-slate-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-vyra-900/20">
+        Calculate Estimated Fare
+    </button>
+
+    <div id="calcResults" class="mt-8 space-y-4 hidden">
+        <p class="text-sm text-slate-500 font-medium">Estimated Prices for your route:</p>
+        <div id="calcList" class="space-y-2"></div>
+        <p class="text-[10px] text-slate-600 italic mt-4">Note: Prices are as is and is real time at the time of using this calculator.</p>
+    </div>
+</div>
+
+<script>
+    let transportData = null;
+
+    async function initCalc() {
+        const res = await fetch('ngr.json');
+        transportData = await res.json();
+        
+        const states = Object.keys(transportData.states).sort();
+        const fromSelect = document.getElementById('calcFrom');
+        const toSelect = document.getElementById('calcTo');
+
+        states.forEach(state => {
+            fromSelect.add(new Option(state, state));
+            toSelect.add(new Option(state, state));
+        });
+        
+        // Default values
+        fromSelect.value = "Lagos";
+        toSelect.value = "Abuja";
+    }
+
+    function calculateTrip() {
+        const from = document.getElementById('calcFrom').value;
+        const to = document.getElementById('calcTo').value;
+        const resultsArea = document.getElementById('calcResults');
+        const listArea = document.getElementById('calcList');
+        
+        if(from === to) {
+            alert("Please pick different cities!");
+            return;
+        }
+
+        listArea.innerHTML = '';
+        const routeKey = `${from}-${to}`;
+        let resultsFound = [];
+
+        // 1. Try Exact Match
+        if(transportData.routePrices[routeKey]) {
+            Object.entries(transportData.routePrices[routeKey]).forEach(([name, price]) => {
+                resultsFound.push({ name, price, type: 'Direct Fare' });
+            });
+        } 
+        // 2. Fallback: Smart Match
+        else {
+            const fromComps = transportData.states[from].companies;
+            const toComps = transportData.states[to].companies;
+            const common = fromComps.filter(c => toComps.includes(c));
+
+            common.forEach(cName => {
+                const base = transportData.transportCompanies[cName].basePrice || 20000;
+                resultsFound.push({ name: cName, price: base, type: 'Est. Base Fare' });
+            });
+        }
+
+        if(resultsFound.length > 0) {
+            resultsFound.sort((a,b) => (typeof a.price === 'number' ? a.price : 99999) - (typeof b.price === 'number' ? b.price : 99999));
+            
+            listArea.innerHTML = resultsFound.map(res => `
+                <div class="flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700 rounded-xl">
+                    <div>
+                        <div class="text-white font-bold">${res.name}</div>
+                        <div class="text-[10px] text-vyra-500 uppercase font-bold">${res.type}</div>
+                    </div>
+                    <div class="text-xl font-mono font-black text-white">
+                        ${typeof res.price === 'number' ? '₦' + res.price.toLocaleString() : res.price}
+                    </div>
+                </div>
+            `).join('');
+            resultsArea.classList.remove('hidden');
+        } else {
+            listArea.innerHTML = `<p class="text-red-400 text-sm">No direct companies found for this route.</p>`;
+            resultsArea.classList.remove('hidden');
+        }
+    }
+
+    initCalc();
+</script>
+
+            
 
             <!-- blog feed-->
 <section class="max-w-6xl mx-auto px-4 py-16 page-load-fade" style="animation-delay: 1.3s;">
