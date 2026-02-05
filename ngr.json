@@ -1,7 +1,7 @@
 
 {
     "api": "Vyra Transport API v1.0",
-    "lastUpdated": "2025-11-30",
+    "lastUpdated": "2026-01-30",
     "description": "Complete Nigerian intercity transport data",
 
     "transportCompanies": {
@@ -178,6 +178,77 @@
         },
         "basePrice": 32000,
         "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+    },
+
+        "Iyare Motors": {
+      "id": "iyare-motors",
+      "name": "Iyare Motors Ltd",
+      "image": "https://i.ibb.co/QM1VLw8/iyare-logo.png",
+      "states": [
+        "Edo",
+        "Lagos",
+        "Abuja",
+        "Rivers",
+        "Delta"
+      ],
+      "terminals": {
+        "Edo": [
+          {
+            "name": "Benin Head Office (Urubi)",
+            "address": "25, Urubi Street, Benin City, Edo State",
+            "phone": "07086561145, 08057706901"
+          },
+          {
+            "name": "Uselu Terminal",
+            "address": "Uselu-Lagos Road, Benin City",
+            "phone": "07086561145"
+          }
+        ],
+        "Lagos": [
+          {
+            "name": "Jibowu/Fadeyi Terminal",
+            "address": "57, Ikorodu Road, Fadeyi, Lagos",
+            "phone": "08144084721"
+          },
+          {
+            "name": "Maza Maza Terminal",
+            "address": "Badagry Expressway, Maza Maza, Lagos",
+            "phone": "07086561145"
+          },
+          {
+            "name": "Iyana Ipaja Terminal",
+            "address": "Garage, Iyana Ipaja, Lagos",
+            "phone": "08057706901"
+          }
+        ],
+        "Abuja": [
+          {
+            "name": "Utako Terminal",
+            "address": "Utako District, Abuja (Near ABC Transport)",
+            "phone": "07086561145"
+          }
+        ],
+        "Delta": [
+          {
+            "name": "Warri Terminal",
+            "address": "Effurun Roundabout, Warri",
+            "phone": "07086561145"
+          }
+        ],
+        "Rivers": [
+          {
+            "name": "Port Harcourt Terminal",
+            "address": "Aba Road, Port Harcourt",
+            "phone": "07086561145"
+          }
+        ]
+      },
+      "basePrice": 22000,
+      "serviceAttributes": [
+        "Affordable",
+        "Daily Departures",
+        "Logistics"
+      ]
     },
 
     "God is Good Motors": {
