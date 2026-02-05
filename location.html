@@ -6,6 +6,7 @@
     
     <title>Loading Location...</title>
     <meta name="description" content="Find transport companies and terminals in this state.">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,6 +32,7 @@
             <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block"></div>
             <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block mx-1" style="animation-delay: 0.1s"></div>
             <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block" style="animation-delay: 0.2s"></div>
+            <p class="text-xs text-slate-500 mt-4">Locating terminals...</p>
         </div>
 
         <article id="content" class="hidden">
@@ -68,7 +70,13 @@
                             </ul>
                     </div>
 
-                    <div class="bg-gradient-to-br from-vyra-900 to-slate-900 border border-vyra-500/30 rounded-xl p-6 text-center">
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+                        <h3 class="text-white font-bold mb-4">Popular Routes from <span id="routeFromCity"></span></h3>
+                        <div id="dynamicRouteLinks" class="flex flex-col gap-2 text-sm">
+                            </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-vyra-900 to-slate-900 border border-vyra-500/30 rounded-xl p-6 text-center shadow-lg">
                         <h3 class="text-white font-bold mb-2">Traveling from here?</h3>
                         <p class="text-sm text-slate-400 mb-4">Compare prices for all outgoing buses instantly.</p>
                         <a href="/" class="block w-full bg-vyra-500 hover:bg-white text-slate-900 font-bold py-3 rounded-lg transition-colors">Check Prices</a>
@@ -79,21 +87,23 @@
     </main>
 
     <footer class="mt-auto py-8 text-center text-slate-600 text-sm border-t border-slate-900">
-        &copy; 2026 Vyra Technologies
+        &copy; 2026 Vyra Technologies. Data Updated Daily.
     </footer>
 
     <script>
         async function loadLocationPage() {
+            // 1. Get State Name from URL
             const params = new URLSearchParams(window.location.search);
             const queryName = decodeURIComponent(params.get('name') || '');
 
             if (!queryName) { window.location.href = '/cities.html'; return; }
 
             try {
+                // 2. Fetch Data
                 const response = await fetch('ngr.json');
                 const data = await response.json();
                 
-                // Find State Data
+                // 3. Find State Data (Case Insensitive)
                 const states = data.states;
                 const stateKey = Object.keys(states).find(k => k.toLowerCase() === queryName.toLowerCase());
 
@@ -106,15 +116,15 @@
 
                 const s = states[stateKey];
 
-                // --- CONTENT GENERATION ---
+                // 4. Update Content
                 document.getElementById('pageTitle').textContent = `Transport Companies in ${stateKey}`;
                 document.getElementById('subTitle').textContent = `Find the best bus companies, price lists, and terminals operating in ${stateKey}, ${s.region} Nigeria.`;
                 
-                // Intro
+                // Intro Text
                 document.getElementById('introText').innerHTML = `
                     <span class="font-bold text-white">${stateKey}</span> is a key transport hub in the <span class="text-vyra-400">${s.region}</span> region. 
                     Currently, we track <span class="text-white font-bold">${s.companies.length} major transport companies</span> operating daily routes from here.
-                    Travelers can find buses to Lagos, Abuja, and other major cities from terminals like ${s.majorTerminals[0]}.
+                    Travelers can find buses to major cities from terminals like ${s.majorTerminals[0]}.
                 `;
 
                 // Company Grid
@@ -134,20 +144,41 @@
                     </li>
                 `).join('');
 
-                // SEO Meta
+                // 5. THE SPIDER WEB (Dynamic Route Linking) 🕸️
+                document.getElementById('routeFromCity').textContent = stateKey;
+                
+                // Priority destinations to link to
+                const majorDestinations = ['Lagos', 'Abuja', 'Rivers', 'Kano', 'Onitsha', 'Enugu', 'Kaduna', 'Jos', 'Benin', 'Delta'];
+                
+                // Filter: Don't link to self
+                const validDestinations = majorDestinations.filter(d => d.toLowerCase() !== stateKey.toLowerCase());
+                
+                // Generate Links
+                document.getElementById('dynamicRouteLinks').innerHTML = validDestinations.map(dest => `
+                    <a href="route.html?from=${encodeURIComponent(stateKey)}&to=${encodeURIComponent(dest)}" 
+                       class="flex items-center justify-between text-slate-400 hover:text-vyra-500 hover:bg-slate-800/50 p-2 rounded transition-all group">
+                       <span>To ${dest}</span>
+                       <svg class="w-3 h-3 text-slate-600 group-hover:text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                `).join('');
+
+                // 6. SEO Meta
                 const title = `Transport Companies in ${stateKey} | Terminals & Prices 2026`;
                 const desc = `List of bus companies in ${stateKey}. Find terminals at ${s.majorTerminals[0]} and book tickets for ${s.companies[0]} and others.`;
                 document.title = title;
                 document.querySelector('meta[name="description"]').setAttribute('content', desc);
                 document.querySelector('link[rel="canonical"]').setAttribute('href', window.location.href);
 
+                // Show Content
                 document.getElementById('loader').classList.add('hidden');
                 document.getElementById('content').classList.remove('hidden');
 
             } catch (error) {
-                console.error(error);
+                console.error("Failed to load location:", error);
+                document.getElementById('loader').innerHTML = `<p class="text-red-400">Unable to load data.</p>`;
             }
         }
+
         loadLocationPage();
     </script>
 </body>
