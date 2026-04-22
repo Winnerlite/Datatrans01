@@ -1176,61 +1176,91 @@ loadHomeBlogPreview();
         toSelect.value = "Abuja";
     }
 
-    function calculateTrip() {
-        const from = document.getElementById('calcFrom').value;
-        const to = document.getElementById('calcTo').value;
-        const resultsArea = document.getElementById('calcResults');
-        const listArea = document.getElementById('calcList');
-        
-        if(from === to) {
-            alert("Please pick different cities!");
-            return;
-        }
-
-        listArea.innerHTML = '';
-        const routeKey = `${from}-${to}`;
-        let resultsFound = [];
-
-        // 1. Try Exact Match
-        if(transportData.routePrices[routeKey]) {
-            Object.entries(transportData.routePrices[routeKey]).forEach(([name, price]) => {
-                resultsFound.push({ name, price, type: 'Direct Fare' });
-            });
-        } 
-        // 2. Fallback: Smart Match
-        else {
-            const fromComps = transportData.states[from].companies;
-            const toComps = transportData.states[to].companies;
-            const common = fromComps.filter(c => toComps.includes(c));
-
-            common.forEach(cName => {
-                const base = transportData.transportCompanies[cName].basePrice || 20000;
-                resultsFound.push({ name: cName, price: base, type: 'Est. Base Fare' });
-            });
-        }
-
-        if(resultsFound.length > 0) {
-            resultsFound.sort((a,b) => (typeof a.price === 'number' ? a.price : 99999) - (typeof b.price === 'number' ? b.price : 99999));
-            
-            listArea.innerHTML = resultsFound.map(res => `
-                <div class="flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700 rounded-xl">
-                    <div>
-                        <div class="text-white font-bold">${res.name}</div>
-                        <div class="text-[10px] text-vyra-500 uppercase font-bold">${res.type}</div>
-                    </div>
-                    <div class="text-xl font-mono font-black text-white">
-                        ${typeof res.price === 'number' ? '₦' + res.price.toLocaleString() : res.price}
-                    </div>
-                </div>
-            `).join('');
-            resultsArea.classList.remove('hidden');
-        } else {
-            listArea.innerHTML = `<p class="text-red-400 text-sm">No direct companies found for this route.</p>`;
-            resultsArea.classList.remove('hidden');
-        }
+   function calculateTrip() {
+    const from = document.getElementById('calcFrom').value;
+    const to = document.getElementById('calcTo').value;
+    const resultsArea = document.getElementById('calcResults');
+    const listArea = document.getElementById('calcList');
+    
+    if (from === to) {
+        alert("Please pick different states!");
+        return;
     }
 
-    initCalc();
+    listArea.innerHTML = '';
+    const routeKey = `${from}-${to}`;
+    let resultsFound = [];
+
+    // Helper: resolve company name to the exact key in transportCompanies
+    const ALIASES = {
+        "Young Shall Grow": "The Young Shall Grow Motors",
+        "The Young Shall Grow Motors": "The Young Shall Grow Motors",
+        // Add more if you find other mismatches
+    };
+
+    function getCompanyData(cName) {
+        // Try direct lookup first
+        if (transportData.transportCompanies[cName]) {
+            return transportData.transportCompanies[cName];
+        }
+        // Try alias
+        const aliasKey = ALIASES[cName];
+        if (aliasKey && transportData.transportCompanies[aliasKey]) {
+            return transportData.transportCompanies[aliasKey];
+        }
+        // Log missing for debugging
+        console.warn(`Company "${cName}" not found in transportCompanies.`);
+        return null;
+    }
+
+    // 1. Exact route match (routePrices)
+    if (transportData.routePrices && transportData.routePrices[routeKey]) {
+        Object.entries(transportData.routePrices[routeKey]).forEach(([name, price]) => {
+            resultsFound.push({ name, price, type: 'Direct Fare' });
+        });
+    }
+
+    // 2. Common companies between states
+    if (resultsFound.length === 0) {
+        const fromComps = transportData.states[from]?.companies || [];
+        const toComps = transportData.states[to]?.companies || [];
+        const common = fromComps.filter(c => toComps.includes(c));
+
+        common.forEach(cName => {
+            const company = getCompanyData(cName);
+            if (!company) return; // skip if not found
+            const price = (typeof company.basePrice === 'number') 
+                            ? company.basePrice 
+                            : 25000; // fallback base price
+            resultsFound.push({ name: cName, price, type: 'Est. Base Fare' });
+        });
+    }
+
+    // 3. Render results
+    if (resultsFound.length > 0) {
+        resultsFound.sort((a,b) => a.price - b.price);
+        listArea.innerHTML = resultsFound.map(res => `
+            <div class="flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700 rounded-xl">
+                <div>
+                    <div class="text-white font-bold">${res.name}</div>
+                    <div class="text-[10px] text-vyra-500 uppercase font-bold">${res.type}</div>
+                </div>
+                <div class="text-xl font-mono font-black text-white">
+                    ₦${res.price.toLocaleString()}
+                </div>
+            </div>
+        `).join('');
+        resultsArea.classList.remove('hidden');
+    } else {
+        listArea.innerHTML = `
+            <div class="p-4 text-center text-slate-400">
+                <p>No direct operators found between ${from} and ${to}.</p>
+                <p class="text-xs mt-2">Try another route or check back later.</p>
+            </div>
+        `;
+        resultsArea.classList.remove('hidden');
+    }
+}
 
 
 
