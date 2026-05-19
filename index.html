@@ -577,7 +577,7 @@ body * {
                     </div>
                     <div class="flex-1 text-center sm:text-left">
                         <h3 class="text-white font-bold text-lg mb-1">Get Instant Fare Updates</h3>
-                        <p class="text-slate-400 text-sm">Download our app for real-time price alerts, route tracking, and exclusive discounts on your mobile!</p>
+                        <p class="text-slate-400 text-sm">Download our app for real-time price checking, terminal routes, company stats and even more!</p>
                     </div>
                     <button onclick="downloadApp()" class="flex-shrink-0 w-full sm:w-auto px-6 py-3 bg-vyra-600 hover:bg-vyra-500 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-vyra-500/25 flex items-center justify-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1333,31 +1333,9 @@ loadHomeBlogPreview();
 
     // Download App Function
     function downloadApp() {
-        // You can replace this URL with your actual app download link
-        const appDownloadUrl = "https://play.google.com/store/apps/details?id=com.vyra.intercityprices";
-        
-        // Show a toast/notification
-        const toast = document.createElement('div');
-        toast.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-vyra-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50 animate-fade-in';
-        toast.innerHTML = `
-            <div class="flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                </svg>
-                <span>Redirecting to app store...</span>
-            </div>
-        `;
-        document.body.appendChild(toast);
-        
-        // Remove toast after 3 seconds
-        setTimeout(() => {
-            toast.remove();
-        }, 3000);
-        
-        // Open app store link
-        window.open(appDownloadUrl, '_blank');
-    }
-
+    // Link to the new Vyra app page
+    window.location.href = '/intercityappng.html';
+}
     initCalc();
 
 
