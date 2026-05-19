@@ -25,6 +25,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.intercityprices.com.ng/intercityappng.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
 
   <url><loc>https://intercityprices.com.ng/brand.html?name=ABC%20Transport</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://intercityprices.com.ng/brand.html?name=God%20is%20Good%20Motors</loc><lastmod>2026-02-05</lastmod><priority>0.8</priority></url>
