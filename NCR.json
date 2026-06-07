@@ -44,7 +44,7 @@
     {
       "name": "Lagos", "region": "SW", "rank": 1,
       "img": "https://images.unsplash.com/photo-1598888065097-474d2b244799?q=80&w=800&auto=format&fit=crop",
-      "stats": { "violence":100,"crimeRate":65,"civilViolence":60,"safeForWomen":"Low","safeForRemote":"Moderate","safeForKids":"Low","entrepreneurship":95,"localJobs":88,"remoteWorkers":78,"hustlers":98,"priceOfGoods":"High","commutingPrice":"₦800","housing":"Low","roadConnectivity":52,"intercityConnect":90,"power":50,"internetSpeed":"42 Mbps","dominantProvider":"MTN","water":"Low","nightlife":92,"cleanEnvironment":35,"patriotic":75,"religious":"Moderate","nonReligious":"Moderate","tribalism":"Moderate","povertyIndex":"Moderate" }
+      "stats": { "violence":50,"crimeRate":65,"civilViolence":60,"safeForWomen":"Low","safeForRemote":"Moderate","safeForKids":"Low","entrepreneurship":95,"localJobs":88,"remoteWorkers":78,"hustlers":98,"priceOfGoods":"High","commutingPrice":"₦800","housing":"Low","roadConnectivity":52,"intercityConnect":90,"power":50,"internetSpeed":"42 Mbps","dominantProvider":"MTN","water":"Low","nightlife":92,"cleanEnvironment":35,"patriotic":75,"religious":"Moderate","nonReligious":"Moderate","tribalism":"Moderate","povertyIndex":"Moderate" }
     },
     {
       "name": "Abuja", "region": "NC", "rank": 2,
