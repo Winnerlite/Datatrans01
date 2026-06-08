@@ -130,7 +130,9 @@
 
     <script>
         // ── CONFIG ───────────────────────────────────────────────────────────
-        const DATA_URL = 'https://www.intercityprices.com.ng/ncr';
+ 
+
+const DATA_URL = 'https://www.intercityprices.com.ng/api/proxy/ncr';
 
         // Wikipedia image cache so each city is only fetched once per session
         const imgCache = {};
@@ -323,22 +325,25 @@ cities.forEach(city => {
 
         // ── Boot ─────────────────────────────────────────────────────────────
         async function init() {
-            try {
-                const res = await fetch(DATA_URL + '?t=' + Date.now());
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                DB = await res.json();
-                buildSidebar(DB.cities);
-                renderCities(DB.cities);
-                document.getElementById('loadingState').classList.add('hidden');
-                document.getElementById('citiesGrid').classList.remove('hidden');
-            } catch (err) {
-                console.error('Failed to load data:', err);
-                document.getElementById('loadingState').classList.add('hidden');
-                document.getElementById('errorState').classList.remove('hidden');
-                document.getElementById('countDisplay').innerText = 'Error';
-            }
-        }
-
+    try {
+        const res = await fetch(DATA_URL + '?t=' + Date.now());
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        
+        // Wrap array if needed
+        DB = Array.isArray(data) ? { cities: data } : data;
+        
+        buildSidebar(DB.cities);
+        renderCities(DB.cities);
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('citiesGrid').classList.remove('hidden');
+    } catch (err) {
+        console.error('Failed to load data:', err);
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('errorState').classList.remove('hidden');
+        document.getElementById('countDisplay').innerText = 'Error';
+    }
+}
         document.addEventListener('DOMContentLoaded', init);
         document.getElementById('metricModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
