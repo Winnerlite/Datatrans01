@@ -224,7 +224,7 @@
   ],
   "cities": [
     {
-      "name{
+      "name":{
   "name": "Lagos",
   "region": "SW",
   "rank": 1,
@@ -241,7 +241,7 @@
     "hustlers": 100,
     "priceOfGoods": "Extreme",
     "commutingPrice": "₦1,000",
-    "housing": "High",
+    "housing": "Extreme",
     "roadConnectivity": 40,
     "intercityConnect": 95,
     "power": 45,
