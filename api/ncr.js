@@ -4,7 +4,9 @@ import { join } from 'path';
 export default function handler(req, res) {
   // --- KEY CHECK ---
   const apiKey = req.headers['x-api-key'];
-  const mySecretKey = process.env.NCR_SECRET_KEY; // Set this in Vercel dashboard
+  const mySecretKey = process.env.NCR_Secret_Key; // Set this in Vercel dashboard
+
+  //key: Bonafotuna Simon Zee*//
   
   // If no key or wrong key, block access
   if (!mySecretKey || apiKey !== mySecretKey) {
