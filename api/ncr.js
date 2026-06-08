@@ -2,14 +2,24 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 
 export default function handler(req, res) {
-  // --- HANDLE OPTIONS PREFLIGHT ---
+  const origin = req.headers.origin;
+  
+  // Allow localhost AND your live domains
+  const allowedOrigins = [
+    'http://localhost:8080',
+    'http://localhost:3000',
+    'https://intercityprices.com.ng',
+    'https://www.intercityprices.com.ng'
+  ];
+  
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'x-api-key, content-type');
+
   if (req.method === 'OPTIONS') {
-    const origin = req.headers.origin;
-    if (origin === 'https://intercityprices.com.ng' || origin === 'https://www.intercityprices.com.ng' || origin === 'http://localhost:8080') {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-      res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-      res.setHeader('Access-Control-Allow-Headers', 'x-api-key, content-type');
-    }
     return res.status(200).end();
   }
 
@@ -21,18 +31,6 @@ export default function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  // --- CORS FOR ACTUAL REQUEST ---
-  const origin = req.headers.origin;
-  
-  if (origin === 'http://localhost:8080') {
-    return res.status(403).json({ error: 'Forbidden' });
-  }
-
-  if (origin === 'https://intercityprices.com.ng' || origin === 'https://www.intercityprices.com.ng') {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-
-  // --- SERVE DATA ---
   try {
     const filePath = join(process.cwd(), 'NCR.json');
     const data = readFileSync(filePath, 'utf8');
