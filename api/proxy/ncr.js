@@ -1,5 +1,20 @@
 // api/proxy/ncr.js
 export default async function handler(req, res) {
+  // --- BLOCK DIRECT BROWSER ACCESS ---
+  const referer = req.headers.referer || '';
+  const userAgent = req.headers['user-agent'] || '';
+  
+  // Allow only requests from your website
+  if (!referer.includes('intercityprices.com.ng') && !referer.includes('localhost')) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+  
+  // Block common browser user agents (optional)
+  const browserUA = ['Mozilla', 'Chrome', 'Safari', 'Firefox', 'Edge'];
+  if (browserUA.some(ua => userAgent.includes(ua)) && !referer) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   
@@ -7,35 +22,13 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  // DEBUG: Log that the proxy was called
-  console.log('Proxy called');
-
   try {
-    const upstreamUrl = 'https://www.intercityprices.com.ng/api/ncr';
-    
-    // DEBUG: Log the key being sent
-    console.log('Sending key: Atticus');
-    
-    const response = await fetch(upstreamUrl, {
-      headers: {
-        'x-api-key': 'Atticus'
-      }
+    const response = await fetch('https://www.intercityprices.com.ng/api/ncr', {
+      headers: { 'x-api-key': 'Atticus' }
     });
-    
-    // DEBUG: Log upstream response status
-    console.log('Upstream status:', response.status);
-    
-    if (!response.ok) {
-      // DEBUG: Log the error response
-      const errorText = await response.text();
-      console.log('Upstream error response:', errorText);
-      return res.status(response.status).json({ error: 'Upstream error: ' + errorText });
-    }
-    
     const data = await response.json();
     res.status(200).json(data);
   } catch (error) {
-    console.error('Proxy error:', error);
-    res.status(500).json({ error: 'Proxy failed: ' + error.message });
+    res.status(500).json({ error: 'Proxy failed' });
   }
 }
