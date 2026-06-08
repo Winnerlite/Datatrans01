@@ -2,18 +2,26 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 
 export default function handler(req, res) {
+  // --- HANDLE OPTIONS PREFLIGHT ---
+  if (req.method === 'OPTIONS') {
+    const origin = req.headers.origin;
+    if (origin === 'https://intercityprices.com.ng' || origin === 'https://www.intercityprices.com.ng' || origin === 'http://localhost:8080') {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+      res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'x-api-key, content-type');
+    }
+    return res.status(200).end();
+  }
+
   // --- KEY CHECK ---
   const apiKey = req.headers['x-api-key'];
-  const mySecretKey = process.env.NCR_Secret_Key; // Set this in Vercel dashboard
-
-  //key: Bonafotuna Simon Zee*//
+  const mySecretKey = process.env.NCR_Secret_Key;
   
-  // If no key or wrong key, block access
   if (!mySecretKey || apiKey !== mySecretKey) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  // --- CORS ---
+  // --- CORS FOR ACTUAL REQUEST ---
   const origin = req.headers.origin;
   
   if (origin === 'http://localhost:8080') {
