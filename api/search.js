@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 
 // Load the data once
-const jsonPath = join(process.cwd(), 'ngr.json','NCR.json');
+const jsonPath = join(process.cwd(), 'ngr.json');
 let transportData;
 
 try {
