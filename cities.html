@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -14,145 +13,336 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Nigerian Transport Hubs | Intercity Prices</title>
+    <title>Explore Nigerian Cities(Updated 2026)Intercity Prices</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { vyra: { 500: '#1acd81' } } } }
-        }
+      
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'] }, colors: { vyra: { 500: '#1acd81' } } } } }</script>
     <style>
-        /* Custom Checkbox Style */
-        .custom-checkbox:checked { background-color: #1acd81; border-color: #1acd81; }
+        .custom-checkbox:checked { background-color:#1acd81; border-color:#1acd81; }
+        .no-scrollbar::-webkit-scrollbar { display:none; }
+        .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+
+        .card-img { filter:grayscale(100%); transition:filter .5s ease,transform .5s ease; }
+        .card-wrap:hover .card-img { filter:grayscale(0%); transform:scale(1.05); }
+
+        .pill { display:inline-flex; align-items:center; padding:1px 8px; border-radius:999px; font-size:10px; font-weight:700; letter-spacing:.03em; }
+        .pill-green  { background:rgba(26,205,129,.15);  color:#1acd81; }
+        .pill-yellow { background:rgba(234,179,8,.15);   color:#eab308; }
+        .pill-red    { background:rgba(239,68,68,.15);   color:#ef4444; }
+        .pill-gray   { background:rgba(148,163,184,.1);  color:#94a3b8; }
+
+        .section-label { font-size:9px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:#475569; padding:14px 0 6px; border-bottom:1px solid #1e293b; margin-bottom:2px; }
+
+        .stat-row  { display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid #0f172a; gap:8px; }
+        .stat-row.last { border:none; }
+        .stat-left { display:flex; align-items:center; gap:5px; flex-shrink:0; }
+        .stat-label { font-size:12px; color:#64748b; font-weight:500; }
+        .stat-value { font-size:12px; color:#e2e8f0; font-weight:600; text-align:right; }
+
+        .score-row { padding:8px 0; border-bottom:1px solid #0f172a; }
+        .score-row.last { border:none; }
+        .score-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; gap:6px; }
+        .score-name { font-size:12px; color:#64748b; font-weight:500; display:flex; align-items:center; gap:5px; }
+        .score-num  { font-size:12px; color:#e2e8f0; font-weight:700; flex-shrink:0; }
+        .bar-track  { width:100%; height:3px; background:#1e293b; border-radius:999px; }
+        .bar-fill   { height:3px; border-radius:999px; transition:width .6s cubic-bezier(.4,0,.2,1); width:0%; }
+
+        .help-btn { display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; border-radius:999px; background:#1e293b; color:#475569; font-size:8px; font-weight:900; cursor:pointer; flex-shrink:0; position:relative; border:none; line-height:1; }
+        .help-btn:hover { background:#334155; color:#94a3b8; }
+        .tooltip { position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:#1e293b; border:1px solid #334155; color:#cbd5e1; font-size:11px; font-weight:400; line-height:1.5; padding:8px 10px; border-radius:8px; width:220px; z-index:200; pointer-events:none; opacity:0; transition:opacity .15s ease; white-space:normal; text-transform:none; letter-spacing:0; }
+        .help-btn:hover .tooltip, .help-btn:focus .tooltip { opacity:1; }
+        .tooltip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#334155; }
+
+        .spinner { width:32px; height:32px; border:3px solid #1e293b; border-top-color:#1acd81; border-radius:50%; animation:spin .7s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+
+        /* Card image shimmer while loading */
+        .img-placeholder { background: linear-gradient(90deg, #1e293b 25%, #273548 50%, #1e293b 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
+        @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+        @keyframes modalIn { from { opacity:0; transform:translateY(20px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+        .modal-panel { animation:modalIn .22s cubic-bezier(.4,0,.2,1) both; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-[#0c111d] text-slate-300 font-sans antialiased min-h-screen flex flex-col">
 
-    <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur fixed w-full z-50">
+    <!-- Header -->
+    <nav class="border-b border-slate-900 bg-[#0c111d]/80 backdrop-blur-md fixed w-full z-40 top-0">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-2 font-bold text-white text-xl">
-                <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" class="h-8"> Intercity<span class="text-vyra-500">.Cities</span>
+            <a href="/" class="flex items-center gap-2 font-bold text-white text-lg tracking-tight">
+                <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" class="h-6" alt="Logo">
+                Intercity<span class="text-vyra-500">Cities</span>
             </a>
-            <a href="/" class="text-sm hover:text-white">Back to Search</a>
+            <span class="text-xs text-slate-500 font-mono" id="countDisplay">Loading...</span>
         </div>
     </nav>
 
     <div class="flex pt-16 min-h-screen">
-        
-        <aside class="w-64 bg-slate-900 border-r border-slate-800 hidden md:block fixed h-full overflow-y-auto p-6">
-            <div class="mb-8">
-                <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Region</h3>
-                <div class="space-y-2">
-                    <label class="flex items-center gap-3 cursor-pointer group">
-                        <input type="checkbox" value="SW" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
-                        <span class="text-sm group-hover:text-white transition-colors">South West</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer group">
-                        <input type="checkbox" value="NC" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
-                        <span class="text-sm group-hover:text-white transition-colors">North Central</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer group">
-                        <input type="checkbox" value="SS" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
-                        <span class="text-sm group-hover:text-white transition-colors">South South</span>
-                    </label>
-                </div>
-            </div>
 
-            <div class="mb-8">
-                <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Availability</h3>
-                <div class="space-y-2">
-                    <label class="flex items-center gap-3 cursor-pointer group">
-                        <input type="checkbox" onchange="filterCities()" id="hasGIGM" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
-                        <span class="text-sm group-hover:text-white transition-colors">Has GIGM Terminal</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer group">
-                        <input type="checkbox" onchange="filterCities()" id="hasGUO" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
-                        <span class="text-sm group-hover:text-white transition-colors">Has GUO Terminal</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer group">
-                        <input type="checkbox" onchange="filterCities()" id="majorHub" class="custom-checkbox w-4 h-4 rounded border-slate-600 bg-slate-800 focus:ring-vyra-500">
-                        <span class="text-sm group-hover:text-white transition-colors">Major Hub (>5 Terminals)</span>
-                    </label>
-                </div>
-            </div>
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[#0c111d] border-r border-slate-900 hidden md:block fixed h-full p-6 overflow-y-auto">
+            <h3 class="text-slate-500 font-bold mb-4 text-[10px] uppercase tracking-widest">Filter By Zone</h3>
+            <div class="space-y-2" id="regionFilters"></div>
         </aside>
 
-        <main class="flex-1 md:ml-64 p-4 md:p-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="flex justify-between items-end mb-8">
-                    <div>
-                        <h1 class="text-3xl font-bold text-white mb-2">Nigerian Transport Hubs</h1>
-                        <p class="text-slate-400">Comparing connectivity, terminals, and price data across Nigeria.</p>
-                    </div>
-                    <div class="text-vyra-500 font-mono text-sm" id="countDisplay">Loading...</div>
+        <!-- Grid -->
+        <main class="flex-1 md:ml-64 p-4 md:p-6 bg-[#090d16]">
+            <div class="max-w-7xl mx-auto">
+                <div id="loadingState" class="flex items-center justify-center h-64"><div class="spinner"></div></div>
+                <div id="citiesGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 hidden"></div>
+                <div id="errorState" class="hidden text-center text-slate-500 py-24">
+                    <p class="text-lg font-bold text-slate-400">Failed to load data</p>
+                    <p class="text-sm mt-1">Check the JSON URL and try again.</p>
                 </div>
-
-                <div id="citiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    </div>
             </div>
         </main>
     </div>
 
-    <script>
-        // MOCK DATA - You should populate this from your API eventually
-        // For now, hardcode the popular ones to get the SEO value fast
-        const cities = [
-            { name: "Lagos", region: "SW", terminals: 15, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1598888065097-474d2b244799?q=80&w=800&auto=format&fit=crop" },
-            { name: "Abuja", region: "NC", terminals: 12, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1598302720272-378327889758?q=80&w=800&auto=format&fit=crop" },
-            { name: "Port Harcourt", region: "SS", terminals: 8, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1620050800366-24d142106657?q=80&w=800&auto=format&fit=crop" },
-            { name: "Benin City", region: "SS", terminals: 6, hasGIGM: true, hasGUO: false, img: "https://images.unsplash.com/photo-1616766467389-98006240d164?q=80&w=800&auto=format&fit=crop" },
-            { name: "Enugu", region: "SE", terminals: 5, hasGIGM: true, hasGUO: true, img: "https://images.unsplash.com/photo-1551373884-8a0750074df7?q=80&w=800&auto=format&fit=crop" },
-            { name: "Kano", region: "NW", terminals: 4, hasGIGM: false, hasGUO: true, img: "https://images.unsplash.com/photo-1608493130761-c3021f1816e3?q=80&w=800&auto=format&fit=crop" },
-            { name: "Ibadan", region: "SW", terminals: 7, hasGIGM: true, hasGUO: false, img: "https://images.unsplash.com/photo-1598888065097-474d2b244799?q=80&w=800&auto=format&fit=crop" },
-        ];
-
-        function renderCities(data) {
-            const grid = document.getElementById('citiesGrid');
-            document.getElementById('countDisplay').innerText = `${data.length} CITIES FOUND`;
-            
-            grid.innerHTML = data.map(city => `
-                <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-vyra-500/50 transition-all group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="${city.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-2 right-2 bg-black/60 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">
-                            ${city.region}
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-xl font-bold text-white mb-1">${city.name}</h3>
-                        <p class="text-slate-500 text-sm mb-4">${city.terminals} Major Terminals</p>
-                        
-                        <div class="flex gap-2 flex-wrap mb-4">
-                            ${city.hasGIGM ? '<span class="px-2 py-1 rounded bg-vyra-900/30 text-vyra-400 text-xs border border-vyra-500/20">GIGM</span>' : ''}
-                            ${city.hasGUO ? '<span class="px-2 py-1 rounded bg-blue-900/30 text-blue-400 text-xs border border-blue-500/20">GUO</span>' : ''}
-                        </div>
-
-                        <a href="/?q=${city.name}" class="block w-full text-center py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-medium transition-colors">
-                            View Routes
-                        </a>
+    <!-- MODAL -->
+    <div id="metricModal" class="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-md hidden">
+        <div class="min-h-screen px-4 flex items-start justify-center py-10">
+            <div class="modal-panel bg-[#0c111d] border border-slate-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
+                <div class="h-52 relative bg-slate-900 overflow-hidden">
+                    <img id="modalImg" src="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0c111d] via-black/20 to-transparent"></div>
+                    <button onclick="closeModal()" class="absolute top-3 right-3 p-1.5 bg-black/60 hover:bg-slate-800 rounded-full text-slate-400 hover:text-white transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                    <div class="absolute bottom-4 left-5">
+                        <div id="modalZone" class="text-vyra-500 font-mono text-[10px] uppercase tracking-widest mb-0.5"></div>
+                        <h2 id="modalName" class="text-3xl font-black text-white tracking-tight leading-none"></h2>
+                        <div id="modalState" class="text-slate-400 text-xs mt-1"></div>
                     </div>
                 </div>
+                <div class="px-5 pb-5 no-scrollbar overflow-y-auto max-h-[65vh]" id="modalStats"></div>
+                <div class="px-5 py-4 bg-[#090d16] border-t border-slate-900 flex justify-between items-center">
+                    <span class="text-[11px] text-slate-600">©theMatrix Index 2026</span>
+                    <a id="modalRoutingLink" href="" class="px-4 py-2 bg-vyra-500 hover:bg-white text-slate-950 font-bold rounded-xl transition-all text-xs">See more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── CONFIG ───────────────────────────────────────────────────────────
+        const DATA_URL = 'https://intercityprices.com.ng/NCR.json';
+
+        // Wikipedia image cache so each city is only fetched once per session
+        const imgCache = {};
+
+        // ── Fetch Wikipedia thumbnail for a city ─────────────────────────────
+        async function getWikiImage(title) {
+    if (imgCache[title]) return imgCache[title];
+    try {
+        const res = await fetch(
+            `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+        );
+        const data = await res.json();
+        const url = data?.thumbnail?.source || data?.originalimage?.source || null;
+        imgCache[title] = url;
+        return url;
+    } catch {
+        // Return a fallback image instead of null
+        const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(title)}&background=1a1a2e&color=ffffff&size=400`;
+        imgCache[title] = fallbackUrl;
+        return fallbackUrl;
+    }
+}
+
+        // ── State ────────────────────────────────────────────────────────────
+        let DB = null;
+
+        // ── Pill colour logic ────────────────────────────────────────────────
+        const PILL_MAP = {
+            'High':      { normal: 'pill-green',  inverted: 'pill-red'    },
+            'Moderate':  { normal: 'pill-yellow', inverted: 'pill-yellow' },
+            'Low':       { normal: 'pill-red',    inverted: 'pill-green'  },
+            'Very High': { normal: 'pill-red',    inverted: 'pill-green'  }
+        };
+        function pillClass(value, inverted) {
+            const map = PILL_MAP[value];
+            if (!map) return 'pill-gray';
+            return inverted ? map.inverted : map.normal;
+        }
+
+        function helpBtn(tooltip) {
+            return `<button class="help-btn" tabindex="0">?<span class="tooltip">${tooltip}</span></button>`;
+        }
+
+        function renderStat(key, rawValue, def, isLast) {
+            const lastClass = isLast ? ' last' : '';
+            const label = `${def.label} ${helpBtn(def.tooltip)}`;
+
+            if (def.type === 'bar') {
+                const displayPct = def.inverted ? (100 - rawValue) : rawValue;
+                return `
+                <div class="score-row${lastClass}">
+                    <div class="score-header">
+                        <span class="score-name">${label}</span>
+                        <span class="score-num">${displayPct}/100</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill ${def.color}" data-val="${displayPct}"></div></div>
+                </div>`;
+            }
+            if (def.type === 'pill') {
+                return `
+                <div class="stat-row${lastClass}">
+                    <div class="stat-left"><span class="stat-label">${label}</span></div>
+                    <span class="pill ${pillClass(rawValue, def.inverted)}">${rawValue}</span>
+                </div>`;
+            }
+            return `
+            <div class="stat-row${lastClass}">
+                <div class="stat-left"><span class="stat-label">${label}</span></div>
+                <span class="stat-value">${rawValue}</span>
+            </div>`;
+        }
+
+        // ── Build sidebar from unique regions ────────────────────────────────
+        function buildSidebar(cities) {
+            const regionNames = { SW:'South West', SE:'South East', SS:'South South', NC:'North Central', NW:'North West', NE:'North East' };
+            const regions = [...new Set(cities.map(c => c.region))].sort();
+            document.getElementById('regionFilters').innerHTML = regions.map(r => `
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" value="${r}" onchange="filterCities()" class="region-checkbox custom-checkbox w-4 h-4 rounded-md border-slate-800 bg-slate-900">
+                    <span class="text-xs font-semibold text-slate-400 group-hover:text-white transition-colors">${regionNames[r] || r}</span>
+                </label>
             `).join('');
         }
 
-        function filterCities() {
-            const showGIGM = document.getElementById('hasGIGM').checked;
-            const showGUO = document.getElementById('hasGUO').checked;
-            const showMajor = document.getElementById('majorHub').checked;
+        // ── Render city cards (images load async after render) ───────────────
+        function renderCities(cities) {
+            document.getElementById('countDisplay').innerText = `${cities.length} cities`;
+            document.getElementById('citiesGrid').innerHTML = cities.map(city => `
+                <div onclick="openModal('${city.name.replace(/'/g,"&#39;")}')"
+                     class="card-wrap relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-slate-900 border border-slate-900 hover:border-slate-700 transition-all duration-300">
+                    <div class="img-placeholder absolute inset-0"></div>
+                    <img id="card-img-${city.rank}"
+                         src="" alt="${city.name}"
+                         class="card-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40"></div>
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-md text-[10px] font-mono font-black text-slate-400 px-2 py-0.5 rounded-md border border-slate-800">${city.rank}</div>
+                    <div class="absolute top-2 right-2 bg-slate-950/70 backdrop-blur-md text-[9px] font-bold text-emerald-400 px-2 py-0.5 rounded-md">${city.stats.internetSpeed || ''}</div>
+                    <div class="absolute bottom-0 inset-x-0 p-3">
+                        <h3 class="text-md font-extrabold text-white tracking-tight leading-tight">${city.name}</h3>
+                       
+                    </div>
+                </div>
+            `).join('');
 
-            const filtered = cities.filter(city => {
-                if (showGIGM && !city.hasGIGM) return false;
-                if (showGUO && !city.hasGUO) return false;
-                if (showMajor && city.terminals < 5) return false;
-                return true;
+            // Load images asynchronously for each card
+            cities.forEach(city => {
+                getWikiImage(city.wikipediaTitle).then(url => {
+                    if (!url) return;
+                    const el = document.getElementById(`card-img-${city.rank}`);
+                    if (!el) return;
+                    el.src = url;
+                    el.onload = () => el.classList.remove('opacity-0');
+                });
+            });
+            // Load images asynchronously for each card
+cities.forEach(city => {
+    getWikiImage(city.wikipediaTitle).then(url => {
+        const el = document.getElementById(`card-img-${city.rank}`);
+        if (!el) return;
+        
+        if (url) {
+            el.src = url;
+            el.onload = () => el.classList.remove('opacity-0');
+        } else {
+            // Use a default/placeholder image if no URL
+            el.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(city.name)}&background=1a1a2e&color=ffffff&size=400`;
+            el.classList.remove('opacity-0');
+        }
+    });
+});
+        }
+        
+
+        // ── Open modal ───────────────────────────────────────────────────────
+        async function openModal(cityName) {
+            const city = DB.cities.find(c => c.name === cityName);
+            if (!city) return;
+
+            // Show modal immediately with placeholder image
+            document.getElementById('modalImg').src = '';
+            document.getElementById('modalImg').className = 'w-full h-full object-cover img-placeholder';
+            document.getElementById('modalName').textContent = city.name;
+            document.getElementById('modalState').textContent = city.state;
+            document.getElementById('modalZone').textContent = `Zone ${city.region}`;
+            document.getElementById('modalRoutingLink').href = `/location.html?name=${encodeURIComponent(city.name)}`;
+
+            // Build stats
+            let html = '';
+            DB.sections.forEach(section => {
+                html += `<p class="section-label">${section.title}</p>`;
+                section.stats.forEach((key, i) => {
+                    const def = DB.statDefinitions[key];
+                    const val = city.stats[key];
+                    if (!def || val === undefined) return;
+                    html += renderStat(key, val, def, i === section.stats.length - 1);
+                });
+            });
+            document.getElementById('modalStats').innerHTML = html;
+
+            // Animate bars
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    document.querySelectorAll('#modalStats .bar-fill').forEach(bar => {
+                        bar.style.width = bar.dataset.val + '%';
+                    });
+                }, 60);
             });
 
-            renderCities(filtered);
+            document.getElementById('metricModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            // Load image (uses cache if already fetched)
+            const url = await getWikiImage(city.wikipediaTitle);
+            if (url) {
+                const modalImg = document.getElementById('modalImg');
+                modalImg.src = url;
+                modalImg.className = 'w-full h-full object-cover';
+            }
         }
 
-        // Initial Render
-        renderCities(cities);
+        function closeModal() {
+            document.getElementById('metricModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function filterCities() {
+            const active = Array.from(document.querySelectorAll('.region-checkbox:checked')).map(b => b.value);
+            renderCities(active.length ? DB.cities.filter(c => active.includes(c.region)) : DB.cities);
+        }
+
+        // ── Boot ─────────────────────────────────────────────────────────────
+        async function init() {
+            try {
+                const res = await fetch(DATA_URL + '?t=' + Date.now());
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                DB = await res.json();
+                buildSidebar(DB.cities);
+                renderCities(DB.cities);
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('citiesGrid').classList.remove('hidden');
+            } catch (err) {
+                console.error('Failed to load data:', err);
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('errorState').classList.remove('hidden');
+                document.getElementById('countDisplay').innerText = 'Error';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+        document.getElementById('metricModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
     </script>
 </body>
 </html>
