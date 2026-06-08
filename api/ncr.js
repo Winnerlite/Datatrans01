@@ -25,7 +25,7 @@ export default function handler(req, res) {
 
   // --- KEY CHECK ---
   const apiKey = req.headers['x-api-key'];
-  const mySecretKey = process.env.NCR_Secret_Key;
+  const mySecretKey = process.env.NCR_Secret_Keys;
   
   if (!mySecretKey || apiKey !== mySecretKey) {
     return res.status(401).json({ error: 'Unauthorized' });
