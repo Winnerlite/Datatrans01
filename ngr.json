@@ -1,7 +1,6 @@
-
 {
     "api": "Vyra Transport API v1.0",
-    "lastUpdated": "2026-01-30",
+    "lastUpdated": "2026-06-08",
     "description": "Complete Nigerian intercity transport data",
 
     "transportCompanies": {
@@ -176,7 +175,7 @@
                 }
             ]
         },
-        "basePrice": 32000,
+        "basePrice": 28800,
         "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
     },
 
@@ -243,7 +242,7 @@
           }
         ]
       },
-      "basePrice": 22000,
+      "basePrice": 19800,
       "serviceAttributes": [
         "Affordable",
         "Daily Departures",
@@ -466,7 +465,7 @@
                 }
             ]
         },
-        "basePrice": 33000,
+        "basePrice": 29700,
         "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
     },
 
@@ -625,7 +624,7 @@
                 }
             ]
         },
-        "basePrice": 31500,
+        "basePrice": 28350,
         "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
     },
 
@@ -821,7 +820,7 @@
                 }
             ]
         },
-        "basePrice": 29000,
+        "basePrice": 26100,
         "serviceAttributes": ["Low Pricing", "Reliability", "Quick", "Customer Service"]
     },
 
@@ -1071,7 +1070,7 @@
                 }
             ]
         },
-        "basePrice": 38000,
+        "basePrice": 34200,
         "serviceAttributes": [
             "Low Pricing",
             "Reliability",
@@ -1280,7 +1279,7 @@
                 }
             ]
         },
-        "basePrice": 29500,
+        "basePrice": 26550,
         "serviceAttributes": [
             "Comfort",
             "Low Pricing",
@@ -1428,7 +1427,7 @@
                 }
             ]
         },
-        "basePrice": 35000,
+        "basePrice": 31500,
         "serviceAttributes": [
             "Low Pricing",
             "Reliability",
@@ -1572,7 +1571,7 @@
                 }
             ]
         },
-        "basePrice": 22000,
+        "basePrice": 19800,
         "serviceAttributes": [
             "Low Pricing",
             "Reliability",
@@ -1646,7 +1645,7 @@
                 }
             ]
         },
-        "basePrice": 33000,
+        "basePrice": 29700,
         "serviceAttributes": [
             "Comfort",
             "Reliability",
@@ -1759,7 +1758,7 @@
                 }
             ]
         },
-        "basePrice": 29000,
+        "basePrice": 26100,
         "serviceAttributes": [
             "Comfort",
             "Safety",
@@ -1869,7 +1868,7 @@
                 }
             ]
         },
-        "basePrice": 32000,
+        "basePrice": 28800,
         "serviceAttributes": [
             "Comfort",
             "Reliability",
@@ -1951,7 +1950,7 @@
                 }
             ]
         },
-        "basePrice": 37500,
+        "basePrice": 33750,
         "serviceAttributes": [
             "Low Pricing",
             "Northern Routes Focus",
@@ -2018,7 +2017,7 @@
                 }
             ]
         },
-        "basePrice": 33000,
+        "basePrice": 29700,
         "serviceAttributes": [
             "Comfort",
             "Courier & Cargo Delivery Service",
@@ -2121,7 +2120,7 @@
                 }
             ]
         },
-        "basePrice": 31500,
+        "basePrice": 28350,
         "serviceAttributes": [
             "Low Pricing",
             "Quick",
@@ -2191,7 +2190,7 @@
                 }
             ]
         },
-        "basePrice": 33500,
+        "basePrice": 30150,
         "serviceAttributes": [
             "Low Pricing",
             "Reliability",
@@ -2249,7 +2248,7 @@
                 }
             ]
         },
-        "basePrice": 32500,
+        "basePrice": 29250,
         "serviceAttributes": [
             "Low Pricing",
             "State-Owned",
@@ -2269,7 +2268,7 @@
                 "Kano": "Kano Main Park",
                 "Jos": "Jos Terminus"
             },
-            "basePrice": 29000,
+            "basePrice": 26100,
             "serviceAttributes": ["Safety"]
         },
         "Fair Plus Transport": {
@@ -2283,7 +2282,7 @@
                 "Lagos": "Jibowu Terminal",
                 "Kano": "Kano Main Park"
             },
-            "basePrice": 28500,
+            "basePrice": 25650,
             "serviceAttributes": ["Reliability"]
         },
 
@@ -2359,7 +2358,7 @@
                 }
             ]
         },
-        "basePrice": 30000,
+        "basePrice": 27000,
         "serviceAttributes": [
             "Quick",
             "Safety",
@@ -2431,7 +2430,7 @@
                 }
             ]
         },
-        "basePrice": 27500,
+        "basePrice": 24750,
         "serviceAttributes": [
             "Low Pricing",
             "Quick",
@@ -2509,7 +2508,7 @@
                 }
             ]
         },
-        "basePrice": 32000,
+        "basePrice": 28800,
         "serviceAttributes": [
             "Comfort",
             "Low Pricing",
@@ -2606,7 +2605,7 @@
                 }
             ]
         },
-        "basePrice": 34500,
+        "basePrice": 31050,
         "serviceAttributes": [
             "Comfort",
             "Safety",
@@ -2673,7 +2672,7 @@
                 }
             ]
         },
-        "basePrice": 32500,
+        "basePrice": 29250,
         "serviceAttributes": [
             "Comfort",
             "Low Pricing",
@@ -2748,7 +2747,7 @@
                 }
             ]
         },
-        "basePrice": 34500,
+        "basePrice": 31050,
         "serviceAttributes": [
             "Comfort",
             "Low Pricing",
@@ -2814,7 +2813,7 @@
                 }
             ]
         },
-        "basePrice": 29500,
+        "basePrice": 26550,
         "serviceAttributes": [
             "Comfort",
             "Reliability",
@@ -2885,7 +2884,7 @@
                 }
             ]
         },
-        "basePrice": 34000,
+        "basePrice": 30600,
         "serviceAttributes": [
             "Comfort",
             "Reliability",
@@ -2943,7 +2942,7 @@
                 }
             ]
         },
-        "basePrice": 29000,
+        "basePrice": 26100,
         "serviceAttributes": [
             "Low Pricing",
             "Reliability",
@@ -3008,7 +3007,7 @@
                 }
             ]
         },
-        "basePrice": 28000,
+        "basePrice": 25200,
         "serviceAttributes": [
             "Low Pricing",
             "Historical Operator",
@@ -3066,7 +3065,7 @@
                 }
             ]
         },
-        "basePrice": 28000,
+        "basePrice": 25200,
         "serviceAttributes": [
             "Safety",
             "Customer Service",
@@ -3124,7 +3123,7 @@
                 }
             ]
         },
-        "basePrice": 30500,
+        "basePrice": 27450,
         "serviceAttributes": [
             "Reliability",
             "Online Booking",
@@ -3180,7 +3179,7 @@
                 }
             ]
         },
-        "basePrice": 17500,
+        "basePrice": 15750,
         "serviceAttributes": [
             "Comfort",
             "Low Pricing",
@@ -3239,7 +3238,7 @@
                 }
             ]
         },
-        "basePrice": 30000,
+        "basePrice": 27000,
         "serviceAttributes": [
             "Low Pricing",
             "Safety",
@@ -3290,7 +3289,7 @@
                 }
             ]
         },
-        "basePrice": 33500,
+        "basePrice": 30150,
         "serviceAttributes": [
             "Low Pricing",
             "Reliability",
@@ -3355,7 +3354,7 @@
                 }
             ]
         },
-        "basePrice": 25500,
+        "basePrice": 22950,
         "serviceAttributes": [
             "Comfort",
             "Safety",
@@ -3420,7 +3419,7 @@
                 }
             ]
         },
-        "basePrice": 28000,
+        "basePrice": 25200,
         "serviceAttributes": [
             "Comfort",
             "Safety",
@@ -3478,7 +3477,7 @@
                 }
             ]
         },
-        "basePrice": 25500,
+        "basePrice": 22950,
         "serviceAttributes": [
             "Safety",
             "Reliability",
@@ -3559,7 +3558,7 @@
                 }
             ]
         },
-        "basePrice": 28000,
+        "basePrice": 25200,
         "serviceAttributes": [
             "Safety",
             "Reliability",
@@ -3616,7 +3615,7 @@
                 }
             ]
         },
-        "basePrice": 26500,
+        "basePrice": 23850,
         "serviceAttributes": [
             "Safety",
             "Budget-Friendly",
@@ -3672,7 +3671,7 @@
                 }
             ]
         },
-        "basePrice": 27000,
+        "basePrice": 24300,
         "serviceAttributes": [
             "Reliability",
             "Customer Service",
@@ -3736,7 +3735,7 @@
                 }
             ]
         },
-        "basePrice": 18000,
+        "basePrice": 16200,
         "serviceAttributes": [
             "Quick",
             "Low Cost",
@@ -3816,7 +3815,7 @@
                 }
             ]
         },
-        "basePrice": 20000,
+        "basePrice": 18000,
         "serviceAttributes": [
             "Lowest Prices",
             "Safety",
@@ -3885,7 +3884,7 @@
                 }
             ]
         },
-        "basePrice": 23750,
+        "basePrice": 21375,
         "serviceAttributes": [
             "Northern Routes",
             "International Routes (West Africa)",
@@ -3897,283 +3896,278 @@
 },
 
 
-   "routePrices": {
+  "routePrices": {
     "Lagos-Abuja": {
-        "ABC Transport": 35000,
-        "God is Good Motors": 38000,
-        "Chisco Transport": 35000,
-        "GUO Transport": 33000,
-        "Peace Mass Transit": 28000,
-
-        "The Young Shall Grow": 30000,
-        "E.Ekesons Bros Transport": 32000,
-        "Libra Motors": 30000,
-
-        "Cross Country Transport": 24500,
-        "Nsik Motors (AKTC)": 30000,
-        "The Young Legacy Motors": 28000,
-        "Benue Link Transport": 28000,
-        "Aba Line": 28000,
-        "New Nyanya Transport Company": 28000,
-        "Orizu Motors": 28000,
-        "Agofure Motors": 28000,
-        "Anambra Express": 28000,
-        "Delta Line": 28000
+        "ABC Transport": 31850,
+        "God is Good Motors": 34580,
+        "Chisco Transport": 31850,
+        "GUO Transport": 30030,
+        "Peace Mass Transit": 25480,
+        "The Young Shall Grow": 27300,
+        "E.Ekesons Bros Transport": 29120,
+        "Libra Motors": 27300,
+        "Cross Country Transport": 22295,
+        "Nsik Motors (AKTC)": 27300,
+        "The Young Legacy Motors": 25480,
+        "Benue Link Transport": 25480,
+        "Aba Line": 25480,
+        "New Nyanya Transport Company": 25480,
+        "Orizu Motors": 25480,
+        "Agofure Motors": 25480,
+        "Anambra Express": 25480,
+        "Delta Line": 25480
     },
-       "Lagos-Port Harcourt": {
-    "ABC Transport": 39500,
-    "God is Good Motors": 42000,
-    "Chisco Transport": 30000,
-    "The Young Shall Grow": 30000,
-    "Peace Mass Transit": 28000,
-    "GUO Transport": 32000,
-    "The Young Legacy Motors": 25000,
-    "Benue Link Transport": 25000,
-    "Aba Line": 25000,
-    "Nsik Motors (AKTC)": 25000,
-    "Cross Country Transport": 25500,
-    "Libra Motors": 25000,
-    "Orizu Motors": 25000,
-    "Agofure Motors": 25000,
-    "E.Ekesons Bros Transport": 25000,
-    "Delta Line": 25000
-},
-        "Lagos-Onitsha": {
-    "ABC Transport": 32000,
-    "God is Good Motors": 40000,
-    "Chisco Transport": 28000,
-    "The Young Shall Grow": 28000,
-    "Peace Mass Transit": 25000,
-    "GUO Transport": 39000,
-    "The Young Legacy Motors": 23000,
-    "Benue Link Transport": 23000,
-    "Aba Line": 23000,
-    "Libra Motors": 23000,
-    "Orizu Motors": 23000,
-    "Agofure Motors": 23000,
-    "E.Ekesons Bros Transport": 26000,
-    "Goodness and Mercy Transport": 23000,
-    "Okeyson Motors": 23000,
-    "Tracas Nigeria": 23000,
-    "Auto Star Limited": 23000,
-    "Anambra Express": 23000
-} ,
-       "Lagos-Enugu": {
-    "ABC Transport": 35000,
-    "God is Good Motors": 38000,
-    "Chisco Transport": 32000,
-    "The Young Shall Grow": 32000,
-    "Peace Mass Transit": 28000,
-    "GUO Transport": 36000,
-    "The Young Legacy Motors": 28000,
-    "Benue Link Transport": 28000,
-    "Aba Line": 28000,
-    "Nsik Motors (AKTC)": 28000,
-    "Cross Country Transport": 28000,
-    "Libra Motors": 28000,
-    "Orizu Motors": 28000,
-    "E.Ekesons Bros Transport": 28000,
-    "Anambra Express": 28000,
-    "Interland Transport": 28000
-},
+    "Lagos-Port Harcourt": {
+        "ABC Transport": 35945,
+        "God is Good Motors": 38220,
+        "Chisco Transport": 27300,
+        "The Young Shall Grow": 27300,
+        "Peace Mass Transit": 25480,
+        "GUO Transport": 29120,
+        "The Young Legacy Motors": 22750,
+        "Benue Link Transport": 22750,
+        "Aba Line": 22750,
+        "Nsik Motors (AKTC)": 22750,
+        "Cross Country Transport": 23205,
+        "Libra Motors": 22750,
+        "Orizu Motors": 22750,
+        "Agofure Motors": 22750,
+        "E.Ekesons Bros Transport": 22750,
+        "Delta Line": 22750
+    },
+    "Lagos-Onitsha": {
+        "ABC Transport": 29120,
+        "God is Good Motors": 36400,
+        "Chisco Transport": 25480,
+        "The Young Shall Grow": 25480,
+        "Peace Mass Transit": 22750,
+        "GUO Transport": 35490,
+        "The Young Legacy Motors": 20930,
+        "Benue Link Transport": 20930,
+        "Aba Line": 20930,
+        "Libra Motors": 20930,
+        "Orizu Motors": 20930,
+        "Agofure Motors": 20930,
+        "E.Ekesons Bros Transport": 23660,
+        "Goodness and Mercy Transport": 20930,
+        "Okeyson Motors": 20930,
+        "Tracas Nigeria": 20930,
+        "Auto Star Limited": 20930,
+        "Anambra Express": 20930
+    },
+    "Lagos-Enugu": {
+        "ABC Transport": 31850,
+        "God is Good Motors": 34580,
+        "Chisco Transport": 29120,
+        "The Young Shall Grow": 29120,
+        "Peace Mass Transit": 25480,
+        "GUO Transport": 32760,
+        "The Young Legacy Motors": 25480,
+        "Benue Link Transport": 25480,
+        "Aba Line": 25480,
+        "Nsik Motors (AKTC)": 25480,
+        "Cross Country Transport": 25480,
+        "Libra Motors": 25480,
+        "Orizu Motors": 25480,
+        "E.Ekesons Bros Transport": 25480,
+        "Anambra Express": 25480,
+        "Interland Transport": 25480
+    },
     "Abuja-Port Harcourt": {
-    "ABC Transport": 43500,
-    "God is Good Motors": 50000,
-    "Chisco Transport": 40000,
-    "Young Shall Grow": 38000,
-    "Peace Mass Transit": 35000,
-    "GUO Transport": 40000,
-    "The Young Legacy Motors": 35000,
-    "Benue Link Transport": 35000,
-    "Aba Line": 35000,
-    "Cross Country Transport": 35000,
-    "Agofure Motors": 35000,
-    "Delta Line": 35000
-},
-
+        "ABC Transport": 39585,
+        "God is Good Motors": 45500,
+        "Chisco Transport": 36400,
+        "Young Shall Grow": 34580,
+        "Peace Mass Transit": 31850,
+        "GUO Transport": 36400,
+        "The Young Legacy Motors": 31850,
+        "Benue Link Transport": 31850,
+        "Aba Line": 31850,
+        "Cross Country Transport": 31850,
+        "Agofure Motors": 31850,
+        "Delta Line": 31850
+    },
     "Abuja-Onitsha": {
-        "ABC Transport": 38000,
-        "God is Good Motors": 45000,
-        "Chisco Transport": 35000,
-        "Young Shall Grow": 33000,
-        "Peace Mass Transit": 30000,
-        "GUO Transport": 37000,
-        "The Young Legacy Motors": 30000,
-        "Benue Link Transport": 30000,
-        "Orizu Motors": 30000,
-        "Agofure Motors": 30000,
-        "Anambra Express": 30000
+        "ABC Transport": 34580,
+        "God is Good Motors": 40950,
+        "Chisco Transport": 31850,
+        "Young Shall Grow": 30030,
+        "Peace Mass Transit": 27300,
+        "GUO Transport": 33670,
+        "The Young Legacy Motors": 27300,
+        "Benue Link Transport": 27300,
+        "Orizu Motors": 27300,
+        "Agofure Motors": 27300,
+        "Anambra Express": 27300
     },
     "Abuja-Enugu": {
-        "ABC Transport": 40000,
-        "God is Good Motors": 41500,
-        "Chisco Transport": 35000,
-        "Young Shall Grow": 33000,
-        "Peace Mass Transit": 30000,
-        "GUO Transport": 37000,
-        "The Young Legacy Motors": 30000,
-        "Benue Link Transport": 30000,
-        "Cross Country Transport": 30000,
-        "Orizu Motors": 30000,
-        "Anambra Express": 30000
+        "ABC Transport": 36400,
+        "God is Good Motors": 37765,
+        "Chisco Transport": 31850,
+        "Young Shall Grow": 30030,
+        "Peace Mass Transit": 27300,
+        "GUO Transport": 33670,
+        "The Young Legacy Motors": 27300,
+        "Benue Link Transport": 27300,
+        "Cross Country Transport": 27300,
+        "Orizu Motors": 27300,
+        "Anambra Express": 27300
     },
     "Port Harcourt-Onitsha": {
-        "ABC Transport": 21000,
-        "God is Good Motors": 22000,
-        "Chisco Transport": 20500,
-        "Young Shall Grow": 19000,
-        "Peace Mass Transit": 18000,
-        "GUO Transport": 21500,
-        "The Young Legacy Motors": 19000,
-        "Benue Link Transport": 20000,
-        "Aba Line": 19000,
-        "Orizu Motors": 18000,
-        "Agofure Motors": 19000
+        "ABC Transport": 19110,
+        "God is Good Motors": 20020,
+        "Chisco Transport": 18655,
+        "Young Shall Grow": 17290,
+        "Peace Mass Transit": 16380,
+        "GUO Transport": 19565,
+        "The Young Legacy Motors": 17290,
+        "Benue Link Transport": 18200,
+        "Aba Line": 17290,
+        "Orizu Motors": 16380,
+        "Agofure Motors": 17290
     },
     "Port Harcourt-Enugu": {
-        "ABC Transport": 22000,
-        "God is Good Motors": 23000,
-        "Chisco Transport": 21500,
-        "Young Shall Grow": 20000,
-        "Peace Mass Transit": 19000,
-        "GUO Transport": 22500,
-        "The Young Legacy Motors": 19500,
-        "Benue Link Transport": 20500,
-        "Aba Line": 20000,
-        "Nsik Motors (AKTC)": 20000
+        "ABC Transport": 20020,
+        "God is Good Motors": 20930,
+        "Chisco Transport": 19565,
+        "Young Shall Grow": 18200,
+        "Peace Mass Transit": 17290,
+        "GUO Transport": 20475,
+        "The Young Legacy Motors": 17745,
+        "Benue Link Transport": 18655,
+        "Aba Line": 18200,
+        "Nsik Motors (AKTC)": 18200
     },
     "Onitsha-Enugu": {
-        "ABC Transport": 12000,
-        "God is Good Motors": 12500,
-        "Chisco Transport": 11500,
-        "Young Shall Grow": 10000,
-        "Peace Mass Transit": 9000,
-        "GUO Transport": 12000,
-        "The Young Legacy Motors": 9500,
-        "Benue Link Transport": 10500,
-        "Orizu Motors": 9500,
-        "Anambra Express": 9000,
-        "Nothing Pass God Motors": 9500
+        "ABC Transport": 10920,
+        "God is Good Motors": 11375,
+        "Chisco Transport": 10465,
+        "Young Shall Grow": 9100,
+        "Peace Mass Transit": 8190,
+        "GUO Transport": 10920,
+        "The Young Legacy Motors": 8645,
+        "Benue Link Transport": 9555,
+        "Orizu Motors": 8645,
+        "Anambra Express": 8190,
+        "Nothing Pass God Motors": 8645
     },
     "Lagos-Ibadan": {
-        "ABC Transport": 11500,
-        "God is Good Motors": 12000,
-        "Chisco Transport": 11000,
-        "Young Shall Grow": 9000,
-        "Peace Mass Transit": 8000,
-        "GUO Transport": 11800,
-        "The Young Legacy Motors": 8500,
-        "Benue Link Transport": 10000,
-        "Libra Motors": 10500
+        "ABC Transport": 10465,
+        "God is Good Motors": 10920,
+        "Chisco Transport": 10010,
+        "Young Shall Grow": 8190,
+        "Peace Mass Transit": 7280,
+        "GUO Transport": 10738,
+        "The Young Legacy Motors": 7735,
+        "Benue Link Transport": 9100,
+        "Libra Motors": 9555
     },
     "Lagos-Benin": {
-        "ABC Transport": 27000,
-        "God is Good Motors": 28000,
-        "Chisco Transport": 25000,
-        "Young Shall Grow": 23000,
-        "Peace Mass Transit": 22000,
-        "GUO Transport": 26000,
-        "The Young Legacy Motors": 22500,
-        "Benue Link Transport": 23500,
-        "Agofure Motors": 23000,
-        "Delta Line": 22500
+        "ABC Transport": 24570,
+        "God is Good Motors": 25480,
+        "Chisco Transport": 22750,
+        "Young Shall Grow": 20930,
+        "Peace Mass Transit": 20020,
+        "GUO Transport": 23660,
+        "The Young Legacy Motors": 20475,
+        "Benue Link Transport": 21385,
+        "Agofure Motors": 20930,
+        "Delta Line": 20475
     },
     "Abuja-Kano": {
-        "ABC Transport": 34000,
-        "God is Good Motors": 35000,
-        "Chisco Transport": 32000,
-        "Young Shall Grow": 29000,
-        "Peace Mass Transit": 28000,
-        "GUO Transport": 33000,
-        "The Young Legacy Motors": 28500,
-        "Benue Link Transport": 30000,
-        "Cross Country Transport": 31000,
-        "New Nyanya Transport Company": 28500
+        "ABC Transport": 30940,
+        "God is Good Motors": 31850,
+        "Chisco Transport": 29120,
+        "Young Shall Grow": 26390,
+        "Peace Mass Transit": 25480,
+        "GUO Transport": 30030,
+        "The Young Legacy Motors": 25935,
+        "Benue Link Transport": 27300,
+        "Cross Country Transport": 28210,
+        "New Nyanya Transport Company": 25935
     },
     "Abuja-Kaduna": {
-        "ABC Transport": 11500,
-        "God is Good Motors": 12000,
-        "Chisco Transport": 11000,
-        "Young Shall Grow": 9000,
-        "Peace Mass Transit": 8000,
-        "GUO Transport": 11800,
-        "The Young Legacy Motors": 8500,
-        "Benue Link Transport": 9500,
-        "New Nyanya Transport Company": 8000
+        "ABC Transport": 10465,
+        "God is Good Motors": 10920,
+        "Chisco Transport": 10010,
+        "Young Shall Grow": 8190,
+        "Peace Mass Transit": 7280,
+        "GUO Transport": 10738,
+        "The Young Legacy Motors": 7735,
+        "Benue Link Transport": 8645,
+        "New Nyanya Transport Company": 7280
     },
     "Lagos-Calabar": {
-        "ABC Transport": 48000,
-        "God is Good Motors": 49000,
-        "Chisco Transport": 45000,
-        "Young Shall Grow": 42000,
-        "Peace Mass Transit": 40000,
-        "GUO Transport": 47000,
-        "Nsik Motors (AKTC)": 43000,
-        "Cross Country Transport": 45000,
-        "Faith Motors": 44000,
-        "Ibom Transit": 43000
+        "ABC Transport": 43680,
+        "God is Good Motors": 44590,
+        "Chisco Transport": 40950,
+        "Young Shall Grow": 38220,
+        "Peace Mass Transit": 36400,
+        "GUO Transport": 42770,
+        "Nsik Motors (AKTC)": 39130,
+        "Cross Country Transport": 40950,
+        "Faith Motors": 40040,
+        "Ibom Transit": 39130
     },
     "Lagos-Uyo": {
-        "ABC Transport": 47000,
-        "God is Good Motors": 48000,
-        "Peace Mass Transit": 39000,
-        "Nsik Motors (AKTC)": 43000,
-        "Akwa Ibom Transport (AKTC)": 41000,
-        "Big Joe Motors": 39000,
-        "Ibom Transit": 43000
+        "ABC Transport": 42770,
+        "God is Good Motors": 43680,
+        "Peace Mass Transit": 35490,
+        "Nsik Motors (AKTC)": 39130,
+        "Akwa Ibom Transport (AKTC)": 37310,
+        "Big Joe Motors": 35490,
+        "Ibom Transit": 39130
     },
     "Abuja-Jos": {
-        "ABC Transport": 22000,
-        "Peace Mass Transit": 18000,
-        "Young Shall Grow": 19000,
-        "Benue Link Transport": 20000,
-        "Cross Country Transport": 20000,
-        "New Nyanya Transport Company": 18000,
-        "Fair Okis Transport": 19000,
-        "Yankari Express": 18000
+        "ABC Transport": 20020,
+        "Peace Mass Transit": 16380,
+        "Young Shall Grow": 17290,
+        "Benue Link Transport": 18200,
+        "Cross Country Transport": 18200,
+        "New Nyanya Transport Company": 16380,
+        "Fair Okis Transport": 17290,
+        "Yankari Express": 16380
     },
-
-
     "Abuja-Lagos": {
-        "God is Good Motors": 40000,
-        "ABC Transport": 36000,
-        "GUO Transport": 35000,
-        "Chisco Transport": 34000,
-        "Young Shall Grow": 32000,
-        "Peace Mass Transit": 30000,
-        "Cross Country Transport": 29000,
-        "The Young Legacy Motors": 30000
+        "God is Good Motors": 36400,
+        "ABC Transport": 32760,
+        "GUO Transport": 31850,
+        "Chisco Transport": 30940,
+        "Young Shall Grow": 29120,
+        "Peace Mass Transit": 27300,
+        "Cross Country Transport": 26390,
+        "The Young Legacy Motors": 27300
     },
-
     "Lagos-Owerri": {
-        "God is Good Motors": 33000,
-        "GUO Transport": 32000,
-        "ABC Transport": 31000,
-        "Chisco Transport": 30000,
-        "Peace Mass Transit": 25000,
-        "The Young Legacy Motors": 26000,
-        "Benue Link Transport": 27000
+        "God is Good Motors": 30030,
+        "GUO Transport": 29120,
+        "ABC Transport": 28210,
+        "Chisco Transport": 27300,
+        "Peace Mass Transit": 22750,
+        "The Young Legacy Motors": 23660,
+        "Benue Link Transport": 24570
     },
     "Abuja-Warri": {
-        "God is Good Motors": 39000,
-        "ABC Transport": 38000,
-        "GUO Transport": 37000,
-        "Chisco Transport": 35000,
-        "Young Shall Grow": 32000,
-        "Peace Mass Transit": 30000,
-        "Agofure Motors": 30000,
-        "Delta Line": 30000
+        "God is Good Motors": 35490,
+        "ABC Transport": 34580,
+        "GUO Transport": 33670,
+        "Chisco Transport": 31850,
+        "Young Shall Grow": 29120,
+        "Peace Mass Transit": 27300,
+        "Agofure Motors": 27300,
+        "Delta Line": 27300
     },
     "Port Harcourt-Lagos": {
-        "God is Good Motors": 39000,
-        "ABC Transport": 38000,
-        "GUO Transport": 37000,
-        "Chisco Transport": 35000,
-        "Peace Mass Transit": 30000,
-        "Young Shall Grow": 32000,
-        "Cross Country Transport": 35000,
-        "Libra Motors": 30000
+        "God is Good Motors": 26390,
+        "ABC Transport": 25480,
+        "GUO Transport": 24570,
+        "Chisco Transport": 13650,
+        "Peace Mass Transit": 9100,
+        "Young Shall Grow": 10920,
+        "Cross Country Transport": 13650,
+        "Libra Motors": 10100
     }
+
 },
 
     "states": {
@@ -4739,6 +4733,6 @@
     "totalStates": 37,
     "priceCurrency": "NGN",
     "dataSource": "Vyra Transport Analysis 2025",
-    "lastUpdated": "2025-11-30"
+    "lastUpdated": "2026-06-08"
 }
 }
