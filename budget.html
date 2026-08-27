@@ -250,7 +250,7 @@ function closeInfoModal() {
     }
 
     async function loadData() {
-        const res = await fetch('https://www.intercityprices.com.ng/ngr.json');
+        const res = await fetch('ngr.json');
         transportData = await res.json();
         
 		  // Show the modal if not dismissed
