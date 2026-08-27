@@ -142,4 +142,11 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://intercityprices.com.ng/budget.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
