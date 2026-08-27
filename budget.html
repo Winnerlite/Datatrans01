@@ -16,6 +16,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Transport Planner | Vyra</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- SEO -->
+    <meta name="description" content="Find intercity transport companies in Nigeria that fit your exact budget. Compare prices from Lagos, Abuja, Port Harcourt and more, and get terminal locations and contact details instantly.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://intercityprices.com.ng/budget.html">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Budget Transport Planner | Vyra">
+    <meta property="og:description" content="Find intercity transport companies in Nigeria that fit your exact budget. Compare prices and get terminal contact details instantly.">
+    <meta property="og:url" content="https://intercityprices.com.ng/budget.html">
+    <meta property="og:image" content="https://intercityprices.com.ng/og-image.jpg">
+    <meta property="og:site_name" content="Vyra">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Budget Transport Planner | Vyra">
+    <meta name="twitter:description" content="Find intercity transport companies in Nigeria that fit your exact budget.">
+    <meta name="twitter:image" content="https://intercityprices.com.ng/og-image.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -250,7 +272,7 @@ function closeInfoModal() {
     }
 
     async function loadData() {
-        const res = await fetch('ngr.json');
+        const res = await fetch('https://www.intercityprices.com.ng/ngr.json');
         transportData = await res.json();
         
 		  // Show the modal if not dismissed
