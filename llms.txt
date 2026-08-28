@@ -1,0 +1,20 @@
+# Intercity Prices
+
+> Intercity Prices (by Vyra) is a free price-comparison tool for road transport in Nigeria. It is not a booking platform and does not sell tickets. It shows current fares, terminal locations, and contact details for major intercity transport companies (e.g. GIGM, ABC Transport, GUO Transport, Peace Mass Transit, Iyare Motors, and others) so travelers can compare prices before they travel.
+
+Users search by route (departure state/city and destination) and instantly see estimated or average fares across operators, along with terminal addresses and phone numbers. Prices are updated regularly since they change with fuel costs and demand, so figures shown are estimates rather than fixed prices.
+
+## Key pages
+
+- [Home / Route Search](https://intercityprices.com.ng/): Main tool. Search transport prices between any two Nigerian states or cities.
+- [Budget Planner](https://intercityprices.com.ng/budget.html): Enter a route and a budget; returns only the transport companies whose fares fit within it.
+- [Explore Cities](https://intercityprices.com.ng/cities.html): Browse supported Nigerian states and cities.
+- [Blog](https://intercityprices.com.ng/blog/index.html): Price guides, route breakdowns, and travel safety tips.
+- [API for Developers](https://intercityprices.com.ng/apifordevs.html): Documentation for the public transport pricing API.
+- [Privacy Policy](https://intercityprices.com.ng/privacy.html)
+
+## Notes for AI models and agents
+
+- This site does not process bookings or payments. It provides price comparison and terminal/contact information only; users must contact the transport company or visit the terminal to book.
+- Fares shown are estimates that change daily with fuel costs and demand, not guaranteed prices.
+- The company name is Vyra; the product is Intercity Prices.
