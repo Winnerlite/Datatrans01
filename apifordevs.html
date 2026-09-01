@@ -175,7 +175,7 @@
                     </div>
                 </div>
 
-                <!-- Right Content: API Playground -->
+                               <!-- Right Content: API Playground -->
                 <div class="lg:col-span-6 relative px-2 sm:px-0">
                     <div class="absolute inset-0 bg-gradient-to-r from-vyra-500 to-teal-500 rounded-2xl blur-2xl opacity-20 -z-10"></div>
                     <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden">
@@ -196,7 +196,7 @@
                                 <div class="flex gap-2 flex-col sm:flex-row">
                                     <div class="flex flex-1 gap-2">
                                         <span class="bg-vyra-900/30 text-vyra-400 px-3 py-2 rounded text-sm font-mono border border-vyra-500/20 flex items-center">GET</span>
-                                        <input type="text" value="/v1/search?from=Lagos&to=Abuja" readonly class="bg-slate-950 text-slate-300 text-sm font-mono flex-1 px-3 py-2 rounded border border-slate-800 focus:outline-none truncate">
+                                        <input type="text" value="/api/search?q=Lagos" readonly class="bg-slate-950 text-slate-300 text-sm font-mono flex-1 px-3 py-2 rounded border border-slate-800 focus:outline-none truncate">
                                     </div>
                                     <button onclick="runDemo()" id="runBtn" class="bg-vyra-600 hover:bg-vyra-500 text-white px-4 py-2 rounded text-sm font-medium transition-colors w-full sm:w-auto">Send</button>
                                 </div>
@@ -311,23 +311,60 @@
                         </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2 bg-slate-950 rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-2xl">
-                    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Sample Integration</h3>
-                    <div class="font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre scrollbar-thin scrollbar-thumb-slate-700 pb-2">
-                        <div class="text-purple-400">const <span class="text-blue-300">vyra</span> = require(<span class="text-string">'vyra-sdk'</span>);</div>
-                        <br>
-                        <div class="text-slate-400">// 1. Find cheapest bus to Enugu</div>
-                        <div class="text-blue-300">async function <span class="text-yellow-300">getCheapestRide</span>() {</div>
-                        <div class="pl-4 text-purple-400">const <span class="text-slate-300">options</span> = await <span class="text-blue-300">vyra</span>.<span class="text-yellow-300">search</span>({</div>
-                        <div class="pl-8 text-slate-300">from: <span class="text-string">'Lagos'</span>,</div>
-                        <div class="pl-8 text-slate-300">to: <span class="text-string">'Enugu'</span>,</div>
-                        <div class="pl-8 text-slate-300">sort: <span class="text-string">'price_asc'</span></div>
-                        <div class="pl-4 text-slate-300">});</div>
-                        <br>
-                        <div class="pl-4 text-slate-300">return <span class="text-slate-300">options</span>[<span class="text-number">0</span>];</div>
-                        <div class="text-slate-300">}</div>
-                    </div>
-                </div>
+           <div class="order-1 lg:order-2 bg-slate-950 rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-2xl">
+    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Real API Integration</h3>
+    <div class="font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre scrollbar-thin scrollbar-thumb-slate-700 pb-2">
+        
+        <!-- The Fetch Call -->
+        <div class="text-slate-400">// 1. Fetch route prices between two states</div>
+        <div class="text-blue-300">fetch<span class="text-slate-300">(</span><span class="text-string">'https://intercityprices.com.ng/api/search?q=Lagos'</span>, {</div>
+        <div class="pl-4 text-slate-300">method: <span class="text-string">'GET'</span>,</div>
+        <div class="pl-4 text-slate-300">headers: {</div>
+        <div class="pl-8 text-slate-300"><span class="text-string">'x-api-key'</span>: <span class="text-string">'YOUR_SECRET_API_KEY'</span></div>
+        <div class="pl-4 text-slate-300">}</div>
+        <div class="text-slate-300">})</div>
+        <div class="pl-4 text-blue-300">.then<span class="text-slate-300">(</span>res <span class="text-slate-400">=&gt;</span> res.<span class="text-yellow-300">json</span><span class="text-slate-300">())</span></div>
+        <div class="pl-4 text-blue-300">.then<span class="text-slate-300">(</span>data <span class="text-slate-400">=&gt;</span> {</div>
+        <div class="pl-8 text-slate-400">// 2. Access the returned JSON structure</div>
+        <div class="pl-8 text-purple-400">const</div> <div class="pl-8 text-slate-300">routePrices = data.<span class="text-yellow-300">routePrices</span>[<span class="text-string">'Lagos-Abuja'</span>];</div>
+        <div class="pl-8 text-slate-300">console.<span class="text-yellow-300">log</span>(routePrices);</div>
+        <div class="pl-8 text-slate-300">});</div>
+
+        <br>
+        
+        <!-- The Actual JSON Returned -->
+        <div class="text-slate-400">// 3. Response Object (exact JSON format)</div>
+        <span class="text-purple-400">{</span>
+        <div class="pl-4 text-slate-300"><span class="text-purple-400">"routePrices"</span>: {</div>
+        <div class="pl-8 text-slate-300"><span class="text-purple-400">"Lagos-Abuja"</span>: {</div>
+        <div class="pl-12 text-slate-300"><span class="text-purple-400">"ABC Transport"</span>: <span class="text-number">23904</span>,</div>
+        <div class="pl-12 text-slate-300"><span class="text-purple-400">"God is Good Motors"</span>: <span class="text-number">24651</span>,</div>
+        <div class="pl-12 text-slate-300"><span class="text-purple-400">"GUO Transport"</span>: <span class="text-number">22037</span></div>
+        <div class="pl-8 text-slate-300">}</div>
+        <div class="pl-4 text-slate-300">},</div>
+        
+        <div class="pl-4 text-slate-300"><span class="text-purple-400">"transportCompanies"</span>: {</div>
+        <div class="pl-8 text-slate-300"><span class="text-purple-400">"ABC Transport"</span>: {</div>
+        <div class="pl-12 text-slate-300"><span class="text-purple-400">"basePrice"</span>: <span class="text-number">23904</span>,</div>
+        <div class="pl-12 text-slate-300"><span class="text-purple-400">"terminals"</span>: {</div>
+        <div class="pl-16 text-slate-300"><span class="text-purple-400">"Lagos"</span>: [</div>
+        <div class="pl-20 text-slate-300">{ <span class="text-purple-400">"name"</span>: <span class="text-string">"Jibowu Terminal"</span> }</div>
+        <div class="pl-16 text-slate-300">]</div>
+        <div class="pl-12 text-slate-300">}</div>
+        <div class="pl-8 text-slate-300">}</div>
+        <div class="pl-4 text-slate-300">},</div>
+
+        <div class="pl-4 text-slate-300"><span class="text-purple-400">"states"</span>: {</div>
+        <div class="pl-8 text-slate-300"><span class="text-purple-400">"Lagos"</span>: {</div>
+        <div class="pl-12 text-slate-300"><span class="text-purple-400">"companies"</span>: [</div>
+        <div class="pl-16 text-slate-300"><span class="text-string">"ABC Transport"</span>, <span class="text-string">"God is Good Motors"</span></div>
+        <div class="pl-12 text-slate-300">]</div>
+        <div class="pl-8 text-slate-300">}</div>
+        <div class="pl-4 text-slate-300">}</div>
+        <span class="text-purple-400">}</span>
+
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -345,9 +382,12 @@
                 <a href="https://rapidapi.com/ukowills/api/nigeria-intercity-transport-api" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-colors shadow-lg shadow-blue-900/30 active:scale-95">
                     Get on RapidAPI
                 </a>
-                <a href="mailto:YouNetworkdev@hotmail.com" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-600 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors active:scale-95">
-                    Contact Sales
-                </a>
+               <a href="https://wa.link/7sr4xu" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-400 transition-colors shadow-lg shadow-green-900/30 active:scale-95 flex items-center justify-center gap-2">
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+    Chat on WhatsApp
+</a>
             </div>
         </div>
     </section>
@@ -374,7 +414,7 @@
 
     <!-- Interactive Playground Script -->
     <script>
-        function runDemo() {
+              function runDemo() {
             const output = document.getElementById('codeOutput');
             const loader = document.getElementById('loader');
             const runBtn = document.getElementById('runBtn');
@@ -387,54 +427,38 @@
 
             // Simulated Network Delay for realism
             setTimeout(() => {
-                // Mock Response Data
+                // Mock Response Data based on real ngr.json for "Lagos" search
                 const mockData = {
-                    "meta": {
-                        "status": "success",
-                        "count": 3,
-                        "timestamp": new Date().toISOString()
-                    },
-                    "data": [
-                        {
-                            "company": "GIGM",
-                            "service_level": "Prime",
-                            "terminal": "Jibowu, Lagos",
-                            "destination_terminal": "Utako, Abuja",
-                            "price": {
-                                "currency": "NGN",
-                                "amount": 35500
-                            },
-                            "departure_time": "07:00 AM",
-                            "rating": 4.5,
-                            "amenities": ["AC", "Charging Port"]
-                        },
-                        {
-                            "company": "GUO Transport",
-                            "service_level": "Standard",
-                            "terminal": "Iyana Ipaja, Lagos",
-                            "destination_terminal": "Utako, Abuja",
-                            "price": {
-                                "currency": "NGN",
-                                "amount": 28000
-                            },
-                            "departure_time": "07:30 AM",
-                            "rating": 4.2,
-                            "amenities": ["AC"]
-                        },
-                        {
-                            "company": "Peace Mass Transit",
-                            "service_level": "Economy",
-                            "terminal": "Ojuelegba, Lagos",
-                            "destination_terminal": "Mararaba, Abuja",
-                            "price": {
-                                "currency": "NGN",
-                                "amount": 21000
-                            },
-                            "departure_time": "06:00 AM",
-                            "rating": 3.8,
-                            "amenities": []
+                    "routePrices": {
+                        "Lagos-Abuja": {
+                            "ABC Transport": 23904,
+                            "God is Good Motors": 24651,
+                            "GUO Transport": 22037
                         }
-                    ]
+                    },
+                    "transportCompanies": {
+                        "ABC Transport": {
+                            "basePrice": 23904,
+                            "terminals": {
+                                "Lagos": [
+                                    {
+                                        "name": "Jibowu Terminal",
+                                        "address": "22, Ikorodu Road, Jibowu, Yaba, Lagos",
+                                        "phone": "08139862090"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "states": {
+                        "Lagos": {
+                            "companies": [
+                                "ABC Transport",
+                                "God is Good Motors",
+                                "GUO Transport"
+                            ]
+                        }
+                    }
                 };
 
                 // Format JSON with syntax highlighting
