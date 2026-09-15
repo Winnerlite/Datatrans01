@@ -1252,23 +1252,115 @@ loadHomeBlogPreview();
 
     let transportData = null;
 
-    async function initCalc() {
-        const res = await fetch('ngr.json');
-        transportData = await res.json();
-        
-        const states = Object.keys(transportData.states).sort();
-        const fromSelect = document.getElementById('calcFrom');
-        const toSelect = document.getElementById('calcTo');
+   // Nigerian states mapped to their capital cities (and common alternate names)
+const stateCities = {
+    "Abia": ["Umuahia"],
+    "Adamawa": ["Yola"],
+    "Akwa Ibom": ["Uyo"],
+    "Anambra": ["Awka"],
+    "Bauchi": ["Bauchi"],
+    "Bayelsa": ["Yenagoa"],
+    "Benue": ["Makurdi"],
+    "Borno": ["Maiduguri"],
+    "Cross River": ["Calabar"],
+    "Delta": ["Asaba"],
+    "Ebonyi": ["Abakaliki"],
+    "Edo": ["Benin", "Benin City"],
+    "Ekiti": ["Ado Ekiti", "Ado-Ekiti"],
+    "Enugu": ["Enugu"],
+    "Gombe": ["Gombe"],
+    "Imo": ["Owerri"],
+    "Jigawa": ["Dutse"],
+    "Kaduna": ["Kaduna"],
+    "Kano": ["Kano"],
+    "Katsina": ["Katsina"],
+    "Kebbi": ["Birnin Kebbi"],
+    "Kogi": ["Lokoja"],
+    "Kwara": ["Ilorin"],
+    "Lagos": ["Ikeja"],
+    "Nasarawa": ["Lafia"],
+    "Niger": ["Minna"],
+    "Ogun": ["Abeokuta"],
+    "Ondo": ["Akure"],
+    "Osun": ["Osogbo"],
+    "Oyo": ["Ibadan"],
+    "Plateau": ["Jos"],
+    "Rivers": ["Port Harcourt"],
+    "Sokoto": ["Sokoto"],
+    "Taraba": ["Jalingo"],
+    "Yobe": ["Damaturu"],
+    "Zamfara": ["Gusau"],
+    "Abuja": ["Abuja", "FCT", "Federal Capital Territory"]
+};
 
-        states.forEach(state => {
-            fromSelect.add(new Option(state, state));
-            toSelect.add(new Option(state, state));
-        });
-        
-        // Default values
-        fromSelect.value = "Lagos";
-        toSelect.value = "Abuja";
+async function initCalc() {
+    const res = await fetch('ngr.json');
+    transportData = await res.json();
+    
+    const states = Object.keys(transportData.states).sort();
+    const fromSelect = document.getElementById('calcFrom');
+    const toSelect = document.getElementById('calcTo');
+
+    // Populate both dropdowns with all states initially
+    states.forEach(state => {
+        fromSelect.add(new Option(state, state));
+        toSelect.add(new Option(state, state));
+    });
+    
+    // Default values
+    fromSelect.value = "Lagos";
+    toSelect.value = "Abuja";
+    
+    // Rebuild the To dropdown whenever From changes
+    fromSelect.addEventListener('change', updateToDropdown);
+    
+    // Run once on load so initial defaults respect the filter
+    updateToDropdown();
+}
+
+// Rebuild the "To" dropdown, excluding the From state and its capital cities
+function updateToDropdown() {
+    const fromSelect = document.getElementById('calcFrom');
+    const toSelect = document.getElementById('calcTo');
+    const selectedFrom = fromSelect.value;
+    const previousTo = toSelect.value;
+    
+    // Get all state keys from your JSON
+    const allStates = Object.keys(transportData.states).sort();
+    
+    // Build the exclusion set
+    const excludeSet = new Set();
+    excludeSet.add(selectedFrom);
+    
+    // If selectedFrom is a STATE, exclude its capital cities too
+    if (stateCities[selectedFrom]) {
+        stateCities[selectedFrom].forEach(city => excludeSet.add(city));
     }
+    
+    // If selectedFrom is a CITY, find its parent state and exclude both
+    for (const [state, cities] of Object.entries(stateCities)) {
+        const matchCity = cities.find(city => 
+            city.toLowerCase() === selectedFrom.toLowerCase()
+        );
+        if (matchCity) {
+            excludeSet.add(state);
+            cities.forEach(city => excludeSet.add(city));
+        }
+    }
+    
+    // Rebuild the To dropdown with filtered options
+    toSelect.innerHTML = '';
+    allStates.forEach(state => {
+        if (!excludeSet.has(state)) {
+            toSelect.add(new Option(state, state));
+        }
+    });
+    
+    // Preserve the previous selection if it's still valid
+    if (previousTo && !excludeSet.has(previousTo)) {
+        toSelect.value = previousTo;
+    }
+}
 
    function calculateTrip() {
     const from = document.getElementById('calcFrom').value;
