@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { verifyClientKey } from './_lib/clients.js';
 
 // Load the data once
 const jsonPath = join(process.cwd(), 'ngr.json');
@@ -12,6 +13,7 @@ try {
 }
 
 export default async function handler(req, res) {
+  if (!verifyClientKey(req, res)) return;
   // ---------------------------------------------------------
   // SECURITY GATEWAY
   // ---------------------------------------------------------
