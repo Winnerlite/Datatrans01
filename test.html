@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyra API Tester</title>
+    <meta name="description" content="Test all Vyra Intercity Prices API endpoints in real-time.">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        vyra: {
+                            50:'#effef7',100:'#dafeef',200:'#b8fadd',300:'#81f4c3',400:'#43e5a0',
+                            500:'#1acd81',600:'#0fa968',700:'#108756',800:'#126b47',900:'#11583d',950:'#063122'
+                        },
+                        slate: { 850: '#151f2e', 900: '#0f172a', 950: '#020617' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        pre { tab-size: 2; }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pill-get    { background: rgba(67,229,160,.15); color: #43e5a0; border: 1px solid rgba(67,229,160,.3); }
+        .pill-group  { background: rgba(148,163,184,.15); color: #cbd5e1; border: 1px solid rgba(148,163,184,.3); }
+
+        .endpoint-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 13px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 8px;
+        }
+        .endpoint-btn:hover {
+            background: rgba(15, 23, 42, 1);
+            border-color: rgba(67, 229, 160, 0.4);
+            transform: translateX(2px);
+        }
+        .endpoint-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .endpoint-btn .arrow {
+            color: #64748b;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .endpoint-btn:hover .arrow {
+            color: #43e5a0;
+            transform: translateX(2px);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #43e5a0;
+            box-shadow: 0 0 0 3px rgba(67, 229, 160, 0.1);
+        }
+        .input-field::placeholder {
+            color: #475569;
+        }
+
+        select.input-field {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 18px;
+            padding-right: 36px;
+        }
+
+        .status-pill {
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .status-ready   { background: rgba(100,116,139,.2); color: #94a3b8; }
+        .status-loading { background: rgba(245,158,11,.2);  color: #fbbf24; }
+        .status-success { background: rgba(67,229,160,.2);  color: #43e5a0; }
+        .status-error   { background: rgba(239,68,68,.2);   color: #f87171; }
+
+        /* JSON syntax highlighting */
+        .json-key    { color: #f472b6; }
+        .json-string { color: #86efac; }
+        .json-number { color: #fbbf24; }
+        .json-boolean{ color: #c084fc; }
+        .json-null   { color: #60a5fa; }
+
+        .response-pre {
+            color: #cbd5e1;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: slideIn 0.25s ease-out; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen">
+
+    <!-- Nav -->
+    <nav class="bg-slate-900/85 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <img src="/favicon-192.png" alt="Vyra" class="h-7 w-7 rounded">
+                <span class="font-bold text-white text-sm">Vyra API <span class="text-vyra-400">Tester</span></span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/apifordevs.html" class="text-xs text-slate-400 hover:text-vyra-400 transition">Docs</a>
+                <a href="/" class="text-xs text-slate-400 hover:text-vyra-400 transition">← Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">Transport API Tester</h1>
+            <p class="text-slate-400 text-sm">Click any endpoint to fetch live data. Results appear on the right.</p>
+            <div class="mt-3 text-xs text-slate-500">
+                Base URL: <code class="text-vyra-400" id="baseUrlDisplay">https://www.intercityprices.com.ng</code>
+            </div>
+        </div>
+
+        <!-- Grid: controls + response -->
+        <div class="grid lg:grid-cols-2 gap-6">
+
+            <!-- ============== LEFT PANEL: ENDPOINTS ============== -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+
+                <!-- Transport Data -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="pill pill-group">📦 Transport</span>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testEndpoint('/api/transport')">
+                        <span>Get All Data</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div class="mt-3 mb-3">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Filter by State</label>
+                        <select id="stateFilter" class="input-field">
+                            <option value="">Select State...</option>
+                        </select>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testTransportByState()">
+                        <span>Get by State</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div class="mt-3 mb-3">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Filter by Company</label>
+                        <input type="text" id="companyFilter" class="input-field" placeholder="e.g., ABC Transport">
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testTransportByCompany()">
+                        <span>Get by Company</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+
+                <div class="border-t border-slate-800"></div>
+
+                <!-- States -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="pill pill-group">🗺️ States</span>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testEndpoint('/api/states')">
+                        <span>Get All States</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div class="mt-3 mb-3">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Specific State</label>
+                        <select id="specificState" class="input-field">
+                            <option value="">Select State...</option>
+                        </select>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testSpecificState()">
+                        <span>Get State Data</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+
+                <div class="border-t border-slate-800"></div>
+
+                <!-- Companies -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="pill pill-group">🚐 Companies</span>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testEndpoint('/api/companies')">
+                        <span>Get All Companies</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div class="mt-3 mb-3">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Specific Company</label>
+                        <input type="text" id="specificCompany" class="input-field" placeholder="e.g., GUO Transport">
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testSpecificCompany()">
+                        <span>Get Company Data</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+
+                <div class="border-t border-slate-800"></div>
+
+                <!-- Routes -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="pill pill-group">🛣️ Routes</span>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testEndpoint('/api/routes')">
+                        <span>Get All Routes</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div class="grid grid-cols-2 gap-2 mt-3 mb-3">
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">From</label>
+                            <select id="routeFrom" class="input-field">
+                                <option value="">Origin...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">To</label>
+                            <select id="routeTo" class="input-field">
+                                <option value="">Destination...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testRoute()">
+                        <span>Get Route Price</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+
+                <div class="border-t border-slate-800"></div>
+
+                <!-- Search -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="pill pill-group">🔍 Search</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Search Query</label>
+                        <input type="text" id="searchQuery" class="input-field" placeholder="e.g., Lagos, ABC, etc.">
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testSearch()">
+                        <span>Search</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div class="mt-3 mb-3">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Search by Attribute</label>
+                        <select id="attributeFilter" class="input-field">
+                            <option value="">Select Attribute...</option>
+                            <option value="Comfort">Comfort</option>
+                            <option value="Safety">Safety</option>
+                            <option value="Quick">Quick</option>
+                            <option value="Low Pricing">Low Pricing</option>
+                            <option value="Reliability">Reliability</option>
+                            <option value="Customer Service">Customer Service</option>
+                        </select>
+                    </div>
+
+                    <button class="endpoint-btn" onclick="testSearchByAttribute()">
+                        <span>Search by Attribute</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- ============== RIGHT PANEL: RESPONSE ============== -->
+            <div class="space-y-4">
+
+                <!-- Response card -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+
+                    <!-- Header bar -->
+                    <div class="px-5 py-3 border-b border-slate-800 flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-3">
+                            <span id="statusBadge" class="status-pill status-ready">Ready</span>
+                            <span id="responseTime" class="text-xs text-slate-500 font-mono"></span>
+                        </div>
+                        <button onclick="copyResponse()" class="text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-md text-slate-300 hover:text-white transition">
+                            Copy JSON
+                        </button>
+                    </div>
+
+                    <!-- Current endpoint -->
+                    <div class="px-5 py-2 bg-slate-950 border-b border-slate-800">
+                        <code id="currentEndpoint" class="text-xs text-slate-500 break-all">No endpoint called yet</code>
+                    </div>
+
+                    <!-- Response body -->
+                    <div class="p-5 min-h-[300px] max-h-[600px] overflow-y-auto bg-slate-950">
+                        <pre id="responseOutput" class="response-pre">Click any button to test an endpoint...</pre>
+                    </div>
+
+                </div>
+
+                <!-- Stats -->
+                <div id="statsContainer" class="hidden grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-vyra-400" id="statCompanies">0</div>
+                        <div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Companies</div>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-vyra-400" id="statStates">0</div>
+                        <div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">States</div>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-vyra-400" id="statRoutes">0</div>
+                        <div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Routes</div>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                        <div class="text-2xl font-bold text-amber-400" id="statResponseTime">0ms</div>
+                        <div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Response</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* ============================================================
+           CONFIG — change this if your base URL changes
+           ============================================================ */
+        const BASE_URL = 'https://www.intercityprices.com.ng';
+
+        // Update display
+        document.getElementById('baseUrlDisplay').textContent = BASE_URL;
+
+        let lastResponse = null;
+        let allData = null;
+
+        /* ============================================================
+           INIT — load states for dropdowns
+           ============================================================ */
+        async function loadInitialData() {
+            try {
+                // Try /api/states first (lighter), fall back to /ngr.json
+                let states = [];
+
+                // Attempt 1: /ngr.json (known to exist)
+                try {
+                    const res = await fetch(BASE_URL + '/ngr.json');
+                    if (res.ok) {
+                        const ct = res.headers.get('content-type') || '';
+                        if (ct.includes('application/json')) {
+                            const data = await res.json();
+                            allData = data;
+                            states = Object.keys(data.states || {}).sort();
+                        }
+                    }
+                } catch (e) { /* silent */ }
+
+                // If we got states, populate all dropdowns
+                if (states.length > 0) {
+                    populateSelect('stateFilter', states);
+                    populateSelect('specificState', states);
+                    populateSelect('routeFrom', states);
+                    populateSelect('routeTo', states);
+                } else {
+                    // Fallback: hardcoded Nigerian states
+                    const fallback = ["Abia","Adamawa","Akwa Ibom","Anambra","Bauchi","Bayelsa","Benue","Borno","Cross River","Delta","Ebonyi","Edo","Ekiti","Enugu","Gombe","Imo","Jigawa","Kaduna","Kano","Katsina","Kebbi","Kogi","Kwara","Lagos","Nasarawa","Niger","Ogun","Ondo","Osun","Oyo","Plateau","Rivers","Sokoto","Taraba","Yobe","Zamfara","Abuja"].sort();
+                    populateSelect('stateFilter', fallback);
+                    populateSelect('specificState', fallback);
+                    populateSelect('routeFrom', fallback);
+                    populateSelect('routeTo', fallback);
+                }
+            } catch (error) {
+                console.error('Init error:', error);
+                setStatus('error', 'Init Failed');
+                document.getElementById('responseOutput').innerHTML =
+                    '<span class="text-red-400">Failed to load states: ' + escapeHtml(error.message) + '</span>';
+            }
+        }
+
+        function populateSelect(selectId, options) {
+            const select = document.getElementById(selectId);
+            // Clear except first placeholder
+            while (select.options.length > 1) select.remove(1);
+            options.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                select.appendChild(opt);
+            });
+        }
+
+        /* ============================================================
+           CORE: test any endpoint
+           ============================================================ */
+        async function testEndpoint(endpoint) {
+            const output = document.getElementById('responseOutput');
+            const currentEndpoint = document.getElementById('currentEndpoint');
+            const statsContainer = document.getElementById('statsContainer');
+
+            setStatus('loading', 'Loading...');
+            document.getElementById('responseTime').textContent = '';
+            output.innerHTML = '<span class="text-amber-400">⏳ Fetching ' + escapeHtml(BASE_URL + endpoint) + '...</span>';
+            currentEndpoint.textContent = BASE_URL + endpoint;
+
+            const startTime = performance.now();
+
+            try {
+                const response = await fetch(BASE_URL + endpoint, {
+                    headers: { 'Accept': 'application/json' }
+                });
+                const elapsed = Math.round(performance.now() - startTime);
+                const ct = response.headers.get('content-type') || '';
+
+                // Guard: HTML response instead of JSON
+                if (!ct.includes('application/json')) {
+                    // Grab a snippet of the response to help debugging
+                    const text = await response.text();
+                    const snippet = text.slice(0, 200).replace(/\s+/g, ' ');
+
+                    setStatus('error', `HTTP ${response.status}`);
+                    document.getElementById('responseTime').textContent = elapsed + 'ms';
+                    output.innerHTML =
+                        '<span class="text-red-400">Expected JSON but got "' + escapeHtml(ct) + '"</span>\n\n' +
+                        '<span class="text-slate-500">This usually means the endpoint doesn\'t exist yet or returned an HTML error page (404/500).</span>\n\n' +
+                        '<span class="text-slate-500">First 200 chars of response:</span>\n' +
+                        '<span class="text-amber-400">' + escapeHtml(snippet) + '</span>';
+                    statsContainer.classList.add('hidden');
+                    return;
+                }
+
+                const data = await response.json();
+                lastResponse = data;
+
+                if (response.ok) {
+                    setStatus('success', response.status + ' OK');
+                } else {
+                    setStatus('error', response.status + ' Error');
+                }
+
+                document.getElementById('responseTime').textContent = elapsed + 'ms';
+                output.innerHTML = syntaxHighlight(JSON.stringify(data, null, 2));
+
+                // Update stats if it's a bulk-data response
+                if (data.transportCompanies || data.states || data.routePrices) {
+                    updateStats(data, elapsed);
+                    statsContainer.classList.remove('hidden');
+                } else {
+                    statsContainer.classList.add('hidden');
+                }
+
+            } catch (error) {
+                const elapsed = Math.round(performance.now() - startTime);
+                setStatus('error', 'Network Error');
+                document.getElementById('responseTime').textContent = elapsed + 'ms';
+                output.innerHTML =
+                    '<span class="text-red-400">' + escapeHtml(error.message) + '</span>\n\n' +
+                    '<span class="text-slate-500">Check that the endpoint exists and CORS is enabled.</span>';
+                statsContainer.classList.add('hidden');
+            }
+        }
+
+        /* ============================================================
+           WRAPPERS for each button
+           ============================================================ */
+        function testTransportByState() {
+            const state = document.getElementById('stateFilter').value;
+            if (!state) { alert('Please select a state'); return; }
+            testEndpoint('/api/transport?state=' + encodeURIComponent(state));
+        }
+
+        function testTransportByCompany() {
+            const company = document.getElementById('companyFilter').value.trim();
+            if (!company) { alert('Please enter a company name'); return; }
+            testEndpoint('/api/transport?company=' + encodeURIComponent(company));
+        }
+
+        function testSpecificState() {
+            const state = document.getElementById('specificState').value;
+            if (!state) { alert('Please select a state'); return; }
+            testEndpoint('/api/states?state=' + encodeURIComponent(state));
+        }
+
+        function testSpecificCompany() {
+            const company = document.getElementById('specificCompany').value.trim();
+            if (!company) { alert('Please enter a company name'); return; }
+            testEndpoint('/api/companies?company=' + encodeURIComponent(company));
+        }
+
+        function testRoute() {
+            const from = document.getElementById('routeFrom').value;
+            const to = document.getElementById('routeTo').value;
+            if (!from || !to) { alert('Please select both origin and destination'); return; }
+            if (from === to) { alert('Origin and destination must be different'); return; }
+            testEndpoint('/api/routes?from=' + encodeURIComponent(from) + '&to=' + encodeURIComponent(to));
+        }
+
+        function testSearch() {
+            const query = document.getElementById('searchQuery').value.trim();
+            if (!query) { alert('Please enter a search term'); return; }
+            testEndpoint('/api/search?q=' + encodeURIComponent(query));
+        }
+
+        function testSearchByAttribute() {
+            const attribute = document.getElementById('attributeFilter').value;
+            if (!attribute) { alert('Please select an attribute'); return; }
+            testEndpoint('/api/search?attribute=' + encodeURIComponent(attribute));
+        }
+
+        /* ============================================================
+           HELPERS
+           ============================================================ */
+        function setStatus(type, text) {
+            const badge = document.getElementById('statusBadge');
+            badge.className = 'status-pill status-' + type;
+            badge.textContent = text;
+        }
+
+        function updateStats(data, elapsed) {
+            document.getElementById('statCompanies').textContent = Object.keys(data.transportCompanies || {}).length;
+            document.getElementById('statStates').textContent = Object.keys(data.states || {}).length;
+            document.getElementById('statRoutes').textContent = Object.keys(data.routePrices || {}).length;
+            document.getElementById('statResponseTime').textContent = elapsed + 'ms';
+        }
+
+        function syntaxHighlight(json) {
+            json = json
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+
+            return json.replace(
+                /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+                function (match) {
+                    let cls = 'json-number';
+                    if (/^"/.test(match)) {
+                        cls = /:$/.test(match) ? 'json-key' : 'json-string';
+                    } else if (/true|false/.test(match)) {
+                        cls = 'json-boolean';
+                    } else if (/null/.test(match)) {
+                        cls = 'json-null';
+                    }
+                    return '<span class="' + cls + '">' + match + '</span>';
+                }
+            );
+        }
+
+        function copyResponse() {
+            if (!lastResponse) { alert('No response to copy'); return; }
+            navigator.clipboard.writeText(JSON.stringify(lastResponse, null, 2)).then(() => {
+                const btn = document.querySelector('button[onclick="copyResponse()"]');
+                const original = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('text-vyra-400');
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.classList.remove('text-vyra-400');
+                }, 1800);
+            });
+        }
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"']/g, c => ({
+                '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+            }[c]));
+        }
+
+        /* ============================================================
+           BOOT
+           ============================================================ */
+        window.addEventListener('DOMContentLoaded', loadInitialData);
+    </script>
+</body>
+</html>
