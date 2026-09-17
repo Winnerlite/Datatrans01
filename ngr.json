@@ -455,7 +455,7 @@
                     }
                 ]
             },
-            "basePrice": 24651,
+            "basePrice": 38651,
             "serviceAttributes": ["Comfort", "Safety", "Customer Service", "Reliability"]
         },
 
@@ -4053,7 +4053,7 @@
         },
         "Lagos-Benin": {
             "ABC Transport": 24570,
-            "God is Good Motors": 25480,
+            "God is Good Motors": 27000,
             "Chisco Transport": 22750,
             "Young Shall Grow": 20930,
             "Peace Mass Transit": 20020,
@@ -4155,7 +4155,20 @@
             "Young Shall Grow": 10920,
             "Cross Country Transport": 13650,
             "Libra Motors": 10100
+        },
+		
+		 },
+        "Benin - Lagos": {
+            "God is Good Motors": 28500,
+            "ABC Transport": 28480,
+            "GUO Transport": 24570,
+            "Chisco Transport": 13650,
+            "Peace Mass Transit": 9100,
+            "Young Shall Grow": 10920,
+            "Cross Country Transport": 13650,
+            "Libra Motors": 10100
         }
+
 
     },
 
