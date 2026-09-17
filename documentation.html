@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intercity Prices API | Vyra Technologies</title>
+    <meta name="description" content="Official documentation for the Intercity Prices API — real-time Nigerian transport data including companies, terminals, routes, and verified direct fares.">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+                    colors: {
+                        vyra: { 50:'#effef7',100:'#dafeef',200:'#b8fadd',300:'#81f4c3',400:'#43e5a0',500:'#1acd81',600:'#0fa968',700:'#108756',800:'#126b47',900:'#11583d',950:'#063122' },
+                        slate: { 850:'#151f2e',900:'#0f172a',950:'#020617' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        pre { tab-size: 2; }
+        .anchor-link { scroll-margin-top: 100px; }
+        .copy-btn { transition: all 0.2s ease; }
+        .copy-btn:hover { background: rgba(67, 229, 160, 0.15); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased">
+
+<nav class="fixed w-full z-50 top-0 bg-slate-900/85 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <img src="/favicon-192.png" alt="Vyra" class="h-7 w-7 rounded">
+            <span class="font-bold text-white">Intercity Prices <span class="text-vyra-400">API</span></span>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="#overview" class="text-xs text-slate-400 hover:text-white hidden md:inline">Overview</a>
+            <a href="#auth" class="text-xs text-slate-400 hover:text-white hidden md:inline">Auth</a>
+            <a href="#endpoints" class="text-xs text-slate-400 hover:text-white hidden md:inline">Endpoints</a>
+            <a href="#support" class="text-xs text-slate-400 hover:text-white hidden md:inline">Support</a>
+            <a href="/testend.html" class="text-xs px-3 py-1.5 bg-vyra-600 hover:bg-vyra-500 text-white rounded-md transition">Live Tester</a>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-24 pb-20 max-w-7xl mx-auto px-4">
+    <div class="grid lg:grid-cols-12 gap-10">
+
+        <aside class="hidden lg:block lg:col-span-3">
+            <div class="sticky top-24 text-sm">
+                <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-4">Contents</p>
+                <ul class="space-y-2 border-l border-slate-800 pl-4">
+                    <li><a href="#overview" class="text-slate-400 hover:text-vyra-400 transition">Overview</a></li>
+                    <li><a href="#base-url" class="text-slate-400 hover:text-vyra-400 transition">Base URL</a></li>
+                    <li><a href="#auth" class="text-slate-400 hover:text-vyra-400 transition">Authentication</a></li>
+                    <li><a href="#endpoints" class="text-slate-400 hover:text-vyra-400 transition">Endpoints</a></li>
+                    <li class="pl-4"><a href="#search" class="text-slate-500 hover:text-vyra-400 transition text-xs">→ /api/search</a></li>
+                    <li class="pl-4"><a href="#transport" class="text-slate-500 hover:text-vyra-400 transition text-xs">→ /api/transport</a></li>
+                    <li class="pl-4"><a href="#states" class="text-slate-500 hover:text-vyra-400 transition text-xs">→ /api/states</a></li>
+                    <li class="pl-4"><a href="#companies" class="text-slate-500 hover:text-vyra-400 transition text-xs">→ /api/companies</a></li>
+                    <li class="pl-4"><a href="#routes" class="text-slate-500 hover:text-vyra-400 transition text-xs">→ /api/routes</a></li>
+                    <li><a href="#schemas" class="text-slate-400 hover:text-vyra-400 transition">Data Schemas</a></li>
+                    <li><a href="#examples" class="text-slate-400 hover:text-vyra-400 transition">Code Examples</a></li>
+                    <li><a href="#errors" class="text-slate-400 hover:text-vyra-400 transition">Errors</a></li>
+                    <li><a href="#limits" class="text-slate-400 hover:text-vyra-400 transition">Rate Limits</a></li>
+                    <li><a href="#support" class="text-slate-400 hover:text-vyra-400 transition">Support</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="lg:col-span-9 space-y-16">
+
+            <!-- Overview -->
+            <section id="overview" class="anchor-link">
+                <h1 class="text-4xl font-bold text-white mb-4">Intercity Prices API</h1>
+                <p class="text-lg text-slate-400 mb-6">
+                    Real-time Nigerian intercity transport data — bus companies, terminal locations, route coverage, and verified direct fares across 36 states and the FCT.
+                </p>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
+                        <p class="text-xs uppercase tracking-wider text-vyra-400 font-bold mb-2">Companies</p>
+                        <p class="text-2xl font-bold text-white">40+</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
+                        <p class="text-xs uppercase tracking-wider text-vyra-400 font-bold mb-2">Coverage</p>
+                        <p class="text-2xl font-bold text-white">37</p>
+                        <p class="text-xs text-slate-500 mt-1">36 states + FCT</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
+                        <p class="text-xs uppercase tracking-wider text-vyra-400 font-bold mb-2">Try it live</p>
+                        <a href="/testend.html" class="text-vyra-400 hover:underline text-sm">Open API Tester →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Base URL -->
+            <section id="base-url" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-4">Base URL</h2>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+                    <code class="text-vyra-400 text-sm">https://www.intercityprices.com.ng/api</code>
+                    <button onclick="copyText('https://www.intercityprices.com.ng/api')" class="copy-btn text-xs px-3 py-1.5 border border-slate-700 rounded-md text-slate-400 hover:text-white">Copy</button>
+                </div>
+                <p class="text-sm text-slate-500 mt-3">HTTPS only. HTTP requests are rejected.</p>
+            </section>
+
+            <!-- Authentication -->
+            <section id="auth" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-4">Authentication</h2>
+
+                <div class="bg-amber-950/30 border border-amber-800/50 rounded-xl p-5 mb-4">
+                    <p class="text-amber-300 font-semibold mb-1">🔑 API Key Required</p>
+                    <p class="text-sm text-amber-200/80">
+                        Every request must include your API key in the <code class="text-white">x-api-key</code> header. Contact us to receive a key.
+                    </p>
+                </div>
+
+                <h3 class="text-white font-semibold mb-3 mt-6">Header Format</h3>
+                <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto mb-4"><code>x-api-key: vyra_live_yourkey_xxxxxxxxxx</code></pre>
+
+                <h3 class="text-white font-semibold mb-3">Complete Example</h3>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 mb-4 text-xs font-mono text-slate-300 overflow-x-auto">
+                    <div>curl -H "x-api-key: vyra_live_yourkey_xxxxxxxxxx" \</div>
+                    <div class="pl-5">"https://www.intercityprices.com.ng/api/search?q=Lagos"</div>
+                </div>
+
+                <h3 class="text-white font-semibold mb-3">What Happens Without a Key</h3>
+                <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl mb-4">
+                    <table class="w-full text-sm">
+                        <thead class="bg-slate-900 border-b border-slate-800">
+                            <tr>
+                                <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Scenario</th>
+                                <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Response</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800">
+                            <tr>
+                                <td class="px-4 py-3 text-slate-400">No <code>x-api-key</code> header</td>
+                                <td class="px-4 py-3"><span class="text-yellow-400 font-mono">401</span> <span class="text-slate-400">Missing API key</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-slate-400">Invalid or revoked key</td>
+                                <td class="px-4 py-3"><span class="text-red-400 font-mono">403</span> <span class="text-slate-400">Invalid or revoked API key</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-slate-400">Valid key</td>
+                                <td class="px-4 py-3"><span class="text-green-400 font-mono">200</span> <span class="text-slate-400">Success</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-white font-semibold mb-3">Getting a Key</h3>
+                <p class="text-sm text-slate-400 mb-4">
+                    API keys are issued per client. Email <a href="mailto:vyraintercitymetrics@gmail.com" class="text-vyra-400 hover:underline">vyraintercitymetrics@gmail.com</a> with your company name and use case. Once approved, you'll receive a key to include in every request.
+                </p>
+
+                <div class="bg-blue-950/20 border border-blue-800/40 rounded-xl p-4 text-sm text-blue-200">
+                    <strong class="text-blue-300">Testing without a key:</strong> use our hosted <a href="/testend.html" class="text-vyra-400 underline">Live API Tester</a> to explore endpoints and responses before requesting a key.
+                </div>
+            </section>
+
+            <!-- Endpoints -->
+            <section id="endpoints" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-6">Endpoints</h2>
+
+                <!-- /api/search -->
+                <div id="search" class="anchor-link mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-2.5 py-1 bg-vyra-900/50 border border-vyra-700/50 text-vyra-400 text-xs font-bold rounded">GET</span>
+                        <code class="text-lg text-white">/api/search</code>
+                    </div>
+                    <p class="text-slate-400 mb-6">
+                        Search by state name, company name, or route keyword. Returns matching states, companies, and routes.
+                    </p>
+
+                    <h3 class="text-white font-semibold mb-3">Query Parameters</h3>
+                    <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl mb-6">
+                        <table class="w-full text-sm">
+                            <thead class="bg-slate-900 border-b border-slate-800">
+                                <tr>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Name</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Type</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Required</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">q</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-green-400">Yes</td>
+                                    <td class="px-4 py-3 text-slate-400">State, company, or route fragment</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">attribute</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-slate-500">No</td>
+                                    <td class="px-4 py-3 text-slate-400">Filter by service attribute (Comfort, Safety, Quick, etc.)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-white font-semibold mb-3">Example Request</h3>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 mb-6 flex items-center justify-between gap-3">
+                        <code class="text-xs text-slate-300 break-all">GET /api/search?q=Lagos</code>
+                        <button onclick="copyText('https://www.intercityprices.com.ng/api/search?q=Lagos')" class="copy-btn text-xs px-3 py-1.5 border border-slate-700 rounded-md text-slate-400 hover:text-white flex-shrink-0">Copy</button>
+                    </div>
+
+                    <h3 class="text-white font-semibold mb-3">Example Response</h3>
+                    <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>{
+  "query": "lagos",
+  "results": {
+    "states": [
+      {
+        "name": "Lagos",
+        "companies": ["ABC Transport", "God is Good Motors", "GUO Transport"],
+        "majorTerminals": [
+          {
+            "name": "Jibowu Terminal",
+            "address": "22, Ikorodu Road, Jibowu, Yaba, Lagos",
+            "phone": "08139862090"
+          }
+        ]
+      }
+    ],
+    "companies": [],
+    "routes": [
+      {
+        "route": "Lagos-Onitsha",
+        "prices": {
+          "ABC Transport": 29120,
+          "GUO Transport": 35490,
+          "Peace Mass Transit": 22750
+        }
+      }
+    ]
+  },
+  "totalFound": 12
+}</code></pre>
+                </div>
+
+                <!-- /api/transport -->
+                <div id="transport" class="anchor-link mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-2.5 py-1 bg-blue-900/50 border border-blue-700/50 text-blue-400 text-xs font-bold rounded">GET</span>
+                        <code class="text-lg text-white">/api/transport</code>
+                    </div>
+                    <p class="text-slate-400 mb-4">
+                        Returns the complete dataset — all companies, terminals, states, and direct route prices in a single JSON payload. Best for caching locally.
+                    </p>
+
+                    <h3 class="text-white font-semibold mb-3">Query Parameters (Optional)</h3>
+                    <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl mb-6">
+                        <table class="w-full text-sm">
+                            <thead class="bg-slate-900 border-b border-slate-800">
+                                <tr>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Name</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Type</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">state</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-slate-400">Filter to a single state</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">company</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-slate-400">Filter to a single company</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-white font-semibold mb-3">Example Response (trimmed)</h3>
+                    <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto mb-4"><code>{
+  "transportCompanies": {
+    "ABC Transport": {
+      "id": "abc-transport",
+      "name": "ABC Transport Plc",
+      "basePrice": 23904,
+      "states": ["Lagos", "Abuja", "Rivers"],
+      "terminals": { "Lagos": [...] }
+    }
+  },
+  "states": {
+    "Lagos": { "companies": ["ABC Transport", "God is Good Motors"] }
+  },
+  "routePrices": {
+    "Lagos-Onitsha": { "ABC Transport": 29120, "GUO Transport": 35490 }
+  }
+}</code></pre>
+
+                    <div class="bg-blue-950/30 border border-blue-800/50 rounded-xl p-4 text-sm text-blue-200">
+                        <strong class="text-blue-300">Recommended:</strong> fetch this once at startup, cache in memory or localStorage, refresh hourly.
+                    </div>
+                </div>
+
+                <!-- /api/states -->
+                <div id="states" class="anchor-link mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-2.5 py-1 bg-vyra-900/50 border border-vyra-700/50 text-vyra-400 text-xs font-bold rounded">GET</span>
+                        <code class="text-lg text-white">/api/states</code>
+                    </div>
+                    <p class="text-slate-400 mb-4">
+                        Returns all states with their active transport operators, or a single state if filtered.
+                    </p>
+
+                    <h3 class="text-white font-semibold mb-3">Query Parameters (Optional)</h3>
+                    <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl mb-6">
+                        <table class="w-full text-sm">
+                            <thead class="bg-slate-900 border-b border-slate-800">
+                                <tr>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Name</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Type</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">state</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-slate-400">Return only this state's data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-white font-semibold mb-3">Example Response</h3>
+                    <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>{
+  "Lagos": {
+    "companies": ["ABC Transport", "God is Good Motors", "GUO Transport"],
+    "majorTerminals": [...]
+  },
+  "Abuja": {
+    "companies": ["ABC Transport", "Chisco Transport"],
+    "majorTerminals": [...]
+  }
+}</code></pre>
+                </div>
+
+                <!-- /api/companies -->
+                <div id="companies" class="anchor-link mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-2.5 py-1 bg-vyra-900/50 border border-vyra-700/50 text-vyra-400 text-xs font-bold rounded">GET</span>
+                        <code class="text-lg text-white">/api/companies</code>
+                    </div>
+                    <p class="text-slate-400 mb-4">
+                        Returns all transport companies, or one company if filtered.
+                    </p>
+
+                    <h3 class="text-white font-semibold mb-3">Query Parameters (Optional)</h3>
+                    <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl mb-6">
+                        <table class="w-full text-sm">
+                            <thead class="bg-slate-900 border-b border-slate-800">
+                                <tr>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Name</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Type</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">company</code> or <code class="text-vyra-400">name</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-slate-400">Return only this company</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- /api/routes -->
+                <div id="routes" class="anchor-link">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-2.5 py-1 bg-vyra-900/50 border border-vyra-700/50 text-vyra-400 text-xs font-bold rounded">GET</span>
+                        <code class="text-lg text-white">/api/routes</code>
+                    </div>
+                    <p class="text-slate-400 mb-4">
+                        Returns route prices between states — all routes, or one route if filtered.
+                    </p>
+
+                    <h3 class="text-white font-semibold mb-3">Query Parameters (Optional)</h3>
+                    <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl mb-6">
+                        <table class="w-full text-sm">
+                            <thead class="bg-slate-900 border-b border-slate-800">
+                                <tr>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Name</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Type</th>
+                                    <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">route</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-slate-400">Full route key (e.g., <code>Lagos-Abuja</code>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3"><code class="text-vyra-400">from</code> + <code class="text-vyra-400">to</code></td>
+                                    <td class="px-4 py-3 text-slate-400">string</td>
+                                    <td class="px-4 py-3 text-slate-400">Origin and destination (e.g., <code>?from=Lagos&amp;to=Abuja</code>)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-white font-semibold mb-3">Example Response</h3>
+                    <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>{
+  "route": "Lagos-Abuja",
+  "from": "Lagos",
+  "to": "Abuja",
+  "prices": {
+    "ABC Transport": 31850,
+    "God is Good Motors": 56900,
+    "GUO Transport": 30030,
+    "Chisco Transport": 31850,
+    "Peace Mass Transit": 25480
+  }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- Schemas -->
+            <section id="schemas" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-6">Data Schemas</h2>
+
+                <h3 class="text-lg font-semibold text-white mb-3">Company Object</h3>
+                <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto mb-6"><code>{
+  "id": "abc-transport",
+  "name": "ABC Transport Plc",
+  "image": "https://i.ibb.co/5hXDcq5/images-7.png",
+  "states": ["Lagos", "Abuja", "Rivers"],
+  "terminals": {
+    "Lagos": [
+      { "name": "Jibowu Terminal", "address": "...", "phone": "..." }
+    ]
+  },
+  "basePrice": 23904,
+  "serviceAttributes": ["Comfort", "Safety", "Quick", "Customer Service"]
+}</code></pre>
+
+                <h3 class="text-lg font-semibold text-white mb-3">State Object</h3>
+                <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto mb-6"><code>{
+  "companies": ["ABC Transport", "God is Good Motors"],
+  "majorTerminals": [
+    {
+      "name": "Jibowu Terminal",
+      "address": "22, Ikorodu Road, Jibowu, Yaba, Lagos",
+      "phone": "08139862090"
+    }
+  ]
+}</code></pre>
+            </section>
+
+            <!-- Examples -->
+            <section id="examples" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-6">Code Examples</h2>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-sm font-semibold text-white mb-2">JavaScript (fetch)</p>
+                        <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>const res = await fetch(
+  'https://www.intercityprices.com.ng/api/search?q=Lagos',
+  {
+    headers: { 'x-api-key': 'vyra_live_yourkey_xxxxxxxxxx' }
+  }
+);
+const data = await res.json();
+
+data.results.states.forEach(state => {
+  console.log(state.name, '→', state.companies.length, 'companies');
+});</code></pre>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-white mb-2">Python (requests)</p>
+                        <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>import requests
+
+response = requests.get(
+    "https://www.intercityprices.com.ng/api/search",
+    params={"q": "Lagos"},
+    headers={"x-api-key": "vyra_live_yourkey_xxxxxxxxxx"},
+    timeout=10
+)
+response.raise_for_status()
+for state in response.json()["results"]["states"]:
+    print(state["name"], "→", len(state["companies"]), "companies")</code></pre>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-white mb-2">cURL</p>
+                        <pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>curl -H "x-api-key: vyra_live_yourkey_xxxxxxxxxx" \
+     "https://www.intercityprices.com.ng/api/search?q=Lagos"</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Errors -->
+            <section id="errors" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-6">Error Handling</h2>
+                <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl">
+                    <table class="w-full text-sm">
+                        <thead class="bg-slate-900 border-b border-slate-800">
+                            <tr>
+                                <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Status</th>
+                                <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Meaning</th>
+                                <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800">
+                            <tr><td class="px-4 py-3"><span class="text-green-400 font-mono">200</span></td><td class="px-4 py-3 text-slate-400">OK</td><td class="px-4 py-3 text-slate-400">Request succeeded</td></tr>
+                            <tr><td class="px-4 py-3"><span class="text-yellow-400 font-mono">400</span></td><td class="px-4 py-3 text-slate-400">Bad Request</td><td class="px-4 py-3 text-slate-400">Missing or malformed query parameter</td></tr>
+                            <tr><td class="px-4 py-3"><span class="text-yellow-400 font-mono">401</span></td><td class="px-4 py-3 text-slate-400">Unauthorized</td><td class="px-4 py-3 text-slate-400">Missing <code>x-api-key</code> header</td></tr>
+                            <tr><td class="px-4 py-3"><span class="text-red-400 font-mono">403</span></td><td class="px-4 py-3 text-slate-400">Forbidden</td><td class="px-4 py-3 text-slate-400">Invalid or revoked API key</td></tr>
+                            <tr><td class="px-4 py-3"><span class="text-yellow-400 font-mono">404</span></td><td class="px-4 py-3 text-slate-400">Not Found</td><td class="px-4 py-3 text-slate-400">Resource not in database</td></tr>
+                            <tr><td class="px-4 py-3"><span class="text-red-400 font-mono">405</span></td><td class="px-4 py-3 text-slate-400">Method Not Allowed</td><td class="px-4 py-3 text-slate-400">Only GET is supported</td></tr>
+                            <tr><td class="px-4 py-3"><span class="text-red-400 font-mono">429</span></td><td class="px-4 py-3 text-slate-400">Too Many Requests</td><td class="px-4 py-3 text-slate-400">Rate limit — back off and retry</td></tr>
+                            <tr><td class="px-4 py-3"><span class="text-red-400 font-mono">500</span></td><td class="px-4 py-3 text-slate-400">Server Error</td><td class="px-4 py-3 text-slate-400">Retry with exponential backoff</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Rate Limits -->
+            <section id="limits" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-4">Rate Limits</h2>
+                <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p class="text-xs uppercase text-slate-500 font-bold mb-1">Requests / Minute</p>
+                            <p class="text-xl font-bold text-white">60</p>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase text-slate-500 font-bold mb-1">Burst</p>
+                            <p class="text-xl font-bold text-white">20</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-500 mt-4">
+                    Need higher limits? Contact us to discuss an enterprise plan.
+                </p>
+            </section>
+
+            <!-- Support -->
+            <section id="support" class="anchor-link">
+                <h2 class="text-2xl font-bold text-white mb-4">Support</h2>
+                <div class="bg-gradient-to-br from-vyra-950/50 to-slate-900 border border-vyra-500/20 rounded-2xl p-6">
+                    <p class="text-slate-300 mb-6">
+                        Need an API key, higher rate limits, or have a question? Reach out to the Vyra Technologies team.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="mailto:vyraintercitymetrics@gmail.com" class="px-5 py-2.5 bg-vyra-600 hover:bg-vyra-500 text-white text-sm font-semibold rounded-lg transition">
+                            vyraintercitymetrics@gmail.com
+                        </a>
+                        <a href="/testend.html" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-sm font-semibold rounded-lg transition">
+                            Open API Tester
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</main>
+
+<footer class="border-t border-slate-900 py-6 px-4">
+    <div class="max-w-7xl mx-auto text-center text-xs text-slate-600">
+        © 2026 Vyra Technologies · Intercity Prices API
+    </div>
+</footer>
+
+<script>
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const t = document.createElement('div');
+            t.textContent = 'Copied!';
+            t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-vyra-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm z-50';
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 1500);
+        });
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
