@@ -3888,7 +3888,7 @@
     "routePrices": {
         "Lagos-Abuja": {
             "ABC Transport": 31850,
-            "God is Good Motors": 34580,
+            "God is Good Motors": 56900,
             "Chisco Transport": 31850,
             "GUO Transport": 30030,
             "Peace Mass Transit": 25480,
@@ -3924,6 +3924,19 @@
             "E.Ekesons Bros Transport": 22750,
             "Delta Line": 22750
         },
+		
+		 "Lagos-Bayelsa": {
+           
+            "God is Good Motors": 39750,
+          
+        },
+		
+		   "Abia-Abuja": {
+            
+            "God is Good Motors": 47000,
+           
+			  },
+			
         "Lagos-Onitsha": {
             "ABC Transport": 29120,
             "God is Good Motors": 36400,
