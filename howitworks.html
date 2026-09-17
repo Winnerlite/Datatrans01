@@ -55,6 +55,11 @@
             background: #1acd81;
             border: 3px solid #0f172a;
         }
+        .path-card {
+            border: 1px solid rgba(148,163,184,0.2);
+            border-radius: 10px;
+            padding: 16px;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-300 font-sans antialiased">
@@ -73,31 +78,33 @@
 
     <header>
         <h1 class="text-4xl font-bold text-white mb-3">How It Works — Personal Notes</h1>
-        <p class="text-slate-400">Everything about route prices, the two tiers, and how they're used. Written for me, on my worst-forgetting day.</p>
+        <p class="text-slate-400">Route pricing, access control, client onboarding. Everything I need to remember when I forget how my own system works.</p>
+
         <div class="mt-4 note text-sm">
-            <strong class="text-blue-300">Read this when:</strong> you forget what "Est. Base Fare" means, why a route shows one price but not another, how to add a new direct route, or how to onboard a new API client.
+            <strong class="text-blue-300">Read this when:</strong> adding a client, removing a client, adding a direct route, fixing a name mismatch, or wondering why an API call is failing.
         </div>
 
-        <!-- Quick jump nav -->
         <div class="mt-6 flex flex-wrap gap-2">
             <a href="#tiers" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">1. Two Tiers</a>
-            <a href="#which" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">2. Which Tier</a>
-            <a href="#rough" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">3. Why Rough</a>
-            <a href="#add-route" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">4. Add Route</a>
-            <a href="#matching" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">5. Name Matching</a>
-            <a href="#algorithm" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">6. Algorithm</a>
-            <a href="#cors" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">7. CORS</a>
-            <a href="#onboarding" class="text-xs px-3 py-1.5 bg-vyra-900/50 border border-vyra-600/50 rounded-full text-vyra-300 font-semibold hover:border-vyra-500">8. 🆕 Onboard Client</a>
+            <a href="#add-route" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">2. Add Route</a>
+            <a href="#matching" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">3. Name Matching</a>
+            <a href="#access" class="text-xs px-3 py-1.5 bg-vyra-900/50 border border-vyra-600/50 rounded-full text-vyra-300 font-semibold hover:border-vyra-500">4. Access Control</a>
+            <a href="#files" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">5. Files</a>
+            <a href="#onboard" class="text-xs px-3 py-1.5 bg-vyra-900/50 border border-vyra-600/50 rounded-full text-vyra-300 font-semibold hover:border-vyra-500">6. Onboard Client</a>
+            <a href="#remove" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">7. Remove Client</a>
+            <a href="#email" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">8. Email Template</a>
             <a href="#checklist" class="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300 hover:border-vyra-500/50">9. Checklist</a>
         </div>
     </header>
 
-    <!-- ============================== -->
+    <!-- ========================================== -->
+    <!-- 1. THE TWO TIERS -->
+    <!-- ========================================== -->
     <section id="tiers">
-        <h2 class="text-2xl font-bold text-white mb-4">1. The Two Tiers</h2>
-        <p class="text-slate-400 mb-4">Every route in the calculator uses one of two price sources:</p>
+        <h2 class="text-2xl font-bold text-white mb-4">1. The Two Price Tiers</h2>
+        <p class="text-slate-400 mb-4">The calculator on my site uses two sources of pricing:</p>
 
-        <div class="grid md:grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
             <div class="bg-slate-900 border border-green-800/40 rounded-xl p-5">
                 <span class="tier-badge tier-direct mb-3">Direct Fare</span>
                 <p class="text-sm text-slate-300 mt-3">The <strong class="text-white">real, verified price</strong>. Comes from the <code class="text-vyra-400">routePrices</code> object in <code class="text-vyra-400">ngr.json</code>.</p>
@@ -109,64 +116,29 @@
                 <p class="text-xs text-slate-500 mt-3">Example: <code>transportCompanies["ABC Transport"].basePrice = 23904</code></p>
             </div>
         </div>
-    </section>
 
-    <!-- ============================== -->
-    <section id="which">
-        <h2 class="text-2xl font-bold text-white mb-4">2. Which Tier Gets Used?</h2>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
-            <p class="text-sm text-slate-400 mb-4">The calculator checks in this order:</p>
-
-            <ol class="space-y-3 text-sm">
-                <li class="flex gap-3">
-                    <span class="text-vyra-400 font-bold flex-shrink-0">1.</span>
-                    <span>Does <code class="text-vyra-400">routePrices[from-to]</code> exist in ngr.json?</span>
-                </li>
-                <li class="flex gap-3">
-                    <span class="text-green-400 font-bold flex-shrink-0">✓</span>
-                    <span><strong class="text-white">YES</strong> → Show only Direct Fares. Estimates are skipped.</span>
-                </li>
-                <li class="flex gap-3">
-                    <span class="text-red-400 font-bold flex-shrink-0">✗</span>
-                    <span><strong class="text-white">NO</strong> → Show Est. Base Fare for every company that operates in BOTH states.</span>
-                </li>
+        <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
+            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Which one is used</p>
+            <ol class="space-y-2 text-sm text-slate-300">
+                <li><span class="text-vyra-400 font-mono">1.</span> If <code>routePrices[from-to]</code> exists → show <span class="tier-badge tier-direct">Direct</span> for companies listed there</li>
+                <li><span class="text-vyra-400 font-mono">2.</span> Any company NOT listed gets <span class="tier-badge tier-est">Est.</span> using its base price</li>
             </ol>
+        </div>
 
-            <div class="mt-5 ok text-sm">
-                <strong class="text-green-300">Rule of thumb:</strong> if you see a green "Direct Fare" tag, that number is real. If you see an amber "Est. Base Fare" tag, it's the company's default base price — same number regardless of route.
-            </div>
+        <div class="mt-4 note text-sm">
+            <strong class="text-blue-300">Important:</strong> the API always returns direct prices only. The Est. tier is a client-side calculation — only my own <code>calculateTrip()</code> uses it. API clients never see "Est. Base Fare" in responses.
         </div>
     </section>
 
-    <!-- ============================== -->
-    <section id="rough">
-        <h2 class="text-2xl font-bold text-white mb-4">3. Why Est. Base Fare is Rough</h2>
-
-        <p class="text-slate-400 mb-4">Each company has ONE <code class="text-vyra-400">basePrice</code> value. It doesn't change by route.</p>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
-            <p class="text-sm text-slate-400 mb-3">So if ABC Transport has <code class="text-vyra-400">basePrice: 23904</code>, then:</p>
-            <div class="space-y-2 font-mono text-sm">
-                <div class="flex justify-between"><span class="text-slate-400">Lagos → Abuja</span><span class="text-amber-400">₦23,904</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Lagos → Kano</span><span class="text-amber-400">₦23,904</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Lagos → Port Harcourt</span><span class="text-amber-400">₦23,904</span></div>
-            </div>
-            <p class="text-xs text-slate-500 mt-4">Same price everywhere. This is why Direct Fares matter — they override this guess with a real value.</p>
-        </div>
-
-        <div class="mt-4 warn text-sm">
-            <strong class="text-red-300">Don't show basePrice as "real":</strong> always label it "Estimated" in the UI so users know it's a guess.
-        </div>
-    </section>
-
-    <!-- ============================== -->
+    <!-- ========================================== -->
+    <!-- 2. ADD ROUTE -->
+    <!-- ========================================== -->
     <section id="add-route">
-        <h2 class="text-2xl font-bold text-white mb-4">4. How to Add a New Direct Route</h2>
+        <h2 class="text-2xl font-bold text-white mb-4">2. How to Add a New Direct Route</h2>
 
-        <p class="text-slate-400 mb-4">Edit <code class="text-vyra-400">ngr.json</code> and add an entry inside <code class="text-vyra-400">routePrices</code>:</p>
+        <p class="text-slate-400 mb-4">Edit <code class="text-vyra-400">ngr.json</code>, find the <code>routePrices</code> object, add a new entry:</p>
 
-        <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>"routePrices": {
+        <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto mb-4"><code>"routePrices": {
   "Lagos-Onitsha": {
     "ABC Transport": 29120,
     "God is Good Motors": 36400,
@@ -177,26 +149,28 @@
 }</code></pre>
 
         <div class="mt-4 ok text-sm">
-            <strong class="text-green-300">After saving:</strong> reload the site, search Lagos → Onitsha. Every company listed above will now show "Direct Fare" instead of "Est. Base Fare".
+            <strong class="text-green-300">After saving:</strong> reload the site, search Lagos → Onitsha. Those companies now show "Direct Fare".
         </div>
 
         <div class="mt-4 warn text-sm">
-            <strong class="text-red-300">Watch out:</strong> the route key must match EXACTLY. <code>Lagos-Onitsha</code> ✅ · <code>Lagos - Onitsha</code> ❌ (spaces) · <code>lagos-onitsha</code> ❌ (lowercase)
+            <strong class="text-red-300">Watch out:</strong> the route key must match exactly. <code>Lagos-Onitsha</code> ✅ · <code>Lagos - Onitsha</code> ❌ · <code>lagos-onitsha</code> ❌
         </div>
 
         <div class="mt-4 note text-sm">
-            <strong class="text-blue-300">Naming rule:</strong> the key is always <code>FromState-ToState</code> with a hyphen, no spaces. Direction matters — <code>Lagos-Onitsha</code> and <code>Onitsha-Lagos</code> are two separate entries.
+            <strong class="text-blue-300">Naming rule:</strong> <code>FromState-ToState</code> with a hyphen, no spaces. Direction matters — <code>Lagos-Onitsha</code> and <code>Onitsha-Lagos</code> are separate entries.
         </div>
     </section>
 
-    <!-- ============================== -->
+    <!-- ========================================== -->
+    <!-- 3. NAME MATCHING -->
+    <!-- ========================================== -->
     <section id="matching">
-        <h2 class="text-2xl font-bold text-white mb-4">5. The Company Name Matching Problem</h2>
+        <h2 class="text-2xl font-bold text-white mb-4">3. The Company Name Matching Problem</h2>
 
-        <p class="text-slate-400 mb-4">The same company can appear with different names in <code class="text-vyra-400">routePrices</code> vs <code class="text-vyra-400">transportCompanies</code>. This causes silent mismatches.</p>
+        <p class="text-slate-400 mb-4">The same company can appear with different names in <code class="text-vyra-400">routePrices</code> vs <code class="text-vyra-400">transportCompanies</code>. This causes silent duplicates or mismatches.</p>
 
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-4">
-            <p class="text-sm text-slate-400 mb-3">Example of a real mismatch in the data:</p>
+            <p class="text-sm text-slate-400 mb-3">Real example:</p>
             <div class="grid grid-cols-2 gap-4 text-xs">
                 <div>
                     <p class="text-slate-500 mb-1">In routePrices:</p>
@@ -209,7 +183,7 @@
             </div>
         </div>
 
-        <p class="text-slate-400 mb-3 text-sm">Fix: the <code class="text-vyra-400">ALIASES</code> object in <code class="text-vyra-400">calculateTrip()</code> maps variants to the canonical name:</p>
+        <p class="text-slate-400 mb-3 text-sm">Fix: the <code class="text-vyra-400">ALIASES</code> object in <code>calculateTrip()</code> maps variants to the canonical name:</p>
 
         <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>const ALIASES = {
   "Young Shall Grow": "The Young Shall Grow Motors",
@@ -218,213 +192,332 @@
   "GIGM": "God is Good Motors",
   "Nsik": "Nsik Motors (AKTC)"
 };</code></pre>
+    </section>
 
-        <div class="mt-4 note text-sm">
-            <strong class="text-blue-300">When adding a company:</strong> make sure the exact string in <code>routePrices</code> matches a key in <code>transportCompanies</code>, or add an entry to ALIASES.
+    <!-- ========================================== -->
+    <!-- 4. ACCESS CONTROL -->
+    <!-- ========================================== -->
+    <section id="access">
+        <h2 class="text-2xl font-bold text-white mb-6">4. Access Control — Three Paths</h2>
+
+        <p class="text-slate-400 mb-6">Every request to the API comes through one of three doors. Each door has a different rule.</p>
+
+        <!-- PATH 1 -->
+        <div class="path-card bg-slate-900 border-green-800/30 mb-4">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-2xl">🏠</span>
+                <h3 class="text-white font-bold">Path 1 — My Own Website</h3>
+            </div>
+            <p class="text-sm text-slate-400 mb-3">
+                Requests from <code class="text-vyra-400">intercityprices.com.ng</code> or <code class="text-vyra-400">www.intercityprices.com.ng</code>.
+            </p>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+                <div>
+                    <p class="text-slate-500 uppercase font-bold mb-1">Check</p>
+                    <p class="text-slate-300">Origin in <code>ALLOWED_ORIGINS</code></p>
+                </div>
+                <div>
+                    <p class="text-slate-500 uppercase font-bold mb-1">Requires key?</p>
+                    <p class="text-green-400">No</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PATH 2 -->
+        <div class="path-card bg-slate-900 border-blue-800/30 mb-4">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-2xl">📦</span>
+                <h3 class="text-white font-bold">Path 2 — Zyla / RapidAPI</h3>
+            </div>
+            <p class="text-sm text-slate-400 mb-3">
+                Requests forwarded from <code class="text-vyra-400">vyrametrics.vercel.app</code> by Zyla or RapidAPI's servers.
+            </p>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+                <div>
+                    <p class="text-slate-500 uppercase font-bold mb-1">Check</p>
+                    <p class="text-slate-300"><code>x-proxy-secret</code> matches <code>PROXY_SECRET</code> env var</p>
+                </div>
+                <div>
+                    <p class="text-slate-500 uppercase font-bold mb-1">Requires key?</p>
+                    <p class="text-green-400">No (secret instead)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PATH 3 -->
+        <div class="path-card bg-slate-900 border-purple-800/30 mb-6">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-2xl">🔑</span>
+                <h3 class="text-white font-bold">Path 3 — Direct Clients</h3>
+            </div>
+            <p class="text-sm text-slate-400 mb-3">
+                Anyone else — clients I onboarded, or attackers trying their luck.
+            </p>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+                <div>
+                    <p class="text-slate-500 uppercase font-bold mb-1">Check</p>
+                    <p class="text-slate-300"><code>x-api-key</code> is in <code>CLIENT_KEYS</code></p>
+                </div>
+                <div>
+                    <p class="text-slate-500 uppercase font-bold mb-1">Requires key?</p>
+                    <p class="text-yellow-400">Yes</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note text-sm">
+            <strong class="text-blue-300">Order matters:</strong> The verify function checks Zyla first, then the client key, then the origin whitelist. This means a client with a valid key can call from any domain (including my own), and Zyla always works even without a client key.
+        </div>
+
+        <div class="mt-4 warn text-sm">
+            <strong class="text-red-300">Known limitation:</strong> Someone can fake the Origin header with curl to look like my own website. But that same person could also just fake the x-api-key header if they knew a client's key. Neither is possible without knowing a secret. Not worth defending against right now.
         </div>
     </section>
 
-    <!-- ============================== -->
-    <section id="algorithm">
-        <h2 class="text-2xl font-bold text-white mb-4">6. The Algorithm (Simplified)</h2>
+    <!-- ========================================== -->
+    <!-- 5. FILES -->
+    <!-- ========================================== -->
+    <section id="files">
+        <h2 class="text-2xl font-bold text-white mb-6">5. Where Things Live</h2>
 
-        <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>function calculateTrip() {
-  // 1. Try direct route
-  if (ngr.routePrices[from + '-' + to]) {
-    return ngr.routePrices[from + '-' + to];  // ← Direct Fares
-  }
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-6">
+            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">File structure</p>
+            <pre class="text-xs text-slate-300 leading-relaxed"><code>api/
+├── _lib/
+│   └── clients.js         ← 🔑 THE KEY FILE — edit this for clients
+├── index.js               ← docs page (public)
+├── test.js                ← tester page (public)
+├── transport.js           ← uses verifyAccess()
+├── states.js              ← uses verifyAccess()
+├── search.js              ← uses verifyAccess()
+├── companies.js           ← uses verifyAccess()
+└── routes.js              ← uses verifyAccess()
 
-  // 2. Fall back to estimates
-  const shared = ngr.states[from].companies
-    .filter(c => ngr.states[to].companies.includes(c));
+ngr.json                   ← all data (companies, states, routes, prices)</code></pre>
+        </div>
 
-  return shared.map(c => ({
-    name: c,
-    price: ngr.transportCompanies[c].basePrice || 25000  // ← Est. Base Fare
-  }));
-}</code></pre>
+        <div class="bg-slate-900 border border-green-800/30 rounded-xl p-5 mb-6">
+            <p class="text-xs uppercase tracking-wider text-green-400 font-bold mb-3">🔑 Client Keys</p>
+            <p class="text-sm text-slate-400 mb-3">Stored in <code class="text-vyra-400">api/_lib/clients.js</code>:</p>
+            <pre class="text-xs bg-slate-950 rounded-lg p-3 overflow-x-auto"><code>const CLIENT_KEYS = {
+  'vyra_live_acme_8f3k2n9p4q':      'Acme Travels',
+  'vyra_live_naija_2h7m5v1x8c':     'Naija Booking',
+};</code></pre>
+            <p class="text-xs text-slate-500 mt-3">Key format: <code>vyra_live_&lt;shortname&gt;_&lt;random&gt;</code>. The value (right side) is only used for logging.</p>
+        </div>
 
-        <p class="text-sm text-slate-500 mt-3">That's the whole thing. Two branches. No AI, no distance, no terminal check — just route presence, then base price fallback.</p>
-    </section>
-
-    <!-- ============================== -->
-    <section id="cors">
-        <h2 class="text-2xl font-bold text-white mb-4">7. CORS — Who Can Call the API</h2>
-
-        <p class="text-slate-400 mb-4">Current whitelist in the server:</p>
-
-        <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>const allowedOrigins = [
+        <div class="bg-slate-900 border border-blue-800/30 rounded-xl p-5 mb-6">
+            <p class="text-xs uppercase tracking-wider text-blue-400 font-bold mb-3">🌐 Website Whitelist</p>
+            <p class="text-sm text-slate-400 mb-3">Also in <code class="text-vyra-400">api/_lib/clients.js</code>:</p>
+            <pre class="text-xs bg-slate-950 rounded-lg p-3 overflow-x-auto"><code>const ALLOWED_ORIGINS = [
   'https://www.intercityprices.com.ng',
   'https://intercityprices.com.ng',
   'http://localhost:3000',
-  'http://localhost:5500'
+  'http://localhost:5500',
 ];</code></pre>
-
-        <div class="warn text-sm mb-3">
-            <strong class="text-red-300">What this means:</strong> only your own domain (and localhost for testing) can call the API from a browser. Any other site gets blocked.
+            <p class="text-xs text-slate-500 mt-3">Only matters for browser calls from my own site. Clients with keys don't need to be listed here.</p>
         </div>
 
-        <div class="ok text-sm">
-            <strong class="text-green-300">For the client tester page:</strong> host the tester on YOUR domain (<code>/api-test.html</code>) and give clients the URL. They see it working live without needing to add their domain to the whitelist.
-        </div>
-
-        <div class="note text-sm mt-3">
-            <strong class="text-blue-300">Server-side calls are unaffected.</strong> CORS is a browser-only restriction. If a client calls the API from their backend (Node, Python, PHP), it works regardless of the whitelist.
+        <div class="bg-slate-900 border border-amber-800/30 rounded-xl p-5">
+            <p class="text-xs uppercase tracking-wider text-amber-400 font-bold mb-3">🔒 Zyla/RapidAPI Secret</p>
+            <p class="text-sm text-slate-400 mb-3">Stored in Vercel Environment Variables:</p>
+            <div class="bg-slate-950 rounded-lg p-3 text-xs">
+                <p class="text-slate-400 mb-2">Vercel Dashboard → Project → Settings → Environment Variables</p>
+                <p class="text-white font-mono">PROXY_SECRET = "..."</p>
+            </div>
+            <p class="text-xs text-slate-500 mt-3">Never write this in code. Never share it. Zyla/RapidAPI already have it configured on their side.</p>
         </div>
     </section>
 
-    <!-- ============================== -->
-    <section id="onboarding" class="scroll-mt-24">
+    <!-- ========================================== -->
+    <!-- 6. ONBOARD A CLIENT -->
+    <!-- ========================================== -->
+    <section id="onboard">
         <div class="flex items-center gap-3 mb-4">
-            <h2 class="text-2xl font-bold text-white">8. Onboarding a New API Client</h2>
-            <span class="text-[10px] px-2 py-1 bg-vyra-900/50 border border-vyra-600/50 rounded text-vyra-300 font-bold uppercase">Repeat every time</span>
+            <h2 class="text-2xl font-bold text-white">6. Onboarding a New API Client</h2>
+            <span class="text-[10px] px-2 py-1 bg-vyra-900/50 border border-vyra-600/50 rounded text-vyra-300 font-bold uppercase">Repeat per client</span>
         </div>
 
-        <p class="text-slate-400 mb-6">
-            When a paying client wants to integrate the API from their own website, follow these steps in order.
-        </p>
+        <p class="text-slate-400 mb-6">When someone pays to integrate the API, follow these steps.</p>
 
         <!-- Step 1 -->
         <div class="step mb-6">
-            <h3 class="text-white font-semibold mb-2">Step 1 — Ask for their exact domain(s)</h3>
-            <p class="text-sm text-slate-400 mb-3">
-                Get the <strong class="text-white">full origin</strong>, including protocol. Ask for both production and staging if they have them.
-            </p>
+            <h3 class="text-white font-semibold mb-2">Step 1 — Generate a key</h3>
+            <p class="text-sm text-slate-400 mb-3">Format: <code class="text-vyra-400">vyra_live_&lt;shortname&gt;_&lt;random&gt;</code></p>
             <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs">
-                <p class="text-slate-500 mb-2">✅ Correct format:</p>
+                <p class="text-slate-500 mb-2">Any random string works. Examples:</p>
                 <div class="space-y-1 font-mono text-vyra-400">
-                    <div>https://clientdomain.com</div>
-                    <div>https://www.clientdomain.com</div>
-                    <div>https://staging.clientdomain.com</div>
-                </div>
-                <p class="text-slate-500 mt-3 mb-2">❌ Wrong format:</p>
-                <div class="space-y-1 font-mono text-red-400">
-                    <div>clientdomain.com <span class="text-slate-600">// no protocol</span></div>
-                    <div>*.clientdomain.com <span class="text-slate-600">// wildcards not allowed</span></div>
-                    <div>clientdomain.com/ <span class="text-slate-600">// trailing slash breaks match</span></div>
+                    <div>vyra_live_acme_8f3k2n9p4q</div>
+                    <div>vyra_live_naijabook_2h7m5v1x8c</div>
+                    <div>vyra_live_giglog_b4t9w6y3r7</div>
                 </div>
             </div>
         </div>
 
         <!-- Step 2 -->
         <div class="step mb-6">
-            <h3 class="text-white font-semibold mb-2">Step 2 — Add them to the whitelist</h3>
-            <p class="text-sm text-slate-400 mb-3">
-                Edit the <code class="text-vyra-400">allowedOrigins</code> array in <strong class="text-white">every</strong> endpoint handler. Add one line per domain.
-            </p>
-
-            <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>const allowedOrigins = [
-  // ─── Your own domains ───
-  'https://www.intercityprices.com.ng',
-  'https://intercityprices.com.ng',
-
-  // ─── Local dev ───
-  'http://localhost:3000',
-  'http://localhost:5500',
-
-  // ─── Client: Acme Travels (onboarded 2026-05-19) ───
-  'https://acmetravels.com',
-  'https://www.acmetravels.com',
-  'https://staging.acmetravels.com'
-];</code></pre>
-
-            <div class="mt-3 note text-sm">
-                <strong class="text-blue-300">Why the comment?</strong> Six months from now you'll forget who "acmetravels.com" is and whether it's still paying. Add the date and client name so you can clean up safely.
-            </div>
+            <h3 class="text-white font-semibold mb-2">Step 2 — Add it to <code>_lib/clients.js</code></h3>
+            <p class="text-sm text-slate-400 mb-3">Open <code class="text-vyra-400">api/_lib/clients.js</code>, add one line to <code>CLIENT_KEYS</code>:</p>
+            <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>const CLIENT_KEYS = {
+  'vyra_live_acme_8f3k2n9p4q':      'Acme Travels',
+  'vyra_live_naijabook_2h7m5v1x8c': 'Naija Booking',   // ← new client
+};</code></pre>
+            <p class="text-xs text-slate-500 mt-2">The right-side value is just for logging — use the client's business name.</p>
         </div>
 
         <!-- Step 3 -->
         <div class="step mb-6">
-            <h3 class="text-white font-semibold mb-2">Step 3 — Update every endpoint handler</h3>
-            <p class="text-sm text-slate-400 mb-3">
-                If your server has multiple files (<code class="text-vyra-400">/api/search.js</code>, <code class="text-vyra-400">/api/transport.js</code>, etc.), you must add the origin to <strong class="text-white">each file</strong> that runs <code class="text-vyra-400">allowedOrigins</code>.
+            <h3 class="text-white font-semibold mb-2">Step 3 — Push to git</h3>
+            <p class="text-sm text-slate-400">
+                Commit and push. Vercel auto-deploys in ~30 seconds. The key is live.
             </p>
-
-            <div class="warn text-sm mb-3">
-                <strong class="text-red-300">Common mistake:</strong> adding the client to only one endpoint and then wondering why half their requests fail. If you have 4 endpoints, they need to be in all 4.
-            </div>
-
-            <div class="ok text-sm">
-                <strong class="text-green-300">Better long-term fix:</strong> put <code>allowedOrigins</code> in a shared file (<code>lib/cors.js</code>) and import it everywhere. One edit, all endpoints updated.
-            </div>
         </div>
 
         <!-- Step 4 -->
         <div class="step mb-6">
-            <h3 class="text-white font-semibold mb-2">Step 4 — Redeploy</h3>
-            <p class="text-sm text-slate-400 mb-3">
-                Push the change to production. On Vercel, this is just <code class="text-vyra-400">git push</code>. Wait for the deploy to go live (check the dashboard).
-            </p>
+            <h3 class="text-white font-semibold mb-2">Step 4 — Send them the email</h3>
+            <p class="text-sm text-slate-400 mb-3">Use the template in <a href="#email" class="text-vyra-400 underline">Section 8</a>.</p>
         </div>
 
         <!-- Step 5 -->
         <div class="step mb-6">
-            <h3 class="text-white font-semibold mb-2">Step 5 — Tell the client to test</h3>
-            <p class="text-sm text-slate-400 mb-3">
-                Send them this exact message:
-            </p>
-            <div class="bg-slate-900 border border-vyra-500/30 rounded-xl p-4 text-sm text-slate-300 italic">
-                "Hi [Name] — your domain has been whitelisted. Please open your browser console on your site and try calling:<br><br>
-                <code class="text-vyra-400 not-italic">fetch('https://www.intercityprices.com.ng/api/search?q=Lagos').then(r =&gt; r.json()).then(console.log)</code><br><br>
-                If you see JSON in the console, you're good to go. If you see a CORS error, send me a screenshot of the Network tab and I'll sort it."
-            </div>
+            <h3 class="text-white font-semibold mb-2">Step 5 — Confirm they can call the API</h3>
+            <p class="text-sm text-slate-400 mb-3">Test from your own terminal first:</p>
+            <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>curl -H "x-api-key: vyra_live_acme_8f3k2n9p4q" \
+     "https://www.intercityprices.com.ng/api/states"</code></pre>
+            <p class="text-xs text-slate-500 mt-2">If you get JSON back, the key is working. Now let the client test.</p>
         </div>
 
         <!-- Step 6 -->
         <div class="step mb-6">
-            <h3 class="text-white font-semibold mb-2">Step 6 — Confirm and log it</h3>
-            <p class="text-sm text-slate-400 mb-3">
-                Once they confirm it works, add them to the client log below.
-            </p>
+            <h3 class="text-white font-semibold mb-2">Step 6 — Log it below</h3>
+            <p class="text-sm text-slate-400">Add a row to the client log.</p>
         </div>
 
-        <!-- Client log -->
+        <!-- Client Log -->
         <div class="mt-8">
-            <h3 class="text-white font-semibold mb-3">📒 Client Whitelist Log</h3>
-            <p class="text-xs text-slate-500 mb-4">Keep this updated. Remove entries when a client leaves.</p>
+            <h3 class="text-white font-semibold mb-3">📒 Client Log</h3>
+            <p class="text-xs text-slate-500 mb-4">Keep this updated. Remove rows when a client leaves.</p>
 
             <div class="overflow-x-auto bg-slate-900/50 border border-slate-800 rounded-xl">
                 <table class="w-full text-sm">
                     <thead class="bg-slate-900 border-b border-slate-800">
                         <tr>
                             <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Client</th>
-                            <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Domain(s)</th>
+                            <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Key</th>
                             <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Date Added</th>
                             <th class="text-left px-4 py-3 text-xs uppercase text-slate-500 font-bold">Status</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-800">
                         <tr>
-                            <td class="px-4 py-3 text-slate-400 italic" colspan="4">No clients onboarded yet — add a row when you do.</td>
+                            <td class="px-4 py-3 text-slate-400 italic" colspan="4">No clients yet — add a row when you onboard one.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <div class="mt-3 note text-sm">
-                <strong class="text-blue-300">Copy this table into a Google Sheet</strong> if you get more than 5 clients. Easier to maintain than editing HTML.
-            </div>
-        </div>
-
-        <!-- Removal process -->
-        <div class="mt-8 bg-slate-900 border border-slate-800 rounded-xl p-5">
-            <h3 class="text-white font-semibold mb-3">🚪 When a Client Leaves</h3>
-            <ol class="space-y-2 text-sm text-slate-400 list-decimal list-inside">
-                <li>Remove their domain from <code class="text-vyra-400">allowedOrigins</code> in every endpoint handler</li>
-                <li>Redeploy</li>
-                <li>Mark them as "Removed" in the client log with the removal date</li>
-                <li>If they had a dedicated API key (future feature), revoke it</li>
-            </ol>
         </div>
     </section>
 
-    <!-- ============================== -->
+    <!-- ========================================== -->
+    <!-- 7. REMOVE A CLIENT -->
+    <!-- ========================================== -->
+    <section id="remove">
+        <h2 class="text-2xl font-bold text-white mb-4">7. Removing a Client</h2>
+
+        <p class="text-slate-400 mb-6">When a client stops paying or asks to be removed:</p>
+
+        <div class="step mb-6">
+            <h3 class="text-white font-semibold mb-2">Step 1 — Delete their line from <code>CLIENT_KEYS</code></h3>
+            <p class="text-sm text-slate-400 mb-3">Open <code class="text-vyra-400">api/_lib/clients.js</code>, remove their entry. Optionally leave it as a comment with the removal date:</p>
+            <pre class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs overflow-x-auto"><code>const CLIENT_KEYS = {
+  'vyra_live_naijabook_2h7m5v1x8c': 'Naija Booking',
+  // 'vyra_live_acme_8f3k2n9p4q':   'Acme Travels (removed 2026-06-15)',
+};</code></pre>
+        </div>
+
+        <div class="step mb-6">
+            <h3 class="text-white font-semibold mb-2">Step 2 — Push to git</h3>
+            <p class="text-sm text-slate-400">Their key stops working within 30 seconds. Any subsequent request returns <code>403 Invalid or revoked API key</code>.</p>
+        </div>
+
+        <div class="step mb-6">
+            <h3 class="text-white font-semibold mb-2">Step 3 — Mark them removed in the client log</h3>
+            <p class="text-sm text-slate-400">Update the table above with a "Removed" status and date.</p>
+        </div>
+
+        <div class="mt-4 ok text-sm">
+            <strong class="text-green-300">That's it.</strong> No database, no dashboard, no dashboard. One file edit + push.
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 8. EMAIL TEMPLATE -->
+    <!-- ========================================== -->
+    <section id="email">
+        <h2 class="text-2xl font-bold text-white mb-4">8. Client Onboarding Email Template</h2>
+
+        <p class="text-slate-400 mb-4">Copy, replace the two placeholders, send.</p>
+
+        <div class="bg-slate-900 border border-vyra-500/30 rounded-xl p-5">
+            <div class="text-sm text-slate-300 space-y-4">
+                <p class="text-slate-500 text-xs">Subject: Your Intercity Prices API Key</p>
+                <hr class="border-slate-800">
+
+                <p>Hi <strong class="text-white">[Client Name]</strong>,</p>
+
+                <p>Thanks for your payment — your API key is below. You can start integrating immediately.</p>
+
+                <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs font-mono space-y-2">
+                    <div><span class="text-slate-500">Base URL:</span> <span class="text-vyra-400">https://www.intercityprices.com.ng/api</span></div>
+                    <div><span class="text-slate-500">Your key:</span> <span class="text-amber-400">vyra_live_theirname_xxxxxxxxxx</span></div>
+                    <div><span class="text-slate-500">Header:</span> <span class="text-slate-300">x-api-key</span></div>
+                </div>
+
+                <p class="text-slate-400 font-semibold">Example request:</p>
+                <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs font-mono overflow-x-auto">
+                    <div class="text-slate-300">curl -H "x-api-key: vyra_live_theirname_xxxxxxxxxx" \</div>
+                    <div class="text-slate-300 pl-5">"https://www.intercityprices.com.ng/api/search?q=Lagos"</div>
+                </div>
+
+                <p class="text-slate-400 font-semibold">Available endpoints:</p>
+                <ul class="text-xs space-y-1 text-slate-300 font-mono">
+                    <li><span class="text-vyra-400">GET</span> /api/search?q=&#123;query&#125; — search states, companies, routes</li>
+                    <li><span class="text-vyra-400">GET</span> /api/transport — full dataset (cache this)</li>
+                    <li><span class="text-vyra-400">GET</span> /api/states — all states</li>
+                    <li><span class="text-vyra-400">GET</span> /api/states?state=Lagos — one state</li>
+                    <li><span class="text-vyra-400">GET</span> /api/companies — all companies</li>
+                    <li><span class="text-vyra-400">GET</span> /api/routes?from=Lagos&amp;to=Abuja — route prices</li>
+                </ul>
+
+                <p>
+                    <strong class="text-white">Documentation:</strong>
+                    <a href="https://www.intercityprices.com.ng/apifordevs.html" class="text-vyra-400 underline">www.intercityprices.com.ng/apifordevs.html</a>
+                </p>
+
+                <p>
+                    <strong class="text-white">Live tester:</strong>
+                    <a href="https://www.intercityprices.com.ng/api-test.html" class="text-vyra-400 underline">www.intercityprices.com.ng/api-test.html</a>
+                </p>
+
+                <p class="text-slate-400 text-xs">Tip: if your frontend calls the API directly, we recommend proxying through your backend so the key stays server-side. If your users can see the key in DevTools, they can copy it.</p>
+
+                <p>Reply to this email if anything is unclear.</p>
+
+                <p>— Vyra Technologies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 9. CHECKLIST -->
+    <!-- ========================================== -->
     <section id="checklist">
-        <h2 class="text-2xl font-bold text-white mb-4">9. Quick Reference Checklist</h2>
+        <h2 class="text-2xl font-bold text-white mb-6">9. Quick Reference</h2>
 
         <div class="space-y-6">
 
-            <!-- Onboarding checklist -->
+            <!-- Onboarding -->
             <div class="bg-slate-900 border border-vyra-500/30 rounded-xl p-6">
                 <h3 class="text-vyra-400 font-bold mb-4 flex items-center gap-2">
                     <span class="text-lg">🎯</span> Client Onboarding Checklist
@@ -432,31 +525,31 @@
                 <div class="space-y-2 text-sm">
                     <label class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 accent-vyra-500">
-                        <span class="text-slate-300 group-hover:text-white">Got their <strong>exact</strong> domain(s) with protocol (https://)</span>
+                        <span class="text-slate-300 group-hover:text-white">Client paid</span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 accent-vyra-500">
-                        <span class="text-slate-300 group-hover:text-white">Added to <code class="text-vyra-400">allowedOrigins</code> in EVERY endpoint file</span>
+                        <span class="text-slate-300 group-hover:text-white">Generated a unique key (<code>vyra_live_...</code>)</span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 accent-vyra-500">
-                        <span class="text-slate-300 group-hover:text-white">Added comment with client name + onboarding date</span>
+                        <span class="text-slate-300 group-hover:text-white">Added key to <code>CLIENT_KEYS</code> in <code>api/_lib/clients.js</code></span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 accent-vyra-500">
-                        <span class="text-slate-300 group-hover:text-white">Redeployed to production</span>
+                        <span class="text-slate-300 group-hover:text-white">Pushed to git, Vercel deployed</span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 accent-vyra-500">
-                        <span class="text-slate-300 group-hover:text-white">Sent test message to client</span>
+                        <span class="text-slate-300 group-hover:text-white">Tested with curl from my own terminal</span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 accent-vyra-500">
-                        <span class="text-slate-300 group-hover:text-white">Client confirmed it works</span>
+                        <span class="text-slate-300 group-hover:text-white">Sent onboarding email</span>
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer group">
                         <input type="checkbox" class="mt-1 accent-vyra-500">
-                        <span class="text-slate-300 group-hover:text-white">Added to client log table above</span>
+                        <span class="text-slate-300 group-hover:text-white">Added row to client log</span>
                     </label>
                 </div>
             </div>
@@ -481,11 +574,36 @@
                     </div>
                     <div class="flex justify-between gap-4">
                         <span class="text-slate-400">Add new company</span>
-                        <span class="text-slate-300 text-right">Add to <code class="text-vyra-400">transportCompanies</code> + all state lists</span>
+                        <span class="text-slate-300 text-right">Add to <code class="text-vyra-400">transportCompanies</code> + state lists</span>
                     </div>
                     <div class="flex justify-between gap-4">
                         <span class="text-slate-400">Add new state</span>
                         <span class="text-slate-300 text-right">Add to <code class="text-vyra-400">states</code> + stateCities map</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Access control -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+                    <span class="text-lg">🔒</span> Access Control Reference
+                </h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between gap-4">
+                        <span class="text-slate-400">Add client</span>
+                        <span class="text-slate-300 text-right">Add line to <code class="text-vyra-400">CLIENT_KEYS</code></span>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <span class="text-slate-400">Remove client</span>
+                        <span class="text-slate-300 text-right">Delete line from <code class="text-vyra-400">CLIENT_KEYS</code></span>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <span class="text-slate-400">Add my own domain</span>
+                        <span class="text-slate-300 text-right">Add to <code class="text-vyra-400">ALLOWED_ORIGINS</code></span>
+                    </div>
+                    <div class="flex justify-between gap-4">
+                        <span class="text-slate-400">Rotate Zyla secret</span>
+                        <span class="text-slate-300 text-right">Update <code class="text-vyra-400">PROXY_SECRET</code> in Vercel env vars</span>
                     </div>
                     <div class="flex justify-between gap-4">
                         <span class="text-slate-400">Test the API</span>
