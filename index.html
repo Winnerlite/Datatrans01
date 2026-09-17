@@ -1362,13 +1362,13 @@ function updateToDropdown() {
     }
 }
 
-   function calculateTrip() {
+    function calculateTrip() {
     const from = document.getElementById('calcFrom').value;
     const to = document.getElementById('calcTo').value;
     const resultsArea = document.getElementById('calcResults');
     const listArea = document.getElementById('calcList');
     const downloadPrompt = document.getElementById('downloadAppPrompt');
-    
+
     if (from === to) {
         alert("Please pick different states!");
         return;
@@ -1376,96 +1376,121 @@ function updateToDropdown() {
 
     listArea.innerHTML = '';
     const routeKey = `${from}-${to}`;
-    let resultsFound = [];
+    let directFares = [];
+    let estimatedFares = [];
+    const directCompanyNames = new Set();
 
-    // Helper: resolve company name to the exact key in transportCompanies
     const ALIASES = {
         "Young Shall Grow": "The Young Shall Grow Motors",
+        "The Young Shall Grow": "The Young Shall Grow Motors",
         "The Young Shall Grow Motors": "The Young Shall Grow Motors",
-        // Add more if you find other mismatches
+        "Young Legacy Motors": "The Young Legacy Motors",
+        "GIGM": "God is Good Motors",
+        "God is Good": "God is Good Motors",
+        "Nsik": "Nsik Motors (AKTC)",
+        "Nsik Motors": "Nsik Motors (AKTC)"
     };
 
     function getCompanyData(cName) {
-        // Try direct lookup first
         if (transportData.transportCompanies[cName]) {
             return transportData.transportCompanies[cName];
         }
-        // Try alias
         const aliasKey = ALIASES[cName];
         if (aliasKey && transportData.transportCompanies[aliasKey]) {
             return transportData.transportCompanies[aliasKey];
         }
-        // Log missing for debugging
-        console.warn(`Company "${cName}" not found in transportCompanies.`);
         return null;
     }
 
-    // 1. Exact route match (routePrices)
+    // TIER 1: Direct Fares
     if (transportData.routePrices && transportData.routePrices[routeKey]) {
         Object.entries(transportData.routePrices[routeKey]).forEach(([name, price]) => {
-            resultsFound.push({ name, price, type: 'Direct Fare' });
+            directFares.push({ name, price });
+            directCompanyNames.add(name);
+            const aliasKey = ALIASES[name];
+            if (aliasKey) directCompanyNames.add(aliasKey);
         });
     }
 
-    // 2. Common companies between states
-    if (resultsFound.length === 0) {
-        const fromComps = transportData.states[from]?.companies || [];
-        const toComps = transportData.states[to]?.companies || [];
-        const common = fromComps.filter(c => toComps.includes(c));
+    // TIER 2: Estimated Fares
+    const fromComps = transportData.states[from]?.companies || [];
+    const toComps = transportData.states[to]?.companies || [];
+    const common = fromComps.filter(c => toComps.includes(c));
 
-        common.forEach(cName => {
-            const company = getCompanyData(cName);
-            if (!company) return; // skip if not found
-            const price = (typeof company.basePrice === 'number') 
-                            ? company.basePrice 
-                            : 25000; // fallback base price
-            resultsFound.push({ name: cName, price, type: 'Est. Base Fare' });
-        });
-    }
+    common.forEach(cName => {
+        if (directCompanyNames.has(cName)) return;
+        const aliasTarget = ALIASES[cName];
+        if (aliasTarget && directCompanyNames.has(aliasTarget)) return;
+        const reverseMatch = Object.entries(ALIASES).find(([alias, canon]) => 
+            canon === cName && directCompanyNames.has(alias)
+        );
+        if (reverseMatch) return;
 
-    // 3. Render results
-    if (resultsFound.length > 0) {
-        resultsFound.sort((a,b) => a.price - b.price);
-        listArea.innerHTML = resultsFound.map(res => `
-            <div class="flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700 rounded-xl">
-                <div>
-                    <div class="text-white font-bold">${res.name}</div>
-                    <div class="text-[10px] text-vyra-500 uppercase font-bold">${res.type}</div>
-                </div>
-                <div class="text-xl font-mono font-black text-white">
-                    ₦${res.price.toLocaleString()}
-                </div>
-            </div>
-        `).join('');
-        resultsArea.classList.remove('hidden');
-        
-        // Show download prompt after results
-        if (downloadPrompt) {
-            downloadPrompt.classList.remove('hidden');
+        const company = getCompanyData(cName);
+        if (!company) return;
+
+        const price = typeof company.basePrice === 'number' ? company.basePrice : 25000;
+        estimatedFares.push({ name: cName, price });
+    });
+
+    directFares.sort((a, b) => a.price - b.price);
+    estimatedFares.sort((a, b) => a.price - b.price);
+
+    const totalResults = directFares.length + estimatedFares.length;
+
+    if (totalResults > 0) {
+        let html = '';
+
+        if (directFares.length > 0) {
+            html += '<div class="mb-6">';
+            html += '<div class="flex items-center gap-2 mb-3">';
+            html += '<div class="w-2 h-2 rounded-full bg-green-500"></div>';
+            html += '<p class="text-xs uppercase tracking-wider font-bold text-green-400">Verified Direct Fares</p>';
+            html += '</div><div class="space-y-2">';
+            directFares.forEach(res => {
+                html += '<div class="flex items-center justify-between p-4 bg-green-950/20 border border-green-800/40 rounded-xl">';
+                html += '<div><div class="text-white font-bold">' + res.name + '</div>';
+                html += '<div class="text-[10px] text-green-400 uppercase font-bold">Direct Fare</div></div>';
+                html += '<div class="text-xl font-mono font-black text-white">₦' + res.price.toLocaleString() + '</div>';
+                html += '</div>';
+            });
+            html += '</div></div>';
         }
+
+        if (estimatedFares.length > 0) {
+            html += '<div class="mb-4">';
+            html += '<div class="flex items-center gap-2 mb-3">';
+            html += '<div class="w-2 h-2 rounded-full bg-amber-500"></div>';
+            html += '<p class="text-xs uppercase tracking-wider font-bold text-amber-400">Estimated Fares</p>';
+            html += '</div><div class="space-y-2">';
+            estimatedFares.forEach(res => {
+                html += '<div class="flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700 rounded-xl">';
+                html += '<div><div class="text-white font-bold">' + res.name + '</div>';
+                html += '<div class="text-[10px] text-amber-400 uppercase font-bold">Est. Base Fare</div></div>';
+                html += '<div class="text-xl font-mono font-black text-white">₦' + res.price.toLocaleString() + '</div>';
+                html += '</div>';
+            });
+            html += '</div>';
+            html += '<p class="text-[10px] text-slate-500 italic mt-3">⚠️ Estimated fares use each company\'s base price and may vary significantly by route distance.</p>';
+            html += '</div>';
+        }
+
+        listArea.innerHTML = html;
+        resultsArea.classList.remove('hidden');
+        if (downloadPrompt) downloadPrompt.classList.remove('hidden');
     } else {
-        listArea.innerHTML = `
-            <div class="p-4 text-center text-slate-400">
-                <p>No direct operators found between ${from} and ${to}.</p>
-                <p class="text-xs mt-2">Try another route or check back later.</p>
-            </div>
-        `;
+        listArea.innerHTML = '<div class="p-4 text-center text-slate-400">' +
+            '<p>No operators found between ' + from + ' and ' + to + '.</p>' +
+            '<p class="text-xs mt-2">Try another route or check back later.</p></div>';
         resultsArea.classList.remove('hidden');
-        
-        // Still show download prompt even without results
-        if (downloadPrompt) {
-            downloadPrompt.classList.remove('hidden');
-        }
+        if (downloadPrompt) downloadPrompt.classList.remove('hidden');
     }
 }
 
-    // Download App Function
     function downloadApp() {
-    // Link to the new Vyra app page
-    window.location.href = '/intercityappng.html';
-}
+        window.location.href = '/intercityappng.html';
+    }
     initCalc();
-
 
 
     
