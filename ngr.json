@@ -3955,9 +3955,21 @@
 		
 		   "Abia-Abuja": {
             
-            "God is Good Motors": 47000
+            "God is Good Motors": 43000,
+			  "Aba Line": 35000,
+			    "Adam and Eve Motors": 28000
            
 			  },
+			  
+			  
+			   "Abia-Lagos": {
+            
+           
+			  "Aba Line": 24000,
+			    "Adam and Eve Motors": 28000
+           
+			  },
+			  
 			
         "Lagos-Onitsha": {
             "ABC Transport": 29120,
@@ -4031,11 +4043,75 @@
 		
 		
 		
+		
+		"Edo-Lagos": {
+    "Ibom Transit": 20916,
+    "Young Shall Grow": 26000,
+    "Libra Motors": 23531,
+    "Peace Mass Transit": 28386,
+    "God is Good Motors": 28500
+},
+		
+		
+		"Edo-Enugu": {
+    "Young Shall Grow": 27000,
+    "Libra Motors": 23500,
+    "Peace Mass Transit": 29386,
+    "God is Good Motors": 38600
+},
+
+
+
+
+"Edo-Delta": {
+    "Ibom Transit": 22900,
+    "Young Shall Grow": 25600,
+    "Libra Motors": 23000,
+    "Peace Mass Transit": 28000
+},
+		
+"Edo-Rivers": {
+    "Ibom Transit": 20916,
+    "Young Shall Grow": 21663,
+    "Libra Motors": 23531,
+    "Peace Mass Transit": 28386,
+    "God is Good Motors": 29200
+},
+"Edo-Port Harcourt": {
+    "Ibom Transit": 20916,
+    "Young Shall Grow": 21663,
+    "Libra Motors": 23531,
+    "Peace Mass Transit": 28386,
+    "God is Good Motors": 29200
+},	
+
+
+
+"Benin-Port Harcourt": {
+    "Benue Link Transport": 16434,
+    "Delta Line": 19049,
+    "Young Shall Grow": 21000,
+    "GUO Transport": 22500,
+    "Chisco Transport": 23500,
+    "ABC Transport": 23900,
+    "Agofure Motors": 19900,
+    "The Young Legacy Motors": 26000,
+    "Peace Mass Transit": 28000,
+    "God is Good Motors": 38651
+},
+"Benin-Rivers": {
+    "Young Shall Grow": 21663,
+    "Peace Mass Transit": 28386,
+    "God is Good Motors": 29200
+},
+		
+		
+		
         "Lagos-Enugu": {
             "ABC Transport": 31850,
             "God is Good Motors": 42000,
             "Chisco Transport": 29120,
-            "The Young Shall Grow": 29120,
+            "Young Shall Grow": 29120,
             "Peace Mass Transit": 25480,
             "GUO Transport": 32760,
             "The Young Legacy Motors": 25480,
