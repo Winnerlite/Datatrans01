@@ -3935,7 +3935,7 @@
 		 "Lagos-Imo": {
            
             "God is Good Motors": 47000,
-			  "God is Good Motors(night bus)": 47000
+			  "God is Good Motors Night Bus": 47000
           
         },
 		
@@ -3948,7 +3948,9 @@
 			
         "Lagos-Onitsha": {
             "ABC Transport": 29120,
-            "God is Good Motors": 36400,
+            "God is Good Motors": 43000,
+			 "God is Good Motors": 43000,
+			  "God is Good Motors Night Bus": 26000,
             "Chisco Transport": 25480,
             "The Young Shall Grow": 25480,
             "Peace Mass Transit": 22750,
@@ -4158,6 +4160,20 @@
             "The Young Legacy Motors": 23660,
             "Benue Link Transport": 24570
         },
+		
+		
+		   "Lagos-Delta": {
+            "God is Good Motors": 43000,
+			"God is Good Motors Night Bus": 26000,
+            "GUO Transport": 29120,
+            "ABC Transport": 28210,
+            "Chisco Transport": 27300,
+            "Peace Mass Transit": 22750,
+            "The Young Legacy Motors": 23660,
+            "Benue Link Transport": 24570
+        },
+		
+		
         "Abuja-Warri": {
             "God is Good Motors": 35490,
             "ABC Transport": 34580,
