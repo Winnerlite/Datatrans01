@@ -3888,7 +3888,7 @@
     "routePrices": {
         "Lagos-Abuja": {
             "ABC Transport": 31850,
-            "God is Good Motors": 56900,
+            "God is Good Motors": 54900,
             "Chisco Transport": 31850,
             "GUO Transport": 30030,
             "Peace Mass Transit": 25480,
@@ -3982,9 +3982,60 @@
             "Auto Star Limited": 20930,
             "Anambra Express": 20930
         },
+		
+		
+		
+		 "Lagos-Anambra": {
+            "ABC Transport": 29120,
+			 "God is Good Motors": 43000,
+			  "God is Good Motors Night Bus": 29000,
+            "Ekene Dili Chukwu Express Limited": 25480,
+            "Benue Link Transport": 20930,
+            "Interland Transport": 20930,
+            "Orizu Motors": 20930,
+            "Agofure Motors": 20930,
+            "E.Ekesons Bros Transport": 23660,
+            "Goodness and Mercy Transport": 20930,
+            "Okeyson Motors": 20930,
+            "Nothing Pass God Motors": 20930,
+            "Auto Star Limited": 20930,
+            "Anambra Express": 20930
+        },
+		
+		
+		
+		 "Lagos-Abia": {
+           
+			 "God is Good Motors": 48000,
+			 "God is Good Motors Night Bus":  38000,
+            "Aba Line": 25930,
+            "Adam and Eve Motors": 24930
+          
+        },
+		
+		
+		
+				
+		 "Lagos-Awka Ibom": {
+           
+			 "God is Good Motors": 56500,
+			 
+            "Big Joe Motors": 24930,
+			 "Ibom Transit": 27930,
+			  "Nsik Motors (AKTC)": 25930,
+			   "Akwa Ibom Transport (AKTC)": 27930,
+			    "Chisco Transport": 25930,
+				 "Peace Mass Transit": 30000,
+				  "ABC Transport": 29000
+           
+          
+        },
+		
+		
+		
         "Lagos-Enugu": {
             "ABC Transport": 31850,
-            "God is Good Motors": 45000,
+            "God is Good Motors": 42000,
             "Chisco Transport": 29120,
             "The Young Shall Grow": 29120,
             "Peace Mass Transit": 25480,
@@ -4140,21 +4191,101 @@
             "Benue Link Transport": 8645,
             "New Nyanya Transport Company": 7280
         },
+		
         "Lagos-Calabar": {
             "ABC Transport": 43680,
-            "God is Good Motors": 44590,
+            "God is Good Motors": 61250,
             "Chisco Transport": 40950,
             "Young Shall Grow": 38220,
             "Peace Mass Transit": 36400,
             "GUO Transport": 42770,
             "Nsik Motors (AKTC)": 39130,
+		 "Akwa Ibom Transport (AKTC)": 35600,
             "Cross Country Transport": 40950,
-            "Faith Motors": 40040,
-            "Ibom Transit": 39130
+            "Big Joe Motors": 37040,
+			 "Benue Link Transport": 33000,
+		"Faith Motors": 40040,
+            "Ibom Transit": 39130,
+			"The Young Legacy Motors": 32400
         },
+		
+		
+		
+		 "Lagos-Cross River": {
+            "Delta Line": 43680,
+            "Faith Motors": 35000,
+            "GUO Transport": 40950,
+            "Peace Mass Transit": 38220,
+			"God is Good Motors": 61250
+        },
+		
+		
+		
+		 "Lagos-Kogi": {
+            "Ibom Transit": 20680,
+            "Young Shall Grow": 35000,
+            "Libra Motors": 23500,
+            "Peace Mass Transit": 37850,
+			"God is Good Motors": 38250
+        },
+		
+		
+		
+		
+		
+		 "Lagos-Ebonyi": {
+            "Delta Line": 20680,
+            "Faith Motors": 26000,
+            "GUO Transport": 24500,
+			"Chisco Transport": 25500,
+			"Libra Motors": 23500,
+			"God is Good Motors": 41250,
+			"God is Good Motors Night Bus": 33500
+        },
+		
+		
+		
+		
+				
+		        "Lagos-Accra": {
+            
+            "God is Good Motors": 103000,
+           
+
+        },
+		
+		
+		
+		
+		        "Lagos-Ondo": {
+            "ABC Transport": 42770,
+            "God is Good Motors": 56500,
+            "Peace Mass Transit": 34490,
+            "Young Shall Grow": 29650
+            "ABC Transport": 37310,
+            "Libra Motors": 23900,
+            "Ibom Transit": 32450
+        },
+		
+		
+				
+		
+		 "Lagos-Ebonyi": {
+            "Delta Line": 20680,
+            "Faith Motors": 26000,
+            "GUO Transport": 24500,
+			"Chisco Transport": 25500,
+			"Libra Motors": 23500,
+			"God is Good Motors": 41250,
+			"God is Good Motors Night Bus": 33500
+        },
+		
+		
+		
+		
         "Lagos-Uyo": {
             "ABC Transport": 42770,
-            "God is Good Motors": 43680,
+            "God is Good Motors": 56500,
             "Peace Mass Transit": 35490,
             "Nsik Motors (AKTC)": 39130,
             "Akwa Ibom Transport (AKTC)": 37310,
