@@ -3933,7 +3933,6 @@
             "Ibom Transit": 27300,
             "The Young Shall Grow": 27300,
             "Peace Mass Transit": 33480,
-            "Young Shall Grow": 22750,
             "Libra Motors": 26750
            
         },
@@ -3963,7 +3962,6 @@
         "Lagos-Onitsha": {
             "ABC Transport": 29120,
             "God is Good Motors": 43000,
-			 "God is Good Motors": 43000,
 			  "God is Good Motors Night Bus": 26000,
             "Chisco Transport": 25480,
             "The Young Shall Grow": 25480,
@@ -4016,7 +4014,7 @@
 		
 		
 				
-		 "Lagos-Awka Ibom": {
+		 "Lagos-Akwa Ibom": {
            
 			 "God is Good Motors": 56500,
 			 
@@ -4105,8 +4103,8 @@
             "Agofure Motors": 17290
         },
         "Port Harcourt-Enugu": {
-            "ABC Transport": 20020,
-            "God is Good Motors": 20930,
+            "ABC Transport": 20000,
+            "God is Good Motors": 20500,
             "Chisco Transport": 19565,
             "Young Shall Grow": 18200,
             "Peace Mass Transit": 17290,
@@ -4233,27 +4231,12 @@
 		
 		
 		
-		 "Lagos-Ebonyi": {
-            "Delta Line": 20680,
-            "Faith Motors": 26000,
-            "GUO Transport": 24500,
-			"Chisco Transport": 25500,
-			"Libra Motors": 23500,
-			"God is Good Motors": 41250,
-			"God is Good Motors Night Bus": 33500
-        },
-		
-		
-	
-		
-		
-		
 		        "Lagos-Ondo": {
             "ABC Transport": 42770,
             "God is Good Motors": 56500,
             "Peace Mass Transit": 34490,
             "Young Shall Grow": 29650,
-            "ABC Transport": 37310,
+            
             "Libra Motors": 23900,
             "Ibom Transit": 32450
         },
@@ -4340,11 +4323,11 @@
             "God is Good Motors": 26390,
             "ABC Transport": 25480,
             "GUO Transport": 24570,
-            "Chisco Transport": 13650,
+            "Chisco Transport": 27650,
             "Peace Mass Transit": 9100,
-            "Young Shall Grow": 10920,
+            "Young Shall Grow": 23920,
             "Cross Country Transport": 13650,
-            "Libra Motors": 10100
+            "Libra Motors": 19500
         },
 		
 		
