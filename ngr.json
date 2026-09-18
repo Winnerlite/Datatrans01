@@ -3925,6 +3925,20 @@
             "Delta Line": 22750
         },
 		
+		
+		 "Lagos-Rivers": {
+          
+            "God is Good Motors": 48000,
+			  "God is Good Motors Night Bus": 35000,
+            "Ibom Transit": 27300,
+            "The Young Shall Grow": 27300,
+            "Peace Mass Transit": 33480,
+            "Young Shall Grow": 22750,
+            "Libra Motors": 26750
+           
+        },
+		
+		
 		 "Lagos-Bayelsa": {
            
             "God is Good Motors": 39750
@@ -4087,6 +4101,22 @@
             "Agofure Motors": 20930,
             "Delta Line": 20475
         },
+		
+		
+		    "Lagos-Edo": {
+            "ABC Transport": 24570,
+            "God is Good Motors": 40000,
+            "Chisco Transport": 22750,
+            "Young Shall Grow": 20930,
+            "Peace Mass Transit": 20020,
+            "GUO Transport": 23660,
+            "The Young Legacy Motors": 20475,
+            "Benue Link Transport": 21385,
+            "Agofure Motors": 20930,
+            "Delta Line": 20475
+        },
+		
+		
         "Abuja-Kano": {
             "ABC Transport": 30940,
             "God is Good Motors": 31850,
