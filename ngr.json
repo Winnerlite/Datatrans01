@@ -3999,6 +3999,53 @@
            
 			  },
 			  
+			  
+			  
+			  "Akwa Ibom-Abuja": {
+    "Nsik Motors (AKTC)": 23000,
+    "Akwa Ibom Transport (AKTC)": 22000,
+    "Chisco Transport": 25500,
+    "ABC Transport": 27000,
+    "Peace Mass Transit": 28386,
+    "God is Good Motors": 50000
+},
+
+
+
+"Akwa Ibom-Lagos": {
+    "Big Joe Motors": 20500,
+    "Ibom Transit": 20000,
+    "Nsik Motors (AKTC)": 28000,
+    "Akwa Ibom Transport (AKTC)": 35000,
+    "Chisco Transport": 27000,
+    "ABC Transport": 35000,
+    "Peace Mass Transit": 30000,
+    "God is Good Motors":  43000
+},
+
+
+
+"Akwa Ibom-Benin": {
+    "Chisco Transport": 23500,
+    "ABC Transport": 23900,
+    "Peace Mass Transit": 28300,
+    "God is Good Motors": 33550
+},
+
+
+
+
+
+"Akwa Ibom-Delta": {
+    "Ibom Transit": 26000,
+    "ABC Transport": 28000,
+    "Peace Mass Transit": 30000
+},
+
+
+
+
+
 			
         "Lagos-Onitsha": {
             "ABC Transport": 29120,
