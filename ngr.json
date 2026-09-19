@@ -1,6 +1,6 @@
 {
-    "api": "Vyra Transport API v1.0",
-    "lastUpdated": "2026-06-08",
+    "api": "Vyra Transport API v2.5",
+    "lastUpdated": "2026-09-19",
     "description": "Complete Nigerian intercity transport data",
 
     "transportCompanies": {
@@ -4042,8 +4042,47 @@
     "Peace Mass Transit": 30000
 },
 
+"Akwa Ibom-Rivers": {
+    "Ibom Transit": 15000,
+    "Peace Mass Transit": 19000,
+    "God is Good Motors": 26500
+},
 
 
+"Akwa Ibom-Edo": {
+    "Ibom Transit": 20000,
+    "Peace Mass Transit": 22000
+    
+},
+
+
+
+
+"Akwa Ibom-Cross River": {
+    "Peace Mass Transit": 13000
+  
+},
+
+
+
+
+"Anambra-Lagos": {
+    "Benue Link Transport": 19500,
+    "Ekene Dili Chukwu Express Limited": 26000,
+    "Interland Transport": 20000,
+    "Anambra Express": 24000,
+    "Tracas Nigeria": 25000,
+    "Nothing Pass God Motors": 22000,
+    "ABC Transport": 35000,
+    "Agofure Motors": 28000,
+    "Goodness and Mercy Transport": 27000,
+    "Orizu Motors": 25000,
+    "Auto Star Limited": 20000,
+    "E.Ekesons Bros Transport": 25500,
+    "Okeyson Motors": 27000,
+    "God is Good Motors": 41800,
+	 "God is Good Motors Night Bus": 34550
+},
 
 
 			
