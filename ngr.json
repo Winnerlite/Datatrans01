@@ -4085,6 +4085,79 @@
 },
 
 
+
+
+"Anambra-Abuja": {
+    "Benue Link Transport": 19000,
+    "Ekene Dili Chukwu Express Limited": 20916,
+    "Interland Transport": 20916,
+    "Anambra Express": 21663,
+    "Tracas Nigeria": 22037,
+    "Nothing Pass God Motors": 22784,
+    "ABC Transport": 35900,
+    "Agofure Motors": 23904,
+    "Goodness and Mercy Transport": 24278,
+    "Orizu Motors": 25000,
+    "Auto Star Limited": 25398,
+    "E.Ekesons Bros Transport": 25772,
+    "Okeyson Motors": 25772,
+    "God is Good Motors": 41800
+},
+
+
+
+
+"Anambra-Edo": {
+   
+    "God is Good Motors": 24150
+},
+
+
+
+
+"Anambra-Ebonyi": {
+   
+    "God is Good Motors": 7000
+},
+
+
+
+"Bayelsa-Lagos": {
+    "Delta Line": 37000,
+    "Chisco Transport": 35000,
+    "ABC Transport": 36000,
+    "Agofure Motors": 36000,
+    "Bayelsa State Transport": 25025,
+    "Peace Mass Transit": 29500,
+    "God is Good Motors Utako": 44750,
+	 "God is Good Motors Ajah": 32450,
+	  "God is Good Motors Iyana Ipaja": 31450,
+	   "God is Good Motors Festac": 31450,
+	    "God is Good Motors Jibowu": 31450
+},
+
+
+
+"Bayelsa-Edo": {
+    "Peace Mass Transit": 15500,
+	"God is Good Motors Ekpoma": 35950,
+	"God is Good Motors Auchi": 35950
+    
+},
+
+
+
+
+"Bayelsa-Abuja": {
+    "Delta Line": 25000,
+    "Chisco Transport": 24500,
+    "ABC Transport": 25000,
+    "Agofure Motors": 23900,
+    "Bayelsa State Transport": 19500,
+    "Peace Mass Transit": 28000,
+    "God is Good Motors Kubwa": 43250
+},
+
 			
         "Lagos-Onitsha": {
             "ABC Transport": 29120,
