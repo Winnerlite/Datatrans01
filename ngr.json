@@ -4141,7 +4141,8 @@
 "Bayelsa-Edo": {
     "Peace Mass Transit": 15500,
 	"God is Good Motors Ekpoma": 35950,
-	"God is Good Motors Auchi": 35950
+	"God is Good Motors Auchi": 35950,
+	"God is Good Motors Akpakpava": 35950
     
 },
 
@@ -4155,10 +4156,61 @@
     "Agofure Motors": 23900,
     "Bayelsa State Transport": 19500,
     "Peace Mass Transit": 28000,
-    "God is Good Motors Kubwa": 43250,
-	 "God is Good Motors ": 43250
+    "God is Good Motors Kubwa": 43250
+	
 	
 },
+
+
+
+"Delta-Lagos": {
+    "Delta Line": 19049,
+    "Ibom Transit": 20916,
+    "Young Shall Grow": 21663,
+    "Libra Motors": 23531,
+    "ABC Transport": 23904,
+    "Agofure Motors": 23904,
+    "Peace Mass Transit": 28386,
+	   "God is Good Motors Utako": 45200,
+	 "God is Good Motors Iyana Ipaja": 43250,
+	 "God is Good Motors Festac": 44200,
+	 "God is Good Motors Ajah": 44200,
+	    "God is Good Motors Volks": 44200,
+		"God is Good Motors Jibowu": 44200,
+	 "God is Good Motors Ikotun": 45000
+	 
+	
+},
+
+
+
+
+"Delta-Enugu": {
+    "Young Shall Grow": 12000,
+    "Libra Motors": 11000,
+    "ABC Transport": 9000,
+    "Peace Mass Transit": 10000,
+	"God is Good Motors": 15000,
+	
+},
+
+
+
+"Delta-Abia": {
+  
+	"No Operators found for this route yet": 000,
+	
+},
+
+
+
+
+"Delta-Akwa Ibom": {
+    "Ibom Transit": 20900,
+    "ABC Transport": 23900,
+    "Peace Mass Transit": 28000
+},
+
 
 			
         "Lagos-Onitsha": {
