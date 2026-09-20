@@ -4177,10 +4177,104 @@
 	 "God is Good Motors Ajah": 44200,
 	    "God is Good Motors Volks": 44200,
 		"God is Good Motors Jibowu": 44200,
-	 "God is Good Motors Ikotun": 45000
+	 "God is Good Motors Ikotun": 45000,
+	  "God is Good Motors Cele": 44200,
+	   "God is Good Motors Akowonjo": 32400 
+	
+	
 	 
 	
 },
+
+
+
+
+"Warri-Lagos": {
+    "Delta Line": 19049,
+    "Young Shall Grow": 21663,
+    "GUO Transport": 22037,
+    "Chisco Transport": 23531,
+    "ABC Transport": 23904,
+    "Agofure Motors": 23904,
+    "The Young Legacy Motors": 26145,
+    "Peace Mass Transit": 28386,
+    "God is Good Motors Festac": 31450,
+	"God is Good Motors Ajah": 31450,
+	"God is Good Motors Volks": 31450,
+	"God is Good Motors Yaba": 31450,
+	"God is Good Motors Jibowu": 28000
+	
+},
+
+
+
+
+"Warri-Abia": {
+   
+	"God is Good Motors Jibowu": 15000
+	
+},
+
+
+
+"Warri-Abuja": {
+   "God is Good Motors Iyana Ipaja": 28000,
+    "God is Good Motors Utako": 44250,
+    "ABC Transport": 34580,
+    "GUO Transport": 33670,
+    "Chisco Transport": 31850,
+    "Young Shall Grow": 29120,
+    "Peace Mass Transit": 27300,
+    "Agofure Motors": 27300,
+    "Delta Line": 27300
+},
+
+
+
+"Delta-Abuja": {
+    "Delta Line": 19500,
+    "Young Shall Grow": 20500,
+    "Libra Motors": 24000,
+    "ABC Transport": 21400,
+    "Agofure Motors": 23900,
+    "Peace Mass Transit": 28386
+	 
+	
+},
+
+
+"Delta-Bayelsa": {
+	  "Delta Line": 18000,
+    "ABC Transport": 18000,
+    "Agofure Motors": 12000,
+    "Peace Mass Transit": 17000,
+   "God is Good Motors": 23000
+},
+
+
+
+
+"Delta-Edo": {
+    
+  
+	"God is Good Motors": 14000
+},
+
+
+
+
+"Delta-Port Harcourt": {
+    "Delta Line": 19000,
+    "Ibom Transit": 17500,
+    "Young Shall Grow": 15000,
+    "Libra Motors": 19000,
+    "ABC Transport": 19500,
+    "Agofure Motors": 18000,
+    "Peace Mass Transit": 28386,
+	"God is Good Motors": 20000
+},
+
+
 
 
 
@@ -4195,7 +4289,9 @@
 },
 
 
-
+"Delta-Warri": {
+   "God is Good Motors": 17000
+},
 
 
 
