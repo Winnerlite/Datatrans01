@@ -556,24 +556,9 @@ body * {
                 </select>
         </div>
     </div>
-
-    <button onclick="calculateTrip()" class="w-full bg-vyra-500 hover:bg-white text-slate-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-vyra-900/20">
-        Calculate Estimated Fare
-    </button>
-
-<!-- NEW: EXPLORE CITIES BUTTON -->
-<a href="/cities.html" class="block w-full mt-3 bg-slate-800 hover:bg-slate-700 text-white font-bold py-4 rounded-xl text-center transition-all shadow-lg hover:shadow-slate-900/30">
-     Explore Cities
-</a>
-
-
-<!-- NEW: Find My Budget Button -->
-<a href="budget.html" class="block w-full mt-3 bg-slate-800 hover:bg-slate-700 text-white font-bold py-4 rounded-xl text-center transition-all shadow-lg hover:shadow-slate-900/30">
-   Budget My Trip
-</a>
-
-
-
+    
+    
+    
 <!-- NEW: TERMINAL SELECTION CARD -->
 <div id="terminalCard" class="hidden bg-slate-800/50 border border-slate-700 rounded-xl p-4 mb-4 transition-all duration-300">
     <div class="flex items-center gap-2 mb-3">
@@ -595,6 +580,25 @@ body * {
         </div>
     </div>
 </div>
+
+
+
+    <button onclick="calculateTrip()" class="w-full bg-vyra-500 hover:bg-white text-slate-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-vyra-900/20">
+        Calculate Estimated Fare
+    </button>
+
+<!-- NEW: EXPLORE CITIES BUTTON -->
+<a href="/cities.html" class="block w-full mt-3 bg-slate-800 hover:bg-slate-700 text-white font-bold py-4 rounded-xl text-center transition-all shadow-lg hover:shadow-slate-900/30">
+     Explore Cities
+</a>
+
+
+<!-- NEW: Find My Budget Button -->
+<a href="budget.html" class="block w-full mt-3 bg-slate-800 hover:bg-slate-700 text-white font-bold py-4 rounded-xl text-center transition-all shadow-lg hover:shadow-slate-900/30">
+   Budget My Trip
+</a>
+
+
 
 
     <div id="calcResults" class="mt-8 space-y-4 hidden">
@@ -638,9 +642,10 @@ body * {
                     <span class="text-xs text-slate-500">•</span>
                     <span class="text-xs text-slate-500">Android & iOS</span>
                 </div>
-                -->
+               
             </div>
         </div>
+        -->
     </div>
 </div>
 
@@ -890,24 +895,28 @@ body * {
         }
 
         function processTickerRoutes(routes, location) {
-            const tickerItems = [];
-            routes.forEach(route => {
-                const routeParts = route.route ? route.route.split('-') : [];
-                if (routeParts.length === 2 && route.prices) {
-                    const companies = Object.entries(route.prices);
-                    if (companies.length > 0) {
-                        const [company, price] = companies[0];
-                        tickerItems.push({
-                            company: company,
-                            from: routeParts[0],
-                            to: routeParts[1],
-                            price: `NGN${price.toLocaleString()}`
-                        });
-                    }
-                }
-            });
-            return tickerItems.slice(0, 5);
+    const tickerItems = [];
+    routes.forEach(route => {
+        const routeParts = route.route ? route.route.split('-') : [];
+        if (routeParts.length === 2 && route.prices) {
+            const companies = Object.entries(route.prices);
+            if (companies.length > 0) {
+                const [company, priceData] = companies[0];
+                // Handle new nested JSON
+                const price = (typeof priceData === 'object' && priceData !== null) ? priceData.default : priceData;
+                tickerItems.push({
+                    company: company,
+                    from: routeParts[0],
+                    to: routeParts[1],
+                    price: `NGN${price.toLocaleString()}`
+                });
+            }
         }
+    });
+    return tickerItems.slice(0, 5);
+}
+
+
 
         function updateTicker() {
             if(document.getElementById('defaultView').classList.contains('hidden')) return;
@@ -1045,16 +1054,23 @@ body * {
         }
 
         function processRoutesFromApi(apiRoutes) {
-            if (!apiRoutes || apiRoutes.length === 0) return [];
-            return apiRoutes.map(route => {
-                const routeParts = route.route ? route.route.split('-') : [];
-                return {
-                    from: routeParts[0] || 'Unknown',
-                    to: routeParts[1] || 'Unknown',
-                    options: route.prices ? Object.entries(route.prices).map(([c, p]) => ({ company: c, price: p, type: "Standard" })) : []
-                };
-            });
-        }
+    if (!apiRoutes || apiRoutes.length === 0) return [];
+    return apiRoutes.map(route => {
+        const routeParts = route.route ? route.route.split('-') : [];
+        const options = route.prices ? Object.entries(route.prices).map(([c, p]) => {
+            // Handle new nested JSON
+            const price = (typeof p === 'object' && p !== null) ? p.default : p;
+            return { company: c, price: price, type: "Standard" };
+        }) : [];
+        
+        return {
+            from: routeParts[0] || 'Unknown',
+            to: routeParts[1] || 'Unknown',
+            options: options
+        };
+    });
+}
+
 
         function processApiResults(query, apiData) {
             const results = apiData.results;
