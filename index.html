@@ -1418,17 +1418,47 @@ function populateParkDropdowns() {
     toParkSelect.innerHTML = '<option value="Any">Any Park (Use State Price)</option>';
 
     if (fromState && toState && fromState !== toState) {
-        // Show the card
-        terminalCard.classList.remove('hidden');
+        const routeKey = `${fromState}-${toState}`;
+        const routeData = transportData.routePrices?.[routeKey];
 
-        // Load parks from the JSON (if they exist)
-        const fromParks = transportData.states[fromState]?.parks || [];
-        const toParks = transportData.states[toState]?.parks || [];
+        if (routeData) {
+            const fromParks = new Set();
+            const toParks = new Set();
 
-        fromParks.forEach(park => fromParkSelect.add(new Option(park, park)));
-        toParks.forEach(park => toParkSelect.add(new Option(park, park)));
+            // Loop through all companies to find all parks used in this route
+            Object.values(routeData).forEach(companyData => {
+                if (typeof companyData === 'object' && companyData.parks) {
+                    Object.keys(companyData.parks).forEach(parkPair => {
+                        // parkPair looks like "Jibowu-Utako"
+                        const parts = parkPair.split('-');
+                        if (parts.length === 2) {
+                            fromParks.add(parts[0].trim()); // e.g., Jibowu
+                            toParks.add(parts[1].trim());   // e.g., Utako
+                        }
+                    });
+                }
+            });
+
+            // If we found parks in the JSON, show the card and populate
+            if (fromParks.size > 0 && toParks.size > 0) {
+                terminalCard.classList.remove('hidden');
+                
+                Array.from(fromParks).sort().forEach(park => {
+                    fromParkSelect.add(new Option(park, park));
+                });
+                
+                Array.from(toParks).sort().forEach(park => {
+                    toParkSelect.add(new Option(park, park));
+                });
+            } else {
+                // Route exists, but has no specific park prices
+                terminalCard.classList.add('hidden');
+            }
+        } else {
+            // No route data found
+            terminalCard.classList.add('hidden');
+        }
     } else {
-        // Hide the card if states aren't selected properly
         terminalCard.classList.add('hidden');
     }
 }
