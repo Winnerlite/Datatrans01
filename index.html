@@ -569,7 +569,7 @@ body * {
         <div>
             <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Departure Park</label>
             <select id="calcFromPark" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:ring-1 focus:ring-vyra-500 outline-none">
-                <option value="Any">Any Park (Use State Price)</option>
+                <option value="Any">Any Park </option>
             </select>
         </div>
         <div>
@@ -1423,39 +1423,39 @@ function populateParkDropdowns() {
 
         if (routeData) {
             const fromParks = new Set();
-            const toParks = new Set();
-
-            // Loop through all companies to find all parks used in this route
+            
+            // 1. Gather all possible departure parks
             Object.values(routeData).forEach(companyData => {
                 if (typeof companyData === 'object' && companyData.parks) {
                     Object.keys(companyData.parks).forEach(parkPair => {
-                        // parkPair looks like "Jibowu-Utako"
                         const parts = parkPair.split('-');
                         if (parts.length === 2) {
-                            fromParks.add(parts[0].trim()); // e.g., Jibowu
-                            toParks.add(parts[1].trim());   // e.g., Utako
+                            fromParks.add(parts[0].trim());
                         }
                     });
                 }
             });
 
-            // If we found parks in the JSON, show the card and populate
-            if (fromParks.size > 0 && toParks.size > 0) {
+            if (fromParks.size > 0) {
                 terminalCard.classList.remove('hidden');
                 
+                // 2. Populate the Departure dropdown
                 Array.from(fromParks).sort().forEach(park => {
                     fromParkSelect.add(new Option(park, park));
                 });
                 
-                Array.from(toParks).sort().forEach(park => {
-                    toParkSelect.add(new Option(park, park));
-                });
+                // 3. When departure changes, update the destination dropdown
+                fromParkSelect.onchange = function() {
+                    updateToParks(routeData, this.value, toParkSelect);
+                };
+                
+                // 4. Populate destinations initially (for "Any" departure)
+                updateToParks(routeData, 'Any', toParkSelect);
+                
             } else {
-                // Route exists, but has no specific park prices
                 terminalCard.classList.add('hidden');
             }
         } else {
-            // No route data found
             terminalCard.classList.add('hidden');
         }
     } else {
@@ -1463,6 +1463,37 @@ function populateParkDropdowns() {
     }
 }
 
+
+
+function updateToParks(routeData, selectedFromPark, toParkSelect) {
+    // Reset To dropdown
+    toParkSelect.innerHTML = '<option value="Any">Any Park</option>';
+    
+    const toParks = new Set();
+    
+    Object.values(routeData).forEach(companyData => {
+        if (typeof companyData === 'object' && companyData.parks) {
+            Object.keys(companyData.parks).forEach(parkPair => {
+                const parts = parkPair.split('-');
+                if (parts.length === 2) {
+                    const origin = parts[0].trim();
+                    const destination = parts[1].trim();
+                    
+                    // If "Any" is selected, show all destinations
+                    // Otherwise, ONLY show destinations that match the selected origin
+                    if (selectedFromPark === 'Any' || origin === selectedFromPark) {
+                        toParks.add(destination);
+                    }
+                }
+            });
+        }
+    });
+
+    // Populate To dropdown
+    Array.from(toParks).sort().forEach(park => {
+        toParkSelect.add(new Option(park, park));
+    });
+}
 
 
 
