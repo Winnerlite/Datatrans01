@@ -1,0 +1,10 @@
+{
+  "allowedOrigins": [
+    "https://www.intercityprices.com.ng",
+    "https://acmetravels.com"
+  ],
+  "clientKeys": {
+    "vyra_live_acme_8f3k2n9p4q": { "name": "Acme Travels", "rateLimit": 60 },
+    "vyra_live_naija_2h7m5v1x8c": { "name": "Naija Booking", "rateLimit": 120 }
+  }
+}
