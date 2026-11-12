@@ -2,7 +2,8 @@
   "allowedOrigins": [
     "https://www.intercityprices.com.ng",
     "https://intercityprices.com.ng",
-    "https://acmetravels.com"
+    "https://acmetravels.com",
+    "http://localhost:8080" //to be removed after usage
   ],
   "clientKeys": {
     "vyra_live_demo_key_12345": { 
