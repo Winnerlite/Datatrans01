@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Intercity Booking API | Developer Demo</title>
+    <meta name="description" content="The unofficial Intercity Booking API. Fetch real-time routes, dates, and interactive seat maps for Nigerian transport companies.">
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        vyra: { 50:'#effef7',100:'#dafeef',200:'#b8fadd',300:'#81f4c3',400:'#43e5a0',500:'#1acd81',600:'#0fa968',700:'#108756',800:'#126b47',900:'#11583d',950:'#063122' },
+                        slate: { 850:'#151f2e', 900:'#0f172a', 950:'#020617' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body { overflow-x: hidden; max-width: 100vw; background-color: #020617; color: #cbd5e1; font-family: 'Inter', sans-serif; }
+        .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        /* Auto-scrolling logos */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Seat Map Styles */
+        .seat {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #1e293b;
+            background: #0f172a;
+            color: #64748b;
+            user-select: none;
+        }
+        .seat.available { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+        .seat.available:hover { border-color: #43e5a0; transform: scale(1.05); }
+        .seat.selected { background: #1acd81; border-color: #1acd81; color: #020617; box-shadow: 0 0 15px rgba(26, 205, 129, 0.4); }
+        .seat.booked { background: #1e293b; border-color: #0f172a; color: #475569; cursor: not-allowed; }
+        
+        .steering-wheel {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #475569;
+            border-radius: 50%;
+            position: relative;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: 10px;
+        }
+        .steering-wheel::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px; height: 10px;
+            background: #475569;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Nav -->
+    <nav class="glass-nav fixed w-full z-40 top-0">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" alt="Vyra" class="h-7 w-auto">
+                <span class="font-bold text-white text-sm">Intercity Booking <span class="text-vyra-500">API</span></span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="/" class="text-xs text-slate-400 hover:text-white">← Home</a>
+                <a href="#demo" class="text-xs px-4 py-2 bg-vyra-600 hover:bg-vyra-500 text-white font-semibold rounded-lg transition">Try Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 pb-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Hero / Intro -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-900 border border-slate-700 rounded-full mb-6">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                    <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Unofficial API</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+                    Build the Future of <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-vyra-400 to-teal-300">Nigerian Travel.</span>
+                </h1>
+                <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+                    The Intercity Booking API gives developers programmatic access to real-time routes, trip dates, fares, and interactive seat maps across top Nigerian transport companies.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a href="#demo" class="w-full sm:w-auto px-6 py-3 bg-vyra-600 hover:bg-vyra-500 text-white font-semibold rounded-lg transition">Test the API</a>
+                    <a href="https://wa.me/2349137974960" target="_blank" class="w-full sm:w-auto px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold rounded-lg transition">Request API Key</a>
+                </div>
+            </div>
+
+            <!-- Auto Scrolling Logos -->
+            <div class="mb-20">
+                <p class="text-center text-xs font-bold text-slate-500 uppercase tracking-wider mb-6">Integrating with major operators</p>
+                <div class="marquee-container py-4">
+                    <div class="marquee-content flex gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                        <!-- Placeholders for logos (Duplicate for seamless loop) -->
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Benue Links</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GIGM</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GUO Transport</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">ABC Transport</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Peace Mass</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Chisco</div>
+                        <!-- Duplicate Set -->
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Benue Links</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GIGM</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GUO Transport</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">ABC Transport</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Peace Mass</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Chisco</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Demo Section -->
+            <div id="demo" class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-vyra-500 to-teal-400"></div>
+                
+                <h2 class="text-xl font-bold text-white mb-6">Interactive Booking Flow</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <!-- Company Select -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Select Company</label>
+                        <select id="companySelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500 transition-colors appearance-none">
+                            <option value="benuelinks">Benue Links</option>
+                            <option value="gigm" disabled>GIGM (Coming Soon)</option>
+                            <option value="guo" disabled>GUO Transport (Coming Soon)</option>
+                            <option value="abc" disabled>ABC Transport (Coming Soon)</option>
+                            <option value="peace" disabled>Peace Mass Transit (Coming Soon)</option>
+                        </select>
+                    </div>
+
+                    <!-- Route Select -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Select Route</label>
+                        <select id="routeSelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500 transition-colors appearance-none" disabled>
+                            <option value="">Loading trips from API...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <!-- Date (Locked) -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2 flex items-center gap-2">
+                            Departure Date 
+                            <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </label>
+                        <input type="text" id="dateDisplay" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-slate-400 cursor-not-allowed" value="Select a route first" readonly>
+                    </div>
+                    
+                    <!-- Fare Preview -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Base Fare</label>
+                        <div class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-vyra-400 font-mono font-bold" id="fareDisplay">₦ --</div>
+                    </div>
+                </div>
+
+                <button id="bookBtn" onclick="openModal()" disabled class="w-full bg-vyra-500 hover:bg-vyra-400 disabled:bg-slate-700 disabled:text-slate-500 disabled:cursor-not-allowed text-slate-950 font-bold py-4 rounded-xl transition-all shadow-lg text-lg">
+                    Book Now
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-t-3xl sm:rounded-3xl w-full max-w-lg max-h-[90vh] overflow-y-auto flex flex-col">
+            
+            <!-- Modal Header -->
+            <div class="sticky top-0 bg-slate-900 border-b border-slate-800 px-6 py-4 flex justify-between items-center z-10">
+                <h3 class="text-lg font-bold text-white">Booking Details</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 flex-1">
+                
+                <!-- View 1: Trip Info -->
+                <div id="modalViewInfo">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 mb-6">
+                        <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-800">
+                            <div>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Operator</p>
+                                <p class="text-white font-bold" id="mCompany">Benue Links</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Route</p>
+                                <p class="text-vyra-400 font-bold" id="mRoute">Lagos to Abuja</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Date</p>
+                                <p class="text-white font-medium" id="mDate">2026-12-01</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Base Fare</p>
+                                <p class="text-white font-mono font-bold" id="mFare">₦0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="showSeatMap()" class="w-full bg-vyra-600 hover:bg-vyra-500 text-white font-bold py-3 rounded-xl transition">
+                        Continue to Seat Selection
+                    </button>
+                </div>
+
+                <!-- View 2: Seat Selection (Hidden initially) -->
+                <div id="modalViewSeats" class="hidden">
+                    <div class="flex items-center justify-between mb-6">
+                        <p class="text-sm text-slate-400">Tap a seat to select</p>
+                        <div class="flex gap-4 text-xs">
+                            <span class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-slate-950 border border-slate-700"></div> Available</span>
+                            <span class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-vyra-500"></div> Selected</span>
+                            <span class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-slate-800"></div> Booked</span>
+                        </div>
+                    </div>
+
+                    <!-- Bus Layout -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 max-w-xs mx-auto mb-6">
+                        <!-- Driver Area -->
+                        <div class="steering-wheel"></div>
+                        
+                        <!-- Seat Map Grid (Generated by JS) -->
+                        <div id="seatMapContainer" class="grid grid-cols-4 gap-2">
+                            <!-- JS will populate this -->
+                        </div>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 mb-6">
+                        <div class="flex justify-between text-sm mb-2 text-slate-300">
+                            <span>Base Fare</span>
+                            <span id="sBaseFare" class="font-mono">₦0</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-4 text-slate-300">
+                            <span>Service Fee</span>
+                            <span class="font-mono">₦1,500</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-bold text-white pt-3 border-t border-slate-700">
+                            <span>Total</span>
+                            <span id="sTotalFare" class="text-vyra-400 font-mono">₦0</span>
+                        </div>
+                    </div>
+
+                    <!-- Continue Button (Disabled by default) -->
+                    <button id="seatContinueBtn" disabled class="w-full bg-slate-800 text-slate-500 font-bold py-3 rounded-xl cursor-not-allowed transition">
+                        Select a seat to continue
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. API CONFIGURATION ---
+        const WORKER_URL = "https://intercitypricesbookings.cybercatclientcreator.workers.dev/api/benuelinks";
+        // IMPORTANT: You must add this key to your GitHub clients.json for the demo to work
+        const API_KEY = "vyra_live_demo_key_12345"; 
+
+        let currentTrips = [];
+        let activeTrip = null;
+        let selectedSeats = [];
+
+        // --- 2. FETCH DATA FROM REAL API ---
+        async function loadData() {
+            const routeSelect = document.getElementById('routeSelect');
+            
+            try {
+                const response = await fetch(WORKER_URL, {
+                    headers: {
+                        "x-api-key": API_KEY
+                    }
+                });
+                
+                if (!response.ok) {
+                    if (response.status === 401 || response.status === 403) {
+                        throw new Error("Unauthorized: Missing or invalid API key.");
+                    }
+                    throw new Error(`API Error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (!data || data.length === 0) {
+                    throw new Error("No upcoming trips found in the database.");
+                }
+
+                currentTrips = data;
+                
+                // Populate routes based on active trips
+                routeSelect.innerHTML = '<option value="">Select a route...</option>';
+                currentTrips.forEach((trip, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = trip.route;
+                    routeSelect.appendChild(option);
+                });
+
+                routeSelect.disabled = false;
+
+            } catch (error) {
+                console.error("Failed to load API data:", error);
+                
+                // Show error in UI
+                routeSelect.innerHTML = `<option value="">${error.message}</option>`;
+                routeSelect.disabled = true;
+                routeSelect.classList.add('text-red-400', 'border-red-900');
+            }
+        }
+
+        // --- 3. INITIALIZE UI ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadData();
+
+            const routeSelect = document.getElementById('routeSelect');
+            const dateDisplay = document.getElementById('dateDisplay');
+            const fareDisplay = document.getElementById('fareDisplay');
+            const bookBtn = document.getElementById('bookBtn');
+
+            // Handle route selection
+            routeSelect.addEventListener('change', (e) => {
+                const index = e.target.value;
+                if (index === "") {
+                    dateDisplay.value = "Select a route first";
+                    dateDisplay.classList.replace('text-white', 'text-slate-400');
+                    fareDisplay.textContent = "₦ --";
+                    bookBtn.disabled = true;
+                    return;
+                }
+
+                activeTrip = currentTrips[index];
+                
+                // Lock the date panel
+                dateDisplay.value = activeTrip.date;
+                dateDisplay.classList.replace('text-slate-400', 'text-white');
+                
+                // Show fare (using the fare from the API)
+                fareDisplay.textContent = `₦${activeTrip.fare.toLocaleString()}`;
+                
+                // Enable book button
+                bookBtn.disabled = false;
+            });
+        });
+
+        // --- 4. MODAL LOGIC ---
+        function openModal() {
+            if (!activeTrip) return;
+
+            // Populate Info View
+            document.getElementById('mCompany').textContent = "Benue Links";
+            document.getElementById('mRoute').textContent = activeTrip.route;
+            document.getElementById('mDate').textContent = activeTrip.date;
+            document.getElementById('mFare').textContent = `₦${activeTrip.fare.toLocaleString()}`;
+
+            // Reset to Info View
+            document.getElementById('modalViewInfo').classList.remove('hidden');
+            document.getElementById('modalViewSeats').classList.add('hidden');
+            
+            // Show Modal
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function showSeatMap() {
+            // Switch views
+            document.getElementById('modalViewInfo').classList.add('hidden');
+            document.getElementById('modalViewSeats').classList.remove('hidden');
+
+            // Populate Price
+            document.getElementById('sBaseFare').textContent = `₦${activeTrip.fare.toLocaleString()}`;
+            updateTotalPrice();
+
+            // Render Seats
+            renderSeats();
+        }
+
+        // --- 5. SEAT MAP LOGIC ---
+        function renderSeats() {
+            const container = document.getElementById('seatMapContainer');
+            container.innerHTML = '';
+            selectedSeats = [];
+
+            // Ensure seats_json is parsed correctly
+            let seats = [];
+            try {
+                // The database might return it as a stringified JSON array
+                seats = typeof activeTrip.seats_json === 'string' 
+                    ? JSON.parse(activeTrip.seats_json) 
+                    : activeTrip.seats_json;
+            } catch (e) {
+                console.error("Failed to parse seat map:", e);
+                container.innerHTML = '<p class="text-red-400 text-xs col-span-4 text-center">Error loading seat map</p>';
+                return;
+            }
+
+            if (!Array.isArray(seats) || seats.length === 0) {
+                container.innerHTML = '<p class="text-slate-500 text-xs col-span-4 text-center">No seats configured</p>';
+                return;
+            }
+
+            seats.forEach(seat => {
+                const div = document.createElement('div');
+                div.className = `seat ${seat.booked ? 'booked' : 'available'}`;
+                div.textContent = seat.id;
+
+                if (!seat.booked) {
+                    div.onclick = () => toggleSeat(div, seat.id);
+                } else {
+                    // Booked seat marker
+                    div.innerHTML = `<span class="opacity-50">*</span>`; 
+                }
+
+                container.appendChild(div);
+            });
+        }
+
+        function toggleSeat(element, seatId) {
+            if (selectedSeats.includes(seatId)) {
+                // Deselect
+                selectedSeats = selectedSeats.filter(id => id !== seatId);
+                element.classList.remove('selected');
+                element.classList.add('available');
+            } else {
+                // Select
+                selectedSeats.push(seatId);
+                element.classList.remove('available');
+                element.classList.add('selected');
+            }
+
+            // Update Button & Price
+            updateTotalPrice();
+            const btn = document.getElementById('seatContinueBtn');
+            
+            if (selectedSeats.length > 0) {
+                btn.disabled = false;
+                btn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
+                btn.classList.add('bg-vyra-600', 'hover:bg-vyra-500', 'text-white');
+                btn.textContent = `Continue with ${selectedSeats.length} seat(s)`;
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
+                btn.classList.remove('bg-vyra-600', 'hover:bg-vyra-500', 'text-white');
+                btn.textContent = `Select a seat to continue`;
+            }
+        }
+
+        function updateTotalPrice() {
+            const base = activeTrip.fare;
+            const fee = 1500;
+            const total = (base * Math.max(1, selectedSeats.length)) + fee;
+            
+            // If no seats selected, just show base + fee for 1 person
+            const displayTotal = selectedSeats.length === 0 ? (base + fee) : total;
+
+            document.getElementById('sTotalFare').textContent = `₦${displayTotal.toLocaleString()}`;
+        }
+    </script>
+</body>
+</html>
