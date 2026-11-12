@@ -29,40 +29,16 @@
         .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         
         /* Auto-scrolling logos */
-        .marquee-container {
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            width: 100%;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 25s linear infinite;
-        }
-        .marquee-content:hover {
-            animation-play-state: paused;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        .marquee-container { overflow: hidden; white-space: nowrap; position: relative; width: 100%; }
+        .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
+        .marquee-content:hover { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* Seat Map Styles */
         .seat {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid #1e293b;
-            background: #0f172a;
-            color: #64748b;
-            user-select: none;
+            width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: bold; cursor: pointer; transition: all 0.2s;
+            border: 1px solid #1e293b; background: #0f172a; color: #64748b; user-select: none; margin: 0 auto;
         }
         .seat.available { background: #0f172a; border-color: #334155; color: #e2e8f0; }
         .seat.available:hover { border-color: #43e5a0; transform: scale(1.05); }
@@ -70,23 +46,13 @@
         .seat.booked { background: #1e293b; border-color: #0f172a; color: #475569; cursor: not-allowed; }
         
         .steering-wheel {
-            width: 30px;
-            height: 30px;
-            border: 3px solid #475569;
-            border-radius: 50%;
-            position: relative;
-            margin-bottom: 20px;
-            margin-left: auto;
-            margin-right: 10px;
+            width: 30px; height: 30px; border: 3px solid #475569; border-radius: 50%;
+            position: relative; margin-bottom: 20px; margin-left: auto; margin-right: 10px;
         }
         .steering-wheel::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px; height: 10px;
-            background: #475569;
-            border-radius: 50%;
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 10px; height: 10px;
+            background: #475569; border-radius: 50%;
         }
     </style>
 </head>
@@ -133,7 +99,6 @@
                 <p class="text-center text-xs font-bold text-slate-500 uppercase tracking-wider mb-6">Integrating with major operators</p>
                 <div class="marquee-container py-4">
                     <div class="marquee-content flex gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition duration-500">
-                        <!-- Placeholders for logos (Duplicate for seamless loop) -->
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Benue Links</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GIGM</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GUO Transport</div>
@@ -166,7 +131,6 @@
                             <option value="gigm" disabled>GIGM (Coming Soon)</option>
                             <option value="guo" disabled>GUO Transport (Coming Soon)</option>
                             <option value="abc" disabled>ABC Transport (Coming Soon)</option>
-                            <option value="peace" disabled>Peace Mass Transit (Coming Soon)</option>
                         </select>
                     </div>
 
@@ -222,26 +186,53 @@
                 <!-- View 1: Trip Info -->
                 <div id="modalViewInfo">
                     <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 mb-6">
+                        
+                        <!-- Row 1: Operator & Route -->
                         <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-800">
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Operator</p>
-                                <p class="text-white font-bold" id="mCompany">Benue Links</p>
+                                <p class="text-white font-bold capitalize" id="mCompany">Benue Links</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Route</p>
-                                <p class="text-vyra-400 font-bold" id="mRoute">Lagos to Abuja</p>
+                                <p class="text-vyra-400 font-bold text-right" id="mRoute">Makurdi - Abuja</p>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center">
+
+                        <!-- Row 2: Date & Departure Time -->
+                        <div class="grid grid-cols-2 gap-2 mb-4 pb-4 border-b border-slate-800">
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Date</p>
-                                <p class="text-white font-medium" id="mDate">2026-12-01</p>
+                                <p class="text-white text-sm font-medium" id="mDate">Fri Nov 13 2026</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Departure</p>
+                                <p class="text-white text-sm font-medium" id="mDeparture">06:30AM</p>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Boarding Point -->
+                        <div class="mb-4 pb-4 border-b border-slate-800">
+                            <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Boarding Point</p>
+                            <p class="text-slate-300 text-xs leading-relaxed" id="mBoarding">Loading...</p>
+                        </div>
+
+                        <!-- Row 4: Duration, Seats Left, Fare -->
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Duration</p>
+                                <p class="text-white text-sm font-medium" id="mDuration">4Hrs</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Seats Left</p>
+                                <p class="text-vyra-400 text-sm font-bold" id="mAvailableSeats">6 / 7</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Base Fare</p>
                                 <p class="text-white font-mono font-bold" id="mFare">₦0</p>
                             </div>
                         </div>
+
                     </div>
 
                     <button onclick="showSeatMap()" class="w-full bg-vyra-600 hover:bg-vyra-500 text-white font-bold py-3 rounded-xl transition">
@@ -265,8 +256,8 @@
                         <!-- Driver Area -->
                         <div class="steering-wheel"></div>
                         
-                        <!-- Seat Map Grid (Generated by JS) -->
-                        <div id="seatMapContainer" class="grid grid-cols-4 gap-2">
+                        <!-- Seat Map Grid -->
+                        <div id="seatMapContainer" class="grid grid-cols-3 gap-3">
                             <!-- JS will populate this -->
                         </div>
                     </div>
@@ -298,43 +289,29 @@
     </div>
 
     <script>
-        // --- 1. API CONFIGURATION ---
         const WORKER_URL = "https://intercitypricesbookings.cybercatclientcreator.workers.dev/api/benuelinks";
-        // IMPORTANT: You must add this key to your GitHub clients.json for the demo to work
         const API_KEY = "vyra_live_demo_key_12345"; 
 
         let currentTrips = [];
         let activeTrip = null;
         let selectedSeats = [];
 
-        // --- 2. FETCH DATA FROM REAL API ---
         async function loadData() {
             const routeSelect = document.getElementById('routeSelect');
             
             try {
                 const response = await fetch(WORKER_URL, {
-                    headers: {
-                        "x-api-key": API_KEY
-                    }
+                    headers: { "x-api-key": API_KEY }
                 });
                 
-                if (!response.ok) {
-                    if (response.status === 401 || response.status === 403) {
-                        throw new Error("Unauthorized: Missing or invalid API key.");
-                    }
-                    throw new Error(`API Error: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
                 
                 const data = await response.json();
-                
-                if (!data || data.length === 0) {
-                    throw new Error("No upcoming trips found in the database.");
-                }
+                if (!data || data.length === 0) throw new Error("No upcoming trips found.");
 
                 currentTrips = data;
-                
-                // Populate routes based on active trips
                 routeSelect.innerHTML = '<option value="">Select a route...</option>';
+                
                 currentTrips.forEach((trip, index) => {
                     const option = document.createElement('option');
                     option.value = index;
@@ -345,16 +322,13 @@
                 routeSelect.disabled = false;
 
             } catch (error) {
-                console.error("Failed to load API data:", error);
-                
-                // Show error in UI
+                console.error("Failed to load API:", error);
                 routeSelect.innerHTML = `<option value="">${error.message}</option>`;
                 routeSelect.disabled = true;
                 routeSelect.classList.add('text-red-400', 'border-red-900');
             }
         }
 
-        // --- 3. INITIALIZE UI ---
         document.addEventListener('DOMContentLoaded', async () => {
             await loadData();
 
@@ -363,7 +337,6 @@
             const fareDisplay = document.getElementById('fareDisplay');
             const bookBtn = document.getElementById('bookBtn');
 
-            // Handle route selection
             routeSelect.addEventListener('change', (e) => {
                 const index = e.target.value;
                 if (index === "") {
@@ -375,34 +348,35 @@
                 }
 
                 activeTrip = currentTrips[index];
-                
-                // Lock the date panel
                 dateDisplay.value = activeTrip.date;
                 dateDisplay.classList.replace('text-slate-400', 'text-white');
                 
-                // Show fare (using the fare from the API)
-                fareDisplay.textContent = `₦${activeTrip.fare.toLocaleString()}`;
+                // Convert string fare to integer
+                const numericFare = parseInt(activeTrip.fare, 10);
+                fareDisplay.textContent = `₦${numericFare.toLocaleString()}`;
                 
-                // Enable book button
                 bookBtn.disabled = false;
             });
         });
 
-        // --- 4. MODAL LOGIC ---
         function openModal() {
             if (!activeTrip) return;
 
-            // Populate Info View
-            document.getElementById('mCompany').textContent = "Benue Links";
+            const numericFare = parseInt(activeTrip.fare, 10);
+
+            // Populate all the new fields from the API
+            document.getElementById('mCompany').textContent = activeTrip.provider || "Benue Links";
             document.getElementById('mRoute').textContent = activeTrip.route;
             document.getElementById('mDate').textContent = activeTrip.date;
-            document.getElementById('mFare').textContent = `₦${activeTrip.fare.toLocaleString()}`;
+            document.getElementById('mDeparture').textContent = activeTrip.departure || 'N/A';
+            document.getElementById('mBoarding').textContent = activeTrip.boarding || 'Not specified';
+            document.getElementById('mDuration').textContent = activeTrip.duration || 'N/A';
+            document.getElementById('mAvailableSeats').textContent = `${activeTrip.available_seats} / ${activeTrip.capacity}`;
+            document.getElementById('mFare').textContent = `₦${numericFare.toLocaleString()}`;
 
-            // Reset to Info View
             document.getElementById('modalViewInfo').classList.remove('hidden');
             document.getElementById('modalViewSeats').classList.add('hidden');
             
-            // Show Modal
             const modal = document.getElementById('bookingModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
@@ -415,72 +389,56 @@
         }
 
         function showSeatMap() {
-            // Switch views
             document.getElementById('modalViewInfo').classList.add('hidden');
             document.getElementById('modalViewSeats').classList.remove('hidden');
 
-            // Populate Price
-            document.getElementById('sBaseFare').textContent = `₦${activeTrip.fare.toLocaleString()}`;
+            const numericFare = parseInt(activeTrip.fare, 10);
+            document.getElementById('sBaseFare').textContent = `₦${numericFare.toLocaleString()}`;
             updateTotalPrice();
 
-            // Render Seats
             renderSeats();
         }
 
-        // --- 5. SEAT MAP LOGIC ---
         function renderSeats() {
             const container = document.getElementById('seatMapContainer');
             container.innerHTML = '';
             selectedSeats = [];
 
-            // Ensure seats_json is parsed correctly
-            let seats = [];
             try {
-                // The database might return it as a stringified JSON array
-                seats = typeof activeTrip.seats_json === 'string' 
-                    ? JSON.parse(activeTrip.seats_json) 
-                    : activeTrip.seats_json;
+                const seats = JSON.parse(activeTrip.seats_json);
+                
+                seats.forEach(seat => {
+                    const div = document.createElement('div');
+                    const isBooked = seat.status === 'booked';
+                    
+                    div.className = `seat ${isBooked ? 'booked' : 'available'}`;
+                    div.textContent = seat.number;
+
+                    if (!isBooked) {
+                        div.onclick = () => toggleSeat(div, seat.number);
+                    } else {
+                        div.innerHTML = `<span class="opacity-50">${seat.number}*</span>`; 
+                    }
+
+                    container.appendChild(div);
+                });
             } catch (e) {
                 console.error("Failed to parse seat map:", e);
-                container.innerHTML = '<p class="text-red-400 text-xs col-span-4 text-center">Error loading seat map</p>';
-                return;
+                container.innerHTML = '<p class="text-red-400 text-xs col-span-3 text-center">Error loading seat map</p>';
             }
-
-            if (!Array.isArray(seats) || seats.length === 0) {
-                container.innerHTML = '<p class="text-slate-500 text-xs col-span-4 text-center">No seats configured</p>';
-                return;
-            }
-
-            seats.forEach(seat => {
-                const div = document.createElement('div');
-                div.className = `seat ${seat.booked ? 'booked' : 'available'}`;
-                div.textContent = seat.id;
-
-                if (!seat.booked) {
-                    div.onclick = () => toggleSeat(div, seat.id);
-                } else {
-                    // Booked seat marker
-                    div.innerHTML = `<span class="opacity-50">*</span>`; 
-                }
-
-                container.appendChild(div);
-            });
         }
 
-        function toggleSeat(element, seatId) {
-            if (selectedSeats.includes(seatId)) {
-                // Deselect
-                selectedSeats = selectedSeats.filter(id => id !== seatId);
+        function toggleSeat(element, seatNumber) {
+            if (selectedSeats.includes(seatNumber)) {
+                selectedSeats = selectedSeats.filter(n => n !== seatNumber);
                 element.classList.remove('selected');
                 element.classList.add('available');
             } else {
-                // Select
-                selectedSeats.push(seatId);
+                selectedSeats.push(seatNumber);
                 element.classList.remove('available');
                 element.classList.add('selected');
             }
 
-            // Update Button & Price
             updateTotalPrice();
             const btn = document.getElementById('seatContinueBtn');
             
@@ -498,11 +456,9 @@
         }
 
         function updateTotalPrice() {
-            const base = activeTrip.fare;
+            const base = parseInt(activeTrip.fare, 10);
             const fee = 1500;
             const total = (base * Math.max(1, selectedSeats.length)) + fee;
-            
-            // If no seats selected, just show base + fee for 1 person
             const displayTotal = selectedSeats.length === 0 ? (base + fee) : total;
 
             document.getElementById('sTotalFare').textContent = `₦${displayTotal.toLocaleString()}`;
