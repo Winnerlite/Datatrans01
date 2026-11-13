@@ -247,7 +247,7 @@
                 <!-- View 2: Seat Selection (Hidden initially) -->
                 <div id="modalViewSeats" class="hidden">
                     <div class="flex items-center justify-between mb-6">
-                        <p class="text-sm text-slate-400">Select 1 seat to continue</p>
+                        <p class="text-sm text-slate-400">Tap a seat to select</p>
                         <div class="flex gap-4 text-xs">
                             <span class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-slate-950 border border-slate-700"></div> Available</span>
                             <span class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-vyra-500"></div> Selected</span>
@@ -263,7 +263,7 @@
                         </div>
                     </div>
 
-                    <!-- Price Summary (Service Fee Removed) -->
+                    <!-- Price Summary -->
                     <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 mb-6">
                         <div class="flex justify-between text-lg font-bold text-white">
                             <span>Total</span>
@@ -288,7 +288,7 @@
 
         let currentTrips = [];
         let activeTrip = null;
-        let selectedSeat = null; // Changed from array to single seat
+        let selectedSeats = []; // Changed to array to allow multiple selections
 
         async function loadData() {
             const routeSelect = document.getElementById('routeSelect');
@@ -413,7 +413,7 @@
         function renderSeats() {
             const container = document.getElementById('seatMapContainer');
             container.innerHTML = '';
-            selectedSeat = null;
+            selectedSeats = []; // Reset array
 
             try {
                 const seats = JSON.parse(activeTrip.seats_json);
@@ -440,37 +440,52 @@
         }
 
         function toggleSeat(element, seatNumber) {
-            // Deselect all other seats first
-            document.querySelectorAll('.seat.selected').forEach(el => {
-                el.classList.remove('selected');
-                el.classList.add('available');
-            });
-
-            // Select the new seat
-            selectedSeat = seatNumber;
-            element.classList.remove('available');
-            element.classList.add('selected');
+            if (selectedSeats.includes(seatNumber)) {
+                // Deselect
+                selectedSeats = selectedSeats.filter(num => num !== seatNumber);
+                element.classList.remove('selected');
+                element.classList.add('available');
+            } else {
+                // Select
+                selectedSeats.push(seatNumber);
+                element.classList.remove('available');
+                element.classList.add('selected');
+            }
 
             updateTotalPrice();
             const btn = document.getElementById('seatContinueBtn');
             
-            btn.disabled = false;
-            btn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
-            btn.classList.add('bg-vyra-600', 'hover:bg-vyra-500', 'text-white');
-            btn.textContent = `Continue with Seat ${selectedSeat}`;
+            if (selectedSeats.length > 0) {
+                btn.disabled = false;
+                btn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
+                btn.classList.add('bg-vyra-600', 'hover:bg-vyra-500', 'text-white');
+                btn.textContent = `Continue with ${selectedSeats.length} seat(s)`;
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
+                btn.classList.remove('bg-vyra-600', 'hover:bg-vyra-500', 'text-white');
+                btn.textContent = `Select a seat to continue`;
+            }
         }
 
         function updateTotalPrice() {
             const base = parseInt(activeTrip.fare, 10);
-            document.getElementById('sTotalFare').textContent = `₦${base.toLocaleString()}`;
+            const total = base * Math.max(1, selectedSeats.length);
+            const displayTotal = selectedSeats.length === 0 ? base : total;
+
+            document.getElementById('sTotalFare').textContent = `₦${displayTotal.toLocaleString()}`;
         }
 
-        // NEW FUNCTION: Redirect to Cloudflare Form
         function goToPayment() {
-            if (!activeTrip || !selectedSeat) return;
+            if (!activeTrip || selectedSeats.length === 0) return;
             
-            // Redirect to the Cloudflare Worker's get-form endpoint
-            const formUrl = `${WORKER_BASE}/api/get-form?tripId=${activeTrip.trip_id}&seat=${selectedSeat}`;
+            const tripId = activeTrip.trip_id || activeTrip.id;
+            // Join the array of seats into a comma-separated string (e.g. 1,2,3)
+            const seatsStr = selectedSeats.join(',');
+            
+            // Build the URL matching the new Cloudflare Worker
+            const formUrl = `${WORKER_BASE}/api/get-form?tripId=${tripId}&seats=${seatsStr}`;
+            
             window.location.href = formUrl;
         }
     </script>
