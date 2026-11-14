@@ -100,18 +100,16 @@
                 <div class="marquee-container py-4">
                     <div class="marquee-content flex gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition duration-500">
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Benue Links</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Libmot</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GIGM</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GUO Transport</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">ABC Transport</div>
-                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Peace Mass</div>
-                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Chisco</div>
                         <!-- Duplicate Set -->
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Benue Links</div>
+                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Libmot</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GIGM</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">GUO Transport</div>
                         <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">ABC Transport</div>
-                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Peace Mass</div>
-                        <div class="h-10 w-32 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-slate-500">Chisco</div>
                     </div>
                 </div>
             </div>
@@ -126,11 +124,8 @@
                     <!-- Company Select -->
                     <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Select Company</label>
-                        <select id="companySelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500 transition-colors appearance-none">
-                            <option value="benuelinks">Benue Links</option>
-                            <option value="gigm" disabled>GIGM (Coming Soon)</option>
-                            <option value="guo" disabled>GUO Transport (Coming Soon)</option>
-                            <option value="abc" disabled>ABC Transport (Coming Soon)</option>
+                        <select id="companySelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500 transition-colors appearance-none" onchange="onCompanyChange()">
+                            <option value="">Checking active transports...</option>
                         </select>
                     </div>
 
@@ -138,7 +133,7 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Select Route</label>
                         <select id="routeSelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500 transition-colors appearance-none" disabled>
-                            <option value="">Loading trips from API...</option>
+                            <option value="">Select a company first...</option>
                         </select>
                     </div>
                 </div>
@@ -191,11 +186,11 @@
                         <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-800">
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Operator</p>
-                                <p class="text-white font-bold capitalize" id="mCompany">Benue Links</p>
+                                <p class="text-white font-bold capitalize" id="mCompany">Loading...</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Route</p>
-                                <p class="text-vyra-400 font-bold text-right" id="mRoute">Makurdi - Abuja</p>
+                                <p class="text-vyra-400 font-bold text-right" id="mRoute">Loading...</p>
                             </div>
                         </div>
 
@@ -203,11 +198,11 @@
                         <div class="grid grid-cols-2 gap-2 mb-4 pb-4 border-b border-slate-800">
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Date</p>
-                                <p class="text-white text-sm font-medium" id="mDate">Sat Nov 14 2026</p>
+                                <p class="text-white text-sm font-medium" id="mDate">Loading...</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Departure</p>
-                                <p class="text-white text-sm font-medium" id="mDeparture">06:30AM</p>
+                                <p class="text-white text-sm font-medium" id="mDeparture">Loading...</p>
                             </div>
                         </div>
 
@@ -221,15 +216,15 @@
                         <div class="grid grid-cols-4 gap-2">
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Vehicle</p>
-                                <p class="text-white text-[11px] font-medium leading-tight capitalize" id="mCoach">Siena (AC)</p>
+                                <p class="text-white text-[11px] font-medium leading-tight capitalize" id="mCoach">...</p>
                             </div>
                             <div class="text-center">
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Duration</p>
-                                <p class="text-white text-[11px] font-medium" id="mDuration">4Hrs</p>
+                                <p class="text-white text-[11px] font-medium" id="mDuration">...</p>
                             </div>
                             <div class="text-center">
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Seats</p>
-                                <p class="text-vyra-400 text-[11px] font-bold" id="mAvailableSeats">5 / 7</p>
+                                <p class="text-vyra-400 text-[11px] font-bold" id="mAvailableSeats">...</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Fare</p>
@@ -283,29 +278,95 @@
 
     <script>
         const WORKER_BASE = "https://intercitypricesbookings.cybercatclientcreator.workers.dev";
-        const WORKER_URL = `${WORKER_BASE}/api/benuelinks`;
         const API_KEY = "vyra_live_demo_key_12345"; 
 
         let currentTrips = [];
         let activeTrip = null;
-        let selectedSeats = []; // Changed to array to allow multiple selections
+        let selectedSeats = [];
+        let activeCompany = null;
 
-        async function loadData() {
+        // List of companies to check. 
+        const KNOWN_COMPANIES = [
+            { id: "libmot", name: "Libmot" },
+            { id: "benuelinks", name: "Benue Links" },
+            { id: "gigm", name: "GIGM (Coming Soon)" },
+            { id: "guo", name: "GUO Transport (Coming Soon)" },
+            { id: "abc", name: "ABC Transport (Coming Soon)" }
+        ];
+
+        async function loadCompanies() {
+            const companySelect = document.getElementById('companySelect');
+            companySelect.innerHTML = '<option value="">Checking active transports...</option>';
+            
+            let activeCompaniesFound = [];
+
+            // Loop through known companies and ask the API if they have trips
+            for (const company of KNOWN_COMPANIES) {
+                try {
+                    const response = await fetch(`${WORKER_BASE}/api/${company.id}`, {
+                        headers: { "x-api-key": API_KEY }
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data && data.length > 0) {
+                            activeCompaniesFound.push({ ...company, isActive: true });
+                        } else {
+                            activeCompaniesFound.push({ ...company, isActive: false });
+                        }
+                    } else {
+                        activeCompaniesFound.push({ ...company, isActive: false });
+                    }
+                } catch (error) {
+                    activeCompaniesFound.push({ ...company, isActive: false });
+                }
+            }
+
+            companySelect.innerHTML = '<option value="">Select Company...</option>';
+            
+            activeCompaniesFound.forEach(company => {
+                const option = document.createElement('option');
+                option.value = company.id;
+                
+                if (company.isActive) {
+                    option.textContent = company.name;
+                } else {
+                    option.textContent = company.name.includes('Coming Soon') ? company.name : `${company.name} (Coming Soon)`;
+                    option.disabled = true;
+                    option.className = "text-slate-600";
+                }
+                
+                companySelect.appendChild(option);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCompanies);
+
+        async function onCompanyChange() {
+            const companySelect = document.getElementById('companySelect');
             const routeSelect = document.getElementById('routeSelect');
             
+            activeCompany = companySelect.value;
+
+            if (!activeCompany) {
+                routeSelect.innerHTML = '<option value="">Select a company first...</option>';
+                routeSelect.disabled = true;
+                document.getElementById('bookBtn').disabled = true;
+                return;
+            }
+
+            routeSelect.innerHTML = '<option value="">Loading routes...</option>';
+            routeSelect.disabled = true;
+
             try {
-                const response = await fetch(WORKER_URL, {
+                const response = await fetch(`${WORKER_BASE}/api/${activeCompany}`, {
                     headers: { "x-api-key": API_KEY }
                 });
                 
-                if (!response.ok) throw new Error(`API Error: ${response.status}`);
-                
                 const data = await response.json();
-                if (!data || data.length === 0) throw new Error("No upcoming trips found.");
-
                 currentTrips = data;
-                routeSelect.innerHTML = '<option value="">Select a trip...</option>';
                 
+                routeSelect.innerHTML = '<option value="">Select a trip...</option>';
                 const seenTrips = new Set();
 
                 currentTrips.forEach((trip, index) => {
@@ -320,54 +381,46 @@
                 });
 
                 routeSelect.disabled = false;
-
+                
             } catch (error) {
-                console.error("Failed to load API:", error);
-                routeSelect.innerHTML = `<option value="">${error.message}</option>`;
-                routeSelect.disabled = true;
-                routeSelect.classList.add('text-red-400', 'border-red-900');
+                routeSelect.innerHTML = `<option value="">Error loading routes</option>`;
             }
         }
 
-        document.addEventListener('DOMContentLoaded', async () => {
-            await loadData();
-
-            const routeSelect = document.getElementById('routeSelect');
+        document.getElementById('routeSelect').addEventListener('change', (e) => {
+            const index = e.target.value;
             const dateDisplay = document.getElementById('dateDisplay');
             const fareDisplay = document.getElementById('fareDisplay');
             const bookBtn = document.getElementById('bookBtn');
 
-            routeSelect.addEventListener('change', (e) => {
-                const index = e.target.value;
-                if (index === "") {
-                    dateDisplay.value = "Select a route first";
-                    dateDisplay.classList.replace('text-white', 'text-slate-400');
-                    fareDisplay.textContent = "₦ --";
-                    bookBtn.disabled = true;
-                    bookBtn.textContent = "Book Now";
-                    bookBtn.classList.remove('bg-red-900', 'text-red-400');
-                    return;
-                }
+            if (index === "") {
+                dateDisplay.value = "Select a route first";
+                dateDisplay.classList.replace('text-white', 'text-slate-400');
+                fareDisplay.textContent = "₦ --";
+                bookBtn.disabled = true;
+                bookBtn.textContent = "Book Now";
+                bookBtn.classList.remove('bg-red-900', 'text-red-400');
+                return;
+            }
 
-                activeTrip = currentTrips[index];
-                dateDisplay.value = activeTrip.date;
-                dateDisplay.classList.replace('text-slate-400', 'text-white');
-                
-                const numericFare = parseInt(activeTrip.fare, 10);
-                fareDisplay.textContent = `₦${numericFare.toLocaleString()}`;
-                
-                if (activeTrip.available_seats === 0) {
-                    bookBtn.disabled = true;
-                    bookBtn.textContent = "SOLD OUT";
-                    bookBtn.classList.remove('bg-vyra-500', 'hover:bg-vyra-400');
-                    bookBtn.classList.add('bg-red-900', 'text-red-400');
-                } else {
-                    bookBtn.disabled = false;
-                    bookBtn.textContent = "Book Now";
-                    bookBtn.classList.add('bg-vyra-500', 'hover:bg-vyra-400');
-                    bookBtn.classList.remove('bg-red-900', 'text-red-400');
-                }
-            });
+            activeTrip = currentTrips[index];
+            dateDisplay.value = activeTrip.date;
+            dateDisplay.classList.replace('text-slate-400', 'text-white');
+            
+            const numericFare = parseInt(activeTrip.fare, 10);
+            fareDisplay.textContent = `₦${numericFare.toLocaleString()}`;
+            
+            if (activeTrip.available_seats === 0) {
+                bookBtn.disabled = true;
+                bookBtn.textContent = "SOLD OUT";
+                bookBtn.classList.remove('bg-vyra-500', 'hover:bg-vyra-400');
+                bookBtn.classList.add('bg-red-900', 'text-red-400');
+            } else {
+                bookBtn.disabled = false;
+                bookBtn.textContent = "Book Now";
+                bookBtn.classList.add('bg-vyra-500', 'hover:bg-vyra-400');
+                bookBtn.classList.remove('bg-red-900', 'text-red-400');
+            }
         });
 
         function openModal() {
@@ -375,7 +428,7 @@
 
             const numericFare = parseInt(activeTrip.fare, 10);
 
-            document.getElementById('mCompany').textContent = activeTrip.provider || "Benue Links";
+            document.getElementById('mCompany').textContent = activeTrip.provider || activeCompany || "Unknown";
             document.getElementById('mRoute').textContent = activeTrip.route;
             document.getElementById('mDate').textContent = activeTrip.date;
             document.getElementById('mDeparture').textContent = activeTrip.departure || 'N/A';
@@ -413,7 +466,7 @@
         function renderSeats() {
             const container = document.getElementById('seatMapContainer');
             container.innerHTML = '';
-            selectedSeats = []; // Reset array
+            selectedSeats = [];
 
             try {
                 const seats = JSON.parse(activeTrip.seats_json);
@@ -441,12 +494,10 @@
 
         function toggleSeat(element, seatNumber) {
             if (selectedSeats.includes(seatNumber)) {
-                // Deselect
                 selectedSeats = selectedSeats.filter(num => num !== seatNumber);
                 element.classList.remove('selected');
                 element.classList.add('available');
             } else {
-                // Select
                 selectedSeats.push(seatNumber);
                 element.classList.remove('available');
                 element.classList.add('selected');
@@ -480,11 +531,17 @@
             if (!activeTrip || selectedSeats.length === 0) return;
             
             const tripId = activeTrip.trip_id || activeTrip.id;
-            // Join the array of seats into a comma-separated string (e.g. 1,2,3)
             const seatsStr = selectedSeats.join(',');
             
-            // Build the URL matching the new Cloudflare Worker
-            const formUrl = `${WORKER_BASE}/api/get-form?tripId=${tripId}&seats=${seatsStr}`;
+            let formUrl = '';
+            
+            // Route based on the active company
+            if (activeCompany === 'libmot') {
+                formUrl = `${WORKER_BASE}/api/libmot/form?tripId=${tripId}&seats=${seatsStr}`;
+            } else {
+                // Default to Benue Links route
+                formUrl = `${WORKER_BASE}/api/get-form?tripId=${tripId}&seats=${seatsStr}`;
+            }
             
             window.location.href = formUrl;
         }
