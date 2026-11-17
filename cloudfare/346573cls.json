@@ -9,7 +9,7 @@
   "clientKeys": {
     "vyra_live_demo_key_12345": { 
       "name": "Intercityprices Demo", 
-      "rateLimit": 300 
+      "rateLimit": 200
     },
     "vyra_live_acme_8f3k2n9p4q": { 
       "name": "Acme Travels", 
@@ -17,7 +17,7 @@
     },
     "vyra_live_naija_2h7m5v1x8c": { 
       "name": "Intercityprices", 
-      "rateLimit": 120 
+      "rateLimit": 600 
     }
   }
 }
