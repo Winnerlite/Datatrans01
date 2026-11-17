@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>Nigeria Intercity Booking API | Bus Routes, Fares & Seat Maps | Vyra Technologies</title>
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-192.png">
+
+<meta name="description" content="One API for Nigerian intercity bus booking. Get live routes, fares and seat maps from Libmot, Benue Links and more, then send customers to secure checkout.">
+
+<!-- Essential Meta Tags for SEO -->
+<meta name="keywords" content="intercity booking API, Nigeria transport API, bus booking API, bus seat map API, Libmot, Benue Links, Nigerian bus routes, travel API Nigeria">
+<meta name="author" content="Vyra Technologies">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Nigeria Intercity Booking API | Vyra Technologies">
+<meta property="og:description" content="Routes, fares, live seat maps and secure checkout for Nigerian intercity buses through a single API.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://YOUR-API-PAGE-URL">
+<meta property="og:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+<meta property="og:site_name" content="Intercity Search">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nigeria Intercity Booking API | Vyra Technologies">
+<meta name="twitter:description" content="Routes, fares, live seat maps and secure checkout for Nigerian intercity buses through a single API.">
+<meta name="twitter:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+<meta name="twitter:site" content="@vyratech">
+
+<!-- Additional -->
+<meta name="theme-color" content="#1acd81">
+<meta name="msapplication-TileColor" content="#1acd81">
+<link rel="canonical" href="https://YOUR-API-PAGE-URL">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Intercity Booking API",
+  "description": "API for Nigerian intercity bus routes, fares, seat availability and booking links",
+  "url": "https://YOUR-API-PAGE-URL",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web Browser",
+  "author": {
+    "@type": "Organization",
+    "name": "Vyra Technologies"
+  },
+  "offers": {
+    "@type": "Offer",
+    "description": "API access on request"
+  }
+}
+</script>
+<meta name="description" content="One integration for intercity bus booking in Nigeria. Routes, fares, trip dates and live seat maps through a single API from Vyra Technologies.">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+    colors: {
+      vyra: { 50:'#effef7',100:'#dafeef',200:'#b8fadd',300:'#81f4c3',400:'#43e5a0',500:'#1acd81',600:'#0fa968',700:'#108756',800:'#126b47',900:'#11583d',950:'#063122' },
+      slate: { 850:'#151f2e', 900:'#0f172a', 950:'#020617' }
+    }
+  } }
+}
+</script>
+<style>
+  html, body { overflow-x: hidden; background:#020617; color:#cbd5e1; font-family:'Inter',sans-serif; }
+  :focus-visible { outline:2px solid #43e5a0; outline-offset:2px; }
+  .glass-nav { background:rgba(2,6,23,.85); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.06); }
+  .hero-glow { background: radial-gradient(60% 50% at 80% 0%, rgba(26,205,129,.12), transparent 70%); }
+
+  /* Seats */
+  .seat { width:44px; height:44px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; cursor:pointer; transition:all .15s; border:1px solid #334155; background:#0f172a; color:#e2e8f0; margin:0 auto; user-select:none; }
+  .seat:hover { border-color:#43e5a0; }
+  .seat.selected { background:#1acd81; border-color:#1acd81; color:#020617; box-shadow:0 0 14px rgba(26,205,129,.4); }
+  .seat.booked { background:#1e293b; border-color:#1e293b; color:#64748b; cursor:not-allowed; }
+  .steering-wheel { width:30px; height:30px; border:3px solid #475569; border-radius:50%; position:relative; margin:0 10px 20px auto; }
+  .steering-wheel::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:10px; height:10px; background:#475569; border-radius:50%; }
+
+  /* Code */
+  pre { tab-size:2; }
+  pre code { font-family:'JetBrains Mono',monospace; }
+  .tab-btn { padding:.5rem .9rem; font-size:.8125rem; font-weight:600; color:#94a3b8; border-bottom:2px solid transparent; white-space:nowrap; }
+  .tab-btn:hover { color:#fff; }
+  .tab-btn[aria-selected="true"] { color:#43e5a0; border-color:#43e5a0; }
+
+  /* Skeleton */
+  .skeleton { background:linear-gradient(90deg,#0f172a 25%,#1e293b 50%,#0f172a 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
+  @keyframes shimmer { to { background-position:-200% 0; } }
+
+  select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2394a3b8' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; padding-right:2.5rem; }
+  .doc-table th { text-align:left; font-weight:600; color:#e2e8f0; padding:.75rem 1rem; background:#0f172a; border-bottom:1px solid #1e293b; }
+  .doc-table td { padding:.75rem 1rem; border-bottom:1px solid #1e293b; vertical-align:top; }
+  .doc-table code { font-family:'JetBrains Mono',monospace; font-size:.8125rem; color:#43e5a0; }
+  @media (prefers-reduced-motion: reduce) { .skeleton { animation:none; } html { scroll-behavior:auto !important; } }
+</style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+<!-- NAV -->
+<nav class="glass-nav fixed w-full z-40 top-0" aria-label="Main">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5">
+      <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" alt="" class="h-7 w-auto">
+      <span class="font-bold text-white">Vyra Technologies</span>
+    </a>
+    <div class="flex items-center gap-1 sm:gap-6">
+      <a href="#how" class="hidden md:inline text-sm text-slate-300 hover:text-white">How it works</a>
+      <a href="#demo" class="hidden md:inline text-sm text-slate-300 hover:text-white">Demo</a>
+      <a href="#docs" class="hidden md:inline text-sm text-slate-300 hover:text-white">Docs</a>
+      <a href="#access" class="text-sm px-4 py-2 bg-vyra-500 hover:bg-vyra-400 text-slate-950 font-semibold rounded-lg transition">Get API access</a>
+    </div>
+  </div>
+</nav>
+
+<main class="flex-grow">
+
+<!-- HERO -->
+<section class="hero-glow pt-32 pb-20 px-4">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-sm text-vyra-400 font-semibold mb-4">Intercity Booking API</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-white leading-[1.1] tracking-tight">
+        Intercity bus booking for Nigeria,
+        <span class="text-slate-400">through a single API.</span>
+      </h1>
+      <p class="mt-6 text-lg text-slate-300 max-w-xl leading-relaxed">
+        Search routes, compare fares, show live seat maps and send customers to secure checkout.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#demo" class="px-7 py-3.5 bg-vyra-500 hover:bg-vyra-400 text-slate-950 font-bold rounded-lg text-center transition">Try the sandbox</a>
+        <a href="#docs" class="px-7 py-3.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold rounded-lg text-center transition">Read the docs</a>
+      </div>
+    </div>
+
+    <!-- Hero code card -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+      <div class="px-4 py-2.5 border-b border-slate-800 flex items-center justify-between">
+        <span class="text-sm font-mono text-slate-300"><span class="text-vyra-400">GET</span> /api/libmot</span>
+        <span class="text-xs text-slate-400">200 OK</span>
+      </div>
+<pre class="p-4 text-[13px] leading-relaxed overflow-x-auto text-slate-300"><code>{
+  "trip_id": "6af9757e1b9690a53305c458",
+  "route": "Makurdi - Lagos (Iddo)",
+  "date": "Tue Nov 17 2026",
+  "departure": "06:30AM",
+  "fare": 28500,
+  "available_seats": 10,
+  "capacity": 14,
+  "provider": "libmot"
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="px-4 pb-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-center text-sm font-semibold text-slate-400 mb-6">Integrating with major services</h2>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-center">
+        <p class="font-semibold text-white">Libmot</p>
+        <p class="text-xs text-vyra-400 mt-1 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-vyra-400"></span>Live</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-center">
+        <p class="font-semibold text-white">Benue Links</p>
+        <p class="text-xs text-vyra-400 mt-1 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-vyra-400"></span>Live</p>
+      </div>
+      <div class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-4 text-center">
+        <p class="font-semibold text-slate-300">GIGM</p>
+        <p class="text-xs text-slate-400 mt-1">In progress</p>
+      </div>
+      <div class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-4 text-center">
+        <p class="font-semibold text-slate-300">GUO Transport</p>
+        <p class="text-xs text-slate-400 mt-1">In progress</p>
+      </div>
+      <div class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-4 text-center col-span-2 md:col-span-1">
+        <p class="font-semibold text-slate-300">ABC Transport</p>
+        <p class="text-xs text-slate-400 mt-1">In progress</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="px-4 pb-20 scroll-mt-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8">From search to payment in three calls</h2>
+    <ol class="grid md:grid-cols-3 gap-4">
+      <li class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <p class="text-vyra-400 font-mono text-sm mb-2">1</p>
+        <h3 class="text-white font-semibold mb-2">Fetch trips</h3>
+        <p class="text-slate-300 text-[15px] leading-relaxed">Call one endpoint per operator to get routes, dates, fares and seat availability.</p>
+      </li>
+      <li class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <p class="text-vyra-400 font-mono text-sm mb-2">2</p>
+        <h3 class="text-white font-semibold mb-2">Pick seats</h3>
+        <p class="text-slate-300 text-[15px] leading-relaxed">Render the returned seat list in your own interface and let customers choose one or more seats.</p>
+      </li>
+      <li class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <p class="text-vyra-400 font-mono text-sm mb-2">3</p>
+        <h3 class="text-white font-semibold mb-2">Redirect to checkout</h3>
+        <p class="text-slate-300 text-[15px] leading-relaxed">Send the trip and seats to us, get a secure booking link back, and redirect your customer to it.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo" class="px-4 pb-20 scroll-mt-20">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-vyra-500"></div>
+
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+        <h2 class="text-xl font-bold text-white">Interactive booking flow</h2>
+        <span class="text-xs font-semibold text-amber-300 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1">Sandbox</span>
+      </div>
+      <p class="text-slate-300 text-[15px] mb-6">This demo calls the live API with a rate-limited sandbox key. Bookings made here are for testing.</p>
+
+      <div id="demoError" role="alert" class="hidden mb-4 bg-red-950/40 border border-red-900 text-red-200 text-sm rounded-lg px-4 py-3"></div>
+
+      <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mb-6">
+        <div>
+          <label for="companySelect" class="block text-sm font-medium text-slate-300 mb-2">Operator</label>
+          <select id="companySelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500 appearance-none" disabled>
+            <option value="">Checking operators…</option>
+          </select>
+          <div id="companySkeleton" class="skeleton h-3 w-1/2 rounded mt-3"></div>
+        </div>
+        <div>
+          <label for="routeSelect" class="block text-sm font-medium text-slate-300 mb-2">Trip</label>
+          <select id="routeSelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500 appearance-none" disabled>
+            <option value="">Choose an operator first</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mb-6">
+        <div>
+          <label for="dateDisplay" class="block text-sm font-medium text-slate-300 mb-2">Departure date</label>
+          <input type="text" id="dateDisplay" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-slate-300 cursor-not-allowed" value="Choose a trip first" readonly>
+        </div>
+        <div>
+          <p class="block text-sm font-medium text-slate-300 mb-2">Base fare</p>
+          <div class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-vyra-400 font-mono font-bold" id="fareDisplay">₦ --</div>
+        </div>
+      </div>
+
+      <button id="bookBtn" onclick="openModal()" disabled class="w-full bg-vyra-500 hover:bg-vyra-400 disabled:bg-slate-700 disabled:text-slate-400 disabled:cursor-not-allowed text-slate-950 font-bold py-4 rounded-xl transition text-lg">Book now</button>
+
+      <!-- Live status -->
+      <div id="statusRow" class="mt-6 pt-5 border-t border-slate-800 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300" aria-live="polite">
+        <span class="text-slate-400">API status:</span>
+        <span class="skeleton h-4 w-40 rounded"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section id="docs" class="px-4 pb-20 scroll-mt-20">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-10">Documentation</h2>
+
+    <div class="grid lg:grid-cols-[200px_1fr] gap-10">
+      <!-- Sidebar -->
+      <aside class="hidden lg:block">
+        <nav class="sticky top-24 text-sm space-y-1" aria-label="Documentation">
+          <a href="#doc-auth" class="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900">Authentication</a>
+          <a href="#doc-endpoints" class="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900">Endpoints</a>
+          <a href="#doc-fetch" class="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900">Fetch trips</a>
+          <a href="#doc-link" class="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900">Create booking link</a>
+          <a href="#doc-response" class="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900">Response fields</a>
+          <a href="#doc-errors" class="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900">Errors and limits</a>
+        </nav>
+      </aside>
+
+      <div class="min-w-0 space-y-14">
+
+        <!-- Auth -->
+        <div id="doc-auth" class="scroll-mt-24">
+          <h3 class="text-xl font-bold text-white mb-3">Authentication</h3>
+          <p class="text-slate-300 leading-relaxed mb-4">Send your key in the <code class="text-vyra-400 font-mono text-sm">x-api-key</code> header on every request. Each key is tied to the website domain you whitelist when it is issued.</p>
+          <div class="bg-blue-950/30 border border-blue-800/50 rounded-xl p-4">
+            <p class="text-sm text-blue-100 leading-relaxed"><strong class="text-blue-200">Server-side requests need an Origin header.</strong> Browsers add <code class="text-white">Origin</code> automatically and do not let you set it yourself. Scripts running on a server (cURL, Node.js, PHP, Python) must send it, with the exact domain you whitelisted.</p>
+          </div>
+        </div>
+
+        <!-- Endpoints -->
+        <div id="doc-endpoints" class="scroll-mt-24">
+          <h3 class="text-xl font-bold text-white mb-3">Endpoints</h3>
+          <p class="text-slate-300 leading-relaxed mb-4">Every operator follows the same pattern: <code class="text-vyra-400 font-mono text-sm">/api/{provider}</code>. Base URL: <code class="text-vyra-400 font-mono text-sm break-all">https://intercitypricesbookings.cybercatclientcreator.workers.dev</code></p>
+          <div class="overflow-x-auto bg-slate-900 border border-slate-800 rounded-xl">
+            <table class="doc-table w-full text-sm text-slate-300 min-w-[480px]">
+              <thead><tr><th>Operator</th><th>Endpoint</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td class="text-white font-medium">Libmot</td><td><code>/api/libmot</code></td><td><span class="text-vyra-400">Live</span></td></tr>
+                <tr><td class="text-white font-medium">Benue Links</td><td><code>/api/benuelinks</code></td><td><span class="text-vyra-400">Live</span></td></tr>
+                <tr><td class="text-white font-medium">GIGM</td><td><code>/api/gigm</code></td><td class="text-slate-400">In progress</td></tr>
+                <tr><td class="text-white font-medium">GUO Transport</td><td><code>/api/guo</code></td><td class="text-slate-400">In progress</td></tr>
+                <tr><td class="text-white font-medium">ABC Transport</td><td><code>/api/abc</code></td><td class="text-slate-400">In progress</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Fetch -->
+        <div id="doc-fetch" class="scroll-mt-24">
+          <h3 class="text-xl font-bold text-white mb-3">Fetch trips</h3>
+          <p class="text-slate-300 leading-relaxed mb-4"><code class="text-vyra-400 font-mono text-sm">GET /api/{provider}</code> returns an array of upcoming trips with fares and seat availability.</p>
+          <div id="tabs-trips"></div>
+        </div>
+
+        <!-- Link -->
+        <div id="doc-link" class="scroll-mt-24">
+          <h3 class="text-xl font-bold text-white mb-3">Create a booking link</h3>
+          <p class="text-slate-300 leading-relaxed mb-4"><code class="text-vyra-400 font-mono text-sm">POST /api/{provider}/generate-link</code> takes a trip ID and an array of seat numbers. On success it returns <code class="text-vyra-400 font-mono text-sm">formUrl</code>. Redirect your customer there to enter passenger details and pay.</p>
+          <div id="tabs-link"></div>
+        </div>
+
+        <!-- Response -->
+        <div id="doc-response" class="scroll-mt-24">
+          <h3 class="text-xl font-bold text-white mb-3">Response fields</h3>
+          <div class="overflow-x-auto bg-slate-900 border border-slate-800 rounded-xl mb-6">
+            <table class="doc-table w-full text-sm text-slate-300 min-w-[560px]">
+              <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>trip_id</code></td><td>string</td><td>Trip identifier. Pass it to <code>generate-link</code>.</td></tr>
+                <tr><td><code>provider</code></td><td>string</td><td>Operator that runs the trip.</td></tr>
+                <tr><td><code>route</code></td><td>string</td><td>Origin and destination.</td></tr>
+                <tr><td><code>date</code></td><td>string</td><td>Departure date.</td></tr>
+                <tr><td><code>departure</code></td><td>string</td><td>Departure time.</td></tr>
+                <tr><td><code>duration</code></td><td>string</td><td>Estimated travel time.</td></tr>
+                <tr><td><code>boarding</code></td><td>string</td><td>Boarding point address.</td></tr>
+                <tr><td><code>fare</code></td><td>number</td><td>Fare per seat in naira.</td></tr>
+                <tr><td><code>capacity</code></td><td>number</td><td>Total seats on the vehicle.</td></tr>
+                <tr><td><code>available_seats</code></td><td>number</td><td>Seats still open for booking.</td></tr>
+                <tr><td><code>seats</code></td><td>array</td><td>Seat list. Each item has <code>number</code> and <code>status</code> (<code>free</code> or <code>booked</code>).</td></tr>
+                <tr><td><code>coach</code></td><td>string</td><td>Vehicle type.</td></tr>
+                <tr><td><code>type</code></td><td>string</td><td>Comfort class, for example AC.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-slate-300 mb-3">Example response</p>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+            <div class="px-4 py-2 border-b border-slate-800 flex items-center justify-between">
+              <span class="text-sm text-slate-300">JSON</span>
+              <button onclick="copyText(this,'code-json')" class="text-sm text-slate-300 hover:text-white">Copy</button>
+            </div>
+<pre class="p-4 text-[13px] overflow-x-auto text-slate-300"><code id="code-json">[
+  {
+    "trip_id": "6af9757e1b9690a53305c458",
+    "provider": "libmot",
+    "route": "Makurdi - Lagos (Iddo)",
+    "date": "Tue Nov 17 2026",
+    "departure": "06:30AM",
+    "duration": "14Hrs",
+    "boarding": "Iddo Motor Park, Opp. G Kappa, Lagos Mainland",
+    "fare": 28500,
+    "capacity": 14,
+    "available_seats": 10,
+    "seats": [
+      { "number": 1, "status": "booked" },
+      { "number": 2, "status": "free" },
+      { "number": 3, "status": "booked" },
+      { "number": 4, "status": "free" }
+    ],
+    "coach": "siena",
+    "type": "AC"
+  }
+]</code></pre>
+          </div>
+        </div>
+
+        <!-- Errors -->
+        <div id="doc-errors" class="scroll-mt-24">
+          <h3 class="text-xl font-bold text-white mb-3">Errors and limits</h3>
+          <div class="overflow-x-auto bg-slate-900 border border-slate-800 rounded-xl mb-4">
+            <table class="doc-table w-full text-sm text-slate-300 min-w-[480px]">
+              <thead><tr><th>Status</th><th>Meaning</th><th>What to do</th></tr></thead>
+              <tbody>
+                <tr><td><code>401</code></td><td>Missing or invalid API key.</td><td>Check the <code>x-api-key</code> header.</td></tr>
+                <tr><td><code>403</code></td><td>Origin is not whitelisted.</td><td>Send the exact whitelisted domain in <code>Origin</code>.</td></tr>
+                <tr><td><code>404</code></td><td>Unknown operator or trip.</td><td>Check the provider name and trip ID.</td></tr>
+                <tr><td><code>429</code></td><td>Rate limit exceeded.</td><td>Wait and retry with backoff.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-slate-300 leading-relaxed">Rate limits are set per key and confirmed when your key is issued. Seat availability comes from each operator in real time, so re-fetch trips before creating a booking link.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access" class="px-4 pb-24 scroll-mt-20">
+  <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Get API access</h2>
+    <p class="text-slate-300 leading-relaxed mb-8 max-w-2xl">Tell us what you are building. We issue a key tied to your domain and confirm rate limits and pricing for your use case.</p>
+
+    <div id="accessForm" class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label for="fName" class="block text-sm font-medium text-slate-300 mb-2">Your name</label>
+        <input id="fName" type="text" autocomplete="name" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500">
+      </div>
+      <div>
+        <label for="fBiz" class="block text-sm font-medium text-slate-300 mb-2">Business name</label>
+        <input id="fBiz" type="text" autocomplete="organization" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500">
+      </div>
+      <div class="sm:col-span-2">
+        <label for="fDomain" class="block text-sm font-medium text-slate-300 mb-2">Website domain to whitelist</label>
+        <input id="fDomain" type="text" placeholder="https://yourwebsite.com" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-vyra-500">
+      </div>
+      <div class="sm:col-span-2">
+        <label for="fUse" class="block text-sm font-medium text-slate-300 mb-2">What are you building?</label>
+        <textarea id="fUse" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vyra-500"></textarea>
+      </div>
+      <div class="sm:col-span-2 flex flex-col sm:flex-row gap-3 mt-2">
+        <button onclick="sendAccess('wa')" class="px-7 py-3.5 bg-green-500 hover:bg-green-400 text-slate-950 font-bold rounded-xl transition">Send on WhatsApp</button>
+        <button onclick="sendAccess('mail')" class="px-7 py-3.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold rounded-xl transition">Send by email</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-slate-950 border-t border-slate-900">
+  <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="sm:col-span-2 md:col-span-1">
+      <div class="flex items-center gap-2.5 mb-4">
+        <img src="https://i.ibb.co/ycsBvPZW/VyraLogo.png" alt="" class="h-8 w-auto">
+        <span class="font-bold text-white">Vyra Technologies</span>
+      </div>
+      <p class="text-sm text-slate-400 leading-relaxed">Intercity booking infrastructure for the Nigerian market.</p>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm">Product</h4>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><a href="#demo" class="hover:text-vyra-400">Interactive demo</a></li>
+        <li><a href="#docs" class="hover:text-vyra-400">Documentation</a></li>
+        <li><a href="#access" class="hover:text-vyra-400">Get API access</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm">Legal</h4>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><button onclick="openLegalModal('terms')" class="hover:text-vyra-400">Terms of Service</button></li>
+        <li><button onclick="openLegalModal('privacy')" class="hover:text-vyra-400">Privacy Policy</button></li>
+        <li><button onclick="openLegalModal('refund')" class="hover:text-vyra-400">Refund Policy</button></li>
+        <li><button onclick="openLegalModal('acceptable')" class="hover:text-vyra-400">Acceptable Use Policy</button></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold mb-4 text-sm">Support</h4>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><a href="https://wa.me/2349137974960" target="_blank" rel="noopener" class="hover:text-vyra-400">Integration help</a></li>
+        <li><a href="mailto:vyraintercitymetrics@gmail.com" class="hover:text-vyra-400">Email us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-slate-900">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="text-sm text-slate-400">&copy; <span id="year"></span> Vyra Technologies. All rights reserved.</p>
+      <p class="text-xs text-slate-400 text-center md:text-right max-w-xl">Vyra Technologies is an independent software provider. Operator names are used only to identify the services we integrate with.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: Booking -->
+<div id="bookingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-end sm:items-center justify-center p-0 sm:p-4" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+  <div class="bg-slate-900 border border-slate-800 rounded-t-3xl sm:rounded-3xl w-full max-w-lg max-h-[90vh] overflow-y-auto flex flex-col">
+    <div class="sticky top-0 bg-slate-900 border-b border-slate-800 px-6 py-4 flex justify-between items-center z-10">
+      <h3 id="bookingTitle" class="text-lg font-bold text-white">Booking details</h3>
+      <button onclick="closeModal()" class="text-slate-300 hover:text-white p-2" aria-label="Close">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="p-4 sm:p-6 flex-1">
+      <div id="modalViewInfo">
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 mb-6">
+          <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-800 gap-4">
+            <div>
+              <p class="text-xs text-slate-400 mb-1">Operator</p>
+              <p class="text-white font-bold capitalize" id="mCompany">-</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-slate-400 mb-1">Route</p>
+              <p class="text-vyra-400 font-bold" id="mRoute">-</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mb-4 pb-4 border-b border-slate-800">
+            <div><p class="text-xs text-slate-400 mb-1">Date</p><p class="text-white text-sm font-medium" id="mDate">-</p></div>
+            <div class="text-right"><p class="text-xs text-slate-400 mb-1">Departure</p><p class="text-white text-sm font-medium" id="mDeparture">-</p></div>
+          </div>
+          <div class="mb-4 pb-4 border-b border-slate-800">
+            <p class="text-xs text-slate-400 mb-1">Boarding point</p>
+            <p class="text-slate-200 text-sm leading-relaxed" id="mBoarding">-</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div><p class="text-xs text-slate-400 mb-1">Vehicle</p><p class="text-white text-sm font-medium capitalize" id="mCoach">-</p></div>
+            <div><p class="text-xs text-slate-400 mb-1">Duration</p><p class="text-white text-sm font-medium" id="mDuration">-</p></div>
+            <div><p class="text-xs text-slate-400 mb-1">Seats</p><p class="text-vyra-400 text-sm font-bold" id="mAvailableSeats">-</p></div>
+            <div><p class="text-xs text-slate-400 mb-1">Fare</p><p class="text-white text-sm font-mono font-bold" id="mFare">₦0</p></div>
+          </div>
+        </div>
+        <button onclick="showSeatMap()" class="w-full bg-vyra-500 hover:bg-vyra-400 text-slate-950 font-bold py-3 rounded-xl transition">Continue to seat selection</button>
+      </div>
+
+      <div id="modalViewSeats" class="hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <p class="text-sm text-slate-300">Tap a seat to select it</p>
+          <div class="flex gap-4 text-xs text-slate-300">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-950 border border-slate-600"></span>Available</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-vyra-500"></span>Selected</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-700"></span>Booked</span>
+          </div>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 sm:p-6 max-w-xs mx-auto mb-6">
+          <div class="steering-wheel" aria-hidden="true"></div>
+          <div id="seatMapContainer" class="grid grid-cols-3 gap-2 sm:gap-3"></div>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 mb-4">
+          <div class="flex justify-between text-lg font-bold text-white">
+            <span>Total</span><span id="sTotalFare" class="text-vyra-400 font-mono">₦0</span>
+          </div>
+        </div>
+        <div id="seatError" role="alert" class="hidden mb-4 bg-red-950/40 border border-red-900 text-red-200 text-sm rounded-lg px-4 py-3"></div>
+        <button id="seatContinueBtn" onclick="goToPayment()" disabled class="w-full bg-slate-800 text-slate-400 font-bold py-3 rounded-xl cursor-not-allowed transition">Select a seat to continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Legal -->
+<div id="legalModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+  <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl">
+    <div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center">
+      <h3 id="legalTitle" class="text-xl font-bold text-white">Legal</h3>
+      <button onclick="closeLegalModal()" class="text-slate-300 hover:text-white p-2" aria-label="Close">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="legalContent" class="p-6 overflow-y-auto text-[15px] text-slate-300 leading-relaxed space-y-4"></div>
+    <div class="px-6 py-4 border-t border-slate-800 text-right">
+      <button onclick="closeLegalModal()" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg transition">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- CONFIG ---------- */
+const WORKER_BASE = "https://intercitypricesbookings.cybercatclientcreator.workers.dev";
+// Sandbox key for the public demo. Issue this as a rate-limited key on the Worker.
+const API_KEY = "vyra_live_demo_key_12345";
+const CONTACT_EMAIL = "vyraintercitymetrics@gmail.com";
+const WHATSAPP = "2349137974960";
+
+const KNOWN_COMPANIES = [
+  { id: "libmot", name: "Libmot" },
+  { id: "benuelinks", name: "Benue Links" },
+  { id: "gigm", name: "GIGM" },
+  { id: "guo", name: "GUO Transport" },
+  { id: "abc", name: "ABC Transport" }
+];
+
+let currentTrips = [];
+let activeTrip = null;
+let selectedSeats = [];
+let activeCompany = null;
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- HELPERS ---------- */
+function showError(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.remove('hidden'); }
+function clearError(id) { document.getElementById(id).classList.add('hidden'); }
+
+function normalizeTrip(t) {
+  let seats = t.seats || t.seats_json || [];
+  if (typeof seats === 'string') { try { seats = JSON.parse(seats); } catch (e) { seats = []; } }
+  return { ...t, seats, fare: Number(t.fare) || 0 };
+}
+const naira = n => '₦' + Number(n).toLocaleString();
+
+/* ---------- COMPANIES (parallel) ---------- */
+async function checkCompany(company) {
+  try {
+    const res = await fetch(`${WORKER_BASE}/api/${company.id}`, { headers: { "x-api-key": API_KEY } });
+    if (!res.ok) return { ...company, isActive: false };
+    const data = await res.json();
+    return { ...company, isActive: Array.isArray(data) && data.length > 0 };
+  } catch (e) {
+    return { ...company, isActive: false };
+  }
+}
+
+async function loadCompanies() {
+  const select = document.getElementById('companySelect');
+  const results = await Promise.all(KNOWN_COMPANIES.map(checkCompany));
+
+  select.innerHTML = '<option value="">Select an operator…</option>';
+  results.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id;
+    opt.textContent = c.isActive ? c.name : `${c.name} (in progress)`;
+    opt.disabled = !c.isActive;
+    select.appendChild(opt);
+  });
+  select.disabled = false;
+  document.getElementById('companySkeleton').remove();
+
+  // Status row
+  const row = document.getElementById('statusRow');
+  row.innerHTML = '<span class="text-slate-400">API status:</span>';
+  const live = results.filter(c => c.isActive);
+  if (live.length === 0) {
+    row.innerHTML += '<span class="flex items-center gap-2 text-amber-300"><span class="w-2 h-2 rounded-full bg-amber-400"></span>Unable to reach operators right now</span>';
+  } else {
+    live.forEach(c => {
+      row.innerHTML += `<span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-vyra-400"></span>${c.name} operational</span>`;
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded', loadCompanies);
+
+document.getElementById('companySelect').addEventListener('change', onCompanyChange);
+
+async function onCompanyChange() {
+  const routeSelect = document.getElementById('routeSelect');
+  clearError('demoError');
+  activeCompany = document.getElementById('companySelect').value;
+  resetTripFields();
+
+  if (!activeCompany) {
+    routeSelect.innerHTML = '<option value="">Choose an operator first</option>';
+    routeSelect.disabled = true;
+    return;
+  }
+
+  routeSelect.innerHTML = '<option value="">Loading trips…</option>';
+  routeSelect.disabled = true;
+
+  try {
+    const res = await fetch(`${WORKER_BASE}/api/${activeCompany}`, { headers: { "x-api-key": API_KEY } });
+    if (!res.ok) throw new Error(`Request failed (${res.status})`);
+    currentTrips = (await res.json()).map(normalizeTrip);
+
+    routeSelect.innerHTML = '<option value="">Select a trip…</option>';
+    const seen = new Set();
+    currentTrips.forEach((trip, i) => {
+      const key = `${trip.route}-${trip.departure}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${trip.route} (${trip.departure})`;
+      routeSelect.appendChild(opt);
+    });
+    routeSelect.disabled = false;
+  } catch (e) {
+    routeSelect.innerHTML = '<option value="">Trips unavailable</option>';
+    showError('demoError', 'Could not load trips for this operator. Check your connection and select the operator again.');
+  }
+}
+
+function resetTripFields() {
+  activeTrip = null;
+  document.getElementById('dateDisplay').value = 'Choose a trip first';
+  document.getElementById('fareDisplay').textContent = '₦ --';
+  const btn = document.getElementById('bookBtn');
+  btn.disabled = true; btn.textContent = 'Book now';
+  btn.classList.remove('bg-red-900', 'text-red-300');
+}
+
+document.getElementById('routeSelect').addEventListener('change', e => {
+  const idx = e.target.value;
+  const btn = document.getElementById('bookBtn');
+  if (idx === "") { resetTripFields(); return; }
+
+  activeTrip = currentTrips[idx];
+  document.getElementById('dateDisplay').value = activeTrip.date;
+  document.getElementById('fareDisplay').textContent = naira(activeTrip.fare);
+
+  if (activeTrip.available_seats === 0) {
+    btn.disabled = true; btn.textContent = 'Sold out';
+  } else {
+    btn.disabled = false; btn.textContent = 'Book now';
+  }
+});
+
+/* ---------- BOOKING MODAL ---------- */
+function openModal() {
+  if (!activeTrip) return;
+  clearError('seatError');
+  document.getElementById('mCompany').textContent = activeTrip.provider || activeCompany || '-';
+  document.getElementById('mRoute').textContent = activeTrip.route;
+  document.getElementById('mDate').textContent = activeTrip.date;
+  document.getElementById('mDeparture').textContent = activeTrip.departure || 'N/A';
+  document.getElementById('mBoarding').textContent = activeTrip.boarding || 'Not specified';
+  document.getElementById('mDuration').textContent = activeTrip.duration || 'N/A';
+  document.getElementById('mAvailableSeats').textContent = `${activeTrip.available_seats} / ${activeTrip.capacity}`;
+  document.getElementById('mFare').textContent = naira(activeTrip.fare);
+  document.getElementById('mCoach').textContent = `${activeTrip.coach || 'Standard'} (${activeTrip.type || 'AC'})`;
+
+  document.getElementById('modalViewInfo').classList.remove('hidden');
+  document.getElementById('modalViewSeats').classList.add('hidden');
+  const m = document.getElementById('bookingModal');
+  m.classList.remove('hidden'); m.classList.add('flex');
+}
+function closeModal() {
+  const m = document.getElementById('bookingModal');
+  m.classList.add('hidden'); m.classList.remove('flex');
+}
+
+function showSeatMap() {
+  document.getElementById('modalViewInfo').classList.add('hidden');
+  document.getElementById('modalViewSeats').classList.remove('hidden');
+  updateTotalPrice();
+  renderSeats();
+}
+
+function renderSeats() {
+  const container = document.getElementById('seatMapContainer');
+  container.innerHTML = '';
+  selectedSeats = [];
+  syncContinueButton();
+
+  if (!activeTrip.seats.length) {
+    container.innerHTML = '<p class="text-red-300 text-sm col-span-3 text-center">Seat map unavailable for this trip.</p>';
+    return;
+  }
+  activeTrip.seats.forEach(seat => {
+    const div = document.createElement('div');
+    const booked = seat.status === 'booked';
+    div.className = `seat ${booked ? 'booked' : 'available'}`;
+    div.textContent = booked ? `${seat.number}*` : seat.number;
+    div.setAttribute('role', 'button');
+    div.setAttribute('aria-label', `Seat ${seat.number}, ${booked ? 'booked' : 'available'}`);
+    if (!booked) {
+      div.tabIndex = 0;
+      div.onclick = () => toggleSeat(div, seat.number);
+      div.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSeat(div, seat.number); } };
+    }
+    container.appendChild(div);
+  });
+}
+
+function toggleSeat(el, n) {
+  if (selectedSeats.includes(n)) {
+    selectedSeats = selectedSeats.filter(x => x !== n);
+    el.classList.remove('selected');
+  } else {
+    selectedSeats.push(n);
+    el.classList.add('selected');
+  }
+  updateTotalPrice();
+  syncContinueButton();
+}
+
+function syncContinueButton() {
+  const btn = document.getElementById('seatContinueBtn');
+  const on = selectedSeats.length > 0;
+  btn.disabled = !on;
+  btn.className = on
+    ? 'w-full bg-vyra-500 hover:bg-vyra-400 text-slate-950 font-bold py-3 rounded-xl transition'
+    : 'w-full bg-slate-800 text-slate-400 font-bold py-3 rounded-xl cursor-not-allowed transition';
+  btn.textContent = on ? `Continue with ${selectedSeats.length} seat${selectedSeats.length > 1 ? 's' : ''}` : 'Select a seat to continue';
+}
+
+function updateTotalPrice() {
+  const count = Math.max(1, selectedSeats.length);
+  document.getElementById('sTotalFare').textContent = naira(activeTrip.fare * count);
+}
+
+async function goToPayment() {
+  if (!activeTrip || selectedSeats.length === 0) return;
+  clearError('seatError');
+  if (activeCompany !== 'libmot' && activeCompany !== 'benuelinks') {
+    showError('seatError', 'Booking is not available for this operator yet.');
+    return;
+  }
+  const btn = document.getElementById('seatContinueBtn');
+  btn.disabled = true; btn.textContent = 'Creating booking link…';
+  try {
+    const res = await fetch(`${WORKER_BASE}/api/${activeCompany}/generate-link`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+      body: JSON.stringify({ tripId: activeTrip.trip_id || activeTrip.id, seats: selectedSeats })
+    });
+    const result = await res.json();
+    if (result.success) { window.location.href = result.formUrl; return; }
+    showError('seatError', result.error || 'Could not create the booking link. Pick your seats again and retry.');
+  } catch (e) {
+    showError('seatError', 'Network error. Check your connection and try again.');
+  }
+  syncContinueButton();
+}
+
+/* ---------- CODE TABS ---------- */
+const URL_TRIPS = `${WORKER_BASE}/api/libmot`;
+const URL_LINK = `${WORKER_BASE}/api/libmot/generate-link`;
+
+const SNIPPETS = {
+  trips: {
+    'cURL': `curl -X GET "${URL_TRIPS}" \\
+  -H "x-api-key: YOUR_API_KEY" \\
+  -H "Origin: https://yourwebsite.com"`,
+    'JavaScript (browser)': `// Runs in the browser. The browser adds the Origin header for you.
+const res = await fetch("${URL_TRIPS}", {
+  headers: { "x-api-key": "YOUR_API_KEY" }
+});
+const trips = await res.json();
+console.log(trips);`,
+    'Node.js': `// Server-side. Send Origin yourself.
+const res = await fetch("${URL_TRIPS}", {
+  headers: {
+    "x-api-key": "YOUR_API_KEY",
+    "Origin": "https://yourwebsite.com"
+  }
+});
+const trips = await res.json();
+console.log(trips);`,
+    'PHP': `<?php
+$ch = curl_init("${URL_TRIPS}");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "x-api-key: YOUR_API_KEY",
+    "Origin: https://yourwebsite.com"
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));`,
+    'Python': `import requests
+
+res = requests.get(
+    "${URL_TRIPS}",
+    headers={
+        "x-api-key": "YOUR_API_KEY",
+        "Origin": "https://yourwebsite.com",
+    },
+)
+print(res.json())`
+  },
+  link: {
+    'cURL': `curl -X POST "${URL_LINK}" \\
+  -H "Content-Type: application/json" \\
+  -H "x-api-key: YOUR_API_KEY" \\
+  -H "Origin: https://yourwebsite.com" \\
+  -d '{"tripId": "6af9757e1b9690a53305c458", "seats": [2, 4]}'`,
+    'JavaScript (browser)': `// Runs in the browser. The browser adds the Origin header for you.
+const res = await fetch("${URL_LINK}", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "YOUR_API_KEY"
+  },
+  body: JSON.stringify({ tripId: "6af9757e1b9690a53305c458", seats: [2, 4] })
+});
+const result = await res.json();
+if (result.success) window.location.href = result.formUrl;`,
+    'Node.js': `// Server-side. Send Origin yourself.
+const res = await fetch("${URL_LINK}", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "YOUR_API_KEY",
+    "Origin": "https://yourwebsite.com"
+  },
+  body: JSON.stringify({ tripId: "6af9757e1b9690a53305c458", seats: [2, 4] })
+});
+const result = await res.json();
+console.log(result.formUrl);`,
+    'PHP': `<?php
+$ch = curl_init("${URL_LINK}");
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Content-Type: application/json",
+    "x-api-key: YOUR_API_KEY",
+    "Origin: https://yourwebsite.com"
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+    "tripId" => "6af9757e1b9690a53305c458",
+    "seats" => [2, 4]
+]));
+$result = json_decode(curl_exec($ch), true);
+curl_close($ch);
+echo $result["formUrl"];`,
+    'Python': `import requests
+
+res = requests.post(
+    "${URL_LINK}",
+    headers={
+        "x-api-key": "YOUR_API_KEY",
+        "Origin": "https://yourwebsite.com",
+    },
+    json={"tripId": "6af9757e1b9690a53305c458", "seats": [2, 4]},
+)
+print(res.json()["formUrl"])`
+  }
+};
+
+function buildTabs(mountId, group) {
+  const mount = document.getElementById(mountId);
+  const langs = Object.keys(SNIPPETS[group]);
+  const wrap = document.createElement('div');
+  wrap.className = 'bg-slate-900 border border-slate-800 rounded-xl overflow-hidden';
+
+  const bar = document.createElement('div');
+  bar.className = 'flex items-center justify-between border-b border-slate-800 pr-3';
+  const tabList = document.createElement('div');
+  tabList.className = 'flex overflow-x-auto';
+  tabList.setAttribute('role', 'tablist');
+
+  const copyBtn = document.createElement('button');
+  copyBtn.className = 'text-sm text-slate-300 hover:text-white shrink-0';
+  copyBtn.textContent = 'Copy';
+
+  const pre = document.createElement('pre');
+  pre.className = 'p-4 text-[13px] leading-relaxed overflow-x-auto text-slate-200';
+  const code = document.createElement('code');
+  pre.appendChild(code);
+
+  function select(lang) {
+    code.textContent = SNIPPETS[group][lang];
+    tabList.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.lang === lang));
+  }
+
+  langs.forEach((lang, i) => {
+    const b = document.createElement('button');
+    b.className = 'tab-btn';
+    b.setAttribute('role', 'tab');
+    b.dataset.lang = lang;
+    b.textContent = lang;
+    b.onclick = () => select(lang);
+    tabList.appendChild(b);
+  });
+
+  copyBtn.onclick = () => copyValue(copyBtn, code.textContent);
+  bar.append(tabList, copyBtn);
+  wrap.append(bar, pre);
+  mount.appendChild(wrap);
+  select(langs[0]);
+}
+buildTabs('tabs-trips', 'trips');
+buildTabs('tabs-link', 'link');
+
+/* ---------- COPY ---------- */
+function copyValue(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const old = btn.textContent;
+    btn.textContent = 'Copied';
+    btn.classList.add('text-vyra-400');
+    setTimeout(() => { btn.textContent = old; btn.classList.remove('text-vyra-400'); }, 1800);
+  });
+}
+function copyText(btn, id) { copyValue(btn, document.getElementById(id).innerText); }
+
+/* ---------- ACCESS FORM ---------- */
+function sendAccess(channel) {
+  const v = id => document.getElementById(id).value.trim();
+  const body =
+`Hi Vyra Technologies, I'd like an API key for the Intercity Booking API.
+
+Name: ${v('fName')}
+Business: ${v('fBiz')}
+Domain to whitelist: ${v('fDomain')}
+What I'm building: ${v('fUse')}`;
+  if (channel === 'wa') {
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
+  } else {
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('API key request')}&body=${encodeURIComponent(body)}`;
+  }
+}
+
+/* ---------- LEGAL ---------- */
+const legalContent = {
+  terms: { title: "Terms of Service", content: `
+    <p><strong>1. Acceptance of terms.</strong> By using the Intercity Booking API, you agree to these terms. If you disagree, do not use the service.</p>
+    <p><strong>2. Nature of service.</strong> Vyra Technologies provides software that connects to third-party transport operators. We are not a transport company and we do not own or operate any vehicles.</p>
+    <p><strong>3. Availability.</strong> The API is provided as-is and as-available. We work to keep it running, but we do not guarantee uninterrupted service. Seat availability and pricing depend on the operators.</p>
+    <p><strong>4. Limitation of liability.</strong> Vyra Technologies is not liable for missed trips, lost luggage, accidents or financial losses arising from use of the API or the transport services booked through it.</p>
+    <p><strong>5. Rate limits.</strong> You must stay within the rate limits assigned to your key. Abuse may result in immediate key revocation.</p>` },
+  privacy: { title: "Privacy Policy", content: `
+    <p><strong>1. Data we collect.</strong> When you use the API, we log your API key, IP address and timestamps for security and billing.</p>
+    <p><strong>2. Passenger data.</strong> When a booking is made, passenger names, phone numbers and emails are processed and passed to the transport operator to issue the ticket.</p>
+    <p><strong>3. NDPA compliance.</strong> In line with the Nigeria Data Protection Act 2023, we do not sell your data or share it with advertisers. Data is shared only with the operator you book with.</p>
+    <p><strong>4. Retention.</strong> API logs are kept for 30 days for security audits. Passenger data is not stored on our servers after the booking is completed.</p>` },
+  refund: { title: "Refund Policy", content: `
+    <p><strong>1. API subscriptions.</strong> API credits and subscriptions are non-refundable once the billing cycle has started, because the service is available to you from that point.</p>
+    <p><strong>2. Failed transactions.</strong> If a booking fails and the customer is charged but no valid ticket is issued because of a technical error on our side, we refund the full amount to the original payment method within 3 to 5 business days.</p>
+    <p><strong>3. Operator cancellations.</strong> If an operator cancels a trip after payment, the operator handles the refund because payments go to the operator's account. We will help coordinate with the operator.</p>` },
+  acceptable: { title: "Acceptable Use Policy", content: `
+    <p><strong>1. Permitted use.</strong> Use the API to build travel booking applications, websites or internal tools for legitimate commercial or personal use.</p>
+    <p><strong>2. Prohibited actions.</strong> You may not:</p>
+    <ul class="list-disc pl-5 space-y-1">
+      <li>Scrape, extract or resell raw data without a reseller agreement.</li>
+      <li>Reverse engineer the backend to bypass operator payment systems.</li>
+      <li>Spam, flood or attack the API or the operators' systems.</li>
+      <li>Build a competing API service that uses this API as its backend.</li>
+    </ul>
+    <p><strong>3. Security.</strong> Keep your API key secure. If it is leaked and used maliciously, your account may be suspended.</p>` }
+};
+
+function openLegalModal(type) {
+  const item = legalContent[type];
+  if (!item) return;
+  document.getElementById('legalTitle').textContent = item.title;
+  document.getElementById('legalContent').innerHTML = item.content;
+  const m = document.getElementById('legalModal');
+  m.classList.remove('hidden'); m.classList.add('flex');
+}
+function closeLegalModal() {
+  const m = document.getElementById('legalModal');
+  m.classList.add('hidden'); m.classList.remove('flex');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeLegalModal(); }
+});
+</script>
+</body>
+</html>
