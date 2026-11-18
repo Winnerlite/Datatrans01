@@ -32,12 +32,16 @@ public class Scraper {
             System.exit(1);
         }
 
-        // Fetch today's date specifically in Nigeria Time (Africa/Lagos)
+        // Generate Today and Tomorrow dates in Nigeria Time (Africa/Lagos)
         ZoneId lagosZone = ZoneId.of("Africa/Lagos");
-        String date = LocalDate.now(lagosZone).format(DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate now = LocalDate.now(lagosZone);
+        List<String> datesToScrape = Arrays.asList(
+            now.format(DateTimeFormatter.ISO_LOCAL_DATE),           // Today
+            now.plusDays(1).format(DateTimeFormatter.ISO_LOCAL_DATE) // Tomorrow
+        );
 
         System.out.println("=== BenueLinks scraper starting ===");
-        System.out.println("Date: " + date + " | Origin header: " + workerOrigin);
+        System.out.println("Dates: " + datesToScrape + " | Origin header: " + workerOrigin);
         System.out.println("Worker: " + WORKER_URL + "\n");
 
         CookieHandler.setDefault(new CookieManager());
@@ -59,44 +63,48 @@ public class Scraper {
 
             for (String dest : destinations) {
                 System.out.println("  → " + dest);
-                try { Thread.sleep(500); } catch (InterruptedException ignored) {}
+                
+                // Loop through Today and Tomorrow for this destination
+                for (String date : datesToScrape) {
+                    try { Thread.sleep(500); } catch (InterruptedException ignored) {}
 
-                List<Map<String, String>> trips;
-                try {
-                    trips = searchTrips(originId, dest, date);
-                } catch (Exception e) {
-                    System.err.println("     ✗ Search error: " + e);
-                    continue;
-                }
-
-                System.out.println("     " + trips.size() + " trip(s)");
-
-                for (Map<String, String> trip : trips) {
-                    String tripId = trip.get("TripId");
-                    if (tripId == null || tripId.isEmpty()) continue;
-
-                    try { Thread.sleep(300); } catch (InterruptedException ignored) {}
-
+                    List<Map<String, String>> trips;
                     try {
-                        List<String> seatList = fetchSeatMap(tripId);
-                        trip.put("SeatMapData", formatSeatMap(seatList));
-                        trip.put("RawSeatList", new JSONArray(seatList).toString());
+                        trips = searchTrips(originId, dest, date);
                     } catch (Exception e) {
-                        System.err.println("     ⚠ Seat map failed for " + tripId + ": " + e);
-                        trip.put("SeatMapData", "(seat map unavailable)");
-                        trip.put("RawSeatList", "[]");
+                        System.err.println("     ✗ Search error (" + date + "): " + e);
+                        continue;
                     }
 
-                    trip.put("OriginId", originId);
-                    trip.put("DestId",   dest);
+                    System.out.println("     [" + date + "] " + trips.size() + " trip(s)");
 
-                    try {
-                        int code = uploadTrip(trip, apiKey, workerOrigin);
-                        if (code == 200) { uploaded++; System.out.println("     ✓ uploaded " + tripId); }
-                        else             { failed++;   System.err.println("     ✗ upload HTTP " + code + " for " + tripId); }
-                    } catch (Exception e) {
-                        failed++;
-                        System.err.println("     ✗ upload exception: " + e);
+                    for (Map<String, String> trip : trips) {
+                        String tripId = trip.get("TripId");
+                        if (tripId == null || tripId.isEmpty()) continue;
+
+                        try { Thread.sleep(300); } catch (InterruptedException ignored) {}
+
+                        try {
+                            List<String> seatList = fetchSeatMap(tripId);
+                            trip.put("SeatMapData", formatSeatMap(seatList));
+                            trip.put("RawSeatList", new JSONArray(seatList).toString());
+                        } catch (Exception e) {
+                            System.err.println("     ⚠ Seat map failed for " + tripId + ": " + e);
+                            trip.put("SeatMapData", "(seat map unavailable)");
+                            trip.put("RawSeatList", "[]");
+                        }
+
+                        trip.put("OriginId", originId);
+                        trip.put("DestId",   dest);
+
+                        try {
+                            int code = uploadTrip(trip, apiKey, workerOrigin);
+                            if (code == 200) { uploaded++; System.out.println("     ✓ uploaded " + tripId); }
+                            else             { failed++;   System.err.println("     ✗ upload HTTP " + code + " for " + tripId); }
+                        } catch (Exception e) {
+                            failed++;
+                            System.err.println("     ✗ upload exception: " + e);
+                        }
                     }
                 }
             }
