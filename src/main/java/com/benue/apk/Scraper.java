@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.*;
 import java.util.regex.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import org.json.*;
 
@@ -25,14 +26,16 @@ public class Scraper {
     public static void main(String[] args) throws Exception {
         String apiKey       = getEnv("WORKER_API_KEY", null);
         String workerOrigin = getEnv("WORKER_ORIGIN", "https://www.intercityprices.com.ng");
-        int daysAhead       = Integer.parseInt(getEnv("SCRAPE_DAYS_AHEAD", "1"));
 
         if (apiKey == null) {
             System.err.println("FATAL: WORKER_API_KEY env var is not set");
             System.exit(1);
         }
 
-        String date = LocalDate.now().plusDays(daysAhead).format(DateTimeFormatter.ISO_LOCAL_DATE);
+        // Fetch today's date specifically in Nigeria Time (Africa/Lagos)
+        ZoneId lagosZone = ZoneId.of("Africa/Lagos");
+        String date = LocalDate.now(lagosZone).format(DateTimeFormatter.ISO_LOCAL_DATE);
+
         System.out.println("=== BenueLinks scraper starting ===");
         System.out.println("Date: " + date + " | Origin header: " + workerOrigin);
         System.out.println("Worker: " + WORKER_URL + "\n");
