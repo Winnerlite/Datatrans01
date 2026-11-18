@@ -2,14 +2,9 @@ name: BenueLinks Daily Scrape
 
 on:
   schedule:
-    # 05:00 UTC daily = 06:00 WAT (Nigeria time)
-    - cron: '0 5 * * *'
-  workflow_dispatch:
-    inputs:
-      days_ahead:
-        description: 'Days ahead to scrape'
-        required: false
-        default: '1'
+    # Runs every 3 hours
+    - cron: '0 */3 * * *'
+  workflow_dispatch: # Allows you to run it manually
 
 jobs:
   scrape:
@@ -33,5 +28,4 @@ jobs:
         env:
           WORKER_API_KEY:    ${{ secrets.WORKER_API_KEY }}
           WORKER_ORIGIN:     ${{ secrets.WORKER_ORIGIN }}
-          SCRAPE_DAYS_AHEAD: ${{ inputs.days_ahead || '1' }}
         run: java -jar target/benuelinks-scraper-1.0.jar
