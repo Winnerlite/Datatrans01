@@ -25,6 +25,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://intercityprices.com.ng/intercitybookingapi.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://intercityprices.com.ng/intercityappng.html</loc>
     <lastmod>2026-05-19</lastmod>
