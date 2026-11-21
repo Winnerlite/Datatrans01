@@ -2,7 +2,6 @@ name: prsc
 
 on:
   schedule:
-    # Every 6 hours
     - cron: '0 */6 * * *'
   workflow_dispatch:
 
@@ -36,5 +35,8 @@ jobs:
         env:
           WORKER_API_KEY:    ${{ secrets.WORKER_API_KEY }}
           WORKER_ORIGIN:     ${{ secrets.WORKER_ORIGIN }}
-        # RUNNING THE COMPILED JAR DIRECTLY INSTEAD OF VIA MAVEN
-        run: java -cp target/transport-scraper-1.0.jar com.plateauriders.apk.PlateauScraper
+        run: |
+          # 1. Save all dependencies to a file
+          mvn dependency:build-classpath -Dmdep.outputFile=cp.txt -q
+          # 2. Run the class directly from target/classes
+          java -cp "target/classes:$(cat cp.txt)" com.plateauriders.apk.PlateauScraper
