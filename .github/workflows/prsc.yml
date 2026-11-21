@@ -36,4 +36,5 @@ jobs:
         env:
           WORKER_API_KEY:    ${{ secrets.WORKER_API_KEY }}
           WORKER_ORIGIN:     ${{ secrets.WORKER_ORIGIN }}
-          run: mvn compile exec:java -Dexec.mainClass="com.plateauriders.apk.PlateauScraper"
+        # The "compile" command forces Maven to build the new PlateauScraper.java file before running
+        run: mvn compile exec:java -Dexec.mainClass="com.plateauriders.apk.PlateauScraper"
