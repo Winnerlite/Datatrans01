@@ -36,4 +36,4 @@ jobs:
         env:
           WORKER_API_KEY:    ${{ secrets.WORKER_API_KEY }}
           WORKER_ORIGIN:     ${{ secrets.WORKER_ORIGIN }}
-        run: mvn exec:java -Dexec.mainClass="com.plateauriders.apk.PlateauScraper"
+          run: mvn compile exec:java -Dexec.mainClass="com.plateauriders.apk.PlateauScraper"
