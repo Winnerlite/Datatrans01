@@ -2,14 +2,14 @@ name: prsc
 
 on:
   schedule:
-    # Every 6 hours (Plateau Riders has many destinations, so we don't want to hammer them)
+    # Every 6 hours
     - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 120 # Increased timeout because scraping 20+ destinations takes time
+    timeout-minutes: 120 
 
     steps:
       - uses: actions/checkout@v4
@@ -24,8 +24,13 @@ jobs:
       - name: Build JAR
         run: mvn -B -q clean package
 
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2t64 libnss3 libgbm1 libgtk-3-0
+
       - name: Install Playwright Browsers
-        run: mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps chromium"
+        run: mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install chromium"
 
       - name: Run Scraper
         env:
