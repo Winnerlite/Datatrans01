@@ -21,18 +21,21 @@
             <artifactId>json</artifactId>
             <version>20240303</version>
         </dependency>
+        <!-- ADDED PLAYWRIGHT FOR HEADLESS BROWSER -->
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>1.42.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- This plugin lets us run any class we want -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
             </plugin>
-            
-            <!-- This builds the fat jar so you don't have to worry about dependencies -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
