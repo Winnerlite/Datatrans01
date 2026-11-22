@@ -67,17 +67,17 @@ public class PlateauScraper {
 
                     for (JSONObject trip : trips) {
                         // Scrape Seats for this trip
-                        String tripId = trip.getString("TripId");
+                        String tripId = trip.getString("tripId");
                         JSONObject seatData = scrapeSeats(page, tripId);
                         
                         if (seatData != null) {
-                            trip.put("Capacity", seatData.getInt("Capacity"));
-                            trip.put("AvailableSeats", seatData.getInt("AvailableSeats"));
+                            trip.put("capacity", seatData.getInt("Capacity"));
+                            trip.put("availableSeats", seatData.getInt("AvailableSeats"));
                             trip.put("seats", seatData.getJSONArray("SeatsArray"));
                             trip.put("seatMapText", seatData.getString("SeatMapText"));
                         } else {
-                            trip.put("Capacity", 0);
-                            trip.put("AvailableSeats", 0);
+                            trip.put("capacity", 0);
+                            trip.put("availableSeats", 0);
                             trip.put("seats", new JSONArray());
                             trip.put("seatMapText", "(seat map unavailable)");
                         }
@@ -159,9 +159,14 @@ public class PlateauScraper {
             "})();";
             page.evaluate(js);
 
-            // Wait for results page to load
-            page.waitForURL("**/bookings/select/vehicles", new Page.WaitForURLOptions().setTimeout(15000));
-            page.waitForTimeout(1500); // Let Livewire render the table
+            // Wait for results page to load, BUT handle the case where it doesn't (no trips available)
+            try {
+                page.waitForURL("**/bookings/select/vehicles", new Page.WaitForURLOptions().setTimeout(15000));
+                page.waitForTimeout(1500); // Let Livewire render the table
+            } catch (Exception e) {
+                // If it times out, it means no buses were found and it didn't navigate
+                return trips;
+            }
 
             String html = page.content();
             String lower = html.toLowerCase();
@@ -202,22 +207,19 @@ public class PlateauScraper {
                 Matcher fareMatcher = Pattern.compile("(?:₦|NGN)\\s*([\\d,]+)", Pattern.CASE_INSENSITIVE).matcher(rowHtml);
                 if (fareMatcher.find()) fare = fareMatcher.group(1).replace(",", "").trim();
 
-                String seatsAvailable = "0";
-                Matcher seatMatcher = Pattern.compile("(\\d+)\\s*seats?\\s*available", Pattern.CASE_INSENSITIVE).matcher(rowHtml);
-                if (seatMatcher.find()) seatsAvailable = seatMatcher.group(1).trim();
-
                 if (!tripId.isEmpty()) {
                     JSONObject trip = new JSONObject();
-                    trip.put("TripId", tripId);
-                    trip.put("Route", route);
-                    trip.put("Coach", busType);
-                    trip.put("Type", busType);
-                    trip.put("Departure", time);
-                    trip.put("Duration", "");
-                    trip.put("Boarding", "");
-                    trip.put("Fare", fare);
-                    trip.put("Date", date);
-                    trip.put("routeId", 0); // Plateau Riders doesn't use numeric route IDs in the same way
+                    // FIXED: Lowercase keys to match Worker expectations
+                    trip.put("tripId", tripId);
+                    trip.put("route", route);
+                    trip.put("coach", busType);
+                    trip.put("type", busType);
+                    trip.put("departure", time);
+                    trip.put("duration", "");
+                    trip.put("boarding", "");
+                    trip.put("fare", fare);
+                    trip.put("date", date);
+                    trip.put("routeId", 0); 
                     trips.add(trip);
                 }
             }
