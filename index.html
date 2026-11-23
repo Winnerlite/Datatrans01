@@ -100,6 +100,8 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -228,7 +230,7 @@
             }
 
             /* Hide desktop navigation */
-            .hidden.md\\:flex {
+            .hidden.md\:flex {
                 display: none !important;
             }
 
@@ -278,14 +280,14 @@
             }
 
             /* Cards and panels */
-            .bg-slate-900\\/50,
+            .bg-slate-900\/50,
             .glass-panel {
                 margin-left: 0;
                 margin-right: 0;
             }
 
-            /* Button sizing */
-            button {
+            /* Button sizing (keep quick-tag chips compact) */
+            button:not(.quick-tag-chip) {
                 min-height: 44px;
                 touch-action: manipulation;
             }
@@ -348,7 +350,7 @@
 
     /* Force all containers to be 100% width */
     #resultsArea > div,
-    #resultsArea .bg-slate-900\\/50,
+    #resultsArea .bg-slate-900\/50,
     #resultsArea .bg-slate-900,
     #resultsArea .rounded-xl {
         width: 100% !important;
@@ -429,23 +431,35 @@ body * {
             </h1>
 
             <!-- Search Box Area -->
-            <div class="relative group z-20 w-full max-w-2xl mx-auto mb-12 px-4 page-load-fade search-fade">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-vyra-500 to-teal-500 rounded-xl opacity-30 group-hover:opacity-60 transition duration-500 blur"></div>
-                <div class="relative flex items-center bg-slate-900 rounded-xl p-2 shadow-2xl border border-slate-800">
-                    <div class="pl-4 text-slate-500">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <div class="relative group z-20 w-full max-w-2xl mx-auto mb-14 px-4 page-load-fade search-fade">
+                <div class="relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-vyra-500 to-teal-500 rounded-xl opacity-30 group-hover:opacity-60 transition duration-500 blur"></div>
+                    <div class="relative flex items-center bg-slate-900 rounded-xl p-2 shadow-2xl border border-slate-800">
+                        <div class="pl-4 text-slate-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search 'Lagos', 'GIGM', 'Abuja'..."
+                            class="w-full bg-transparent border-none focus:ring-0 focus:outline-none text-white text-lg placeholder-slate-500 h-12 px-4"
+                            autocomplete="off"
+                            style="font-size: 16px;"
+                        >
+                        <button onclick="performSearch()" id="searchBtn" class="bg-vyra-600 hover:bg-vyra-500 text-white px-4 md:px-6 py-2.5 rounded-lg font-medium transition-colors shadow-lg shadow-vyra-900/30 flex-shrink-0">
+                            Search
+                        </button>
                     </div>
-                    <input
-                        type="text"
-                        id="searchInput"
-                        placeholder="Search 'Lagos', 'GIGM', 'Abuja'..."
-                        class="w-full bg-transparent border-none focus:ring-0 focus:outline-none text-white text-lg placeholder-slate-500 h-12 px-4"
-                        autocomplete="off"
-                        style="font-size: 16px;"
-                    >
-                    <button onclick="performSearch()" id="searchBtn" class="bg-vyra-600 hover:bg-vyra-500 text-white px-4 md:px-6 py-2.5 rounded-lg font-medium transition-colors shadow-lg shadow-vyra-900/30 flex-shrink-0">
-                        Search
-                    </button>
+                </div>
+
+                <!-- Quick Search Tags -->
+                <div class="mt-4 flex flex-wrap items-center justify-center gap-2 page-load-fade" style="animation-delay: 0.6s;">
+                    <span class="text-xs text-slate-500 font-medium mr-1">Popular:</span>
+                    <button type="button" onclick="quickSearch('Lagos')" class="quick-tag-chip px-3 py-1 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-vyra-500/40 text-xs text-slate-300 hover:text-vyra-400 transition-colors">Lagos</button>
+                    <button type="button" onclick="quickSearch('Abuja')" class="quick-tag-chip px-3 py-1 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-vyra-500/40 text-xs text-slate-300 hover:text-vyra-400 transition-colors">Abuja</button>
+                    <button type="button" onclick="quickSearch('GIGM')" class="quick-tag-chip px-3 py-1 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-vyra-500/40 text-xs text-slate-300 hover:text-vyra-400 transition-colors">GIGM</button>
+                    <button type="button" onclick="quickSearch('GUO')" class="quick-tag-chip px-3 py-1 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-vyra-500/40 text-xs text-slate-300 hover:text-vyra-400 transition-colors">GUO</button>
+                    <button type="button" onclick="quickSearch('Port Harcourt')" class="quick-tag-chip px-3 py-1 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-vyra-500/40 text-xs text-slate-300 hover:text-vyra-400 transition-colors">Port Harcourt</button>
                 </div>
             </div>
 
@@ -463,7 +477,7 @@ body * {
             <div id="defaultView" class="transition-all duration-500">
 
                 <!-- Fading List (Live Ticker) -->
-                <div id="tickerContainer" class="mb-16 h-28 flex flex-col items-center justify-center relative page-load-fade ticker-fade px-4">
+                <div id="tickerContainer" class="mt-4 mb-16 min-h-[9.5rem] py-2 flex flex-col items-center justify-center relative page-load-fade ticker-fade px-4">
                     <div class="flex items-center gap-2 mb-4">
                         <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse-slow"></span>
                         <p class="text-xs font-mono text-vyra-500 uppercase tracking-widest">Live Transport Updates</p>
@@ -543,53 +557,18 @@ body * {
             </div>
         </div>
 <!---calculator-->
-<div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 max-w-2xl mx-auto shadow-2xl">
+<div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-8 max-w-2xl mx-auto shadow-2xl overflow-hidden">
     <h2 class="text-2xl font-extrabold text-white mb-6 flex items-center gap-2">
-        <span class="text-vyra-500">₦</span> Trip Price Calculator
+        <span class="text-vyra-500">₦</span> Live Trip Fares
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div>
-            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">From</label>
-            <select id="calcFrom" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-vyra-500 outline-none transition-all">
-                </select>
-        </div>
-        <div>
-            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">To</label>
-            <select id="calcTo" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-vyra-500 outline-none transition-all">
-                </select>
-        </div>
+    <!-- Single Trip Selector Field (Populated from Supabase) -->
+    <div class="mb-4">
+        <label for="tripRouteSelect" class="block text-xs font-bold text-slate-500 uppercase mb-2">Select a Trip</label>
+        <select id="tripRouteSelect" onchange="renderSelectedTrip(this.value)" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3.5 text-sm sm:text-base text-white focus:ring-2 focus:ring-vyra-500 outline-none transition-all">
+            <option value="">Loading available trips...</option>
+        </select>
     </div>
-    
-    
-    
-<!-- NEW: TERMINAL SELECTION CARD -->
-<div id="terminalCard" class="hidden bg-slate-800/50 border border-slate-700 rounded-xl p-4 mb-4 transition-all duration-300">
-    <div class="flex items-center gap-2 mb-3">
-        <svg class="w-4 h-4 text-vyra-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-        <h3 class="text-white text-sm font-bold">Select Terminals (Optional)</h3>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Departure Park</label>
-            <select id="calcFromPark" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:ring-1 focus:ring-vyra-500 outline-none">
-                <option value="Any">Any Park </option>
-            </select>
-        </div>
-        <div>
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Destination Park</label>
-            <select id="calcToPark" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:ring-1 focus:ring-vyra-500 outline-none">
-                <option value="Any">Any Park (Use State Price)</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-
-
-    <button onclick="calculateTrip()" class="w-full bg-vyra-500 hover:bg-white text-slate-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-vyra-900/20">
-        Calculate Estimated Fare
-    </button>
 
 <!-- NEW: EXPLORE CITIES BUTTON -->
 <a href="/cities.html" class="block w-full mt-3 bg-slate-800 hover:bg-slate-700 text-white font-bold py-4 rounded-xl text-center transition-all shadow-lg hover:shadow-slate-900/30">
@@ -606,50 +585,9 @@ body * {
 
 
     <div id="calcResults" class="mt-8 space-y-4 hidden">
-        <p class="text-sm text-slate-500 font-medium">Estimated Prices for your route:</p>
-        <div id="calcList" class="space-y-2"></div>
-        <p class="text-[10px] text-slate-600 italic mt-4">Note: Prices are as is and is real time at the time of using this calculator.</p>
-
-        <!-- DOWNLOAD BUTTON SECTION - ADDED HERE 
-        <div id="downloadAppPrompt" class="mt-6 pt-6 border-t border-slate-800 hidden">
-            <div class="bg-gradient-to-r from-vyra-900/30 to-slate-800 rounded-2xl p-5 border border-vyra-500/20">
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-16 bg-vyra-500/20 rounded-2xl flex items-center justify-center">
-                            <svg class="w-8 h-8 text-vyra-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="flex-1 text-center sm:text-left">
-                        <h3 class="text-white font-bold text-lg mb-1">Get Instant Fare Updates</h3>
-                        <p class="text-slate-400 text-sm">Download our app for real-time price checking, terminal routes, company stats and even more!</p>
-                    </div>
-                    <button onclick="downloadApp()" class="flex-shrink-0 w-full sm:w-auto px-6 py-3 bg-vyra-600 hover:bg-vyra-500 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-vyra-500/25 flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                        </svg>
-                        Download Now
-                    </button>
-                </div>
-                
-
-                <div class="flex items-center justify-center sm:justify-start gap-3 mt-4">
-                    <span class="text-xs text-slate-500 flex items-center gap-1">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        4.8 Rating
-                    </span>
-                    <span class="text-xs text-slate-500">•</span>
-                    <span class="text-xs text-slate-500">Free Download</span>
-                    <span class="text-xs text-slate-500">•</span>
-                    <span class="text-xs text-slate-500">Android & iOS</span>
-                </div>
-               
-            </div>
-        </div>
-        -->
+        <p class="text-sm text-slate-500 font-medium">Available trips for your selection:</p>
+        <div id="calcList" class="space-y-3"></div>
+        <p class="text-[10px] text-slate-600 italic mt-4">Note: Fares and seat counts are pulled live from verified operator schedules.</p>
     </div>
 </div>
 
@@ -659,7 +597,7 @@ body * {
 <section class="max-w-6xl mx-auto px-4 py-16 page-load-fade" style="animation-delay: 1.3s;">
     <div class="flex items-center justify-between mb-8">
         <div>
-            <h3 class="text-2xl font-bold text-white">Travel Insights</h3>
+            <h3 class="text-2xl font-bold text-white">This might interest you</h3>
             <p class="text-slate-500 text-sm">Latest updates from our blog</p>
         </div>
         <a href="/blog" class="text-vyra-500 hover:text-white text-sm font-semibold transition-colors flex items-center gap-1">
@@ -963,6 +901,12 @@ body * {
         }
 
         initializeTicker();
+
+        function quickSearch(term) {
+            if (!input) return;
+            input.value = term;
+            performSearch();
+        }
 
         async function performSearch() {
             const query = input.value.trim();
@@ -1300,292 +1244,143 @@ loadHomeBlogPreview();
 
 
 
-    let transportData = null;
+    // --- SUPABASE LIVE TRIPS CALCULATOR ---
+    const SUPABASE_URL = "https://squbdamovqaglvakktue.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_G1NySX2e4weo3SuKS57a-g_4aEjHddj";
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-   // Nigerian states mapped to their capital cities (and common alternate names)
-const stateCities = {
-    "Abia": ["Umuahia"],
-    "Adamawa": ["Yola"],
-    "Akwa Ibom": ["Uyo"],
-    "Anambra": ["Awka"],
-    "Bauchi": ["Bauchi"],
-    "Bayelsa": ["Yenagoa"],
-    "Benue": ["Makurdi"],
-    "Borno": ["Maiduguri"],
-    "Cross River": ["Calabar"],
-    "Delta": ["Asaba"],
-    "Ebonyi": ["Abakaliki"],
-    "Edo": ["Benin", "Benin City"],
-    "Ekiti": ["Ado Ekiti", "Ado-Ekiti"],
-    "Enugu": ["Enugu"],
-    "Gombe": ["Gombe"],
-    "Imo": ["Owerri"],
-    "Jigawa": ["Dutse"],
-    "Kaduna": ["Kaduna"],
-    "Kano": ["Kano"],
-    "Katsina": ["Katsina"],
-    "Kebbi": ["Birnin Kebbi"],
-    "Kogi": ["Lokoja"],
-    "Kwara": ["Ilorin"],
-    "Lagos": ["Ikeja"],
-    "Nasarawa": ["Lafia"],
-    "Niger": ["Minna"],
-    "Ogun": ["Abeokuta"],
-    "Ondo": ["Akure"],
-    "Osun": ["Osogbo"],
-    "Oyo": ["Ibadan"],
-    "Plateau": ["Jos"],
-    "Rivers": ["Port Harcourt"],
-    "Sokoto": ["Sokoto"],
-    "Taraba": ["Jalingo"],
-    "Yobe": ["Damaturu"],
-    "Zamfara": ["Gusau"],
-    "Abuja": ["Abuja", "FCT", "Federal Capital Territory"]
-};
+    let allSupabaseTrips = [];
 
-async function initCalc() {
-    const res = await fetch('ngr.json');
-    transportData = await res.json();
-
-    const states = Object.keys(transportData.states).sort();
-    const fromSelect = document.getElementById('calcFrom');
-    const toSelect = document.getElementById('calcTo');
-
-    // Populate both dropdowns with all states initially
-    states.forEach(state => {
-        fromSelect.add(new Option(state, state));
-        toSelect.add(new Option(state, state));
-    });
-
-    // Default values
-    fromSelect.value = "Lagos";
-    toSelect.value = "Abuja";
-
-    // Rebuild the To dropdown whenever From changes
-    fromSelect.addEventListener('change', updateToDropdown);
-
-// Add these inside initCalc() right after fromSelect.addEventListener('change', updateToDropdown);
-document.getElementById('calcTo').addEventListener('change', populateParkDropdowns);
-
-
-    // Run once on load so initial defaults respect the filter
-    updateToDropdown();
-}
-
-// Rebuild the "To" dropdown, excluding the From state and its capital cities
-function updateToDropdown() {
-    const fromSelect = document.getElementById('calcFrom');
-    const toSelect = document.getElementById('calcTo');
-    const selectedFrom = fromSelect.value;
-    const previousTo = toSelect.value;
-    
-    const allStates = Object.keys(transportData.states).sort();
-    const excludeSet = new Set();
-    excludeSet.add(selectedFrom);
-    
-    if (stateCities[selectedFrom]) {
-        stateCities[selectedFrom].forEach(city => excludeSet.add(city));
-    }
-    
-    for (const [state, cities] of Object.entries(stateCities)) {
-        const matchCity = cities.find(city => city.toLowerCase() === selectedFrom.toLowerCase());
-        if (matchCity) {
-            excludeSet.add(state);
-            cities.forEach(city => excludeSet.add(city));
-        }
-    }
-    
-    toSelect.innerHTML = '';
-    allStates.forEach(state => {
-        if (!excludeSet.has(state)) {
-            toSelect.add(new Option(state, state));
-        }
-    });
-    
-    if (previousTo && !excludeSet.has(previousTo)) {
-        toSelect.value = previousTo;
+    // Format "Jos to Biu" -> "Jos - Biu" for display
+    function formatRouteLabel(rawRoute) {
+        return (rawRoute || "").replace(/\s+to\s+/i, " - ").trim();
     }
 
-    // --- NEW: Handle the Terminal Card ---
-    populateParkDropdowns();
-}
+    // Map provider slugs to clean display names (e.g. libmot -> Libra Motors)
+    function formatProviderName(rawProvider) {
+        const key = (rawProvider || "").trim().toLowerCase();
+        const providerMap = {
+            "libmot": "Libra Motors",
+            "plateauriders": "Plateau Riders",
+            "gigm": "GIGM",
+            "guo": "GUO Transport",
+            "abc": "ABC Transport"
+        };
+        if (providerMap[key]) return providerMap[key];
+        return rawProvider ? rawProvider.toUpperCase() : "Operator";
+    }
 
-// NEW FUNCTION: Load parks based on selected states
-function populateParkDropdowns() {
-    const fromState = document.getElementById('calcFrom').value;
-    const toState = document.getElementById('calcTo').value;
-    const terminalCard = document.getElementById('terminalCard');
-    const fromParkSelect = document.getElementById('calcFromPark');
-    const toParkSelect = document.getElementById('calcToPark');
+    // Load all saved trips from Supabase and populate the single trip field
+    async function initCalc() {
+        const tripSelect = document.getElementById('tripRouteSelect');
+        if (!tripSelect) return;
 
-    // Reset dropdowns
-    fromParkSelect.innerHTML = '<option value="Any">Any Park (Use State Price)</option>';
-    toParkSelect.innerHTML = '<option value="Any">Any Park (Use State Price)</option>';
+        try {
+            const { data, error } = await supabaseClient
+                .from('provider_trips')
+                .select('*')
+                .order('fare', { ascending: true });
 
-    if (fromState && toState && fromState !== toState) {
-        const routeKey = `${fromState}-${toState}`;
-        const routeData = transportData.routePrices?.[routeKey];
+            if (error) throw error;
 
-        if (routeData) {
-            const fromParks = new Set();
-            
-            // 1. Gather all possible departure parks
-            Object.values(routeData).forEach(companyData => {
-                if (typeof companyData === 'object' && companyData.parks) {
-                    Object.keys(companyData.parks).forEach(parkPair => {
-                        const parts = parkPair.split('-');
-                        if (parts.length === 2) {
-                            fromParks.add(parts[0].trim());
-                        }
-                    });
-                }
+            allSupabaseTrips = data || [];
+
+            // Extract unique routes
+            const uniqueRoutes = [...new Set(allSupabaseTrips.map(t => t.route).filter(Boolean))].sort();
+
+            tripSelect.innerHTML = '';
+
+            if (uniqueRoutes.length === 0) {
+                tripSelect.add(new Option("No trips available yet", ""));
+                return;
+            }
+
+            tripSelect.add(new Option("Tap to choose a trip (e.g. Abuja - Makurdi)...", ""));
+            uniqueRoutes.forEach(rawRoute => {
+                tripSelect.add(new Option(formatRouteLabel(rawRoute), rawRoute));
             });
 
-            if (fromParks.size > 0) {
-                terminalCard.classList.remove('hidden');
-                
-                // 2. Populate the Departure dropdown
-                Array.from(fromParks).sort().forEach(park => {
-                    fromParkSelect.add(new Option(park, park));
-                });
-                
-                // 3. When departure changes, update the destination dropdown
-                fromParkSelect.onchange = function() {
-                    updateToParks(routeData, this.value, toParkSelect);
-                };
-                
-                // 4. Populate destinations initially (for "Any" departure)
-                updateToParks(routeData, 'Any', toParkSelect);
-                
-            } else {
-                terminalCard.classList.add('hidden');
-            }
-        } else {
-            terminalCard.classList.add('hidden');
+        } catch (err) {
+            console.error("Failed to load trips from Supabase:", err);
+            tripSelect.innerHTML = '<option value="">Unable to load trips right now</option>';
         }
-    } else {
-        terminalCard.classList.add('hidden');
     }
-}
 
+    // Render all provider trips below the card when a user taps a trip
+    function renderSelectedTrip(selectedRoute) {
+        const resultsArea = document.getElementById('calcResults');
+        const listArea = document.getElementById('calcList');
 
-
-function updateToParks(routeData, selectedFromPark, toParkSelect) {
-    // Reset To dropdown
-    toParkSelect.innerHTML = '<option value="Any">Any Park</option>';
-    
-    const toParks = new Set();
-    
-    Object.values(routeData).forEach(companyData => {
-        if (typeof companyData === 'object' && companyData.parks) {
-            Object.keys(companyData.parks).forEach(parkPair => {
-                const parts = parkPair.split('-');
-                if (parts.length === 2) {
-                    const origin = parts[0].trim();
-                    const destination = parts[1].trim();
-                    
-                    // If "Any" is selected, show all destinations
-                    // Otherwise, ONLY show destinations that match the selected origin
-                    if (selectedFromPark === 'Any' || origin === selectedFromPark) {
-                        toParks.add(destination);
-                    }
-                }
-            });
+        if (!selectedRoute) {
+            resultsArea.classList.add('hidden');
+            listArea.innerHTML = '';
+            return;
         }
-    });
 
-    // Populate To dropdown
-    Array.from(toParks).sort().forEach(park => {
-        toParkSelect.add(new Option(park, park));
-    });
-}
+        const matchingTrips = allSupabaseTrips
+            .filter(t => t.route === selectedRoute)
+            .sort((a, b) => (Number(a.fare) || 0) - (Number(b.fare) || 0));
 
+        if (matchingTrips.length === 0) {
+            listArea.innerHTML = `<div class="p-4 text-center text-slate-400">No schedules found for ${formatRouteLabel(selectedRoute)}.</div>`;
+            resultsArea.classList.remove('hidden');
+            return;
+        }
 
+        let html = `
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-2 min-w-0">
+                    <div class="w-2 h-2 rounded-full bg-vyra-500 flex-shrink-0"></div>
+                    <p class="text-xs uppercase tracking-wider font-bold text-vyra-400 break-words">${formatRouteLabel(selectedRoute)}</p>
+                </div>
+                <span class="text-xs text-slate-500 flex-shrink-0">${matchingTrips.length} option(s)</span>
+            </div>
+            <div class="space-y-3">
+        `;
 
-    function calculateTrip() {
-    const from = document.getElementById('calcFrom').value;
-    const to = document.getElementById('calcTo').value;
-    const fromPark = document.getElementById('calcFromPark').value;
-    const toPark = document.getElementById('calcToPark').value;
-    
-    const resultsArea = document.getElementById('calcResults');
-    const listArea = document.getElementById('calcList');
+        matchingTrips.forEach(trip => {
+            const fareFormatted = trip.fare ? `₦${Number(trip.fare).toLocaleString()}` : 'N/A';
+            const providerName = formatProviderName(trip.provider);
+            const seatsLeft = typeof trip.available_seats === 'number' ? trip.available_seats : null;
+            const seatBadge = seatsLeft === null
+                ? ''
+                : seatsLeft > 0
+                    ? `<span class="inline-block whitespace-nowrap text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/50">${seatsLeft} seats left</span>`
+                    : `<span class="inline-block whitespace-nowrap text-[11px] px-2.5 py-0.5 rounded-full bg-red-950 text-red-400 border border-red-800/50">Fully Booked</span>`;
 
-    if (from === to) {
-        alert("Please pick different states!");
-        return;
-    }
+            const metaItems = [
+                trip.date ? `Date: ${trip.date}` : '',
+                trip.departure ? `Departure: ${trip.departure}` : '',
+                trip.boarding ? `Boarding: ${trip.boarding}` : ''
+            ].filter(Boolean);
 
-    listArea.innerHTML = '';
-    const routeKey = `${from}-${to}`;
-    
-    // Create parkKey and trim spaces to prevent matching errors
-    const parkKey = (fromPark !== 'Any' && toPark !== 'Any') ? `${fromPark.trim()}-${toPark.trim()}` : null;
-
-    let directFares = [];
-
-    // ONLY LOOP THROUGH DIRECT FARES
-    if (transportData.routePrices && transportData.routePrices[routeKey]) {
-        Object.entries(transportData.routePrices[routeKey]).forEach(([name, data]) => {
-            
-            let price = data;
-            let includeCompany = true;
-
-            if (typeof data === 'object' && data !== null) {
-                if (parkKey) {
-                    // User selected specific parks!
-                    if (data.parks && data.parks[parkKey] !== undefined) {
-                        price = data.parks[parkKey];
-                    } else {
-                        // Skip this company! They don't have a price for this specific park route.
-                        includeCompany = false; 
-                    }
-                } else {
-                    // User selected "Any Park"
-                    price = data.default;
-                }
-            }
-
-            if (includeCompany) {
-                directFares.push({ name, price });
-            }
+            html += `
+                <div class="w-full p-4 bg-slate-950/70 border border-slate-800 hover:border-vyra-500/40 rounded-xl transition-all overflow-hidden">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="text-white font-bold break-words">${providerName}</span>
+                                ${trip.coach ? `<span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 break-words">${trip.coach}</span>` : ''}
+                            </div>
+                            ${metaItems.length > 0 ? `
+                                <div class="text-xs text-slate-400 mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                                    ${metaItems.map(item => `<span>${item}</span>`).join('<span class="text-slate-700">•</span>')}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-800/80 flex-shrink-0">
+                            <div class="text-lg sm:text-xl font-mono font-black text-white">${fareFormatted}</div>
+                            ${seatBadge ? `<div>${seatBadge}</div>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
         });
-    }
 
-    directFares.sort((a, b) => a.price - b.price);
-
-    if (directFares.length > 0) {
-        let html = '';
-
-        html += '<div class="mb-6">';
-        html += '<div class="flex items-center gap-2 mb-3">';
-        html += '<div class="w-2 h-2 rounded-full bg-green-500"></div>';
-        html += '<p class="text-xs uppercase tracking-wider font-bold text-green-400">Verified Direct Fares</p>';
-        html += '</div><div class="space-y-2">';
-        directFares.forEach(res => {
-            html += '<div class="flex items-center justify-between p-4 bg-green-950/20 border border-green-800/40 rounded-xl">';
-            html += '<div><div class="text-white font-bold">' + res.name + '</div>';
-            html += '<div class="text-[10px] text-green-400 uppercase font-bold">Direct Fare</div></div>';
-            html += '<div class="text-xl font-mono font-black text-white">₦' + res.price.toLocaleString() + '</div>';
-            html += '</div>';
-        });
-        html += '</div></div>';
-
+        html += `</div>`;
         listArea.innerHTML = html;
         resultsArea.classList.remove('hidden');
-    } else {
-        // If no results, check if it was because of a park filter
-        let errorMsg = `No direct operators found between ${from} and ${to}.`;
-        if (parkKey) {
-            errorMsg = `No verified operators found for the specific route: <strong>${fromPark}</strong> to <strong>${toPark}</strong>.<br><span class="text-xs mt-2 block">Try selecting "Any Park" to see all available state prices.</span>`;
-        }
-
-        listArea.innerHTML = `<div class="p-4 text-center text-slate-400">
-            <p>${errorMsg}</p>
-        </div>`;
-        resultsArea.classList.remove('hidden');
     }
-}
 
     function downloadApp() {
         window.location.href = '/intercityappng.html';
