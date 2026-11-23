@@ -10,10 +10,10 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-192.png">
 
-<meta name="description" content="One API for Nigerian intercity bus booking. Get live routes, fares and seat maps from Libmot, Benue Links and more, then send customers to secure checkout.">
+<meta name="description" content="One API for Nigerian intercity bus booking. Get live routes, fares and seat maps from Libra motors, Benue Links and more, then send customers to secure checkout.">
 
 <!-- Essential Meta Tags for SEO -->
-<meta name="keywords" content="intercity booking API, Nigeria transport API, bus booking API, bus seat map API, Libmot, Benue Links, Nigerian bus routes, travel API Nigeria">
+<meta name="keywords" content="intercity booking API, Nigeria transport API, bus booking API, bus seat map API, Libmot, Benue Links, Nigerian bus routes, gigm, abc transport, travu africa, travel API Nigeria">
 <meta name="author" content="Vyra Technologies">
 <meta name="robots" content="index, follow">
 
@@ -57,8 +57,6 @@
   }
 }
 </script>
-<meta name="description" content="One integration for intercity bus booking in Nigeria. Routes, fares, trip dates and live seat maps through a single API from Vyra Technologies.">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -168,7 +166,7 @@ tailwind.config = {
 <section class="px-4 pb-20">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-center text-sm font-semibold text-slate-400 mb-6">Integrating with major services</h2>
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
       <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-center">
         <p class="font-semibold text-white">Libmot</p>
         <p class="text-xs text-vyra-400 mt-1 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-vyra-400"></span>Live</p>
@@ -177,17 +175,21 @@ tailwind.config = {
         <p class="font-semibold text-white">Benue Links</p>
         <p class="text-xs text-vyra-400 mt-1 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-vyra-400"></span>Live</p>
       </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-center">
+        <p class="font-semibold text-white">Plateau Riders</p>
+        <p class="text-xs text-vyra-400 mt-1 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-vyra-400"></span>Live</p>
+      </div>
       <div class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-4 text-center">
         <p class="font-semibold text-slate-300">GIGM</p>
-        <p class="text-xs text-slate-400 mt-1">In progress</p>
+        <p class="text-xs text-slate-400 mt-1">coming soon</p>
       </div>
       <div class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-4 text-center">
         <p class="font-semibold text-slate-300">GUO Transport</p>
-        <p class="text-xs text-slate-400 mt-1">In progress</p>
+        <p class="text-xs text-slate-400 mt-1">coming soon</p>
       </div>
-      <div class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-4 text-center col-span-2 md:col-span-1">
+      <div class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-4 text-center">
         <p class="font-semibold text-slate-300">ABC Transport</p>
-        <p class="text-xs text-slate-400 mt-1">In progress</p>
+        <p class="text-xs text-slate-400 mt-1">coming soon</p>
       </div>
     </div>
   </div>
@@ -308,9 +310,10 @@ tailwind.config = {
               <tbody>
                 <tr><td class="text-white font-medium">Libmot</td><td><code>/api/libmot</code></td><td><span class="text-vyra-400">Live</span></td></tr>
                 <tr><td class="text-white font-medium">Benue Links</td><td><code>/api/benuelinks</code></td><td><span class="text-vyra-400">Live</span></td></tr>
-                <tr><td class="text-white font-medium">GIGM</td><td><code>/api/gigm</code></td><td class="text-slate-400">In progress</td></tr>
-                <tr><td class="text-white font-medium">GUO Transport</td><td><code>/api/guo</code></td><td class="text-slate-400">In progress</td></tr>
-                <tr><td class="text-white font-medium">ABC Transport</td><td><code>/api/abc</code></td><td class="text-slate-400">In progress</td></tr>
+                <tr><td class="text-white font-medium">Plateau Riders</td><td><code>/api/plateauriders</code></td><td><span class="text-vyra-400">Live</span></td></tr>
+                <tr><td class="text-white font-medium">GIGM</td><td><code>/api/gigm</code></td><td class="text-slate-400">coming soon</td></tr>
+                <tr><td class="text-white font-medium">GUO Transport</td><td><code>/api/guo</code></td><td class="text-slate-400">coming soon</td></tr>
+                <tr><td class="text-white font-medium">ABC Transport</td><td><code>/api/abc</code></td><td class="text-slate-400">coming soon</td></tr>
               </tbody>
             </table>
           </div>
@@ -574,6 +577,7 @@ const WHATSAPP = "2349137974960";
 
 const KNOWN_COMPANIES = [
   { id: "libmot", name: "Libmot" },
+  { id: "plateauriders", name: "Plateau Riders" },
   { id: "benuelinks", name: "Benue Links" },
   { id: "gigm", name: "GIGM" },
   { id: "guo", name: "GUO Transport" },
@@ -618,7 +622,7 @@ async function loadCompanies() {
   results.forEach(c => {
     const opt = document.createElement('option');
     opt.value = c.id;
-    opt.textContent = c.isActive ? c.name : `${c.name} (in progress)`;
+    opt.textContent = c.isActive ? c.name : `${c.name} (coming soon)`;
     opt.disabled = !c.isActive;
     select.appendChild(opt);
   });
@@ -791,10 +795,7 @@ function updateTotalPrice() {
 async function goToPayment() {
   if (!activeTrip || selectedSeats.length === 0) return;
   clearError('seatError');
-  if (activeCompany !== 'libmot' && activeCompany !== 'benuelinks') {
-    showError('seatError', 'Booking is not available for this operator yet.');
-    return;
-  }
+ 
   const btn = document.getElementById('seatContinueBtn');
   btn.disabled = true; btn.textContent = 'Creating booking link…';
   try {
