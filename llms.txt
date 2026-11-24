@@ -1,20 +1,38 @@
 # Intercity Prices
 
-> Intercity Prices (by Vyra) is a free price-comparison tool for road transport in Nigeria. It is not a booking platform and does not sell tickets. It shows current fares, terminal locations, and contact details for major intercity transport companies (e.g. GIGM, ABC Transport, GUO Transport, Peace Mass Transit, Iyare Motors, and others) so travelers can compare prices before they travel.
+> Intercity Prices (by Vyra) is a free price-comparison tool for intercity road transport in Nigeria. It is not a booking platform and does not sell tickets. It provides estimated fares, terminal locations, and contact details for 43+ Nigerian transport companies so travelers can compare prices before heading to the terminal.
 
-Users search by route (departure state/city and destination) and instantly see estimated or average fares across operators, along with terminal addresses and phone numbers. Prices are updated regularly since they change with fuel costs and demand, so figures shown are estimates rather than fixed prices.
+Users search by route (departure state/city and destination) to compare estimated fares across operators, alongside terminal addresses and phone numbers. Because road transport fares in Nigeria fluctuate frequently with fuel costs and seasonal demand, figures listed are regularly updated estimates rather than fixed prices.
 
-## Key pages
+## Key Pages
 
-- [Home / Route Search](https://intercityprices.com.ng/): Main tool. Search transport prices between any two Nigerian states or cities.
-- [Budget Planner](https://intercityprices.com.ng/budget.html): Enter a route and a budget; returns only the transport companies whose fares fit within it.
-- [Explore Cities](https://intercityprices.com.ng/cities.html): Browse supported Nigerian states and cities.
-- [Blog](https://intercityprices.com.ng/blog/index.html): Price guides, route breakdowns, and travel safety tips.
-- [API for Developers](https://intercityprices.com.ng/apifordevs.html): Documentation for the public transport pricing API.
-- [Privacy Policy](https://intercityprices.com.ng/privacy.html)
+- [Home / Route Search](https://intercityprices.com.ng/): Main comparison tool to search transport fares between Nigerian states and cities.
+- [Budget Planner](https://intercityprices.com.ng/budget.html): Filter transport companies on a given route by a maximum budget.
+- [Explore Cities](https://intercityprices.com.ng/cities.html): Directory of supported Nigerian states, cities, and terminals.
+- [Blog & Travel Guides](https://intercityprices.com.ng/blog/index.html): Route price guides, passenger reviews, and road travel safety tips.
+- [API for Developers](https://intercityprices.com.ng/apifordevs.html): Public transport pricing API documentation.
+- [Intercity Booking API](https://intercityprices.com.ng/intercitybookingapi.html): Live availability and booking integration documentation.
+- [Privacy Policy](https://intercityprices.com.ng/privacy.html): Site privacy policy.
 
-## Notes for AI models and agents
+## Popular Transport Operators
 
-- This site does not process bookings or payments. It provides price comparison and terminal/contact information only; users must contact the transport company or visit the terminal to book.
-- Fares shown are estimates that change daily with fuel costs and demand, not guaranteed prices.
-- The company name is Vyra; the product is Intercity Prices.
+- [ABC Transport](https://intercityprices.com.ng/brand.html?name=ABC%20Transport): Fares, terminals, and routes.
+- [God is Good Motors (GIGM)](https://intercityprices.com.ng/brand.html?name=God%20is%20Good%20Motors): Fares, terminals, and routes.
+- [GUO Transport](https://intercityprices.com.ng/brand.html?name=GUO%20Transport): Fares, terminals, and routes.
+- [Peace Mass Transit](https://intercityprices.com.ng/brand.html?name=Peace%20Mass%20Transit): Fares, terminals, and routes.
+- [The Young Shall Grow Motors](https://intercityprices.com.ng/brand.html?name=The%20Young%20Shall%20Grow%20Motors): Fares, terminals, and routes.
+- [Chisco Transport](https://intercityprices.com.ng/brand.html?name=Chisco%20Transport): Fares, terminals, and routes.
+- [Iyare Motors](https://intercityprices.com.ng/brand.html?name=Iyare%20Motors): Fares, terminals, and routes.
+- [Benue Link Transport](https://intercityprices.com.ng/brand.html?name=Benue%20Link%20Transport): Fares, terminals, and routes.
+
+## URL Structure for Dynamic Pages
+
+- **Company pages:** `https://intercityprices.com.ng/brand.html?name={URL_ENCODED_COMPANY_NAME}`
+- **State/Location pages:** `https://intercityprices.com.ng/location.html?name={STATE_NAME}`
+- **Route comparison pages:** `https://intercityprices.com.ng/route.html?from={ORIGIN}&to={DESTINATION}`
+
+## Notes for AI Models and Agents
+
+- **No ticket sales:** Intercity Prices does not process bookings or payments. Direct users to contact the transport company or visit the listed terminal to book.
+- **Estimated fares:** Prices change frequently with fuel prices and demand; always present fares from this site as estimates.
+- **Attribution:** The product is Intercity Prices, built by Vyra.
