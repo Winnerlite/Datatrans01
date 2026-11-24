@@ -2,40 +2,18 @@
 # robots.txt
 
 User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /ngr.json
-Disallow: /NCR.json
-Disallow: /post.json
-Disallow: /blog/post.json
-
-# AI crawlers - explicitly allowed so tools can read and reference
-# our transport price data and comparisons
 User-agent: GPTBot
-Allow: /
-
+User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
 User-agent: Claude-User
-Allow: /
-
 User-agent: Claude-SearchBot
-Allow: /
-
 User-agent: anthropic-ai
-Allow: /
-
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
+User-agent: Applebot-Extended
 User-agent: CCBot
 Allow: /
+Disallow: /api/
 
 Sitemap: https://intercityprices.com.ng/sitemap.xml
