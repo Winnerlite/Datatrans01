@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--no referral hiltopads -->
-   <meta name="referrer" content="no-referrer-when-downgrade" />
-<!-- banner hiltopads -->
-    <script>
-(function(frrvm){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = frrvm || {};
-s.src = "\/\/shameful-farm.com\/bXXCVUsFd.Gyl\/0dYEWDcb\/Fetmt9RukZNU\/llkRPcTWcTwPN\/DEgL1LMND\/EEtBNNzWAs0qOADYUbw_NOQu";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-    </script>
-
-    
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Loading Transport Company...</title>
-    <meta name="description" content="Check updated price list, terminal locations, and online booking options.">
+    <title>Nigerian Transport Companies Price List & Terminals (2026) | Intercity Prices</title>
+    <meta name="description" content="Check updated 2026 bus price lists, terminal addresses, and verified contact numbers for top Nigerian interstate transport companies.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="">
+    <link rel="canonical" href="https://www.intercityprices.com.ng/brand.html">
 
-    <meta property="og:title" content="Transport Price List 2026">
-    <meta property="og:description" content="Find the best prices and terminals for your next trip.">
+    <meta property="og:site_name" content="Intercity Prices Nigeria">
+    <meta property="og:title" content="Nigerian Transport Price List & Terminals 2026">
+    <meta property="og:description" content="Find updated 2026 ticket prices, terminal addresses, and phone numbers for your next trip.">
     <meta property="og:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nigerian Transport Price List & Terminals 2026">
+    <meta name="twitter:description" content="Find updated 2026 ticket prices, terminal addresses, and phone numbers.">
+    <meta name="twitter:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { vyra: { 500: '#1acd81' } } } }
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        vyra: {
+                            400: '#34d399',
+                            500: '#1acd81',
+                            600: '#15a869',
+                            700: '#0f8251',
+                            900: '#064e3b'
+                        }
+                    }
+                }
+            }
         }
     </script>
 </head>
@@ -99,15 +100,29 @@ l.parentNode.insertBefore(s, l);
                 </div>
 
                 <h2 class="text-2xl font-bold text-white mb-6">Terminal Locations & Contacts</h2>
-                <div id="terminalGrid" class="grid md:grid-cols-2 gap-4 mb-12">
+                <div id="terminalGrid" class="grid md:grid-cols-2 gap-4 mb-12"></div>
+
+                <div class="grid md:grid-cols-2 gap-6 my-8">
+                    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Check Live <span id="ctaName"></span> Fares</h3>
+                            <p class="text-sm text-slate-300 mb-6">Compare today's terminal prices across 20+ Nigerian bus operators before heading to the park.</p>
+                        </div>
+                        <a href="/" class="inline-block text-center bg-white text-black font-bold py-3 px-6 rounded-xl hover:bg-[#1acd81] transition-colors">
+                            Search Bus Tickets →
+                        </a>
                     </div>
 
-                <div class="bg-gradient-to-r from-vyra-600 to-teal-600 rounded-2xl p-8 text-center text-white shadow-2xl shadow-vyra-900/50">
-                    <h3 class="text-2xl font-bold mb-2">Book Your Trip Now</h3>
-                    <p class="mb-6 opacity-90">Compare prices for <span id="ctaName"></span> and 20+ other companies instantly.</p>
-                    <a href="/" class="inline-block bg-white text-vyra-700 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transition-colors shadow-lg">
-                        Search Bus Tickets
-                    </a>
+                    <div class="bg-slate-900 border border-[#1acd81]/40 rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#1acd81]">One-Time Payment · ₦1,000 Only</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-2">Verify Park Prices Before You Pay</h3>
+                            <p class="text-sm text-slate-300 mb-6">Join 82+ Nigerian travellers on WhatsApp for real terminal-to-terminal rates, bus reviews, and cheapest travel day alerts.</p>
+                        </div>
+                        <a href="/intercitypricesvip.html" class="inline-block text-center bg-[#1acd81] text-black font-bold py-3 px-6 rounded-xl hover:bg-white transition-colors">
+                            Join VIP Travellers Group →
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -120,19 +135,15 @@ l.parentNode.insertBefore(s, l);
 
     <script>
         async function loadBrandPage() {
-            // 1. Get the Company Name from URL (e.g. brand.html?name=ABC Transport)
             const params = new URLSearchParams(window.location.search);
-            // Decode URI component to handle spaces like "ABC%20Transport"
             const queryName = decodeURIComponent(params.get('name') || ''); 
 
             if (!queryName) { window.location.href = '/'; return; }
 
             try {
-                // 2. Fetch the JSON Database
-                const response = await fetch('ngr.json');
+                const response = await fetch('/ngr.json');
                 const data = await response.json();
                 
-                // 3. Find the Company (Case insensitive search)
                 const companies = data.transportCompanies;
                 const companyKey = Object.keys(companies).find(key => key.toLowerCase() === queryName.toLowerCase());
                 
@@ -144,15 +155,10 @@ l.parentNode.insertBefore(s, l);
                 }
 
                 const c = companies[companyKey];
-
-                // 4. SMART CONTENT GENERATOR 🧠
-                // This replaces the AI API. It "writes" the content based on data points.
-                
                 const stateCount = c.states.length;
                 const topStates = c.states.slice(0, 5).join(', ');
                 const basePrice = c.basePrice ? c.basePrice.toLocaleString() : "15,000";
                 
-                // Generate Intro Text
                 const introText = `
                     <span class="font-bold text-white">${c.name}</span> is currently one of the most reliable intercity transport operators in Nigeria. 
                     With a robust network covering <span class="text-vyra-400 font-bold">${stateCount} states</span>, they have established themselves as a key player for travelers heading to destinations like ${topStates}.
@@ -160,12 +166,10 @@ l.parentNode.insertBefore(s, l);
                     Known for their ${c.serviceAttributes ? c.serviceAttributes.join(' and ').toLowerCase() : 'reliability and safety'}, ${c.name} operates modern terminals designed to provide comfort before departure.
                 `;
 
-                // Generate Coverage Text
                 const coverageText = `
                     Travelers can board ${c.name} buses from major hubs across the country. They maintain a strong presence in the ${c.states.includes('Lagos') ? 'South West' : 'North'}, specifically connecting business hubs in ${c.states.slice(0,3).join(' and ')}.
                 `;
 
-                // 5. Update HTML Elements
                 document.getElementById('pageTitle').textContent = `${c.name} Price List 2026`;
                 document.getElementById('subTitle').textContent = `Official terminal locations, updated price list, and online booking guide.`;
                 document.getElementById('logoImg').src = c.image;
@@ -174,7 +178,6 @@ l.parentNode.insertBefore(s, l);
                 document.getElementById('coverageText').innerHTML = coverageText;
                 document.getElementById('ctaName').textContent = c.name;
 
-                // Service List
                 const servicesHtml = `
                     <li class="flex justify-between border-b border-slate-800 pb-2"><span>Base Fare Estimate</span> <span class="text-white font-mono">₦${basePrice}+</span></li>
                     <li class="flex justify-between border-b border-slate-800 pb-2"><span>Vehicle Type</span> <span class="text-white">Toyota Hiace / Sienna</span></li>
@@ -183,7 +186,6 @@ l.parentNode.insertBefore(s, l);
                 `;
                 document.getElementById('serviceList').innerHTML = servicesHtml;
 
-                // Terminals Loop
                 let terminalHtml = '';
                 if (c.terminals) {
                     Object.entries(c.terminals).forEach(([state, terms]) => {
@@ -201,15 +203,43 @@ l.parentNode.insertBefore(s, l);
                 }
                 document.getElementById('terminalGrid').innerHTML = terminalHtml;
 
-                // 6. Update SEO Meta Tags (Crucial for Ranking)
+                // Update SEO Meta Tags
                 document.title = `${c.name} Price List 2026 | Terminals & Booking`;
                 const metaDesc = `Book ${c.name} online. Updated 2026 price list starting at ₦${basePrice}. Find terminals in ${topStates} and contact numbers here.`;
                 document.querySelector('meta[name="description"]').setAttribute('content', metaDesc);
                 document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
                 document.querySelector('meta[property="og:description"]').setAttribute('content', metaDesc);
+                document.querySelector('meta[name="twitter:title"]').setAttribute('content', document.title);
+                document.querySelector('meta[name="twitter:description"]').setAttribute('content', metaDesc);
                 document.querySelector('link[rel="canonical"]').setAttribute('href', window.location.href);
 
-                // Show Page
+                // Inject FAQ Schema for Google Rich Snippets
+                const schemaScript = document.createElement('script');
+                schemaScript.type = 'application/ld+json';
+                schemaScript.text = JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": `How much is ${c.name} transport price list in 2026?`,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": `${c.name} interstate bus fares in 2026 start from approximately ₦${basePrice}, depending on departure terminal, destination state, and vehicle type.`
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": `Which states does ${c.name} operate in?`,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": `${c.name} operates terminals across ${stateCount} Nigerian states including ${topStates}.`
+                            }
+                        }
+                    ]
+                });
+                document.head.appendChild(schemaScript);
+
                 document.getElementById('loader').classList.add('hidden');
                 document.getElementById('content').classList.remove('hidden');
 
