@@ -45,8 +45,11 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-vyra-500"></span>
                 <span>Intercity<span class="text-vyra-500">Prices</span></span>
             </a>
-            <div class="flex items-center gap-4 text-sm">
-                <a href="/budget.html" class="hidden sm:inline text-slate-400 hover:text-white transition-colors">Budget Planner</a>
+            <div class="flex items-center gap-3 text-sm">
+                <a href="/intercitypricesvip.html" class="hidden sm:inline-flex items-center gap-1.5 text-vyra-400 hover:text-vyra-300 font-semibold transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-vyra-400 animate-pulse"></span>
+                    VIP Group
+                </a>
                 <a href="/" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 hover:border-vyra-500/50 hover:text-white transition-all">
                     <svg class="w-4 h-4 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     New Search
@@ -128,6 +131,41 @@
                 <div id="routesList" class="divide-y divide-slate-800/80"></div>
             </section>
 
+            <!-- VIP Card (Broken Up & Informal) -->
+            <section class="bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/50 border border-vyra-500/40 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-3 max-w-xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vyra-500/15 border border-vyra-500/30 text-vyra-400 text-xs font-bold">
+                            <span class="w-2 h-2 rounded-full bg-vyra-400 animate-ping"></span>
+                            82+ Smart Travellers Inside
+                        </div>
+
+                        <h3 id="vipCardTitle" class="text-xl sm:text-2xl font-extrabold text-white leading-snug">
+                            Don't let park touts surprise you at the gate.
+                        </h3>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Fares change every morning. Hop into our WhatsApp VIP group to ask real commuters and park agents what buses are actually charging today before you carry your bag out.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 pt-1 text-xs text-slate-300">
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-950/80 border border-slate-800">✓ Exact park-to-park prices</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-950/80 border border-slate-800">✓ Cheapest days to move</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-950/80 border border-slate-800">✓ Scam & fake agent alerts</span>
+                        </div>
+                    </div>
+
+                    <div class="flex-shrink-0 bg-slate-950/90 border border-slate-800 rounded-2xl p-5 text-center md:w-64">
+                        <div class="text-xs text-slate-400 mb-1">Pay once, stay forever</div>
+                        <div class="text-3xl font-black text-white mb-3">₦1,000 <span class="text-xs font-semibold text-vyra-400">one-time</span></div>
+                        <a id="vipRouteCta" href="/intercitypricesvip.html" class="block w-full py-3 px-4 bg-vyra-500 hover:bg-vyra-400 text-slate-950 font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-vyra-900/30 active:scale-95">
+                            Join the VIP Group →
+                        </a>
+                        <p class="text-[11px] text-slate-500 mt-2.5">No monthly billing. Instant WhatsApp add.</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- Terminals & Travel Guide Grid -->
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Departure Terminals -->
@@ -164,22 +202,11 @@
                     </div>
 
                     <div class="mt-5 p-3.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs text-slate-400 leading-relaxed">
-                        <strong class="text-white block mb-1">Traveler Advisory:</strong>
-                        First-wave buses depart between 6:00 AM and 8:00 AM. Arrive at the terminal at least 45 minutes early to secure front-row or AC seats.
+                        <strong class="text-white block mb-1">Quick Park Tip:</strong>
+                        First-wave buses leave between 6:00 AM and 8:00 AM. Get to the park at least 45 minutes early so you don't get stuck on the back bench.
                     </div>
                 </section>
             </div>
-
-            <!-- CTA Banner -->
-            <section class="bg-gradient-to-r from-vyra-600 to-emerald-600 rounded-2xl p-7 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-white shadow-lg">
-                <div class="text-center sm:text-left">
-                    <h3 class="text-xl sm:text-2xl font-extrabold mb-1">Traveling on a fixed budget?</h3>
-                    <p class="text-sm text-emerald-50/90">Filter Nigerian transport operators that match your exact fare limit.</p>
-                </div>
-                <a href="/budget.html" class="flex-shrink-0 bg-slate-950 text-white font-bold text-sm py-3 px-6 rounded-xl hover:bg-slate-900 transition-colors shadow-md">
-                    Open Budget Planner
-                </a>
-            </section>
 
         </article>
     </main>
@@ -189,11 +216,6 @@
     </footer>
 
     <script>
-        /**
-         * Safely converts any price format in ngr.json (number, numeric string,
-         * { min, max }, { price, busType }, or tier map { sienna: 25000, hiace: 22000 })
-         * into clean display values so [object Object] never appears.
-         */
         function normalizePrice(raw) {
             if (raw === null || raw === undefined || raw === '') {
                 return { sortValue: Infinity, display: 'Check Terminal', subLabel: 'Confirm fare at park' };
@@ -220,7 +242,6 @@
             }
 
             if (typeof raw === 'object') {
-                // Case 1: { min: 20000, max: 30000 } or { low, high }
                 const minVal = Number(raw.min ?? raw.low ?? raw.from);
                 const maxVal = Number(raw.max ?? raw.high ?? raw.to);
                 if (!isNaN(minVal) && minVal > 0) {
@@ -234,7 +255,6 @@
                     };
                 }
 
-                // Case 2: { price: 25000, busType: "Hiace" } or { amount / fare }
                 const singleVal = Number(raw.price ?? raw.amount ?? raw.fare ?? raw.basePrice);
                 if (!isNaN(singleVal) && singleVal > 0) {
                     return {
@@ -244,7 +264,6 @@
                     };
                 }
 
-                // Case 3: Tier object e.g. { "Hiace": 22000, "Sienna": 28000 }
                 const entries = Object.entries(raw)
                     .map(([k, v]) => [k, typeof v === 'number' ? v : Number(String(v).replace(/[^0-9.]/g, ''))])
                     .filter(([, v]) => !isNaN(v) && v > 0)
@@ -269,10 +288,6 @@
             return { sortValue: Infinity, display: 'Check Terminal', subLabel: 'Confirm fare at park' };
         }
 
-        /**
-         * Safely extracts terminal name & address whether majorTerminals
-         * contains strings or objects ({ name, address, area }).
-         */
         function normalizeTerminal(item) {
             if (typeof item === 'string') {
                 return { name: item, detail: 'Major Departure Hub' };
@@ -286,7 +301,6 @@
             return { name: 'Transport Terminal', detail: 'Major Departure Hub' };
         }
 
-        // Deterministic distance/time helper so values stay consistent across reloads
         function getDeterministicEstimate(from, to) {
             const seed = `${from}-${to}`.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
             const km = 280 + (seed % 520);
@@ -314,7 +328,6 @@
                 let validOperators = [];
                 let isDirectRoute = false;
 
-                // 1. Direct route prices (check exact direction, then reverse direction as fallback)
                 const routeMap = (data.routePrices && data.routePrices[routeKey])
                     || (data.routePrices && data.routePrices[reverseKey]);
 
@@ -326,9 +339,7 @@
                             fare: normalizePrice(rawPrice)
                         });
                     });
-                }
-                // 2. Fallback: operators operating in both origin & destination states
-                else if (data.states && data.transportCompanies) {
+                } else if (data.states && data.transportCompanies) {
                     const fromStateData = data.states[fromCity];
                     const toStateData = data.states[toCity];
 
@@ -344,23 +355,23 @@
                     }
                 }
 
-                // Empty state
                 if (validOperators.length === 0) {
                     document.getElementById('content').innerHTML = `
                         <div class="bg-slate-900/70 border border-slate-800 rounded-2xl text-center py-16 px-6">
                             <h1 class="text-2xl font-bold text-white mb-3">No direct routes listed for ${fromCity} to ${toCity}</h1>
-                            <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">We don't have direct operator pricing for this pair yet. Try searching from a nearby state capital or major hub.</p>
-                            <a href="/" class="inline-block px-6 py-2.5 bg-vyra-500 text-slate-950 font-bold text-sm rounded-xl hover:bg-vyra-400 transition-colors">Search Another Route</a>
+                            <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">We don't have direct operator pricing for this pair yet. Ask inside our VIP WhatsApp group to get live park prices from commuters on ground.</p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                                <a href="/intercitypricesvip.html?from=${encodeURIComponent(fromCity)}&to=${encodeURIComponent(toCity)}" class="px-6 py-2.5 bg-vyra-500 text-slate-950 font-extrabold text-sm rounded-xl hover:bg-vyra-400 transition-colors">Ask in VIP Group (₦1,000)</a>
+                                <a href="/" class="px-6 py-2.5 bg-slate-800 text-white font-semibold text-sm rounded-xl hover:bg-slate-700 transition-colors">Search Another Route</a>
+                            </div>
                         </div>`;
                     document.getElementById('loader').classList.add('hidden');
                     document.getElementById('content').classList.remove('hidden');
                     return;
                 }
 
-                // Sort cheapest first
                 validOperators.sort((a, b) => a.fare.sortValue - b.fare.sortValue);
 
-                // Populate headers & links
                 document.getElementById('fromCity').textContent = fromCity;
                 document.getElementById('toCity').textContent = toCity;
                 document.getElementById('fromCityLink').href = `/location.html?name=${encodeURIComponent(fromCity)}`;
@@ -368,6 +379,17 @@
                 document.getElementById('swapRouteBtn').href = `/route.html?from=${encodeURIComponent(toCity)}&to=${encodeURIComponent(fromCity)}`;
                 document.getElementById('breadcrumbRoute').textContent = `${fromCity} to ${toCity}`;
                 document.querySelectorAll('.originCityName').forEach(el => el.textContent = fromCity);
+
+                // Personalize the VIP card & CTA link to the user's exact route
+                const vipTitle = document.getElementById('vipCardTitle');
+                const vipCta = document.getElementById('vipRouteCta');
+                if (vipTitle) {
+                    vipTitle.textContent = `Heading from ${fromCity} to ${toCity}? Don't let park touts surprise you.`;
+                }
+                if (vipCta) {
+                    vipCta.href = `/intercitypricesvip.html?from=${encodeURIComponent(fromCity)}&to=${encodeURIComponent(toCity)}`;
+                    vipCta.textContent = `Check ${fromCity} → ${toCity} Live →`;
+                }
 
                 const cheapest = validOperators[0].fare;
                 document.getElementById('minPriceDisplay').textContent = cheapest.sortValue !== Infinity
@@ -379,7 +401,6 @@
                     document.getElementById('dataSourceNote').textContent = `Showing ${validOperators.length} operators active in both ${fromCity} and ${toCity}.`;
                 }
 
-                // Render Operator Cards
                 const routesListEl = document.getElementById('routesList');
                 function renderOperators(list) {
                     if (list.length === 0) {
@@ -415,13 +436,11 @@
 
                 renderOperators(validOperators);
 
-                // Live filter input
                 document.getElementById('operatorSearch').addEventListener('input', (e) => {
                     const q = e.target.value.toLowerCase().trim();
                     renderOperators(validOperators.filter(op => op.name.toLowerCase().includes(q)));
                 });
 
-                // Render Terminals safely
                 const stateData = data.states ? data.states[fromCity] : null;
                 if (stateData && Array.isArray(stateData.majorTerminals) && stateData.majorTerminals.length > 0) {
                     document.getElementById('terminalList').innerHTML = stateData.majorTerminals.map(rawTerm => {
@@ -443,12 +462,10 @@
                         </li>`;
                 }
 
-                // Route distance/time
                 const est = getDeterministicEstimate(fromCity, toCity);
                 document.getElementById('estDist').textContent = `~${est.km} km`;
                 document.getElementById('estTime').textContent = est.time;
 
-                // Dynamic SEO & Canonical URL
                 const startingText = cheapest.sortValue !== Infinity ? ` starting from ₦${cheapest.sortValue.toLocaleString()}` : '';
                 const pageTitle = `${fromCity} to ${toCity} Bus Price & Transport Companies (2026) | Intercity Prices`;
                 const pageDesc = `Compare ${fromCity} to ${toCity} bus fares${startingText} across ${validOperators.length} Nigerian transport companies including terminal locations and departure times.`;
@@ -462,7 +479,6 @@
                 document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
                 document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
 
-                // Inject Breadcrumb JSON-LD for Google Search
                 const schemaScript = document.createElement('script');
                 schemaScript.type = 'application/ld+json';
                 schemaScript.textContent = JSON.stringify({
