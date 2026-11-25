@@ -43,7 +43,14 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://intercityprices.com.ng/intercitypricesvip.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
+                         
   <!-- Transport Companies (43 Operators) -->
   <url><loc>https://intercityprices.com.ng/brand.html?name=ABC%20Transport</loc><lastmod>2026-11-24</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://intercityprices.com.ng/brand.html?name=Iyare%20Motors</loc><lastmod>2026-11-24</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
