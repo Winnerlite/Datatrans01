@@ -225,27 +225,7 @@
                     </li>
                 </ul>
 
-                <!-- Live Sample Fare Strip -->
-                <div class="mb-6 sm:mb-7 p-3.5 sm:p-4 rounded-2xl bg-slate-950/90 border border-slate-800">
-                    <div class="flex items-center justify-between gap-2 mb-3">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-vyra-400">Routes Tracked Daily</span>
-                        <span class="text-[11px] text-slate-500">Updated 2026</span>
-                    </div>
-                    <div id="vipSampleFeed" class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                        <a href="/route.html?from=Lagos&to=Abuja" class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-vyra-500/40 flex justify-between items-center gap-2">
-                            <span class="text-slate-300 font-medium truncate">Lagos → Abuja</span>
-                            <span class="text-vyra-400 font-bold flex-shrink-0">Live Rates</span>
-                        </a>
-                        <a href="/route.html?from=Lagos&to=Port%20Harcourt" class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-vyra-500/40 flex justify-between items-center gap-2">
-                            <span class="text-slate-300 font-medium truncate">Lagos → PH</span>
-                            <span class="text-vyra-400 font-bold flex-shrink-0">Live Rates</span>
-                        </a>
-                        <a href="/route.html?from=Onitsha&to=Lagos" class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-vyra-500/40 flex justify-between items-center gap-2">
-                            <span class="text-slate-300 font-medium truncate">Onitsha → Lagos</span>
-                            <span class="text-vyra-400 font-bold flex-shrink-0">Live Rates</span>
-                        </a>
-                    </div>
-                </div>
+               
 
                 <!-- Pricing / CTA -->
                 <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 sm:p-6 text-center">
@@ -331,28 +311,38 @@
     </footer>
 
     <script>
-        (async function hydrateVipSampleRoutes() {
+        (async function injectLiveRoutesSchema() {
             try {
                 const res = await fetch('/ngr.json');
                 const data = await res.json();
                 if (!data.routePrices) return;
 
-                const sampleKeys = Object.keys(data.routePrices).slice(0, 3);
-                if (sampleKeys.length === 0) return;
-
-                const feedEl = document.getElementById('vipSampleFeed');
-                feedEl.innerHTML = sampleKeys.map(key => {
+                const routes = Object.keys(data.routePrices).slice(0, 10).map((key, index) => {
                     const [from, to] = key.split('-');
                     const prices = Object.values(data.routePrices[key])
                         .map(v => typeof v === 'number' ? v : Number(v?.min ?? v?.price ?? 0))
                         .filter(n => n > 0);
-                    const minFare = prices.length ? `From ₦${Math.min(...prices).toLocaleString()}` : 'Live Rates';
-                    return `
-                        <a href="/route.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}" class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-vyra-500/40 flex justify-between items-center gap-2 transition-colors">
-                            <span class="text-slate-300 font-medium truncate">${from} → ${to}</span>
-                            <span class="text-vyra-400 font-bold flex-shrink-0">${minFare}</span>
-                        </a>`;
-                }).join('');
+                    const minFare = prices.length ? Math.min(...prices) : null;
+
+                    return {
+                        "@type": "ListItem",
+                        "position": index + 1,
+                        "name": `${from} to ${to} Bus Fare${minFare ? ` from ₦${minFare.toLocaleString()}` : ''}`,
+                        "url": `https://intercityprices.com.ng/route.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`
+                    };
+                });
+
+                if (routes.length === 0) return;
+
+                const schema = document.createElement('script');
+                schema.type = 'application/ld+json';
+                schema.textContent = JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "ItemList",
+                    "name": "Daily Tracked Nigerian Intercity Bus Routes",
+                    "itemListElement": routes
+                });
+                document.head.appendChild(schema);
             } catch (_) {}
         })();
     </script>
