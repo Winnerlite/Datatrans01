@@ -52,7 +52,7 @@
     {
       "@context": "https://schema.org",
       "@graph": [
-        {
+       {
           "@type": "Product",
           "name": "Intercity Prices VIP WhatsApp Transport Group",
           "image": "https://i.ibb.co/ycsBvPZW/VyraLogo.png",
@@ -68,7 +68,28 @@
             "price": "1000",
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/InStock"
-          }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": "12"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Chinedu O." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "All the accurate infomation i got in less than i could have done googling"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Amina B." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "A LifeSaver!"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -276,6 +297,40 @@
                     </figure>
                 </div>
             </section>
+
+
+<!-- Member Reviews Section (Matches JSON-LD Schema) -->
+            <section id="reviews" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 sm:p-6 mb-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5 pb-4 border-b border-slate-800">
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-white">What VIP Members Say</h2>
+                        <p class="text-xs text-slate-400">Verified feedback from Nigerian intercity commuters</p>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                        <span class="text-amber-400 font-bold">★★★★★</span>
+                        <span class="text-white font-bold">4.9 / 5</span>
+                        <span class="text-slate-500">(12 reviews)</span>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-3.5 text-xs">
+                    <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <strong class="text-white">Chinedu O.</strong>
+                            <span class="text-amber-400">★★★★★</span>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">"All the accurate infomation i got in less than i could have done googling"</p>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <strong class="text-white">Amina B.</strong>
+                            <span class="text-amber-400">★★★★★</span>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">"A LifeSaver!"</p>
+                    </div>
+                </div>
+            </section>
+
 
             <!-- FAQ Section -->
             <section id="faq" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 sm:p-6">
