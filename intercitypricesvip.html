@@ -408,28 +408,69 @@
     </script>
 
 
-                        <script>
-    (function personalizeVipForRoute() {
-        const params = new URLSearchParams(window.location.search);
-        const from = decodeURIComponent(params.get('from') || '').trim();
-        const to = decodeURIComponent(params.get('to') || '').trim();
+                       <script>
+        (function personalizeVipPage() {
+            const params = new URLSearchParams(window.location.search);
+            const from = decodeURIComponent(params.get('from') || '').trim();
+            const to = decodeURIComponent(params.get('to') || '').trim();
+            const company = decodeURIComponent(params.get('company') || '').trim();
 
-        if (!from || !to) return;
+            const h1 = document.querySelector('h1');
+            let customWhatsAppText = '';
 
-        // 1. Update Hero Headline to match their exact route
-        const h1 = document.querySelector('h1');
-        if (h1) {
-            h1.textContent = `Travelling from ${from} to ${to}? Stop Guessing Today's Park Fare.`;
-        }
+            if (from && to && company) {
+                if (h1) h1.textContent = `Taking ${company} from ${from} to ${to}? Check Today's Real Park Price First.`;
+                customWhatsAppText = `Hi, I'm travelling with ${company} from ${from} to ${to} and want to pay the ₦1,000 one-time fee to join the VIP Transport Group. Please send payment details.`;
+            } else if (from && to) {
+                if (h1) h1.textContent = `Travelling from ${from} to ${to}? Stop Guessing Today's Park Fare.`;
+                customWhatsAppText = `Hi, I'm travelling from ${from} to ${to} and want to pay the ₦1,000 one-time fee to join the VIP Transport Group. Please send payment details.`;
+            } else if (company) {
+                if (h1) h1.textContent = `Travelling with ${company} Soon? Check Today's Real Gate Price First.`;
+                customWhatsAppText = `Hi, I'm planning a trip with ${company} and want to pay the ₦1,000 one-time fee to join the VIP Transport Group. Please send payment details.`;
+            }
 
-        // 2. Update all WhatsApp buttons to pre-fill their route
-        const customMsg = encodeURIComponent(
-            `Hi, I'm travelling from ${from} to ${to} and want to pay the ₦1,000 one-time fee to join the VIP Transport Group. Please send payment details.`
-        );
-        document.querySelectorAll('a[href*="wa.me/2349137974960"]').forEach(link => {
-            link.href = `https://wa.me/2349137974960?text=${customMsg}`;
-        });
-    })();
-</script>
+            if (customWhatsAppText) {
+                const encoded = encodeURIComponent(customWhatsAppText);
+                document.querySelectorAll('a[href*="wa.me/2349137974960"]').forEach(link => {
+                    link.href = `https://wa.me/2349137974960?text=${encoded}`;
+                });
+            }
+        })();
+
+        (async function injectLiveRoutesSchema() {
+            try {
+                const res = await fetch('/ngr.json');
+                const data = await res.json();
+                if (!data.routePrices) return;
+
+                const routes = Object.keys(data.routePrices).slice(0, 10).map((key, index) => {
+                    const [from, to] = key.split('-');
+                    const prices = Object.values(data.routePrices[key])
+                        .map(v => typeof v === 'number' ? v : Number(v?.min ?? v?.price ?? 0))
+                        .filter(n => n > 0);
+                    const minFare = prices.length ? Math.min(...prices) : null;
+
+                    return {
+                        "@type": "ListItem",
+                        "position": index + 1,
+                        "name": `${from} to ${to} Bus Fare${minFare ? ` from ₦${minFare.toLocaleString()}` : ''}`,
+                        "url": `https://intercityprices.com.ng/route.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`
+                    };
+                });
+
+                if (routes.length === 0) return;
+
+                const schema = document.createElement('script');
+                schema.type = 'application/ld+json';
+                schema.textContent = JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "ItemList",
+                    "name": "Daily Tracked Nigerian Intercity Bus Routes",
+                    "itemListElement": routes
+                });
+                document.head.appendChild(schema);
+            } catch (_) {}
+        })();
+    </script>
 </body>
 </html>
