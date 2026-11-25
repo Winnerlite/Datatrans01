@@ -406,5 +406,30 @@
             } catch (_) {}
         })();
     </script>
+
+
+                        <script>
+    (function personalizeVipForRoute() {
+        const params = new URLSearchParams(window.location.search);
+        const from = decodeURIComponent(params.get('from') || '').trim();
+        const to = decodeURIComponent(params.get('to') || '').trim();
+
+        if (!from || !to) return;
+
+        // 1. Update Hero Headline to match their exact route
+        const h1 = document.querySelector('h1');
+        if (h1) {
+            h1.textContent = `Travelling from ${from} to ${to}? Stop Guessing Today's Park Fare.`;
+        }
+
+        // 2. Update all WhatsApp buttons to pre-fill their route
+        const customMsg = encodeURIComponent(
+            `Hi, I'm travelling from ${from} to ${to} and want to pay the ₦1,000 one-time fee to join the VIP Transport Group. Please send payment details.`
+        );
+        document.querySelectorAll('a[href*="wa.me/2349137974960"]').forEach(link => {
+            link.href = `https://wa.me/2349137974960?text=${customMsg}`;
+        });
+    })();
+</script>
 </body>
 </html>
