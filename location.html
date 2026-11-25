@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <! hiltopads popunder -->
+    <!-- hiltopads popunder -->
     <script>
 (function(okwf){
 var d = document,
@@ -15,192 +15,412 @@ l.parentNode.insertBefore(s, l);
 })({})
     </script>
 
-    
-
+    <!-- Microsoft Clarity -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wd1uwi6qao");
-</script>
+    </script>
 
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Loading Location...</title>
-    <meta name="description" content="Find transport companies and terminals in this state.">
+
+    <title>Transport Companies & Bus Terminals in Nigeria (2026) | Intercity Prices</title>
+    <meta name="description" content="Find verified interstate bus companies, major motor parks, and 2026 route fares across Nigeria.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="">
-    
+    <link rel="canonical" href="https://intercityprices.com.ng/location.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Intercity Prices">
+    <meta property="og:title" content="Transport Companies & Bus Terminals in Nigeria (2026)">
+    <meta property="og:description" content="Find verified interstate bus companies, major motor parks, and 2026 route fares across Nigeria.">
+    <meta property="og:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+    <meta property="og:url" content="https://intercityprices.com.ng/location.html">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { vyra: { 500: '#1acd81' } } } }
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        vyra: {
+                            400: '#34d399',
+                            500: '#1acd81',
+                            600: '#10b981',
+                            700: '#047857',
+                            900: '#064e3b'
+                        }
+                    }
+                }
+            }
         }
     </script>
+    <style>
+        html, body { overflow-x: hidden; max-width: 100%; }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen flex flex-col selection:bg-vyra-500/20 selection:text-vyra-400">
 
-    <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur fixed w-full z-50 top-0">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
-            <a href="/" class="text-white font-bold text-xl">Intercity<span class="text-vyra-500">.Search</span></a>
-            <a href="/" class="text-sm hover:text-white">Back to Search</a>
+    <!-- Navbar -->
+    <nav class="border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-md fixed w-full z-50 top-0">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex justify-between items-center gap-3">
+            <a href="/" class="flex items-center gap-2 text-white font-extrabold text-lg sm:text-xl tracking-tight">
+                <span class="w-2.5 h-2.5 rounded-full bg-vyra-500"></span>
+                <span>Intercity<span class="text-vyra-500">Prices</span></span>
+            </a>
+            <div class="flex items-center gap-3 text-sm">
+                <a href="/intercitypricesvip.html" class="hidden sm:inline-flex items-center gap-1.5 text-vyra-400 hover:text-vyra-300 font-semibold transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-vyra-400 animate-pulse"></span>
+                    VIP Group
+                </a>
+                <a href="/cities.html" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 hover:border-vyra-500/50 hover:text-white transition-all">
+                    All States
+                </a>
+            </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20 px-4 max-w-5xl mx-auto">
-        
-        <div id="loader" class="text-center py-20">
-            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block"></div>
-            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block mx-1" style="animation-delay: 0.1s"></div>
-            <div class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce inline-block" style="animation-delay: 0.2s"></div>
-            <p class="text-xs text-slate-500 mt-4">Locating terminals...</p>
+    <main class="pt-24 sm:pt-28 pb-20 px-4 max-w-5xl mx-auto w-full flex-1">
+
+        <!-- Loader -->
+        <div id="loader" class="text-center py-28">
+            <div class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-900 border border-slate-800">
+                <span class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce"></span>
+                <span class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce" style="animation-delay: 0.12s"></span>
+                <span class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce" style="animation-delay: 0.24s"></span>
+            </div>
+            <p class="text-sm text-slate-400 mt-4">Locating terminals & bus operators...</p>
         </div>
 
-        <article id="content" class="hidden">
-            <header class="mb-12 text-center">
-                <div class="inline-block p-3 rounded-2xl bg-slate-900 border border-slate-800 mb-6">
-                    <svg class="w-12 h-12 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <article id="content" class="hidden space-y-8">
+
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="flex items-center justify-center gap-2 text-xs text-slate-500">
+                <a href="/" class="hover:text-slate-300 transition-colors">Home</a>
+                <span>/</span>
+                <a href="/cities.html" class="hover:text-slate-300 transition-colors">States & Cities</a>
+                <span>/</span>
+                <span id="breadcrumbState" class="text-slate-300 font-medium"></span>
+            </nav>
+
+            <!-- Hero Header -->
+            <header class="bg-gradient-to-b from-slate-900 to-slate-900/40 border border-slate-800 rounded-3xl p-6 sm:p-10 text-center shadow-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vyra-500/10 border border-vyra-500/20 text-vyra-400 text-xs font-bold mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-vyra-500"></span>
+                    <span id="regionBadge">Nigeria Transport Hub</span>
                 </div>
-                <h1 id="pageTitle" class="text-3xl md:text-5xl font-bold text-white mb-4"></h1>
-                <p id="subTitle" class="text-lg text-slate-400 max-w-2xl mx-auto"></p>
+
+                <h1 id="pageTitle" class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3"></h1>
+                <p id="subTitle" class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed"></p>
+
+                <!-- 3-Stat Quick Bar -->
+                <div class="grid grid-cols-3 gap-3 max-w-xl mx-auto pt-5 border-t border-slate-800/80">
+                    <div class="bg-slate-950/60 rounded-2xl p-3 border border-slate-800/70">
+                        <div class="text-[11px] uppercase tracking-wider text-slate-500">Operators</div>
+                        <div id="statCompanies" class="text-base sm:text-xl font-extrabold text-vyra-400 mt-0.5">--</div>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-2xl p-3 border border-slate-800/70">
+                        <div class="text-[11px] uppercase tracking-wider text-slate-500">Major Parks</div>
+                        <div id="statTerminals" class="text-base sm:text-xl font-extrabold text-white mt-0.5">--</div>
+                    </div>
+                    <div class="bg-slate-950/60 rounded-2xl p-3 border border-slate-800/70">
+                        <div class="text-[11px] uppercase tracking-wider text-slate-500">Peak Hours</div>
+                        <div class="text-base sm:text-xl font-extrabold text-slate-200 mt-0.5">6 AM – 8 AM</div>
+                    </div>
+                </div>
             </header>
 
-            <div class="grid lg:grid-cols-3 gap-8">
-                
-                <div class="lg:col-span-2 space-y-8">
-                    
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-                        <h2 class="text-xl font-bold text-white mb-4">Transport Overview</h2>
-                        <p id="introText" class="text-slate-300 leading-relaxed"></p>
-                    </div>
+            <div class="grid lg:grid-cols-3 gap-6 sm:gap-8">
 
-                    <div>
-                        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                            <span class="bg-vyra-500 text-slate-900 text-xs px-2 py-0.5 rounded font-bold" id="compCount">0</span>
-                            Active Bus Companies
-                        </h2>
-                        <div class="grid sm:grid-cols-2 gap-3" id="companyGrid">
-                            </div>
-                    </div>
+                <!-- Left 2 Columns: Operators + Overview -->
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- Active Bus Companies Card -->
+                    <section class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+                            <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                                <span class="bg-vyra-500 text-slate-950 text-xs px-2.5 py-0.5 rounded-full font-extrabold" id="compCount">0</span>
+                                <span>Active Bus Companies</span>
+                            </h2>
+                            <input id="companySearch" type="text" placeholder="Filter company..." class="w-full sm:w-52 px-3 py-1.5 text-sm bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-vyra-500">
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-3" id="companyGrid"></div>
+                    </section>
+
+                    <!-- State Transport Overview -->
+                    <section class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+                        <h2 class="text-lg font-bold text-white mb-3">Road Travel Overview</h2>
+                        <p id="introText" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+                    </section>
                 </div>
 
+                <!-- Right Column: VIP Card, Terminals, Outgoing Routes -->
                 <div class="space-y-6">
-                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
-                        <h3 class="text-white font-bold mb-4">Major Terminals</h3>
-                        <ul id="terminalList" class="space-y-3 text-sm text-slate-400">
-                            </ul>
-                    </div>
 
-                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
-                        <h3 class="text-white font-bold mb-4">Popular Routes from <span id="routeFromCity"></span></h3>
-                        <div id="dynamicRouteLinks" class="flex flex-col gap-2 text-sm">
-                            </div>
-                    </div>
+                    <!-- Informal VIP Lead Card -->
+                    <section class="bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/50 border border-vyra-500/40 rounded-2xl p-5 sm:p-6 shadow-xl">
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-vyra-500/15 border border-vyra-500/30 text-vyra-400 text-[11px] font-bold mb-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-vyra-400 animate-ping"></span>
+                            82+ Smart Travellers Inside
+                        </div>
 
-                    <div class="bg-gradient-to-br from-vyra-900 to-slate-900 border border-vyra-500/30 rounded-xl p-6 text-center shadow-lg">
-                        <h3 class="text-white font-bold mb-2">Traveling from here?</h3>
-                        <p class="text-sm text-slate-400 mb-4">Compare prices for all outgoing buses instantly.</p>
-                        <a href="/" class="block w-full bg-vyra-500 hover:bg-white text-slate-900 font-bold py-3 rounded-lg transition-colors">Check Prices</a>
-                    </div>
+                        <h3 id="vipStateTitle" class="text-lg font-extrabold text-white leading-snug mb-2">
+                            Stop Googling bus prices and park directions.
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                            After here, you don't have to keep searching online before every trip. Get terminal-to-terminal fares, park directions, and agent replies straight on your WhatsApp.
+                        </p>
+
+                        <div class="space-y-1.5 text-xs text-slate-300 mb-5">
+                            <div class="flex items-center gap-2"><span class="text-vyra-400 font-bold">✓</span> Fares sent to your WhatsApp</div>
+                            <div class="flex items-center gap-2"><span class="text-vyra-400 font-bold">✓</span> Exact park directions</div>
+                            <div class="flex items-center gap-2"><span class="text-vyra-400 font-bold">✓</span> Scam & fake agent alerts</div>
+                        </div>
+
+                        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-4 text-center">
+                            <div class="text-[11px] text-slate-400">Pay once, stay forever</div>
+                            <div class="text-2xl font-black text-white my-1">₦1,000 <span class="text-xs font-semibold text-vyra-400">one-time</span></div>
+                            <a id="vipStateCta" href="/intercitypricesvip.html" class="mt-2 block w-full py-2.5 px-4 bg-vyra-500 hover:bg-vyra-400 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition-all active:scale-95">
+                                Join the VIP Group →
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Major Terminals -->
+                    <section class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-6">
+                        <h3 class="text-white font-bold mb-1 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                            Major Parks & Terminals
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-4">Key boarding points across <span class="stateShortName"></span>.</p>
+                        <ul id="terminalList" class="space-y-2.5 text-xs sm:text-sm text-slate-300"></ul>
+                    </section>
+
+                    <!-- Outgoing Routes Spider Web -->
+                    <section class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 sm:p-6">
+                        <h3 class="text-white font-bold mb-3">Popular Routes from <span id="routeFromCity" class="text-vyra-400"></span></h3>
+                        <div id="dynamicRouteLinks" class="flex flex-col gap-2 text-xs sm:text-sm"></div>
+                    </section>
+
                 </div>
             </div>
         </article>
     </main>
 
-    <footer class="mt-auto py-8 text-center text-slate-600 text-sm border-t border-slate-900">
-        &copy; 2026 Vyra Technologies. Data Updated biweekly.
+    <footer class="mt-auto py-8 text-center text-slate-500 text-xs border-t border-slate-900">
+        &copy; 2026 Intercity Prices by Vyra Technologies &middot; <a href="/" class="hover:text-vyra-400">Search Routes</a> &middot; <a href="/intercitypricesvip.html" class="hover:text-vyra-400">VIP Group</a>
     </footer>
 
     <script>
-        async function loadLocationPage() {
-            // 1. Get State Name from URL
-            const params = new URLSearchParams(window.location.search);
-            const queryName = decodeURIComponent(params.get('name') || '');
+        function getMinRouteFare(routePrices, from, to) {
+            if (!routePrices) return null;
+            const pair = routePrices[`${from}-${to}`] || routePrices[`${to}-${from}`];
+            if (!pair || typeof pair !== 'object') return null;
 
-            if (!queryName) { window.location.href = '/cities.html'; return; }
+            const values = Object.values(pair).map(v => {
+                if (typeof v === 'number') return v;
+                if (typeof v === 'string') return Number(v.replace(/[^0-9.]/g, ''));
+                if (v && typeof v === 'object') return Number(v.min ?? v.price ?? v.amount ?? 0);
+                return 0;
+            }).filter(n => !isNaN(n) && n > 0);
+
+            return values.length ? Math.min(...values) : null;
+        }
+
+        function normalizeTerminalItem(item) {
+            if (typeof item === 'string') return { name: item, detail: '' };
+            if (item && typeof item === 'object') {
+                return {
+                    name: item.name || item.terminal || 'Transport Park',
+                    detail: item.address || item.location || ''
+                };
+            }
+            return { name: 'Transport Park', detail: '' };
+        }
+
+        async function loadLocationPage() {
+            const params = new URLSearchParams(window.location.search);
+            const queryName = decodeURIComponent(params.get('name') || '').trim();
+
+            if (!queryName) {
+                window.location.href = '/cities.html';
+                return;
+            }
 
             try {
-                // 2. Fetch Data
-                const response = await fetch('ngr.json');
+                const response = await fetch('/ngr.json');
                 const data = await response.json();
-                
-                // 3. Find State Data (Case Insensitive)
-                const states = data.states;
+
+                const states = data.states || {};
                 const stateKey = Object.keys(states).find(k => k.toLowerCase() === queryName.toLowerCase());
 
                 if (!stateKey) {
-                    document.getElementById('content').innerHTML = `<div class="text-center text-red-400 py-20">Location not found. <a href="/cities.html" class="underline">View All Cities</a></div>`;
+                    document.getElementById('content').innerHTML = `
+                        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-10 text-center">
+                            <h1 class="text-xl font-bold text-white mb-2">Location not found</h1>
+                            <p class="text-sm text-slate-400 mb-5">We couldn't find "${queryName}" in our state directory.</p>
+                            <a href="/cities.html" class="inline-block px-5 py-2.5 rounded-xl bg-vyra-500 text-slate-950 font-bold text-sm">View All States</a>
+                        </div>`;
                     document.getElementById('loader').classList.add('hidden');
                     document.getElementById('content').classList.remove('hidden');
                     return;
                 }
 
                 const s = states[stateKey];
+                const companiesList = Array.isArray(s.companies) ? s.companies : [];
+                const terminalsList = Array.isArray(s.majorTerminals) ? s.majorTerminals : [];
+                const firstTerminal = terminalsList.length ? normalizeTerminalItem(terminalsList[0]).name : `${stateKey} Central Park`;
 
-                // 4. Update Content
-                document.getElementById('pageTitle').textContent = `Transport Companies in ${stateKey}`;
-                document.getElementById('subTitle').textContent = `Find the best bus companies, price lists, and terminals operating in ${stateKey}, ${s.region} Nigeria.`;
-                
+                // Populate Hero & Stats
+                document.getElementById('breadcrumbState').textContent = stateKey;
+                document.getElementById('regionBadge').textContent = `${s.region || 'Nigeria'} Region`;
+                document.getElementById('pageTitle').textContent = `Transport Companies in ${stateKey} (2026)`;
+                document.getElementById('subTitle').textContent = `Compare ${companiesList.length} verified interstate bus companies, major motor parks, and route fares in ${stateKey}.`;
+                document.querySelectorAll('.stateShortName').forEach(el => el.textContent = stateKey);
+
+                document.getElementById('statCompanies').textContent = `${companiesList.length} Brands`;
+                document.getElementById('statTerminals').textContent = `${terminalsList.length || 1} Hubs`;
+
+                // Personalize VIP Card to this state
+                document.getElementById('vipStateTitle').textContent = `Travelling from ${stateKey}? Stop Googling bus prices and park directions.`;
+                document.getElementById('vipStateCta').href = `/intercitypricesvip.html?from=${encodeURIComponent(stateKey)}`;
+
                 // Intro Text
                 document.getElementById('introText').innerHTML = `
-                    <span class="font-bold text-white">${stateKey}</span> is a key transport hub in the <span class="text-vyra-400">${s.region}</span> region. 
-                    Currently, we track <span class="text-white font-bold">${s.companies.length} major transport companies</span> operating daily routes from here.
-                    Travelers can find buses to major cities from terminals like ${s.majorTerminals[0]}.
+                    <strong class="text-white">${stateKey}</strong> is an active interstate road-travel hub in <strong class="text-vyra-400">${s.region || 'Nigeria'}</strong>.
+                    We currently track <strong class="text-white">${companiesList.length} transport operators</strong> running daily morning departures from major parks such as ${firstTerminal}.
+                    Tap any company below to view its full terminal addresses, phone numbers, and starting fares.
                 `;
 
-                // Company Grid
-                document.getElementById('compCount').textContent = s.companies.length;
-                document.getElementById('companyGrid').innerHTML = s.companies.map(c => `
-                    <a href="brand.html?name=${encodeURIComponent(c)}" class="flex items-center justify-between p-3 bg-slate-900 border border-slate-800 rounded hover:border-vyra-500/50 hover:bg-slate-800 transition-all group">
-                        <span class="text-slate-300 group-hover:text-white font-medium">${c}</span>
-                        <svg class="w-4 h-4 text-slate-600 group-hover:text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
-                `).join('');
+                // Company Grid + Live Filter
+                document.getElementById('compCount').textContent = companiesList.length;
+                const companyGridEl = document.getElementById('companyGrid');
+
+                function renderCompanies(list) {
+                    if (list.length === 0) {
+                        companyGridEl.innerHTML = `<div class="sm:col-span-2 p-6 text-center text-sm text-slate-500">No transport company matches your search.</div>`;
+                        return;
+                    }
+                    companyGridEl.innerHTML = list.map(c => `
+                        <a href="/brand.html?name=${encodeURIComponent(c)}" class="flex items-center justify-between p-3.5 bg-slate-950/70 border border-slate-800 rounded-xl hover:border-vyra-500/50 hover:bg-slate-800/70 transition-all group gap-3">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <span class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-xs font-extrabold text-vyra-400 flex-shrink-0">
+                                    ${c.charAt(0)}
+                                </span>
+                                <span class="text-slate-200 group-hover:text-white font-semibold text-sm truncate">${c}</span>
+                            </div>
+                            <svg class="w-4 h-4 text-slate-600 group-hover:text-vyra-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    `).join('');
+                }
+
+                renderCompanies(companiesList);
+
+                document.getElementById('companySearch').addEventListener('input', (e) => {
+                    const q = e.target.value.toLowerCase().trim();
+                    renderCompanies(companiesList.filter(c => c.toLowerCase().includes(q)));
+                });
 
                 // Terminal List
-                document.getElementById('terminalList').innerHTML = s.majorTerminals.map(t => `
-                    <li class="flex items-start gap-2">
-                        <svg class="w-4 h-4 text-vyra-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                        <span>${t}</span>
-                    </li>
-                `).join('');
+                document.getElementById('terminalList').innerHTML = terminalsList.length
+                    ? terminalsList.map(raw => {
+                        const term = normalizeTerminalItem(raw);
+                        return `
+                            <li class="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/70">
+                                <span class="w-2 h-2 rounded-full bg-vyra-500 mt-1.5 flex-shrink-0"></span>
+                                <div>
+                                    <div class="text-slate-200 font-medium">${term.name}</div>
+                                    ${term.detail ? `<div class="text-xs text-slate-500 mt-0.5">${term.detail}</div>` : ''}
+                                </div>
+                            </li>
+                        `;
+                    }).join('')
+                    : `<li class="text-xs text-slate-500">Select any operator to view its park address in ${stateKey}.</li>`;
 
-                // 5. THE SPIDER WEB (Dynamic Route Linking) 🕸️
+                // Outgoing Routes Spider Web with Live Starting Fares
                 document.getElementById('routeFromCity').textContent = stateKey;
-                
-                // Priority destinations to link to
                 const majorDestinations = ['Lagos', 'Abuja', 'Rivers', 'Kano', 'Onitsha', 'Enugu', 'Kaduna', 'Jos', 'Benin', 'Delta'];
-                
-                // Filter: Don't link to self
                 const validDestinations = majorDestinations.filter(d => d.toLowerCase() !== stateKey.toLowerCase());
-                
-                // Generate Links
-                document.getElementById('dynamicRouteLinks').innerHTML = validDestinations.map(dest => `
-                    <a href="route.html?from=${encodeURIComponent(stateKey)}&to=${encodeURIComponent(dest)}" 
-                       class="flex items-center justify-between text-slate-400 hover:text-vyra-500 hover:bg-slate-800/50 p-2 rounded transition-all group">
-                       <span>To ${dest}</span>
-                       <svg class="w-3 h-3 text-slate-600 group-hover:text-vyra-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                `).join('');
 
-                // 6. SEO Meta
-                const title = `Transport Companies in ${stateKey} | Terminals & Prices 2026`;
-                const desc = `List of bus companies in ${stateKey}. Find terminals at ${s.majorTerminals[0]} and book tickets for ${s.companies[0]} and others.`;
-                document.title = title;
+                document.getElementById('dynamicRouteLinks').innerHTML = validDestinations.map(dest => {
+                    const minFare = getMinRouteFare(data.routePrices, stateKey, dest);
+                    return `
+                        <a href="/route.html?from=${encodeURIComponent(stateKey)}&to=${encodeURIComponent(dest)}"
+                           class="flex items-center justify-between text-slate-300 hover:text-vyra-400 bg-slate-950/60 hover:bg-slate-800/70 border border-slate-800/70 p-2.5 rounded-xl transition-all group">
+                           <span class="font-medium">${stateKey} → ${dest}</span>
+                           <span class="text-xs font-bold ${minFare ? 'text-vyra-400' : 'text-slate-500 group-hover:text-vyra-400'}">
+                               ${minFare ? `From ₦${minFare.toLocaleString()}` : 'View Fares →'}
+                           </span>
+                        </a>
+                    `;
+                }).join('');
+
+                // SEO Meta & Clean Non-WWW Canonical
+                const pageTitle = `Transport Companies in ${stateKey} | Terminals & Bus Prices 2026`;
+                const desc = `Compare ${companiesList.length} bus companies in ${stateKey}. Find terminals at ${firstTerminal} and check 2026 fares for ${companiesList.slice(0, 3).join(', ')}.`;
+                const canonicalUrl = `https://intercityprices.com.ng/location.html?name=${encodeURIComponent(stateKey)}`;
+
+                document.title = pageTitle;
                 document.querySelector('meta[name="description"]').setAttribute('content', desc);
-                document.querySelector('link[rel="canonical"]').setAttribute('href', window.location.href);
+                document.querySelector('meta[property="og:title"]').setAttribute('content', pageTitle);
+                document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+                document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
+                document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
 
-                // Show Content
+                // Inject Breadcrumb + FAQ JSON-LD Schema
+                const schemaScript = document.createElement('script');
+                schemaScript.type = 'application/ld+json';
+                schemaScript.textContent = JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@graph": [
+                        {
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://intercityprices.com.ng/" },
+                                { "@type": "ListItem", "position": 2, "name": `Transport Companies in ${stateKey}`, "item": canonicalUrl }
+                            ]
+                        },
+                        {
+                            "@type": "FAQPage",
+                            "mainEntity": [
+                                {
+                                    "@type": "Question",
+                                    "name": `Which transport companies operate in ${stateKey}?`,
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": `Active interstate bus operators in ${stateKey} include ${companiesList.slice(0, 6).join(', ')}.`
+                                    }
+                                },
+                                {
+                                    "@type": "Question",
+                                    "name": `Where are the major bus terminals in ${stateKey}?`,
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": `Major departure terminals in ${stateKey} include ${terminalsList.slice(0, 4).map(t => normalizeTerminalItem(t).name).join(', ')}.`
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                });
+                document.head.appendChild(schemaScript);
+
                 document.getElementById('loader').classList.add('hidden');
                 document.getElementById('content').classList.remove('hidden');
 
             } catch (error) {
                 console.error("Failed to load location:", error);
-                document.getElementById('loader').innerHTML = `<p class="text-red-400">Unable to load data.</p>`;
+                document.getElementById('loader').innerHTML = `
+                    <div class="bg-slate-900 border border-red-900/50 rounded-2xl p-6 max-w-md mx-auto">
+                        <p class="text-red-400 font-semibold mb-2">Unable to load state data</p>
+                        <button onclick="location.reload()" class="mt-2 px-4 py-2 bg-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-700">Retry</button>
+                    </div>`;
             }
         }
 
