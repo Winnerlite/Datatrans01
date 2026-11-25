@@ -427,6 +427,9 @@
             } else if (company) {
                 if (h1) h1.textContent = `Travelling with ${company}? Get Fares & Park Directions Straight on WhatsApp.`;
                 customWhatsAppText = `Hi, I'm planning a trip with ${company} and want to pay the ₦1,000 one-time fee to join the VIP Transport Group. Please send payment details.`;
+            } else if (from) {
+                if (h1) h1.textContent = `Travelling from ${from}? Get Fares & Park Directions Straight on WhatsApp.`;
+                customWhatsAppText = `Hi, I'm travelling from ${from} and want to pay the ₦1,000 one-time fee to join the VIP Transport Group. Please send payment details.`;
             }
 
             if (customWhatsAppText) {
