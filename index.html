@@ -559,7 +559,7 @@ body * {
 <!---calculator-->
 <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-8 max-w-2xl mx-auto shadow-2xl overflow-hidden">
     <h2 class="text-2xl font-extrabold text-white mb-6 flex items-center gap-2">
-        <span class="text-vyra-500">₦</span> Live Trip Fares
+        <span class="text-vyra-500">₦</span> Live Trip Calculator
     </h2>
 
     <!-- Single Trip Selector Field (Populated from Supabase) -->
@@ -621,7 +621,86 @@ body * {
     </main>
 
 
+<section class="max-w-4xl mx-auto px-4 mt-14 mb-8 space-y-6">
+    <!-- Popular Searches Pill Strip -->
+    <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Popular Bus Fare Searches</h2>
+        <div class="flex flex-wrap gap-2 text-xs">
+            <a href="/route.html?from=Lagos&to=Abuja" class="px-3 py-1.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 hover:text-vyra-400 hover:border-vyra-500/40 transition-colors">Lagos to Abuja bus price today</a>
+            <a href="/route.html?from=Lagos&to=Onitsha" class="px-3 py-1.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 hover:text-vyra-400 hover:border-vyra-500/40 transition-colors">Lagos to Onitsha bus fare</a>
+            <a href="/route.html?from=Abuja&to=Lagos" class="px-3 py-1.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 hover:text-vyra-400 hover:border-vyra-500/40 transition-colors">Abuja to Lagos transport price</a>
+            <a href="/brand.html?name=Peace%20Mass%20Transit" class="px-3 py-1.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 hover:text-vyra-400 hover:border-vyra-500/40 transition-colors">Peace Mass Transit price list 2026</a>
+            <a href="/brand.html?name=GIG%20Mobility" class="px-3 py-1.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 hover:text-vyra-400 hover:border-vyra-500/40 transition-colors">GIGM bus fare & terminals</a>
+            <a href="/location.html?name=Lagos" class="px-3 py-1.5 rounded-full bg-slate-950 border border-slate-800 text-slate-300 hover:text-vyra-400 hover:border-vyra-500/40 transition-colors">Interstate bus parks in Lagos</a>
+        </div>
+    </div>
 
+    <!-- Collapsible Long-Tail FAQs -->
+    <div class="space-y-2.5">
+        <details class="group bg-slate-900/50 border border-slate-800 rounded-xl p-4">
+            <summary class="flex justify-between items-center font-semibold text-sm text-white cursor-pointer list-none">
+                <span>How do I check current intercity bus prices in Nigeria?</span>
+                <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-slate-400 mt-2.5 leading-relaxed">
+                Select your departure state and destination above to compare 2026 fare estimates across 43+ Nigerian bus companies, view departure terminals, or join our WhatsApp VIP group for live park updates.
+            </p>
+        </details>
+
+        <details class="group bg-slate-900/50 border border-slate-800 rounded-xl p-4">
+            <summary class="flex justify-between items-center font-semibold text-sm text-white cursor-pointer list-none">
+                <span>Which transport companies have the cheapest interstate fares?</span>
+                <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-slate-400 mt-2.5 leading-relaxed">
+                Standard Hiace and Sienna operators such as Peace Mass Transit, Benue Links, Plateau Riders, and state-backed transport services typically offer lower base fares than executive coaches.
+            </p>
+        </details>
+    </div>
+    
+    
+    <div class="space-y-2.5">
+    <details class="group bg-slate-900/50 border border-slate-800 rounded-xl p-4">
+        <summary class="flex justify-between items-center font-semibold text-sm text-white cursor-pointer list-none">
+            <span>Do Nigerian interstate buses charge extra for heavy Ghana-must-go bags?</span>
+            <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+        </summary>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2.5 leading-relaxed">
+            Yes. Most Hiace and Sienna operators allow one standard cabin bag free, while large Ghana-must-go sacks or commercial cartons attract a luggage surcharge at the loading bay. Check operator rules or ask commuters in our <a href="/intercitypricesvip.html" class="text-vyra-400 underline">WhatsApp VIP group</a> before arriving at the park.
+        </p>
+    </details>
+
+    <details class="group bg-slate-900/50 border border-slate-800 rounded-xl p-4">
+        <summary class="flex justify-between items-center font-semibold text-sm text-white cursor-pointer list-none">
+            <span>Can I drop off at a highway junction before the final motor park?</span>
+            <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+        </summary>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2.5 leading-relaxed">
+            Yes, major interstate buses drop passengers at recognised expressway junctions along the route—such as Ore, Lokoja, 9th Mile, or Gwagwalada—though you still pay the full terminal-to-terminal fare. Compare official park terminals on our <a href="/cities.html" class="text-vyra-400 underline">Nigerian cities directory</a>.
+        </p>
+    </details>
+
+    <details class="group bg-slate-900/50 border border-slate-800 rounded-xl p-4">
+        <summary class="flex justify-between items-center font-semibold text-sm text-white cursor-pointer list-none">
+            <span>Why is the online bus ticket price different from the morning park counter?</span>
+            <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+        </summary>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2.5 leading-relaxed">
+            App bookings include gateway service fees and fixed seat tiers, while physical motor parks adjust prices dynamically based on morning passenger queues and fuel demand. Use our route search above to compare baseline fares across 43+ operators before paying.
+        </p>
+    </details>
+
+    <details class="group bg-slate-900/50 border border-slate-800 rounded-xl p-4">
+        <summary class="flex justify-between items-center font-semibold text-sm text-white cursor-pointer list-none">
+            <span>How do I verify if a Nigerian transport agent phone number is genuine?</span>
+            <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+        </summary>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2.5 leading-relaxed">
+            Never transfer ticket money to personal bank or OPay accounts found on random social media comments. Cross-check official terminal numbers on our operator pages or verify agents inside the <a href="/intercitypricesvip.html" class="text-vyra-400 underline">Intercity Prices VIP group</a>.
+        </p>
+    </details>
+</div>
+</section>
 
 
 <!--link to the dynamic pgs-->
@@ -703,6 +782,9 @@ body * {
             </a>
         </div>
     </section>
+    
+    
+    
 
     <!-- Footer -->
     <footer class="bg-slate-950 border-t border-slate-900 py-8 page-load-fade" style="animation-delay: 1.4s;">
