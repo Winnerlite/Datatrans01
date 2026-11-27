@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--g4-->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PSC6DSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -89,13 +97,13 @@
                     2026 Fare Comparison
                 </div>
 
-                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
+                <h1 class="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
                     <a id="fromCityLink" href="#" class="hover:text-vyra-400 transition-colors"><span id="fromCity"></span></a>
                     <a id="swapRouteBtn" href="#" title="Swap origin and destination" class="p-2 rounded-full bg-slate-800/90 border border-slate-700 text-vyra-400 hover:bg-vyra-500 hover:text-slate-950 hover:border-vyra-500 transition-all">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
                     </a>
                     <a id="toCityLink" href="#" class="hover:text-vyra-400 transition-colors"><span id="toCity"></span></a>
-                </div>
+                </h1>
 
                 <p id="subTitle" class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-6"></p>
 
@@ -466,9 +474,11 @@
                 document.getElementById('estDist').textContent = `~${est.km} km`;
                 document.getElementById('estTime').textContent = est.time;
 
+                // SEO Metadata tuned to high-CTR "by road" + starting fare queries
+                const minFareBadge = cheapest.sortValue !== Infinity ? `From ₦${cheapest.sortValue.toLocaleString()}` : '2026 Bus Fares';
                 const startingText = cheapest.sortValue !== Infinity ? ` starting from ₦${cheapest.sortValue.toLocaleString()}` : '';
-                const pageTitle = `${fromCity} to ${toCity} Bus Price & Transport Companies (2026) | Intercity Prices`;
-                const pageDesc = `Compare ${fromCity} to ${toCity} bus fares${startingText} across ${validOperators.length} Nigerian transport companies including terminal locations and departure times.`;
+                const pageTitle = `${fromCity} to ${toCity} by Road: Bus Price (${minFareBadge}) & Parks 2026`;
+                const pageDesc = `How much is ${fromCity} to ${toCity} by road? Compare ${minFareBadge} bus & Sienna ticket prices, ${est.time} road travel time (~${est.km} km), and verified departure motor parks across ${validOperators.length} Nigerian transport companies.`;
                 const canonicalUrl = `https://intercityprices.com.ng/route.html?from=${encodeURIComponent(fromCity)}&to=${encodeURIComponent(toCity)}`;
 
                 document.title = pageTitle;
@@ -483,10 +493,35 @@
                 schemaScript.type = 'application/ld+json';
                 schemaScript.textContent = JSON.stringify({
                     "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://intercityprices.com.ng/" },
-                        { "@type": "ListItem", "position": 2, "name": `${fromCity} to ${toCity} Bus Prices`, "item": canonicalUrl }
+                    "@graph": [
+                        {
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://intercityprices.com.ng/" },
+                                { "@type": "ListItem", "position": 2, "name": `${fromCity} to ${toCity} Bus Prices`, "item": canonicalUrl }
+                            ]
+                        },
+                        {
+                            "@type": "FAQPage",
+                            "mainEntity": [
+                                {
+                                    "@type": "Question",
+                                    "name": `How much is ${fromCity} to ${toCity} by road in 2026?`,
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": `${fromCity} to ${toCity} bus fares in 2026 start ${startingText || 'at terminal rates'} across ${validOperators.length} Nigerian transport operators.`
+                                    }
+                                },
+                                {
+                                    "@type": "Question",
+                                    "name": `How many hours is ${fromCity} to ${toCity} by road?`,
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": `Road travel from ${fromCity} to ${toCity} covers approximately ${est.km} km and takes around ${est.time}, depending on traffic and road conditions.`
+                                    }
+                                }
+                            ]
+                        }
                     ]
                 });
                 document.head.appendChild(schemaScript);
