@@ -20,28 +20,74 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Transport Planner (2026) | Intercity Prices</title>
+    <title>Nigerian Bus Fare & Travel Budget Planner (2026) | Intercity Prices</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- SEO -->
-    <meta name="description" content="Find Nigerian intercity transport operators that fit your exact budget. Compare live operator prices, coach types, departure times, and seat availability.">
+    <meta name="description" content="Calculate your interstate road trip cost in Nigeria. Filter live operator bus fares, seat availability, coach types, and departure times by your exact travel budget.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://intercityprices.com.ng/budget.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Intercity Prices">
-    <meta property="og:title" content="Budget Transport Planner (2026) | Intercity Prices">
-    <meta property="og:description" content="Find Nigerian intercity transport operators that fit your exact budget. Prices are live from operators.">
+    <meta property="og:title" content="Nigerian Bus Fare & Travel Budget Planner (2026) | Intercity Prices">
+    <meta property="og:description" content="Filter live Nigerian transport operator fares, departure times, and available seats by your exact budget. Prices are live from operators.">
     <meta property="og:url" content="https://intercityprices.com.ng/budget.html">
     <meta property="og:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Budget Transport Planner (2026) | Intercity Prices">
-    <meta name="twitter:description" content="Find Nigerian intercity transport operators that fit your exact budget. Prices are live from operators.">
+    <meta name="twitter:title" content="Nigerian Bus Fare & Travel Budget Planner (2026) | Intercity Prices">
+    <meta name="twitter:description" content="Filter live Nigerian transport operator fares and seat availability by your exact budget.">
     <meta name="twitter:image" content="https://i.ibb.co/ycsBvPZW/VyraLogo.png">
+
+    <!-- Structured Data for Google Ranking -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Intercity Prices Budget Transport Planner",
+          "url": "https://intercityprices.com.ng/budget.html",
+          "applicationCategory": "TravelApplication",
+          "operatingSystem": "Web",
+          "description": "Compare live Nigerian intercity bus fares, departure schedules, and seat capacity filtered by your travel budget."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I find the cheapest interstate transport in Nigeria for my budget?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Select your departure city and destination in the Budget Transport Planner to view the live average route price, then enter your maximum budget to filter live operator trips, vehicle types, and open seats."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are the bus ticket prices on Intercity Prices live?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Prices are live from operators alongside scheduled departure times, coach capacity, and real-time seat availability."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if a bus trip shows 0 seats available?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When an operator's scheduled trip reaches 0 available seats online, you can join our WhatsApp VIP group to get backup bus departures on the same corridor and verified park gate contacts."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -90,25 +136,24 @@
         </div>
     </nav>
 
-    <main class="pt-24 sm:pt-28 pb-20 px-4 max-w-5xl mx-auto w-full flex-1">
+    <main class="pt-24 sm:pt-28 pb-20 px-4 max-w-5xl mx-auto w-full flex-1 space-y-12">
 
         <!-- Hero Header -->
-        <header class="text-center max-w-2xl mx-auto mb-8">
+        <header class="text-center max-w-2xl mx-auto">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vyra-500/10 border border-vyra-500/20 text-vyra-400 text-xs font-semibold mb-4">
                 <span class="w-1.5 h-1.5 rounded-full bg-vyra-500 animate-pulse"></span>
                 Prices are live from operators
             </div>
             <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-2.5">
-                Budget Transport Planner
+                Nigerian Intercity Travel Budget Planner
             </h1>
             <p class="text-sm sm:text-base text-slate-400">
-                Select your route, check the live average fare, and filter available operator trips that match your exact budget.
+                Pick your departure city and destination to see the live average fare, then filter real-time operator trips, departure times, and available seats within your budget.
             </p>
         </header>
 
         <!-- Step-by-Step Calculator Card -->
         <section id="calculatorCard" class="max-w-xl mx-auto bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
-            <!-- Step Indicator -->
             <div class="flex items-center justify-between text-xs font-semibold text-slate-400 pb-5 mb-6 border-b border-slate-800/80">
                 <span id="stepBadge1" class="text-vyra-400">Step 1: Select Route</span>
                 <span class="text-slate-600">→</span>
@@ -160,9 +205,9 @@
 
                 <div>
                     <label for="budget" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                        What is your transportation budget? (Min. ₦10,000)
+                        What is your transportation budget? (Min. ₦5,000)
                     </label>
-                    <input type="number" id="budget" placeholder="Enter at least ₦10,000" min="10000" step="500" class="w-full px-4 py-3 text-sm bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-vyra-500 transition-colors">
+                    <input type="number" id="budget" placeholder="e.g. 15000" min="5000" step="500" class="w-full px-4 py-3 text-sm bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-vyra-500 transition-colors">
                 </div>
             </div>
 
@@ -184,7 +229,7 @@
         </section>
 
         <!-- Calculating Spinner -->
-        <div id="loadingSpinner" class="hidden text-center py-20">
+        <div id="loadingSpinner" class="hidden text-center py-16">
             <div class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-900 border border-slate-800">
                 <span class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce"></span>
                 <span class="w-2 h-2 bg-vyra-500 rounded-full animate-bounce" style="animation-delay: 0.12s"></span>
@@ -195,6 +240,60 @@
 
         <!-- Results Section -->
         <section id="advancedResults" class="hidden space-y-8"></section>
+
+        <!-- Crawlable SEO Guide & FAQs (Helps Google Rank budget.html) -->
+        <section class="max-w-4xl mx-auto pt-6 border-t border-slate-900 space-y-8">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6">
+                    <h2 class="text-base font-bold text-white mb-2">How the Budget Trip Filter Works</h2>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Unlike static fare tables, this planner pulls live scheduled trips directly from Nigerian interstate operators—showing exact ticket fares, departure times, coach sizes, and remaining seats before you leave home.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6">
+                    <h2 class="text-base font-bold text-white mb-2">Avoid Wasted Park Trips & Gate Scams</h2>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Morning trips fill up fast and fake booking sites often clone operator names. Use our WhatsApp VIP group to get exact boarding park pins, verified gate contacts, and backup buses when a trip fills up.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Visible FAQ Accordion -->
+            <div class="space-y-3">
+                <h2 class="text-lg font-bold text-white">Frequently Asked Questions</h2>
+
+                <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+                    <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white list-none">
+                        <span>How do I find the cheapest interstate bus for my budget?</span>
+                        <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-3 leading-relaxed">
+                        Choose your departure city and destination in Step 1 to see the live route average. In Step 2, enter the maximum amount you want to spend to list every matching operator trip sorted from lowest fare upward.
+                    </p>
+                </details>
+
+                <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+                    <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white list-none">
+                        <span>Are the fares and seat counts live?</span>
+                        <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-3 leading-relaxed">
+                        Yes. Prices are live from operators, along with scheduled departure times, vehicle capacity, and current open seat counts.
+                    </p>
+                </details>
+
+                <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+                    <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white list-none">
+                        <span>What should I do if a trip shows 0 seats available?</span>
+                        <span class="text-vyra-400 group-open:rotate-45 transition-transform text-lg">+</span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-3 leading-relaxed">
+                        When an online coach hits 0 seats left, operators often deploy extra vehicles at the terminal or partner parks have open seats. Tap the WhatsApp VIP link on the trip card to get the exact terminal contact and backup bus options before heading out.
+                    </p>
+                </details>
+            </div>
+        </section>
 
     </main>
 
@@ -227,9 +326,9 @@
                 Check real-time operator fares before heading to the park:
             </p>
             <ul class="space-y-2 text-xs sm:text-sm text-slate-300 mb-5">
-                <li class="flex items-start gap-2"><span class="text-vyra-400 font-bold">1.</span> Select your departure state and destination.</li>
+                <li class="flex items-start gap-2"><span class="text-vyra-400 font-bold">1.</span> Select your departure city and destination.</li>
                 <li class="flex items-start gap-2"><span class="text-vyra-400 font-bold">2.</span> View the live average route price and enter your budget.</li>
-                <li class="flex items-start gap-2"><span class="text-vyra-400 font-bold">3.</span> Get matching operator trips with vehicle type, departure time, and seats.</li>
+                <li class="flex items-start gap-2"><span class="text-vyra-400 font-bold">3.</span> Get matching live trips with coach type, departure time, and seats.</li>
             </ul>
 
             <label class="flex items-center gap-2.5 text-xs text-slate-400 mb-5 cursor-pointer select-none">
@@ -249,7 +348,6 @@
         const VYRA_LOGO = 'https://i.ibb.co/ycsBvPZW/VyraLogo.png';
 
         let allTrips = [];
-        let routePairs = [];
         let advancedCurrentQuestion = 0;
 
         const q1El = document.getElementById('advancedQuestion1');
@@ -290,6 +388,39 @@
             document.getElementById('infoModal').classList.add('hidden');
         }
 
+        function formatProviderName(rawProvider) {
+            if (!rawProvider) return 'Verified Operator';
+            const slug = rawProvider.trim().toLowerCase();
+            const knownProviders = {
+                'plateauriders': 'Plateau Riders',
+                'benuelinks': 'Benue Links',
+                'guotransport': 'GUO Transport',
+                'guo': 'GUO Transport',
+                'gigm': 'GIGM (God is Good)',
+                'godisgood': 'God is Good Motors',
+                'abctransport': 'ABC Transport',
+                'abc': 'ABC Transport',
+                'peacemasstransit': 'Peace Mass Transit',
+                'pmt': 'Peace Mass Transit',
+                'deltaline': 'Delta Line',
+                'agofure': 'Agofure Motors',
+                'agofuremotors': 'Agofure Motors',
+                'iyare': 'Iyare Motors',
+                'iyaremotors': 'Iyare Motors',
+                'youngshallgrow': 'Young Shall Grow Motors',
+                'libramotors': 'Libra Motors',
+                'tracas': 'Tracas Nigeria',
+                'gombeline': 'Gombe Line',
+                'yankari': 'Yankari Express',
+                'yankariexpress': 'Yankari Express'
+            };
+            if (knownProviders[slug]) return knownProviders[slug];
+            return rawProvider
+                .replace(/[_-]+/g, ' ')
+                .replace(/\b\w/g, ch => ch.toUpperCase())
+                .trim();
+        }
+
         function parseRouteString(routeStr) {
             if (!routeStr || typeof routeStr !== 'string') return null;
             const parts = routeStr
@@ -313,35 +444,41 @@
         }
 
         function normalizeTripRow(row) {
-            const parsed = parseRouteString(row.route || row.trip_route || '');
-            const fare = parseFare(row.fare ?? row.price ?? row.amount ?? 0);
-            const provider = (row.provider || row.operator || row.company || row.company_name || 'Verified Operator').trim();
-            const coach = row.coach || row.vehicle || row.vehicle_type || row.bus_type || 'Standard Coach';
-            const departure = row.departure || row.departure_time || row.time || 'Morning Departure';
-            const tripDate = row.tripDate || row.trip_date || row.date || '';
-            const seats = row.availableSeats ?? row.available_seats ?? row.seats ?? null;
-            const terminal = row.terminal || row.park || row.boarding_point || '';
-            const bookingUrl = row.bookingUrl || row.booking_url || row.url || '';
+            const parsed = parseRouteString(row.route || '');
+            const fare = parseFare(row.fare);
+            const rawProvider = (row.provider || 'Verified Operator').trim();
+            const providerDisplay = formatProviderName(rawProvider);
+
+            const availableSeats = (row.available_seats !== null && row.available_seats !== undefined && row.available_seats !== '')
+                ? Number(row.available_seats)
+                : null;
+            const capacity = (row.capacity !== null && row.capacity !== undefined && row.capacity !== '')
+                ? Number(row.capacity)
+                : null;
 
             return {
-                raw: row,
+                id: row.id,
+                tripId: row.trip_id || '',
                 from: parsed ? parsed.from : '',
                 to: parsed ? parsed.to : '',
-                routeLabel: row.route || (parsed ? `${parsed.from} - ${parsed.to}` : ''),
+                routeLabel: row.route || (parsed ? `${parsed.from} to ${parsed.to}` : ''),
                 fare,
-                provider,
-                coach,
-                departure,
-                tripDate,
-                seats,
-                terminal,
-                bookingUrl
+                rawProvider,
+                provider: providerDisplay,
+                departure: (row.departure || '07:00 AM').trim(),
+                date: (row.date || '').trim(),
+                coach: (row.coach || row.type || 'Standard Coach').trim(),
+                type: (row.type || '').trim(),
+                boarding: (row.boarding || '').trim(),
+                duration: (row.duration || '').trim(),
+                availableSeats,
+                capacity
             };
         }
 
         async function loadData() {
             try {
-                const res = await fetch(`${SUPABASE_URL}/rest/v1/provider_trips?select=*`, {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/provider_trips?select=*&order=date.desc,id.desc`, {
                     headers: {
                         'apikey': SUPABASE_KEY,
                         'Authorization': `Bearer ${SUPABASE_KEY}`,
@@ -356,7 +493,7 @@
                     .map(normalizeTripRow)
                     .filter(t => t.from && t.to && t.fare > 0);
 
-                // Extract unique origin states from split route strings
+                // Extract unique departure cities from split route strings
                 const uniqueFroms = [...new Set(allTrips.map(t => t.from))].sort((a, b) => a.localeCompare(b));
 
                 fromDropdown.innerHTML = '<option value="">Select your state</option>';
@@ -367,6 +504,30 @@
                 document.getElementById('initLoader').classList.add('hidden');
                 q1El.classList.remove('hidden');
                 document.getElementById('navButtons').classList.remove('hidden');
+
+                // Support pre-filled URL parameters (?from=Jos&to=Biu&budget=15000)
+                const params = new URLSearchParams(window.location.search);
+                const paramFrom = params.get('from');
+                const paramTo = params.get('to');
+                const paramBudget = params.get('budget');
+
+                if (paramFrom) {
+                    const matchedFrom = uniqueFroms.find(f => f.toLowerCase() === paramFrom.toLowerCase());
+                    if (matchedFrom) {
+                        fromDropdown.value = matchedFrom;
+                        populateDestinations(matchedFrom);
+                        if (paramTo) {
+                            const matchedTo = [...toDropdown.options].find(o => o.value.toLowerCase() === paramTo.toLowerCase());
+                            if (matchedTo) {
+                                toDropdown.value = matchedTo.value;
+                                calculateAveragePrice();
+                                if (paramBudget && Number(paramBudget) >= 5000) {
+                                    budgetInput.value = paramBudget;
+                                }
+                            }
+                        }
+                    }
+                }
 
                 checkInfoModal();
             } catch (err) {
@@ -380,11 +541,8 @@
             }
         }
 
-        fromDropdown.addEventListener('change', () => {
-            clearError();
-            const selectedFrom = fromDropdown.value;
+        function populateDestinations(selectedFrom) {
             toDropdown.innerHTML = '<option value="">Select your destination</option>';
-
             if (!selectedFrom) return;
 
             const matchingDestinations = [
@@ -398,6 +556,11 @@
             matchingDestinations.forEach(dest => {
                 toDropdown.add(new Option(dest, dest));
             });
+        }
+
+        fromDropdown.addEventListener('change', () => {
+            clearError();
+            populateDestinations(fromDropdown.value);
         });
 
         toDropdown.addEventListener('change', () => {
@@ -470,8 +633,8 @@
             const toState = toDropdown.value;
             const budget = parseInt(budgetInput.value, 10);
 
-            if (!budget || isNaN(budget) || budget < 10000) {
-                showError('Please enter a budget of at least ₦10,000.');
+            if (!budget || isNaN(budget) || budget < 5000) {
+                showError('Please enter a budget of at least ₦5,000.');
                 return;
             }
 
@@ -486,7 +649,7 @@
             setTimeout(() => {
                 document.getElementById('loadingSpinner').classList.add('hidden');
                 displayAdvancedResults(optionsWithinBudget, fromState, toState, budget);
-            }, 900);
+            }, 800);
         }
 
         function displayAdvancedResults(transportOptions, fromState, toState, budget) {
@@ -511,9 +674,25 @@
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         ${transportOptions.map((option, index) => {
                             const vipCardUrl = `${vipBaseUrl}&company=${encodeURIComponent(option.provider)}`;
-                            const seatsBadge = option.seats !== null && option.seats !== ''
-                                ? `<span class="px-2.5 py-0.5 rounded-md bg-slate-950 border border-slate-800 text-slate-300 text-xs">${option.seats} seats left</span>`
-                                : '';
+                            const isSoldOut = option.availableSeats === 0;
+
+                            let seatsBadge = '';
+                            if (option.availableSeats !== null && !isNaN(option.availableSeats)) {
+                                if (isSoldOut) {
+                                    seatsBadge = `<span class="px-2.5 py-1 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold">Full (${option.capacity ? `0/${option.capacity}` : '0 seats'})</span>`;
+                                } else {
+                                    const capLabel = option.capacity ? `${option.availableSeats}/${option.capacity} seats` : `${option.availableSeats} seats left`;
+                                    seatsBadge = `<span class="px-2.5 py-1 rounded-md bg-vyra-500/15 border border-vyra-500/30 text-vyra-400 text-xs font-bold">${capLabel}</span>`;
+                                }
+                            }
+
+                            // Pain-solving VIP hook tailored to seat status
+                            const vipHookTitle = isSoldOut
+                                ? `Online coach full? Get backup bus & gate contact`
+                                : `Avoid park touts & fake links at ${option.from}`;
+                            const vipCtaLabel = isSoldOut
+                                ? `Get Backup Bus & Park Pin on WhatsApp →`
+                                : `Get Exact Park Pin & Gate Contact on WhatsApp →`;
 
                             return `
                                 <div class="bg-slate-900/85 border border-slate-800 hover:border-vyra-500/40 rounded-2xl p-5 flex flex-col justify-between gap-4 shadow-xl transition-all">
@@ -524,61 +703,70 @@
                                                 <img src="${VYRA_LOGO}" alt="${option.provider}" class="w-full h-full object-contain">
                                             </div>
                                             <div class="min-w-0 flex-1">
-                                                <div class="flex items-center gap-1.5">
-                                                    <a href="/brand.html?name=${encodeURIComponent(option.provider)}" class="text-base font-extrabold text-white hover:text-vyra-400 transition-colors truncate">
-                                                        ${option.provider}
-                                                    </a>
-                                                </div>
-                                                <div class="text-xs text-slate-400 truncate">${option.from} → ${option.to}</div>
+                                                <a href="/brand.html?name=${encodeURIComponent(option.provider)}" class="block text-base font-extrabold text-white hover:text-vyra-400 transition-colors truncate">
+                                                    ${option.provider}
+                                                </a>
+                                                <div class="text-xs text-slate-400 truncate">${option.routeLabel}</div>
                                             </div>
                                             ${index === 0 ? '<span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-vyra-500/15 text-vyra-400 border border-vyra-500/30 flex-shrink-0">Best Fit</span>' : ''}
                                         </div>
 
-                                        <!-- Live Fare Banner -->
-                                        <div class="my-4 p-3.5 rounded-xl bg-slate-950/90 border border-slate-800/80 flex items-center justify-between">
+                                        <!-- Live Fare & Seat Status -->
+                                        <div class="my-4 p-3.5 rounded-xl bg-slate-950/90 border border-slate-800/80 flex items-center justify-between gap-2">
                                             <div>
-                                                <div class="text-[11px] uppercase tracking-wider text-slate-500">Live Operator Fare</div>
+                                                <div class="text-[11px] uppercase tracking-wider text-slate-500">Live Fare</div>
                                                 <div class="text-2xl font-black text-vyra-400">₦${option.fare.toLocaleString()}</div>
                                             </div>
                                             ${seatsBadge}
                                         </div>
 
-                                        <!-- Supabase Trip Details (Booking-style breakdown) -->
+                                        <!-- Supabase Trip Details -->
                                         <ul class="space-y-2 text-xs text-slate-300">
                                             <li class="flex justify-between gap-2 py-1.5 border-b border-slate-800/60">
                                                 <span class="text-slate-500">Coach / Vehicle</span>
                                                 <span class="font-semibold text-white text-right">${option.coach}</span>
                                             </li>
                                             <li class="flex justify-between gap-2 py-1.5 border-b border-slate-800/60">
-                                                <span class="text-slate-500">Departure Time</span>
+                                                <span class="text-slate-500">Departure</span>
                                                 <span class="font-semibold text-slate-200 text-right">${option.departure}</span>
                                             </li>
-                                            ${option.tripDate ? `
+                                            ${option.date ? `
                                                 <li class="flex justify-between gap-2 py-1.5 border-b border-slate-800/60">
                                                     <span class="text-slate-500">Trip Date</span>
-                                                    <span class="font-semibold text-slate-200 text-right">${option.tripDate}</span>
+                                                    <span class="font-semibold text-slate-200 text-right">${option.date}</span>
                                                 </li>
                                             ` : ''}
-                                            ${option.terminal ? `
+                                            ${option.boarding ? `
                                                 <li class="flex justify-between gap-2 py-1.5 border-b border-slate-800/60">
-                                                    <span class="text-slate-500">Terminal / Park</span>
-                                                    <span class="font-semibold text-slate-200 text-right">${option.terminal}</span>
+                                                    <span class="text-slate-500">Boarding Park</span>
+                                                    <span class="font-semibold text-slate-200 text-right">${option.boarding}</span>
+                                                </li>
+                                            ` : ''}
+                                            ${option.duration ? `
+                                                <li class="flex justify-between gap-2 py-1.5 border-b border-slate-800/60">
+                                                    <span class="text-slate-500">Est. Duration</span>
+                                                    <span class="font-semibold text-slate-200 text-right">${option.duration}</span>
+                                                </li>
+                                            ` : ''}
+                                            ${option.tripId ? `
+                                                <li class="flex justify-between gap-2 py-1">
+                                                    <span class="text-slate-500">Trip Ref</span>
+                                                    <span class="font-mono text-slate-400">#${option.tripId}</span>
                                                 </li>
                                             ` : ''}
                                         </ul>
                                     </div>
 
-                                    <!-- Actions + WhatsApp VIP CTA Below Every Result -->
-                                    <div class="space-y-2.5 pt-2">
-                                        ${option.bookingUrl ? `
-                                            <a href="${option.bookingUrl}" target="_blank" rel="noopener" class="block w-full py-2.5 px-4 rounded-xl bg-slate-950 border border-slate-700 hover:border-vyra-500/50 text-center text-xs font-bold text-white transition-colors">
-                                                View Operator Trip →
+                                    <!-- Pain-Solving WhatsApp VIP Box on Every Result -->
+                                    <div class="pt-2">
+                                        <div class="p-3 rounded-xl bg-emerald-950/35 border border-vyra-500/30 space-y-2">
+                                            <p class="text-[11px] font-semibold text-slate-200 leading-snug">
+                                                ${vipHookTitle}
+                                            </p>
+                                            <a href="${vipCardUrl}" class="block w-full py-2.5 px-3 rounded-lg bg-vyra-500 hover:bg-vyra-400 text-slate-950 text-center text-xs font-extrabold transition-all shadow-md shadow-vyra-900/30">
+                                                ${vipCtaLabel}
                                             </a>
-                                        ` : ''}
-
-                                        <a href="${vipCardUrl}" class="block w-full py-2.5 px-4 rounded-xl bg-vyra-500 hover:bg-vyra-400 text-slate-950 text-center text-xs font-extrabold transition-all shadow-md shadow-vyra-900/30">
-                                            Confirm Live Park Seat on WhatsApp VIP →
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                             `;
@@ -603,7 +791,7 @@
                         <p class="text-xs text-slate-500">Prices are live from operators.</p>
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
                             <a href="${vipBaseUrl}" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-vyra-500 hover:bg-vyra-400 text-slate-950 font-extrabold text-sm transition-all">
-                                Ask Live Park Rates on WhatsApp VIP →
+                                Find Cheaper Local Park Alternatives on WhatsApp →
                             </a>
                             <button type="button" onclick="location.reload()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-700 text-white font-bold text-sm transition-all">
                                 Try Higher Budget
