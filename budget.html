@@ -49,29 +49,29 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; user-select: none; }
         body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; min-height: 100vh; background: black; color: white; overflow-x: hidden; }
-        
+
         .modal { position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 1000; transform: translateY(100%); transition: transform 0.5s ease-out; border-radius: 20px 20px 0 0; overflow-y: auto; }
         .modal.active { transform: translateY(0); border-radius: 0; }
-        
+
         .modal-header-container { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #333; position: sticky; top: 0; background: black; z-index: 10; }
         .modal-title { font-size: 1.5rem; font-weight: bold; color: var(--secondary-color); }
-        
+
         .close-modal-btn { background: transparent; color: var(--secondary-color); border: none; font-size: 1.5rem; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.3s ease; }
         .close-modal-btn:hover { background: rgba(176, 132, 255, 0.1); }
-        
+
         .modal-content { padding: 20px; }
         .modal-container { width: 100%; max-width: 600px; margin: 0 auto; background: linear-gradient(145deg, #1a1a1a, #2a2a2a); border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); padding: 30px; position: relative; margin: 20px 0; }
         .modal-header { font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold; margin-bottom: 20px; color: var(--secondary-color); text-align: center; }
-        
+
         .question { display: none; flex: 1; padding: 10px 0; }
         .question.active { display: block; }
         .question p { margin-bottom: 15px; font-size: clamp(1rem, 3vw, 1.1rem); line-height: 1.5; color: white; text-align: left; max-width: 100%; }
-        
+
         .modal-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; }
         .modal-buttons button { flex: 1; background-color: var(--primary-color); color: white; border: none; border-radius: 8px; padding: 12px; cursor: pointer; font-size: clamp(0.9rem, 3vw, 1rem); transition: all 0.3s ease; }
         .modal-buttons button:hover { opacity: 0.9; transform: translateY(-2px); }
         .modal-buttons button:disabled { background-color: #555; cursor: not-allowed; transform: none; }
-        
+
         /* FIX: Force dropdowns to be black */
         select {
             background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
@@ -90,9 +90,9 @@
             background-color: #121212;
             color: white;
         }
-        
+
         select:hover, select:focus, input:hover, input:focus { outline: none; box-shadow: 0 0 10px var(--primary-color); }
-        
+
         input[type="number"] {
             background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
             color: white;
@@ -106,11 +106,11 @@
             transition: all 0.3s ease;
             appearance: none;
         }
-        
+
         .price-display { text-align: center; font-size: 1.5rem; margin: 25px 0; padding: 15px; background: rgba(0, 0, 0, 0.6); border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
         .price-value { color: var(--secondary-color); font-weight: bold; font-size: 2rem; }
         .price-disclaimer { text-align: center; font-size: 0.85rem; color: #aaa; margin-top: 10px; font-style: italic; padding: 0 10px; }
-        
+
         .results { display: none; width: 100%; max-width: 800px; margin: 20px auto; }
         .results h2 { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 15px; color: var(--secondary-color); text-align: center; }
         .results p { font-size: clamp(1rem, 3vw, 1.1rem); color: #d6d6d6; margin-bottom: 25px; text-align: center; line-height: 1.5; }
@@ -123,7 +123,7 @@
         .terminal-info { margin-top: 15px; font-size: clamp(0.8rem, 3vw, 0.9rem); text-align: center; color: #aaa; width: 100%; }
         .check-again-btn { background-color: var(--primary-color); color: white; border: none; border-radius: 8px; padding: 12px 25px; cursor: pointer; font-size: clamp(0.9rem, 3vw, 1rem); margin-top: 30px; transition: all 0.3s ease; display: block; margin-left: auto; margin-right: auto; }
         .check-again-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-        
+
         @media (max-width: 768px) { .result-container { grid-template-columns: 1fr; } }
 
         /* Loading spinner */
@@ -147,17 +147,17 @@
                 </svg>
             </button>
         </div>
-        
+
         <div class="modal-content">
             <div class="modal-container">
                 <div class="modal-header">Find Your Transport Price</div>
-                
+
                 <div class="question active" id="advancedQuestion1">
                     <p>Where are you currently located?</p>
                     <select id="advancedStateFrom">
                         <option value="">Select your state</option>
                     </select>
-                    
+
                     <p>Where are you headed?</p>
                     <select id="advancedStateTo">
                         <option value="">Select your destination</option>
@@ -172,13 +172,13 @@
                     <div class="price-disclaimer">
                         Transport prices change daily based on fuel costs, demand, and other factors.
                     </div>
-                    
+
                     <!-- Changed range text -->
                     <p>What is your transportation budget? (₦10,000 - ₦50,000)</p>
                     <!-- Changed min and placeholder -->
                     <input type="number" id="budget" placeholder="Enter at least ₦10,000" min="10000" max="50000">
                 </div>
-                
+
                 <div class="modal-buttons">
                     <button id="advancedPrevButton" disabled>Previous</button>
                     <button id="advancedNextButton">Next</button>
@@ -197,8 +197,8 @@
 
  <script>
     let transportData = null;
-	
-	
+
+
 // --- INFO MODAL LOGIC ---
 function checkInfoModal() {
     const dismissed = localStorage.getItem('vyraBudgetInfoDismissed');
@@ -242,7 +242,7 @@ function closeInfoModal() {
             "Uyo": "Akwa Ibom",
             "Aba": "Abia",
             "Onitsha": "Anambra",
-            "Enugu": "Enugu", 
+            "Enugu": "Enugu",
             "Jos": "Plateau",
             "Kaduna": "Kaduna",
             "Abeokuta": "Ogun",
@@ -274,10 +274,10 @@ function closeInfoModal() {
     async function loadData() {
         const res = await fetch('https://www.intercityprices.com.ng/ngr.json');
         transportData = await res.json();
-        
-		  // Show the modal if not dismissed
+
+          // Show the modal if not dismissed
     checkInfoModal();
-	
+
         const states = Object.keys(transportData.states);
         states.forEach(state => {
             advancedStateFromDropdown.add(new Option(state, state));
@@ -287,8 +287,8 @@ function closeInfoModal() {
     // Helper to find the correct company key (fixes the 0 price bug)
     function findCompanyKey(inputName) {
         if (transportData.transportCompanies[inputName]) return inputName;
-        return Object.keys(transportData.transportCompanies).find(key => 
-            key.toLowerCase().includes(inputName.toLowerCase()) || 
+        return Object.keys(transportData.transportCompanies).find(key =>
+            key.toLowerCase().includes(inputName.toLowerCase()) ||
             inputName.toLowerCase().includes(key.toLowerCase())
         );
     }
@@ -296,7 +296,7 @@ function closeInfoModal() {
     advancedStateFromDropdown.addEventListener("change", () => {
         const from = advancedStateFromDropdown.value;
         advancedStateToDropdown.innerHTML = '<option value="">Select your destination</option>';
-        
+
         Object.keys(transportData.states).forEach(state => {
             if (state !== from) {
                 advancedStateToDropdown.add(new Option(state, state));
@@ -307,7 +307,7 @@ function closeInfoModal() {
     function calculateAveragePrice() {
         const fromState = advancedStateFromDropdown.value;
         const toState = advancedStateToDropdown.value;
-        
+
         if (!fromState || !toState) return;
 
         const routeKey = `${fromState}-${toState}`;
@@ -316,7 +316,7 @@ function closeInfoModal() {
 
         let total = 0;
         let count = 0;
-        
+
         if (Object.keys(prices).length > 0) {
             Object.values(prices).forEach(price => {
                 if (price > 0) { total += price; count++; }
@@ -325,7 +325,7 @@ function closeInfoModal() {
             const fromCompanies = transportData.states[fromState]?.companies || [];
             const toCompanies = transportData.states[toState]?.companies || [];
             const common = fromCompanies.filter(c => toCompanies.includes(c));
-            
+
             common.forEach(company => {
                 const companyKey = findCompanyKey(company);
                 const basePrice = companyKey ? transportData.transportCompanies[companyKey]?.basePrice : 0;
@@ -348,14 +348,14 @@ function closeInfoModal() {
             }
             calculateAveragePrice();
         }
-        
+
         if (advancedCurrentQuestion === 1) {
             if (!budgetInput.value || parseInt(budgetInput.value) < 10000) {
                 alert("Please enter a budget of at least ₦10,000.");
                 return;
             }
         }
-        
+
         advancedQuestions[advancedCurrentQuestion].classList.remove("active");
         advancedCurrentQuestion++;
         advancedQuestions[advancedCurrentQuestion].classList.add("active");
@@ -401,7 +401,7 @@ function closeInfoModal() {
         const optionsWithinBudget = commonCompanies
             .map(company => {
                 const companyKey = findCompanyKey(company);
-                if (!companyKey) return null; 
+                if (!companyKey) return null;
 
                 const companyData = transportData.transportCompanies[companyKey];
                 let price = routePrices[company] || routePrices[companyKey] || companyData?.basePrice || 0;
@@ -413,7 +413,7 @@ function closeInfoModal() {
                 const toTerminalData = companyData?.terminals?.[normTo]?.[0] || {};
 
                 return {
-                    name: companyKey, 
+                    name: companyKey,
                     price,
                     image: companyData?.image || "https://i.ibb.co/5hXDcq5/images-7.png",
                     terminalFrom: fromTerminalData.name || `${fromState} Main Terminal`,
@@ -439,7 +439,7 @@ function closeInfoModal() {
     function displayAdvancedResults(transportOptions, fromState, toState, budget) {
         advancedResultsDiv.style.display = "block";
         advancedResultsDiv.classList.add("fade-in");
-        
+
         if (transportOptions.length > 0) {
             advancedResultsDiv.innerHTML = `
                 <h2>Transport Options Within Your Budget</h2>
@@ -499,7 +499,7 @@ ${option.phoneFrom ? `<a href="tel:${option.phoneFrom.split(',')[0].trim()}" sty
                 <li>We instantly show you available companies, their prices, <strong>and contact information</strong>.</li>
             </ul>
         </div>
-        
+
         <!-- Checkbox Container -->
         <label style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #aaa; margin-bottom: 20px; cursor: pointer;">
             <input type="checkbox" id="dontShowAgain" style="width: 18px; height: 18px; accent-color: #9C27B0;">
